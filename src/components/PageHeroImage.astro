@@ -1,0 +1,38 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label = "IPnite platform preview" } = Astro.props;
+---
+
+<figure class="page-hero-image" aria-label={label}>
+  <img src="/images/ipnitehero_preview.png" alt={label} loading="eager" />
+</figure>
+
+<style>
+  .page-hero-image {
+    width: min(100%, 1060px);
+    margin: clamp(28px, 4vw, 44px) auto 0;
+    border: 1px solid rgba(107, 42, 47, 0.12);
+    border-radius: clamp(24px, 3.4vw, 44px);
+    background: #fff;
+    box-shadow: 0 30px 74px -38px rgba(76, 8, 21, 0.28);
+    overflow: hidden;
+  }
+
+  .page-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 620px) {
+    .page-hero-image {
+      width: calc(100% + 8px);
+      margin-left: -4px;
+      margin-right: -4px;
+      border-radius: 24px;
+    }
+  }
+</style>

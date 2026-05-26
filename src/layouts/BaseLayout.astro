@@ -1,0 +1,91 @@
+---
+import "../styles/global.css";
+import Navbar from "./Navbar.astro";
+import Footer from "./Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  keywords?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  lang?: "en" | "es";
+  alternatePath?: string;
+}
+
+const {
+  title = "IPnite — Patent Drafting for Everyone",
+  description = "AI-powered provisional patent drafting. Protect your ideas with a serious, guided workflow built for inventors.",
+  canonicalPath = Astro.url.pathname,
+  keywords = "IPnite, AI patent drafting, patent preparation, provisional patent draft, intellectual property, inventors, founders, patent workflow, prior art review, patent claims",
+  structuredData = [],
+  lang = "en",
+  alternatePath,
+} = Astro.props;
+
+const siteUrl = "https://www.ipnite.com";
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const schemaItems = Array.isArray(structuredData) ? structuredData : [structuredData];
+const baseStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "IPnite",
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    foundingLocation: [
+      { "@type": "Place", name: "United States" },
+      { "@type": "Place", name: "Argentina" },
+      { "@type": "Place", name: "Paraguay" },
+      { "@type": "Place", name: "Mexico" },
+    ],
+    sameAs: [
+      "https://www.linkedin.com/company/ipnite/",
+      "https://www.instagram.com/ip_nite",
+      "https://x.com/ip_nite",
+      "https://www.tiktok.com/@ipnite",
+    ],
+    description:
+      "IPnite is an AI-assisted patent preparation platform for inventors, founders, startups, and companies that need a guided way to document inventions, review prior art, draft claims, and prepare exportable patent drafts.",
+  },
+  ...schemaItems,
+].filter(Boolean);
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/images/cerebro.png" />
+    <link rel="apple-touch-icon" href="/images/cerebro.png" />
+    <meta property="og:site_name" content="IPnite" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteUrl}/logo.png`} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y2V71G958"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-0Y2V71G958");
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(baseStructuredData)} />
+  </head>
+  <body class="bg-white text-gris3 antialiased">
+    <Navbar lang={lang} alternatePath={alternatePath} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+const faqs = [
+  ["En que se diferencia IPnite de ChatGPT?", "IPnite esta construido especificamente para propiedad intelectual. ChatGPT es general, mientras IPnite aplica una metodologia estructurada para preparar borradores de patente."],
+  ["IPnite reemplaza a un abogado de patentes?", "No. IPnite ayuda a reducir costos tempranos y organizar la invencion, pero la presentacion final debe revisarse con un profesional calificado."],
+  ["IPnite genera reivindicaciones?", "Si. IPnite ayuda a crear reivindicaciones independientes y dependientes, una de las partes mas complejas de un borrador de patente."],
+  ["Para quien es IPnite?", "Para inventores, startups, equipos tecnicos y fundadores sin presupuesto legal inicial."]
+];
+---
+
+<BaseLayout lang="es" title="FAQs — IPnite" description="Preguntas frecuentes sobre IPnite y redaccion de patentes asistida por IA." canonicalPath="/es/faqs/" alternatePath="/faqs/">
+  <section class="faq-es">
+    <p class="pill">FAQs</p>
+    <h1>Preguntas frecuentes</h1>
+    <div class="list">{faqs.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div>
+  </section>
+</BaseLayout>
+
+<style>.faq-es{max-width:1000px;margin:0 auto;padding:86px 20px 120px;text-align:center}.pill{display:inline-flex;border-radius:999px;background:#6b2a2f;color:#ededed;padding:10px 20px;font-family:"Roboto Slab",serif;font-weight:800;text-transform:uppercase}.faq-es h1{margin:22px 0 46px;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(50px,8vw,90px);font-weight:800;line-height:1}.list{display:grid;gap:14px;text-align:left}details{border:1px solid rgba(107,42,47,.16);border-radius:24px;background:#fff;padding:22px;box-shadow:0 14px 32px rgba(107,42,47,.06)}summary{cursor:pointer;color:#4c0815;font-family:"Roboto Slab",serif;font-size:22px;font-weight:800}details p{margin:14px 0 0;color:#505050;font-family:"Roboto",sans-serif;font-size:17px;font-weight:500;line-height:1.6}</style>

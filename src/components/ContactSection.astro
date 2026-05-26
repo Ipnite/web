@@ -1,0 +1,84 @@
+---
+// Fuente: ContactFormSection.tsx (Figma 4:448)
+// top: 5080, height: 680
+---
+
+<section
+  id="contact"
+  aria-labelledby="contact-heading"
+  class="relative w-full overflow-hidden bg-white"
+  style="height: 680px;"
+>
+  <div class="absolute inset-0" style="width:1440px;margin:auto;left:0;right:0;">
+    <!-- Título -->
+    <h2
+      id="contact-heading"
+      class="absolute top-5 left-[187px] w-[210px] [font-family:'Roboto_Slab',serif] font-bold text-[#6b2a2f] text-5xl tracking-[0] leading-[72px] whitespace-nowrap"
+    >
+      Contact
+    </h2>
+
+    <!-- Formulario -->
+    <form
+      class="absolute top-[123px] left-[190px] w-[425px]"
+      method="post"
+      action="#contact"
+    >
+      <!-- Name -->
+      <div class="absolute top-0 left-0 w-[409px]">
+        <label for="contact-name" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Name</label>
+        <input
+          id="contact-name" name="name" type="text" placeholder="Enter your name..."
+          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="absolute top-[109px] left-0 w-[409px]">
+        <label for="contact-email" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Email</label>
+        <input
+          id="contact-email" name="email" type="email" placeholder="Enter your email address..."
+          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+        />
+      </div>
+
+      <!-- Subject -->
+      <div class="absolute top-[216px] left-0 w-[409px]">
+        <label for="contact-subject" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Subject</label>
+        <input
+          id="contact-subject" name="subject" type="text" placeholder="Enter your subject..."
+          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#0000000d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+        />
+      </div>
+
+      <!-- Message -->
+      <div class="absolute top-[320px] left-0 w-[409px]">
+        <label for="contact-message" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Message</label>
+        <textarea
+          id="contact-message" name="message" placeholder="Enter your message..."
+          rows="4"
+          class="mt-[5px] w-[409px] h-[110px] resize-none rounded-[14px] bg-white pl-[52px] pr-5 pt-[11px] [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+        ></textarea>
+      </div>
+
+      <!-- Send button -->
+      <button
+        type="submit"
+        class="absolute top-[497px] left-[300px] w-[109px] h-[35px] rounded-[50px] border border-solid border-[#6b2a2f] bg-[#ededed]"
+        aria-label="Send contact form"
+      >
+        <span class="flex items-center justify-center h-full [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
+          Send
+        </span>
+      </button>
+    </form>
+
+    <!-- Imagen decorativa derecha -->
+    <img
+      class="absolute top-0 left-[810px] w-[497px] h-[588px] object-contain"
+      alt="Contact illustration"
+      src="/images/contact.png"
+      loading="lazy"
+    />
+  </div>
+</section>

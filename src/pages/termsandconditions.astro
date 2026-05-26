@@ -1,0 +1,67 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const sections = [
+  ["1. Acceptance of Terms", "These Terms and Conditions govern your access to and use of ipnite.com, app.ipnite.com, and related products, software, AI-assisted workflows, patent draft outputs, documents, communications, credit-based tools, and related services provided by ik-holcan LLC, a Delaware limited liability company operating the IPnite platform."],
+  ["2. Eligibility and Authority", "You must be at least 18 years old, or the age of majority in your jurisdiction, to use the Services. If you use the Services on behalf of a company or other entity, you represent that you have authority to bind that entity to these Terms."],
+  ["3. Nature of the Services", "IPnite provides AI-assisted tools and workflows for invention intake, patent draft preparation, claim-structure support, prior-art signal review, document organization, and related intellectual property preparation tasks. The Services assist with preparation and workflow efficiency, not final legal decisions."],
+  ["4. No Legal Advice or Attorney-Client Relationship", "The Services do not constitute legal advice, patent advice, tax advice, business advice, financial advice, investment advice, or any other licensed professional service. Use of the Services does not create an attorney-client relationship."],
+  ["5. Registered Practitioners and Third-Party Services", "IPnite is a technology tool and may not be used to misrepresent professional qualifications. Anyone offering patent drafting, prosecution, filing, legal review, strategy, or representation services to others using IPnite is solely responsible for proper authorization."],
+  ["6. User Content and Invention Disclosures", "User Content includes invention disclosures, technical descriptions, drawings, documents, notes, prior-art references, business information, personal information, trade secrets, confidential information, files, prompts, and related materials submitted through the Services."],
+  ["7. User Responsibility for Clarity and Accuracy", "The quality of any output depends on the clarity, accuracy, completeness, and technical specificity of the information you provide. You are responsible for reviewing generated drafts and correcting errors or omissions."],
+  ["8. Browser Extensions, AI Readers, and Third-Party Tools", "You are responsible for securing your device, browser, extensions, plug-ins, AI readers, screen capture tools, translation tools, or other third-party software that may access confidential invention information."],
+  ["9. Patent Writing Session, Three-Day Countdown, and Deletion", "When you start a patent writing process inside IPnite, a security countdown of approximately 72 hours may begin for that project. At the end of that countdown, IPnite may delete, purge, anonymize, or make inaccessible project information."],
+  ["10. Payments, Credit Packs, and Non-Refundable Used Credits", "IPnite may operate through prepaid credit packs, subscriptions, usage-based fees, one-time purchases, free access, promotional credits, or custom arrangements. Credits spent on initiated or completed actions are non-refundable except where required by law."],
+  ["11. Ownership and Use of AI-Generated Outputs", "Subject to these Terms, you may use draft patent documents, claim suggestions, summaries, prior-art notes, invention descriptions, embodiments, technical descriptions, and other AI-generated outputs created from your User Content."],
+  ["12. Confidentiality, Security, and Data Use", "We take the confidentiality of invention-related materials seriously. Unless you expressly opt in or provide written consent, we do not use your invention disclosures or patent draft materials to train general-purpose AI models."],
+  ["13. No Patentability, Filing, or Legal Sufficiency Guarantee", "We do not guarantee that any draft, claim set, prior-art result, recommendation, or other output will be patentable, novel, non-obvious, enabled, accurate, legally sufficient, or accepted by any patent office."],
+  ["14. Optional Human Support", "IPnite may offer optional human support, including legal review coordination, filing support, strategy consulting, technical review, or introductions to external professionals. Separate professional agreements may apply."],
+  ["15. Acceptable Use", "You agree not to misuse the Services, submit unauthorized materials, infringe third-party rights, misrepresent inventorship or ownership, provide unauthorized legal services, scrape the platform, or use the Services for unlawful or harmful purposes."],
+  ["16. Platform Intellectual Property", "The Site, platform, user interface, workflows, templates, code, software, branding, trademarks, documentation, design elements, prompts, operational logic, and underlying technology are owned by ik-holcan LLC or its licensors."],
+  ["17. Privacy Policy", "Your use of the Services is also governed by our Privacy Policy, which explains how we collect, use, store, protect, and disclose personal information and user-submitted materials."],
+  ["18. Account Security", "You are responsible for maintaining the confidentiality of your account credentials, devices, browsers, networks, and access tokens, and for all activity under your account."],
+  ["19. Third-Party Services", "The Services may integrate with third-party services, including payment processors, hosting providers, AI infrastructure providers, analytics tools, authentication providers, cloud storage services, patent databases, or external professionals."],
+  ["20. Disclaimer of Warranties", "The Services are provided as is and as available, without warranties of any kind, express, implied, statutory, or otherwise, to the maximum extent permitted by law."],
+  ["21. Limitation of Liability", "To the maximum extent permitted by law, ik-holcan LLC and its affiliates will not be liable for indirect, incidental, special, consequential, exemplary, punitive, enhanced, or lost-profit damages related to use of the Services."],
+  ["22. Indemnification", "You agree to indemnify, defend, and hold harmless ik-holcan LLC and its affiliates from claims, damages, liabilities, losses, penalties, costs, and expenses arising from your use of the Services or violation of these Terms."],
+  ["23. Suspension and Termination", "We may suspend, restrict, or terminate access to the Services at any time if we believe you violated these Terms, created risk, failed to pay fees, misused credits, or used the Services in a harmful way."],
+  ["24. Changes to the Services or Terms", "We may modify, update, suspend, or discontinue the Services or these Terms from time to time. Continued use after changes become effective constitutes acceptance of revised Terms."],
+  ["25. Governing Law and Jurisdiction", "These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict of law principles. Disputes will be resolved in state or federal courts located in Delaware unless applicable law requires otherwise."],
+  ["26. Miscellaneous", "If any provision is found invalid or unenforceable, the remaining provisions remain in effect. These Terms and applicable policies constitute the entire agreement regarding the Services."],
+];
+---
+
+<BaseLayout title="Terms and Conditions — IPnite" description="Terms and Conditions governing access to and use of IPnite's website, platform, AI-assisted patent workflows, patent draft outputs, credit services, and optional support." canonicalPath="/termsandconditions/" alternatePath="/es/termsandconditions/">
+  <main class="terms-page">
+    <header class="terms-header">
+      <h1>Terms and Conditions</h1>
+      <p class="subtitle">These Terms govern your access to and use of IPnite's website, platform, software, AI-assisted patent workflows, patent draft outputs, credit-based services, and optional human support.</p>
+      <p class="terms-meta">Last updated: June 30, 2025</p>
+      <div class="notice"><strong>Important:</strong> IPnite is an AI-assisted patent drafting and workflow preparation tool. It does not provide legal advice, does not create an attorney-client relationship, and does not replace a registered patent attorney, registered patent agent, or other qualified professional.</div>
+    </header>
+    <section class="terms-body">
+      <p class="intro">Welcome to IPnite. By accessing or using the Site or Services, creating an account, purchasing credits, starting a patent writing workflow, uploading invention materials, or using any AI-generated output, you agree to be bound by these Terms.</p>
+      {sections.map(([title, text]) => (
+        <section class="term-block">
+          <h2>{title}</h2>
+          <p>{text}</p>
+        </section>
+      ))}
+    </section>
+    <section class="contact-strip">
+      <p>For questions about these Terms, contact us at <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .terms-page{max-width:980px;margin:0 auto;padding:68px 16px 90px;background:#fff}
+  .terms-header{text-align:center;border-bottom:1px solid #ece7e5;padding-bottom:24px}
+  .terms-header h1{margin:0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(42px,6vw,68px);font-weight:800;line-height:1}
+  .subtitle{max-width:860px;margin:16px auto 0;color:#505050;font-family:"Roboto",sans-serif;font-size:16px;font-weight:500;line-height:1.65}
+  .terms-meta{margin:14px auto 0;color:#938d8e;font-family:"Roboto Slab",serif;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+  .notice{max-width:860px;margin:20px auto 0;border:1px solid rgba(154,106,32,.28);border-radius:18px;background:#fff8e8;padding:16px;color:#9a6a20;text-align:left;font-family:"Roboto",sans-serif;font-size:14px;line-height:1.55}
+  .notice strong{color:#9a6a20}
+  .terms-body{margin-top:24px}.intro{border-bottom:1px solid #ece7e5;padding-bottom:18px;color:#505050;font-family:"Roboto",sans-serif;font-size:15px;line-height:1.7}
+  .term-block{border-bottom:1px solid #ece7e5;padding:18px 0}.term-block h2{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px;color:#4c0815;font-family:"Roboto Slab",serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.term-block h2:before{content:"";width:5px;height:18px;border-radius:999px;background:#6b2a2f;flex:0 0 auto;margin-top:2px}.term-block p,.contact-strip p{margin:0;color:#505050;font-family:"Roboto",sans-serif;font-size:14px;font-weight:500;line-height:1.72}.contact-strip{text-align:center;padding-top:22px}.contact-strip a{color:#6b2a2f;font-weight:800}
+</style>

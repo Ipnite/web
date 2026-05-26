@@ -1,0 +1,188 @@
+---
+// Fuente: index.tsx — sección "Why We Do It" (Figma 4:206)
+// Las tarjetas tienen flip: frente blanco con título, dorso rojo con texto
+const cards = [
+  {
+    id: "no-idea-too-small",
+    title: ["No Idea", "Too Small"],
+  },
+  {
+    id: "simple-transparent",
+    title: ["Simple &", "Transparent"],
+  },
+  {
+    id: "empowering-creators",
+    title: ["Empowering", "Creators"],
+  },
+];
+---
+
+<section
+  id="why-we-do-it"
+  aria-labelledby="why-heading"
+  class="relative z-0 w-full overflow-hidden bg-white"
+  style="padding-top: 12px; padding-bottom: 120px;"
+>
+  <!-- Gradiente decorativo -->
+  <div class="absolute top-0 left-0 w-[1439px] h-[1260px] opacity-15 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0 bg-[#6b2a2f] rounded-[50%] blur-[250px] opacity-50"></div>
+    <div class="absolute top-[227px] left-[201px] w-[1075px] h-[779px] rounded-[50%] blur-[400px] opacity-50"
+      style="background:linear-gradient(197deg,rgba(245,245,245,.8) 0%,rgba(245,245,245,.8) 100%)">
+    </div>
+  </div>
+
+  <div class="relative w-[1440px] mx-auto">
+    <!-- Heading -->
+    <h2
+      id="why-heading"
+      class="absolute top-[36px] left-[calc(50%-216px)] w-[433px] [font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] text-5xl text-center tracking-[0] leading-[64.8px]"
+    >
+      Why we do it
+    </h2>
+
+    <!-- Separador -->
+    <div class="absolute top-[116px] left-[calc(50%-197px)] w-[395px] h-[3px] bg-[#6b2a2f] opacity-40"></div>
+
+    <!-- Párrafo -->
+    <p class="absolute top-[133px] left-[calc(50%-380px)] w-[760px] [font-family:'Roboto',sans-serif] text-[#505050] text-[22px] text-center tracking-[-0.42px] leading-[33px]">
+      <span class="font-medium">
+        Ideas are the world's most valuable currency, but too many are lost because inventors believe protection is only for large corporations.
+      </span>
+      <br />
+      <strong class="[font-family:'Roboto',sans-serif] font-bold">IPnite exists to change that narrative.</strong>
+    </p>
+
+    <!-- Card 1: No Idea Too Small -->
+    <article class="absolute top-[275px] left-[85px] w-[405px] h-[180px] group cursor-default">
+      <!-- Dorso (rojo) -->
+      <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
+        style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
+        <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
+          <span class="font-medium">If it's important to you, </span>
+          <strong class="font-bold">it's important to us</strong>
+          <span class="font-medium">. Every spark deserves a chance to become a flame</span>
+        </p>
+      </div>
+      <!-- Frente (blanco) -->
+      <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+        <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
+          No Idea<br />Too Small
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: Simple & Transparent -->
+    <article class="absolute top-[356px] left-[519px] w-[405px] h-[180px] group cursor-default">
+      <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
+        style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
+        <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
+          <span class="font-medium">If it's important to you, </span>
+          <strong class="font-bold">it's important to us</strong>
+          <span class="font-medium">. Every spark deserves a chance to become a flame</span>
+        </p>
+      </div>
+      <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+        <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
+          Simple &amp;<br />Transparent
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: Empowering Creators -->
+    <article class="absolute top-[275px] left-[954px] w-[405px] h-[180px] group cursor-default">
+      <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
+        style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
+        <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
+          <span class="font-medium">If it's important to you, </span>
+          <strong class="font-bold">it's important to us</strong>
+          <span class="font-medium">. Every spark deserves a chance to become a flame</span>
+        </p>
+      </div>
+      <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+        <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
+          Empowering<br />Creators
+        </div>
+      </div>
+    </article>
+
+    <!-- Ícono entre card 1 y 2 -->
+    <div class="absolute top-[415px] left-[465px] w-[75px] h-[75px] rounded-full bg-[#6b2a2f] shadow-[0px_8px_18px_#6b2a2f33] flex items-center justify-center" aria-hidden="true">
+      <img class="w-[44px] h-[40px] object-contain brightness-0 invert" alt="" src="/images/cerebro.png" />
+    </div>
+
+    <!-- Ícono entre card 2 y 3 -->
+    <div class="absolute top-[365px] left-[899px] w-[75px] h-[75px] rounded-full bg-[#6b2a2f] shadow-[0px_8px_18px_#6b2a2f33] flex items-center justify-center" aria-hidden="true">
+      <img class="w-[44px] h-[40px] object-contain brightness-0 invert" alt="" src="/images/cerebro.png" />
+    </div>
+  </div>
+
+  <!-- Spacer para que el section ocupe altura correcta (tarjetas absolutas) -->
+  <div style="height: 570px;"></div>
+</section>
+
+<style>
+  @media (max-width: 900px) {
+    #why-we-do-it {
+      padding: 58px 16px 72px !important;
+      overflow: hidden;
+    }
+
+    #why-we-do-it > div:first-child {
+      display: none;
+    }
+
+    #why-we-do-it > .relative.w-\[1440px\].mx-auto {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    #why-we-do-it h2,
+    #why-we-do-it p,
+    #why-we-do-it article,
+    #why-we-do-it > .relative.w-\[1440px\].mx-auto > div {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      transform: none !important;
+    }
+
+    #why-we-do-it h2 {
+      width: 100% !important;
+      max-width: 360px;
+      font-size: 42px !important;
+      line-height: 1.15 !important;
+    }
+
+    #why-we-do-it p {
+      width: 100% !important;
+      max-width: 360px;
+      font-size: 18px !important;
+      line-height: 1.5 !important;
+      letter-spacing: 0 !important;
+    }
+
+    #why-we-do-it article {
+      width: 100% !important;
+      max-width: 360px;
+      height: 150px !important;
+      margin-top: 6px;
+    }
+
+    #why-we-do-it article [class*="text-[42px]"] {
+      font-size: 34px !important;
+      line-height: 1.15 !important;
+    }
+
+    #why-we-do-it > .relative.w-\[1440px\].mx-auto > div:not(:first-of-type) {
+      display: none;
+    }
+
+    #why-we-do-it > div:last-child {
+      height: 0 !important;
+    }
+  }
+</style>

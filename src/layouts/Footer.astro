@@ -1,0 +1,107 @@
+---
+// Fuente: ApplicationFooterSection.tsx (Figma 4:498)
+// height: 325
+const footerLinks = [
+  { label: "Why We Do It", href: "/#why-we-do-it" },
+  { label: "IP Team",      href: "/#ip-team"      },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Plans",        href: "/#plans"        },
+  { label: "Contact",      href: "/#contact"      },
+];
+---
+
+<footer
+  class="relative overflow-hidden bg-[#6b2a2f]"
+  style="min-height: 325px;"
+  aria-label="Footer"
+>
+  <div class="relative mx-auto h-[325px] w-full max-w-[1440px]">
+    <!-- Logo -->
+    <div class="absolute left-[69px] top-[39px]">
+      <img
+        class="h-[68px] w-[217px] object-contain"
+        alt="IPnite logo"
+        src="/logo-white.png"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Legal text -->
+    <div class="absolute left-[81px] top-[123px] w-[433px]">
+      <p class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
+        Legal Notice: This tool is an AI writing assistant and does not
+        constitute legal advice or a formal attorney-client relationship.
+        Please review all drafts with a registered patent practitioner.
+      </p>
+      <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
+        © IPnite — All rights reserved
+      </p>
+      <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
+        Powered by Ik-Holcán
+      </p>
+    </div>
+
+    <!-- Nav links -->
+    <nav class="absolute left-[1059px] top-[123px]" aria-label="Footer navigation">
+      <ul class="m-0 list-none p-0">
+        {footerLinks.map((link, i) => (
+          <li class={`flex h-[25px] ${i > 0 ? "mt-[4px]" : ""}`}>
+            <a
+              href={link.href}
+              class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[28.5px] tracking-[-0.28px] text-white hover:underline"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Social icons -->
+    <div class="absolute" style="left:88.61%;top:76.31%;">
+      <a href="https://www.linkedin.com/company/ipnite" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img src="/icons/linkedin.svg" alt="LinkedIn" class="w-8 h-8 opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
+      </a>
+    </div>
+    <div class="absolute" style="left:92.29%;top:76.31%;">
+      <a href="https://www.instagram.com/ipnite" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="/icons/instagram.svg" alt="Instagram" class="w-8 h-8 opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @media (max-width: 760px) {
+    footer[aria-label="Footer"] {
+      min-height: auto !important;
+      padding: 36px 20px 34px;
+    }
+
+    footer[aria-label="Footer"] > div {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 420px !important;
+      display: grid;
+      gap: 24px;
+    }
+
+    footer[aria-label="Footer"] > div > div,
+    footer[aria-label="Footer"] nav {
+      position: static !important;
+      width: 100% !important;
+      left: auto !important;
+      top: auto !important;
+    }
+
+    footer[aria-label="Footer"] img[alt="IPnite logo"] {
+      width: 150px !important;
+      height: auto !important;
+    }
+
+    footer[aria-label="Footer"] nav ul {
+      display: grid;
+      gap: 4px;
+    }
+  }
+</style>

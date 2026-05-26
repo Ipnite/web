@@ -1,0 +1,113 @@
+---
+// Fuente: index.tsx sección "The Ipnite Promise" (Figma 4:221)
+// Posición Figma: top-1454, height-626
+---
+
+<section
+  aria-labelledby="promise-heading"
+  class="relative w-full overflow-hidden bg-white"
+  style="height: 626px;"
+>
+  <!-- Gradiente izquierdo -->
+  <div
+    class="absolute top-[710px] left-10 w-[464px] h-[433px] bg-[#6b2a2f66] rounded-[50%] blur-[42.72px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <div class="absolute inset-0 w-[1440px] mx-auto">
+    <!-- Badge "WHY WE DO IT" -->
+    <div class="absolute top-[59px] left-[82px] w-[168px] h-[35px]">
+      <div class="absolute inset-0 bg-[#6b2a2f] rounded-[33px]"></div>
+      <span class="absolute top-[calc(50%-12px)] left-[18px] w-[133px] h-[23px] flex items-center justify-center [font-family:'Roboto_Slab',serif] font-extrabold text-[#ededed] text-[17.9px] text-center tracking-[-0.34px] leading-[26.8px] whitespace-nowrap">
+        WHY WE DO IT
+      </span>
+    </div>
+
+    <!-- Título -->
+    <div class="absolute top-[106px] left-[82px] w-[582px]">
+      <h2
+        id="promise-heading"
+        class="[font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] leading-tight"
+        style="font-size:2.8rem"
+      >
+        The Ipnite Dream
+      </h2>
+      <div class="mt-2 w-[511px] h-px bg-[#6b2a2f] opacity-40"></div>
+    </div>
+
+    <!-- Textos misión / visión -->
+    <div class="absolute top-[232px] left-[82px] w-[511px] flex flex-col gap-8">
+      <p class="[font-family:'Roboto',sans-serif] text-[#505050] text-xl leading-[1.55]">
+        <strong class="font-bold text-[#6b2a2f]">Our Mission</strong>
+        {" "}To ignite the potential of human ingenuity by securing the assets that define the future.
+      </p>
+      <p class="[font-family:'Roboto',sans-serif] text-[#505050] text-xl leading-[1.55]">
+        <strong class="font-bold text-[#6b2a2f]">Our Vision</strong>
+        {" "}A world where every creator has the tools to protect their brilliance.
+      </p>
+    </div>
+
+    <!-- Frase final -->
+    <p class="absolute top-[501px] left-[116px] w-[462px] [font-family:'Roboto',sans-serif] font-medium text-[#505050] text-xl leading-[1.55]">
+      We're not just a service. We're a movement to democratize innovation.
+    </p>
+
+    <!-- Imagen derecha -->
+    <div class="absolute top-[20px] left-[926px] w-[462px] h-[560px]">
+      <img
+        class="absolute top-0 left-0 z-10 w-[500px] h-[562px] object-contain"
+        alt="The Ipnite Dream"
+        src="/images/the-ipnite-dream.png"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 900px) {
+    section[aria-labelledby="promise-heading"] {
+      height: auto !important;
+      padding: 56px 16px 72px;
+      overflow: hidden;
+    }
+
+    section[aria-labelledby="promise-heading"] > .absolute.inset-0.w-\[1440px\].mx-auto {
+      position: relative !important;
+      inset: auto !important;
+      width: 100% !important;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      margin: 0 auto !important;
+    }
+
+    section[aria-labelledby="promise-heading"] > .absolute.inset-0.w-\[1440px\].mx-auto > * {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+    }
+
+    section[aria-labelledby="promise-heading"] h2 {
+      font-size: 42px !important;
+      line-height: 1.12 !important;
+    }
+
+    section[aria-labelledby="promise-heading"] h2 + div {
+      width: 100% !important;
+    }
+
+    section[aria-labelledby="promise-heading"] p {
+      font-size: 18px !important;
+      line-height: 1.55 !important;
+    }
+
+    section[aria-labelledby="promise-heading"] .absolute.top-\[20px\].left-\[926px\] {
+      display: none;
+    }
+  }
+</style>

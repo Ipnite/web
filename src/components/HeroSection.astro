@@ -1,0 +1,444 @@
+---
+// HeroStatementSection — rebuilt from /images/ipnitehero_preview.png
+---
+
+<section id="inicio" aria-labelledby="hero-heading" class="hero">
+  <div class="hero__panel">
+    <img
+      class="hero__brain"
+      src="/images/cerebro.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+    />
+
+    <div class="hero__copy">
+      <h1 id="hero-heading">
+        <span>Protection Shouldn't</span>
+        <span>Be a Privilege</span>
+      </h1>
+
+      <p>
+        Most people think protecting an idea requires a massive legal team and
+        a mountain of gold.
+        <strong>At IPnite we believe that&rsquo;s wrong.</strong>
+      </p>
+
+      <div class="hero__actions" aria-label="Primary actions">
+        <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
+          Get Started Now
+        </a>
+        <a class="hero__cta" href="/#how-it-works">
+          How it Works
+        </a>
+        <a class="hero__cta" href="/faqs">
+          FAQs
+        </a>
+      </div>
+    </div>
+
+    <img
+      class="hero__capture hero__capture--disclosure"
+      src="/images/captura-1.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+    />
+    <img
+      class="hero__capture hero__capture--problem"
+      src="/images/captura-3.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+    />
+    <img
+      class="hero__capture hero__capture--title"
+      src="/images/captura-2.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+    />
+
+    <img class="hero__icon hero__icon--search" src="/icons/lupa.svg" alt="" aria-hidden="true" />
+    <img class="hero__icon hero__icon--pencil" src="/icons/lapiz.svg" alt="" aria-hidden="true" />
+    <img class="hero__icon hero__icon--lock" src="/icons/candado.svg" alt="" aria-hidden="true" />
+
+    <img
+      class="hero__laptop"
+      src="/images/notebook-2.png"
+      alt="IPnite app on laptop"
+      loading="eager"
+    />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    overflow-x: clip;
+    overflow-y: visible;
+    background: #fff;
+    padding: 0 clamp(18px, 4.5vw, 90px) 0;
+    z-index: 2;
+  }
+
+  .hero__panel {
+    position: relative;
+    width: min(100%, 1280px);
+    min-height: clamp(610px, calc(100svh - 118px), 650px);
+    margin: 0 auto;
+    overflow-x: clip;
+    overflow-y: visible;
+    border-radius: clamp(28px, 3vw, 50px);
+    background:
+      radial-gradient(circle at 83% 44%, rgba(107, 42, 47, 0.12), transparent 32%),
+      rgba(217, 217, 217, 0.15);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.40),
+      inset 1px 0 0 rgba(255,255,255,0.32),
+      inset 0 -1px 1px rgba(0,0,0,0.13),
+      inset -1px 0 1px rgba(0,0,0,0.11);
+  }
+
+  .hero__copy {
+    position: relative;
+    z-index: 10;
+    width: min(760px, calc(100% - 48px));
+    margin: 0 auto;
+    padding-top: clamp(22px, 2.9vw, 36px);
+    text-align: center;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-family: "Roboto Slab", serif;
+    font-size: clamp(40px, 3.9vw, 52px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: 0;
+    color: #505050;
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero h1 span + span {
+    color: #6b2a2f;
+  }
+
+  .hero p {
+    max-width: 650px;
+    margin: clamp(16px, 1.7vw, 22px) auto 0;
+    color: #505050;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(15px, 1.38vw, 18px);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  .hero p strong {
+    font-weight: 800;
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: clamp(16px, 1.8vw, 22px);
+    flex-wrap: wrap;
+  }
+
+  .hero__cta {
+    display: inline-flex;
+    min-width: 138px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border: 1px solid #6b2a2f;
+    border-radius: 999px;
+    background: #ededed;
+    color: #4c0815;
+    font-family: "Roboto Slab", serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: underline;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  .hero__cta:hover {
+    background: #6b2a2f;
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .hero__cta--primary {
+    min-width: 176px;
+  }
+
+  .hero__brain,
+  .hero__capture,
+  .hero__icon,
+  .hero__laptop {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero__brain {
+    z-index: 1;
+    right: max(-250px, -15vw);
+    top: clamp(-168px, -12vw, -112px);
+    width: clamp(780px, 82vw, 1060px);
+    height: auto;
+    opacity: 0.38;
+    filter: blur(2px);
+  }
+
+  .hero__capture {
+    z-index: 9;
+    filter: drop-shadow(0 14px 28px rgba(76, 8, 21, 0.08));
+  }
+
+  .hero__capture--disclosure {
+    left: clamp(28px, 3.1vw, 44px);
+    top: clamp(132px, 18.5vw, 162px);
+    width: clamp(175px, 18.8vw, 246px);
+  }
+
+  .hero__capture--problem {
+    left: clamp(92px, calc(50% - 548px), 132px);
+    bottom: clamp(92px, 12vw, 116px);
+    width: clamp(210px, 20vw, 264px);
+  }
+
+  .hero__capture--title {
+    right: clamp(92px, calc(50% - 559px), 126px);
+    top: clamp(374px, 43vw, 410px);
+    width: clamp(210px, 20vw, 264px);
+  }
+
+  .hero__icon {
+    z-index: 12;
+    width: clamp(48px, 4.8vw, 62px);
+    height: auto;
+  }
+
+  .hero__icon--search {
+    left: clamp(205px, 20vw, 260px);
+    top: clamp(272px, 28vw, 306px);
+  }
+
+  .hero__icon--pencil {
+    right: clamp(28px, 4.3vw, 54px);
+    top: clamp(405px, 48vw, 456px);
+  }
+
+  .hero__icon--lock {
+    z-index: 14;
+    left: calc(50% + clamp(208px, 22vw, 238px));
+    top: clamp(568px, 43.4vw, 588px);
+  }
+
+  .hero__laptop {
+    z-index: 13;
+    left: 50%;
+    top: clamp(282px, 21.6vw, 304px);
+    width: clamp(540px, 43.5vw, 610px);
+    height: auto;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 16px 16px rgba(76, 8, 21, 0.08));
+  }
+
+  @media (max-width: 980px) {
+    .hero {
+      padding-inline: 16px;
+    }
+
+    .hero__panel {
+      min-height: 720px;
+    }
+
+    .hero__copy {
+      width: min(650px, calc(100% - 32px));
+      padding-top: 36px;
+    }
+
+    .hero__brain {
+      right: -170px;
+      top: 248px;
+      width: 540px;
+      opacity: 0.28;
+    }
+
+    .hero__capture--disclosure {
+      left: 24px;
+      top: 285px;
+      width: 168px;
+    }
+
+    .hero__capture--problem {
+      left: 30px;
+      bottom: 136px;
+      width: 252px;
+    }
+
+    .hero__capture--title {
+      right: 24px;
+      top: 388px;
+      width: 252px;
+    }
+
+    .hero__icon--search {
+      left: 156px;
+      top: 392px;
+    }
+
+    .hero__icon--pencil {
+      right: 14px;
+      top: 486px;
+    }
+
+    .hero__icon--lock {
+      left: 58%;
+      bottom: 14px;
+    }
+
+    .hero__laptop {
+      bottom: 34px;
+      width: min(560px, 78vw);
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .hero {
+      padding: 0 12px 22px;
+    }
+
+    .hero__panel {
+      min-height: 690px;
+      border-radius: 28px;
+    }
+
+    .hero__copy {
+      width: min(100% - 28px, 520px);
+      padding-top: 30px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 11vw, 46px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .hero__cta {
+      height: 40px;
+      min-width: 164px;
+      font-size: 16px;
+    }
+
+    .hero__brain {
+      right: -220px;
+      top: 292px;
+      width: 480px;
+    }
+
+    .hero__capture--disclosure {
+      left: 18px;
+      top: 296px;
+      width: 138px;
+    }
+
+    .hero__capture--problem {
+      left: 18px;
+      bottom: 188px;
+      width: 210px;
+    }
+
+    .hero__capture--title {
+      right: 12px;
+      top: 398px;
+      width: 210px;
+    }
+
+    .hero__icon {
+      width: 50px;
+    }
+
+    .hero__icon--search {
+      left: 124px;
+      top: 394px;
+    }
+
+    .hero__icon--pencil {
+      right: 4px;
+      top: 462px;
+    }
+
+    .hero__icon--lock {
+      left: 62%;
+      bottom: 58px;
+    }
+
+    .hero__laptop {
+      bottom: 78px;
+      width: min(510px, 96vw);
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 430px) {
+    .hero__panel {
+      min-height: 650px;
+    }
+
+    .hero p {
+      max-width: 320px;
+    }
+
+    .hero__brain {
+      top: 328px;
+      right: -220px;
+      width: 420px;
+    }
+
+    .hero__capture--disclosure {
+      top: 330px;
+      width: 122px;
+    }
+
+    .hero__capture--problem {
+      bottom: 166px;
+      width: 188px;
+    }
+
+    .hero__capture--title {
+      top: 422px;
+      width: 186px;
+    }
+
+    .hero__icon--search {
+      left: 105px;
+      top: 408px;
+    }
+
+    .hero__icon--pencil {
+      top: 480px;
+    }
+
+    .hero__laptop {
+      bottom: 72px;
+    }
+  }
+</style>

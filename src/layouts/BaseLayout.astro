@@ -79,6 +79,139 @@ const baseStructuredData = [
       gtag("js", new Date());
       gtag("config", "G-0Y2V71G958");
     </script>
+    <script is:inline>
+      (function () {
+        var measurementId = "G-0Y2V71G958";
+        var minSectionMs = 1500;
+        var sectionTimes = {};
+        var activeSections = {};
+        var observer;
+
+        function clean(value) {
+          return String(value || "")
+            .replace(/\s+/g, " ")
+            .trim()
+            .slice(0, 140);
+        }
+
+        function getElementLabel(element) {
+          return clean(
+            element.getAttribute("data-analytics-label") ||
+              element.getAttribute("aria-label") ||
+              element.innerText ||
+              element.textContent ||
+              element.getAttribute("href") ||
+              element.tagName
+          );
+        }
+
+        function getSectionName(element) {
+          var section = element.closest("section, article, header, footer, main, [id]");
+          if (!section) return "unknown";
+          return clean(
+            section.getAttribute("data-analytics-section") ||
+              section.getAttribute("aria-label") ||
+              section.id ||
+              section.className ||
+              section.tagName
+          );
+        }
+
+        function sendEvent(name, params) {
+          if (typeof window.gtag !== "function") return;
+          window.gtag("event", name, Object.assign({
+            page_path: window.location.pathname,
+            page_title: document.title,
+          }, params || {}));
+        }
+
+        function trackClick(event) {
+          var target = event.target && event.target.closest && event.target.closest("a, button");
+          if (!target) return;
+
+          var href = target.getAttribute("href") || "";
+          var isExternal = false;
+          try {
+            isExternal = href ? new URL(href, window.location.href).origin !== window.location.origin : false;
+          } catch (error) {}
+
+          sendEvent("ipnite_button_click", {
+            button_text: getElementLabel(target),
+            button_type: target.tagName.toLowerCase(),
+            button_url: href || "none",
+            section_name: getSectionName(target),
+            is_external: isExternal ? "true" : "false",
+          });
+        }
+
+        function sectionId(section, index) {
+          if (section.id) return section.id;
+          var heading = section.querySelector && section.querySelector("h1, h2, h3");
+          if (heading) return clean(heading.textContent).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          return "section-" + index;
+        }
+
+        function startSection(id) {
+          if (!activeSections[id]) activeSections[id] = Date.now();
+        }
+
+        function stopSection(id) {
+          if (!activeSections[id]) return;
+          sectionTimes[id] = (sectionTimes[id] || 0) + Date.now() - activeSections[id];
+          delete activeSections[id];
+        }
+
+        function flushSections(reason) {
+          Object.keys(activeSections).forEach(stopSection);
+          Object.keys(sectionTimes).forEach(function (id) {
+            var ms = sectionTimes[id];
+            if (ms < minSectionMs) return;
+            sendEvent("ipnite_section_engagement", {
+              section_name: id,
+              engagement_time_msec: Math.round(ms),
+              engagement_seconds: Math.round(ms / 1000),
+              engagement_reason: reason || "flush",
+            });
+            sectionTimes[id] = 0;
+          });
+        }
+
+        function initSectionTracking() {
+          if (!("IntersectionObserver" in window)) return;
+          var sections = Array.prototype.slice.call(document.querySelectorAll("main section, main article, main header"));
+          sections.forEach(function (section, index) {
+            section.setAttribute("data-analytics-section", section.getAttribute("data-analytics-section") || sectionId(section, index));
+          });
+
+          observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              var id = entry.target.getAttribute("data-analytics-section");
+              if (!id) return;
+              if (entry.isIntersecting && entry.intersectionRatio >= 0.45 && !document.hidden) {
+                startSection(id);
+              } else {
+                stopSection(id);
+              }
+            });
+          }, { threshold: [0, 0.45, 0.75] });
+
+          sections.forEach(function (section) { observer.observe(section); });
+        }
+
+        document.addEventListener("click", trackClick, true);
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) flushSections("visibility_hidden");
+        });
+        window.addEventListener("pagehide", function () { flushSections("pagehide"); });
+        window.addEventListener("beforeunload", function () { flushSections("beforeunload"); });
+        window.addEventListener("load", initSectionTracking);
+
+        window.ipniteAnalytics = {
+          flushSections: flushSections,
+          measurementId: measurementId,
+        };
+      })();
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(baseStructuredData)} />
   </head>
   <body class="bg-white text-gris3 antialiased">

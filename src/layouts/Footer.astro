@@ -8,6 +8,14 @@ const footerLinks = [
   { label: "Plans",        href: "/#plans"        },
   { label: "Contact",      href: "/#contact"      },
 ];
+
+const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/ipnite/" },
+  { label: "Instagram", href: "https://www.instagram.com/ip_nite" },
+  { label: "X", href: "https://x.com/ipnite" },
+  { label: "TikTok", href: "https://www.tiktok.com/@ipnite" },
+  { label: "Facebook", href: "https://www.facebook.com/ipnite" },
+];
 ---
 
 <footer
@@ -57,17 +65,23 @@ const footerLinks = [
       </ul>
     </nav>
 
-    <!-- Social icons -->
-    <div class="absolute" style="left:88.61%;top:76.31%;">
-      <a href="https://www.linkedin.com/company/ipnite" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <img src="/icons/linkedin.svg" alt="LinkedIn" class="w-8 h-8 opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
-      </a>
-    </div>
-    <div class="absolute" style="left:92.29%;top:76.31%;">
-      <a href="https://www.instagram.com/ipnite" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <img src="/icons/instagram.svg" alt="Instagram" class="w-8 h-8 opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
-      </a>
-    </div>
+    <!-- Social links -->
+    <nav class="footer-social absolute left-[1059px] top-[234px]" aria-label="Social links">
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
+        {socialLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[20px] tracking-[-0.28px] text-white hover:underline"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   </div>
 </footer>
 
@@ -102,6 +116,11 @@ const footerLinks = [
     footer[aria-label="Footer"] nav ul {
       display: grid;
       gap: 4px;
+    }
+
+    footer[aria-label="Footer"] .footer-social ul {
+      display: flex;
+      gap: 10px 16px;
     }
   }
 </style>

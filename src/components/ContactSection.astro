@@ -82,3 +82,81 @@
     />
   </div>
 </section>
+
+<style>
+  @media (max-width: 760px) {
+    #contact {
+      height: auto !important;
+      overflow: visible !important;
+      padding: 48px 16px 64px;
+    }
+
+    #contact > div {
+      position: relative !important;
+      inset: auto !important;
+      width: 100% !important;
+      max-width: 420px !important;
+      display: grid;
+      gap: 24px;
+    }
+
+    #contact-heading,
+    #contact form,
+    #contact form > div,
+    #contact form button,
+    #contact > div > img {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    #contact-heading {
+      margin: 0;
+      text-align: center;
+      font-size: 42px !important;
+      line-height: 1.1 !important;
+      white-space: normal !important;
+    }
+
+    #contact form {
+      display: grid;
+      gap: 16px;
+      order: 2;
+    }
+
+    #contact form label {
+      font-size: 16px !important;
+    }
+
+    #contact input,
+    #contact textarea {
+      width: 100% !important;
+      font-size: 16px !important;
+      padding-left: 18px !important;
+    }
+
+    #contact textarea {
+      min-height: 118px;
+    }
+
+    #contact form button {
+      justify-self: center;
+      width: 132px !important;
+      height: 42px !important;
+      margin-top: 4px;
+    }
+
+    #contact form button span {
+      font-size: 20px !important;
+    }
+
+    #contact > div > img {
+      order: 1;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+</style>

@@ -70,3 +70,82 @@
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 760px) {
+    #ip-team {
+      height: auto !important;
+      overflow: visible !important;
+      padding: 46px 16px 56px;
+    }
+
+    #ip-team > div {
+      position: relative !important;
+      inset: auto !important;
+      width: 100% !important;
+      max-width: 420px !important;
+      display: grid;
+      gap: 22px;
+    }
+
+    #ip-team > div > div:first-child {
+      display: none;
+    }
+
+    #ip-team > div > div:nth-child(2),
+    #ip-team > div > div:nth-child(3) {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    #ip-team > div > div:nth-child(2) {
+      order: 2;
+      max-width: 330px;
+      margin: 0 auto;
+    }
+
+    #ip-team > div > div:nth-child(2) img {
+      height: auto !important;
+    }
+
+    #ip-team > div > div:nth-child(3) {
+      order: 1;
+      display: grid;
+      gap: 16px;
+    }
+
+    #ipteam-heading {
+      width: 100% !important;
+      margin: 0 !important;
+      font-size: 34px !important;
+      line-height: 1.12 !important;
+      white-space: normal !important;
+    }
+
+    #ip-team > div > div:nth-child(3) > div {
+      position: static !important;
+      height: auto !important;
+      margin: 0 !important;
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+
+    #ip-team p {
+      position: static !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      padding: 16px 18px;
+      border: 1px solid rgba(107, 42, 47, 0.12);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 14px 30px rgba(107, 42, 47, 0.06);
+      font-size: 15px !important;
+      line-height: 1.45 !important;
+      letter-spacing: 0 !important;
+    }
+  }
+</style>

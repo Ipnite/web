@@ -1,6 +1,41 @@
 ---
 // Fuente: ProcessOverviewSection.tsx (Figma 4:348)
 // top: 3232, height: 648
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      title: ["Como funciona", "IPnite"],
+      subtitle: "Cuatro pasos",
+      alt: "Ilustración del flujo de redacción de patentes",
+      step1: "Describe tu invención",
+      step2: "Los agentes analizan la estructura y las referencias",
+      step3: "Se genera el borrador de patente",
+      step4: "Revisa y exporta el documento o continúa con la presentación",
+    }
+  : lang === "pt"
+  ? {
+      title: ["Como funciona", "a IPnite"],
+      subtitle: "Fluxo em quatro passos",
+      alt: "Ilustração do fluxo de redação de patentes",
+      step1: "Descreva sua invenção",
+      step2: "Os agentes analisam a estrutura e as referências",
+      step3: "O rascunho da patente é gerado",
+      step4: "Revise e exporte o documento ou continue com o depósito",
+    }
+  : {
+      title: ["How It Works", ""],
+      subtitle: "Four-step Workflow",
+      alt: "Illustration of the patent drafting workflow",
+      step1: "Describe your invention",
+      step2: "Agents analyze the structure and references",
+      step3: "The patent draft is generated",
+      step4: "Review and export the document or continue with the filing",
+    };
 ---
 
 <section
@@ -15,18 +50,18 @@
       id="hiw-heading"
       class="absolute top-[11px] left-[calc(50%-214px)] w-[429px] [font-family:'Roboto_Slab',serif] text-[#6b2a2f] text-[64px] tracking-[0] leading-[96px] whitespace-nowrap"
     >
-      <span class="font-normal">How It </span>
-      <strong class="font-bold">Works</strong>
+      <span class="font-normal">{copy.title[0]}</span>
+      {copy.title[1] ? <strong class="font-bold">{copy.title[1]}</strong> : null}
     </h2>
 
     <p class="absolute top-[105px] left-[calc(50%-111px)] w-[222px] [font-family:'Roboto',sans-serif] font-bold italic text-[#505050] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
-      Four-step Workflow
+      {copy.subtitle}
     </p>
 
     <!-- Ilustración izquierda -->
     <img
       class="absolute top-[93px] left-[120px] w-[522px] h-[480px] object-contain"
-      alt="Illustration of the patent drafting workflow"
+      alt={copy.alt}
       src="/images/how-it-works.png"
       loading="lazy"
     />
@@ -35,49 +70,45 @@
     <div class="absolute top-[215px] left-[636px] w-[614px] h-[294px]">
       <!-- Paso 1: Describe -->
       <article class="absolute top-0 left-0 w-[304px] h-[140px]" aria-label="Step 1">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] shadow-[0px_4.8px_4.8px_#8c595e0d]"></div>
-        <span class="absolute top-[84px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-medium text-[#505050] text-xl text-center tracking-[-0.38px] leading-[23px] whitespace-nowrap">
-          Describe your invention
+        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
+        <span class="absolute top-[84px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px] whitespace-nowrap">
+          {copy.step1}
         </span>
-        <div class="absolute top-0 left-[121px] w-[62px] h-[62px] bg-[#6b2a2f] rounded-full flex items-center justify-center" aria-hidden="true">
-          <img class="w-[18px] h-[30px]" alt="" src="/icons/step-1.svg" />
+        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
+          <span>1</span>
         </div>
       </article>
 
       <!-- Paso 2: Analyze -->
       <article class="absolute top-0 left-[312px] w-[304px] h-[140px]" aria-label="Step 2">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] shadow-[0px_4.8px_4.8px_#8c595e0d]"></div>
-        <p class="absolute top-[72px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#505050] text-xl text-center tracking-[-0.38px] leading-[23px]">
-          <span class="font-medium">Agents </span>
-          <strong class="font-semibold">analyze </strong>
-          <span class="font-medium">the structure and references</span>
+        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
+        <p class="absolute top-[72px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px]">
+          <span class="font-normal">{copy.step2}</span>
         </p>
-        <div class="absolute top-0 left-[121px] w-[62px] h-[62px] bg-[#6b2a2f] rounded-full flex items-center justify-center" aria-hidden="true">
-          <img class="w-[22px] h-[31px]" alt="" src="/icons/step-2.svg" />
+        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
+          <span>2</span>
         </div>
       </article>
 
       <!-- Paso 3: Generated -->
       <article class="absolute top-[154px] left-0 w-[304px] h-[140px]" aria-label="Step 3">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] shadow-[0px_4.8px_4.8px_#8c595e0d]"></div>
-        <p class="absolute top-[74px] left-[31px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#505050] text-xl text-center tracking-[-0.38px] leading-[23px]">
-          <span class="font-medium">The patent draft is </span>
-          <strong class="font-semibold">generated</strong>
+        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
+        <p class="absolute top-[74px] left-[31px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px]">
+          <span class="font-normal">{copy.step3}</span>
         </p>
-        <div class="absolute top-0 left-[121px] w-[62px] h-[62px] bg-[#6b2a2f] rounded-full flex items-center justify-center" aria-hidden="true">
-          <img class="w-[22px] h-[31px]" alt="" src="/icons/step-3.svg" />
+        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
+          <span>3</span>
         </div>
       </article>
 
       <!-- Paso 4: Review & Export -->
       <article class="absolute top-[154px] left-[312px] w-[304px] h-[140px]" aria-label="Step 4">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] shadow-[0px_4.8px_4.8px_#8c595e0d]"></div>
-        <p class="absolute top-[62px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#505050] text-xl text-center tracking-[-0.38px] leading-[23px]">
-          <strong class="font-semibold">Review and export the document</strong>
-          <span class="font-medium"> or continue <br />with the filing</span>
+        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
+        <p class="absolute top-[62px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px]">
+          <span class="font-normal">{copy.step4}</span>
         </p>
-        <div class="absolute top-0 left-[121px] w-[62px] h-[62px] bg-[#6b2a2f] rounded-full flex items-center justify-center" aria-hidden="true">
-          <img class="w-[22px] h-[30px]" alt="" src="/icons/step-4.svg" />
+        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
+          <span>4</span>
         </div>
       </article>
     </div>
@@ -85,6 +116,21 @@
 </section>
 
 <style>
+  .hiw-step__icon {
+    background: #6b2a2f;
+    border: 2px solid #6b2a2f;
+    box-shadow: 0 8px 18px rgba(107, 42, 47, 0.10);
+  }
+
+  .hiw-step__icon span {
+    color: #fff;
+    font-family: "Roboto Slab", serif;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+
   @media (max-width: 760px) {
     #how-it-works {
       height: auto !important;
@@ -139,7 +185,7 @@
       gap: 14px;
     }
 
-    #how-it-works article {
+      #how-it-works article {
       position: relative !important;
       top: auto !important;
       left: auto !important;
@@ -151,23 +197,24 @@
       align-items: center;
       gap: 14px;
       padding: 16px 18px;
-      border-radius: 24px;
+      border-radius: 26px;
+      border: 1px solid #f0ebe9;
       background: #fff;
-      box-shadow: 0 14px 30px rgba(107, 42, 47, 0.07);
+      box-shadow: 0 5px 12px rgba(107, 42, 47, 0.18);
     }
 
-    #how-it-works article > div:first-child {
-      display: none;
-    }
-
-    #how-it-works article > div:last-child {
+    #how-it-works .hiw-step__icon {
+      grid-column: 1;
+      grid-row: 1;
       position: relative !important;
       top: auto !important;
       left: auto !important;
       width: 52px !important;
       height: 52px !important;
-      grid-column: 1;
-      grid-row: 1;
+    }
+
+    #how-it-works .hiw-step__icon span {
+      font-size: 24px !important;
     }
 
     #how-it-works article > span,
@@ -178,11 +225,13 @@
       width: 100% !important;
       grid-column: 2;
       grid-row: 1;
-      font-size: 15px !important;
+      font-size: 14px !important;
       line-height: 1.35 !important;
       letter-spacing: 0 !important;
       white-space: normal !important;
       text-align: left !important;
+      color: #2b2b2f !important;
+      font-weight: 400 !important;
     }
   }
 </style>

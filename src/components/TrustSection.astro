@@ -1,6 +1,44 @@
 ---
 // Fuente: TrustCredentialsSection.tsx (Figma 4:390)
 // top: 3880, height: 596
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      badge: "CÓMO FUNCIONA",
+      headingTop: "Estándar profesional",
+      headingBottom: "Hecho para inventores tempranos",
+      confidential: "Confidencial por diseño",
+      privacy: "No usamos tus datos para entrenar,\nni para quedarnos con tus ideas",
+      workflow: "Flujo de patentes estructurado",
+      exportable: "Borradores exportables de patente",
+      disclaimer: "IPnite no reemplaza asesoría legal. Acelera y estructura el proceso de redacción.",
+    }
+  : lang === "pt"
+  ? {
+      badge: "COMO FUNCIONA",
+      headingTop: "Padrão profissional",
+      headingBottom: "Feito para inventores em fase inicial",
+      confidential: "Confidencial por padrão",
+      privacy: "Não usamos seus dados para treinar,\nnem para ficar com suas ideias",
+      workflow: "Fluxo de patente estruturado",
+      exportable: "Rascunhos exportáveis de patente",
+      disclaimer: "A IPnite não substitui aconselhamento jurídico. Acelera e estrutura o processo de redação.",
+    }
+  : {
+      badge: "HOW IT WORKS",
+      headingTop: "Professional Standard",
+      headingBottom: "Built for Early Inventors",
+      confidential: "Confidential by design",
+      privacy: "We don’t use your data for training,\nnor do we keep your ideas",
+      workflow: "Structured patent workflow",
+      exportable: "Exportable patent drafts",
+      disclaimer: "IPnite does not replace legal advice. It accelerates and structures the drafting process.",
+    };
 ---
 
 <section
@@ -15,7 +53,7 @@
         <div class="relative ml-0.5 h-[35px] w-[193px]">
           <div class="absolute left-[calc(50%-96px)] top-0 h-[35px] w-[191px] rounded-[33px] bg-[#6b2a2f]"></div>
           <div class="absolute top-[calc(50%-12px)] left-5 flex h-[23px] w-[151px] items-center justify-center whitespace-nowrap text-center [font-family:'Roboto_Slab',serif] text-[17.9px] font-extrabold leading-[26.8px] tracking-[-0.34px] text-[#ededed]">
-            HOW IT WORKS
+            {copy.badge}
           </div>
         </div>
       </div>
@@ -26,14 +64,14 @@
       id="trust-heading"
       class="mt-[5px] h-[154px] w-[918px] self-center text-center [font-family:'Roboto_Slab',serif] text-[64px] font-normal leading-[75px] tracking-[0] text-[#505050]"
     >
-      Professional Standar <br />
-      <strong class="font-bold">Built for Early Inventors</strong>
+      {copy.headingTop} <br />
+      <strong class="font-bold">{copy.headingBottom}</strong>
     </h2>
 
     <div class="relative mt-[32px] h-[166px] w-[760px] self-center">
       <div class="absolute left-[66px] top-0 h-[78px] w-[628px] rounded-[78px] bg-[#ededed]"></div>
       <h3 class="absolute left-[66px] top-0 flex h-[78px] w-[628px] items-center justify-center text-center [font-family:'Roboto_Slab',serif] text-[46px] font-extrabold leading-[70px] tracking-[1.6px] text-[#4c0815]">
-        Confidential by design
+        {copy.confidential}
       </h3>
       <img
         class="absolute right-[22px] top-[-9px] h-[50px] w-[50px]"
@@ -48,9 +86,9 @@
         src="/icons/candado.svg"
       />
       <p class="absolute left-1/2 top-[96px] w-[560px] -translate-x-1/2 text-center [font-family:'Roboto_Slab',serif] text-[24px] font-medium leading-[34px] tracking-[-0.45px] text-[#505050]">
-        We don’t use your data for training,
+        <span class="whitespace-pre-line">{copy.privacy.split("\n")[0]}</span>
         <br />
-        <strong class="font-bold text-[#4c0815]">nor do we keep your ideas</strong>
+        <strong class="font-bold text-[#4c0815]">{copy.privacy.split("\n")[1]}</strong>
       </p>
     </div>
 
@@ -60,7 +98,7 @@
       <div class="absolute top-0 left-[calc(50%-414px)] w-96 h-[50px]">
         <div class="absolute top-0 left-[calc(50%-192px)] w-[382px] h-[50px] bg-white rounded-[40px]"></div>
         <div class="absolute top-[7px] left-[19px] w-[343px] [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[0.96px] leading-9 whitespace-nowrap">
-          Structured patent workflow
+          {copy.workflow}
         </div>
       </div>
 
@@ -75,15 +113,14 @@
       <div class="absolute top-0 left-[calc(50%+68px)] w-[347px] h-[50px]">
         <div class="absolute top-0 left-[calc(50%-174px)] w-[345px] h-[50px] bg-[#ededed] rounded-[40px]"></div>
         <div class="absolute top-[7px] left-[22px] w-[302px] [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[0.96px] leading-9 whitespace-nowrap">
-          Exportable patent drafts
+          {copy.exportable}
         </div>
       </div>
     </div>
 
     <!-- Disclaimer -->
     <p class="mt-12 h-[25px] w-[860px] self-center text-center [font-family:'Roboto',sans-serif] text-xl font-normal leading-[30px] tracking-[-0.38px] text-[#505050] whitespace-nowrap">
-      <em class="italic">IPnite does not replace legal advice. </em>
-      <span class="font-medium italic">It accelerates and structures the drafting process.</span>
+      {copy.disclaimer}
     </p>
   </div>
 </section>

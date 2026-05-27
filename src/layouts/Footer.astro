@@ -1,13 +1,35 @@
 ---
 // Fuente: ApplicationFooterSection.tsx (Figma 4:498)
 // height: 325
-const footerLinks = [
-  { label: "Why We Do It", href: "/#why-we-do-it" },
-  { label: "IP Team",      href: "/#ip-team"      },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Plans",        href: "/#plans"        },
-  { label: "Contact",      href: "/#contact"      },
-];
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
+const footerLinks = lang === "es"
+  ? [
+      { label: "Por que hacemos esto", href: `${prefix}/#why-we-do-it` },
+      { label: "Equipo IP", href: `${prefix}/#ip-team` },
+      { label: "Como funciona", href: `${prefix}/#how-it-works` },
+      { label: "Planes", href: `${prefix}/#plans` },
+      { label: "Contacto", href: `${prefix}/#contact` },
+    ]
+  : lang === "pt"
+  ? [
+      { label: "Por que fazemos isso", href: `${prefix}/#why-we-do-it` },
+      { label: "Equipe IP", href: `${prefix}/#ip-team` },
+      { label: "Como funciona", href: `${prefix}/#how-it-works` },
+      { label: "Planos", href: `${prefix}/#plans` },
+      { label: "Contato", href: `${prefix}/#contact` },
+    ]
+  : [
+      { label: "Why We Do It", href: "/#why-we-do-it" },
+      { label: "IP Team", href: "/#ip-team" },
+      { label: "How It Works", href: "/#how-it-works" },
+      { label: "Plans", href: "/#plans" },
+      { label: "Contact", href: "/#contact" },
+    ];
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ipnite/" },
@@ -21,7 +43,7 @@ const socialLinks = [
 <footer
   class="relative overflow-hidden bg-[#6b2a2f]"
   style="min-height: 325px;"
-  aria-label="Footer"
+  aria-label={lang === "es" ? "Pie de página" : lang === "pt" ? "Rodapé" : "Footer"}
 >
   <div class="relative mx-auto h-[325px] w-full max-w-[1440px]">
     <!-- Logo -->
@@ -36,16 +58,18 @@ const socialLinks = [
 
     <!-- Legal text -->
     <div class="absolute left-[81px] top-[123px] w-[433px]">
-      <p class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
-        Legal Notice: This tool is an AI writing assistant and does not
-        constitute legal advice or a formal attorney-client relationship.
-        Please review all drafts with a registered patent practitioner.
+        <p class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
+          {lang === "es"
+            ? "Aviso legal: Esta herramienta es un asistente de escritura con IA y no constituye asesoramiento legal ni una relacion abogado-cliente formal. Revisa todos los borradores con un profesional registrado."
+            : lang === "pt"
+            ? "Aviso legal: Esta ferramenta e um assistente de escrita com IA e nao constitui aconselhamento juridico nem uma relacao formal advogado-cliente. Revise todos os rascunhos com um profissional registrado."
+            : "Legal Notice: This tool is an AI writing assistant and does not constitute legal advice or a formal attorney-client relationship. Please review all drafts with a registered patent practitioner."}
+        </p>
+      <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
+        {lang === "es" ? "© IPnite — Todos los derechos reservados" : lang === "pt" ? "© IPnite — Todos os direitos reservados" : "© IPnite — All rights reserved"}
       </p>
       <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
-        © IPnite — All rights reserved
-      </p>
-      <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
-        Powered by Ik-Holcán
+        {lang === "es" ? "Impulsado por Ik-Holcán" : lang === "pt" ? "Desenvolvido por Ik-Holcán" : "Powered by Ik-Holcán"}
       </p>
     </div>
 

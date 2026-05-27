@@ -6,16 +6,14 @@
 <section
   aria-label="Confidential by design"
   class="relative w-full overflow-hidden bg-white"
-  style="height: 201px;"
+  style="height: 236px;"
 >
-  <div class="absolute inset-0 flex flex-col items-center justify-center gap-0" style="width:1440px;margin:auto;left:0;right:0;">
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-0 pt-3" style="width:1440px;margin:auto;left:0;right:0;">
     <div class="relative flex items-center">
-      <!-- Ícono izquierdo (SVG ya incluye círculo) -->
-      <img
-        class="absolute left-[-60px] top-0 w-[50px] h-[50px]"
-        alt="" aria-hidden="true"
-        src="/icons/engranaje.svg"
-      />
+      <!-- Ícono izquierdo -->
+      <div class="confidential-icon confidential-icon--left" aria-hidden="true">
+        <img alt="" src="/icons/lupa.svg" />
+      </div>
 
       <!-- Badge principal -->
       <div class="relative w-[628px] h-[78px] flex items-center justify-center">
@@ -25,12 +23,10 @@
         </h2>
       </div>
 
-      <!-- Ícono derecho (SVG ya incluye círculo) -->
-      <img
-        class="absolute right-[-60px] top-0 w-[50px] h-[50px]"
-        alt="" aria-hidden="true"
-        src="/icons/candado.svg"
-      />
+      <!-- Ícono derecho -->
+      <div class="confidential-icon confidential-icon--right" aria-hidden="true">
+        <img alt="" src="/icons/candado.svg" />
+      </div>
     </div>
 
     <p class="mt-6 w-[543px] [font-family:'Roboto_Slab',serif] font-normal text-[#505050] text-[25.8px] text-center tracking-[-0.49px] leading-[38.8px]">
@@ -39,3 +35,48 @@
     </p>
   </div>
 </section>
+
+<style>
+  .confidential-icon {
+    position: absolute;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #6b2a2f;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: 0 8px 18px rgba(107, 42, 47, 0.10);
+  }
+
+  .confidential-icon--left { left: -64px; }
+  .confidential-icon--right { right: -64px; }
+
+  .confidential-icon img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    object-fit: contain;
+  }
+
+  @media (max-width: 760px) {
+    section[aria-label="Confidential by design"] {
+      height: auto !important;
+      padding: 46px 16px 30px;
+    }
+
+    section[aria-label="Confidential by design"] > div {
+      position: relative !important;
+      width: 100% !important;
+      left: auto !important;
+      right: auto !important;
+      margin: 0 auto !important;
+      padding-top: 0 !important;
+    }
+
+    .confidential-icon--left { left: -16px; }
+    .confidential-icon--right { right: -16px; }
+  }
+</style>

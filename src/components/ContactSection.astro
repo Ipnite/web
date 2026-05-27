@@ -1,6 +1,53 @@
 ---
 // Fuente: ContactFormSection.tsx (Figma 4:448)
 // top: 5080, height: 680
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      heading: "Contacto",
+      name: "Nombre",
+      namePlaceholder: "Escribe tu nombre...",
+      email: "Correo",
+      emailPlaceholder: "Escribe tu correo...",
+      subject: "Asunto",
+      subjectPlaceholder: "Escribe el asunto...",
+      message: "Mensaje",
+      messagePlaceholder: "Escribe tu mensaje...",
+      button: "Enviar",
+      alt: "Ilustración de contacto",
+    }
+  : lang === "pt"
+  ? {
+      heading: "Contato",
+      name: "Nome",
+      namePlaceholder: "Digite seu nome...",
+      email: "Email",
+      emailPlaceholder: "Digite seu email...",
+      subject: "Assunto",
+      subjectPlaceholder: "Digite o assunto...",
+      message: "Mensagem",
+      messagePlaceholder: "Digite sua mensagem...",
+      button: "Enviar",
+      alt: "Ilustração de contato",
+    }
+  : {
+      heading: "Contact",
+      name: "Name",
+      namePlaceholder: "Enter your name...",
+      email: "Email",
+      emailPlaceholder: "Enter your email address...",
+      subject: "Subject",
+      subjectPlaceholder: "Enter your subject...",
+      message: "Message",
+      messagePlaceholder: "Enter your message...",
+      button: "Send",
+      alt: "Contact illustration",
+    };
 ---
 
 <section
@@ -15,7 +62,7 @@
       id="contact-heading"
       class="absolute top-5 left-[187px] w-[210px] [font-family:'Roboto_Slab',serif] font-bold text-[#6b2a2f] text-5xl tracking-[0] leading-[72px] whitespace-nowrap"
     >
-      Contact
+      {copy.heading}
     </h2>
 
     <!-- Formulario -->
@@ -26,36 +73,36 @@
     >
       <!-- Name -->
       <div class="absolute top-0 left-0 w-[409px]">
-        <label for="contact-name" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Name</label>
+        <label for="contact-name" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.name}</label>
         <input
-          id="contact-name" name="name" type="text" placeholder="Enter your name..."
+          id="contact-name" name="name" type="text" placeholder={copy.namePlaceholder}
           class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         />
       </div>
 
       <!-- Email -->
       <div class="absolute top-[109px] left-0 w-[409px]">
-        <label for="contact-email" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Email</label>
+        <label for="contact-email" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.email}</label>
         <input
-          id="contact-email" name="email" type="email" placeholder="Enter your email address..."
+          id="contact-email" name="email" type="email" placeholder={copy.emailPlaceholder}
           class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         />
       </div>
 
       <!-- Subject -->
       <div class="absolute top-[216px] left-0 w-[409px]">
-        <label for="contact-subject" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Subject</label>
+        <label for="contact-subject" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.subject}</label>
         <input
-          id="contact-subject" name="subject" type="text" placeholder="Enter your subject..."
+          id="contact-subject" name="subject" type="text" placeholder={copy.subjectPlaceholder}
           class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#0000000d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         />
       </div>
 
       <!-- Message -->
       <div class="absolute top-[320px] left-0 w-[409px]">
-        <label for="contact-message" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">Message</label>
+        <label for="contact-message" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.message}</label>
         <textarea
-          id="contact-message" name="message" placeholder="Enter your message..."
+          id="contact-message" name="message" placeholder={copy.messagePlaceholder}
           rows="4"
           class="mt-[5px] w-[409px] h-[110px] resize-none rounded-[14px] bg-white pl-[52px] pr-5 pt-[11px] [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         ></textarea>
@@ -65,10 +112,10 @@
       <button
         type="submit"
         class="absolute top-[497px] left-[300px] w-[109px] h-[35px] rounded-[50px] border border-solid border-[#6b2a2f] bg-[#ededed]"
-        aria-label="Send contact form"
+        aria-label={copy.button}
       >
         <span class="flex items-center justify-center h-full [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
-          Send
+          {copy.button}
         </span>
       </button>
     </form>
@@ -76,7 +123,7 @@
     <!-- Imagen decorativa derecha -->
     <img
       class="absolute top-0 left-[810px] w-[497px] h-[588px] object-contain"
-      alt="Contact illustration"
+      alt={copy.alt}
       src="/images/contact.png"
       loading="lazy"
     />

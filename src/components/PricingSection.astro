@@ -1,48 +1,71 @@
 ---
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
 const check = "✓";
+
+const copy = lang === "es"
+  ? {
+      heading: ["Mantenlo simple. ", "Tres planes"],
+      freemium: { title: "Freemium", price: "$0.00", lede: "IPnite invierte en ti.", copy: "Para fundadores seleccionados en etapa temprana. El acceso puede ofrecerse a cambio de un pequeño porcentaje del emprendimiento, sujeto a términos separados.", features: ["Redacción asistida.", "Contacto con despachos en el país objetivo.", "Punto de entrada amigable para fundadores."], cta: "Empezar gratis" },
+      starter: { eyebrow: "Paga sobre la marcha", title: "Inicial", price: "Desde $99.00", lede: "Precio basado en paquetes de créditos.", copy: "Compra créditos según necesites y úsalos en redacción, revisión de arte previo, variantes, reivindicaciones y exportación.", features: ["Paquetes de créditos flexibles.", "Ahorra más de $3,000 por borrador frente a costos tradicionales típicos."], cta: "Empezar tu borrador" },
+      pro: { title: "Profesional", price: "$499.00", lede: "Facturación mensual o anual.", copy: "Para fundadores y equipos que necesitan capacidad recurrente de redacción, iteración y soporte estratégico más profundo.", note: "Especialmente para startups, universidades y aceleradoras.", features: ["Gestión de portafolio.", "Búsqueda de patentes recurrente.", "Análisis de patentes mejorado."], cta: "Elegir Profesional" },
+    }
+  : lang === "pt"
+  ? {
+      heading: ["Mantenha simples. ", "Tres planos"],
+      freemium: { title: "Freemium", price: "$0.00", lede: "A IPnite investe em você.", copy: "Para fundadores selecionados em fase inicial. O acesso pode ser oferecido em troca de uma pequena porcentagem do empreendimento, sujeito a termos separados.", features: ["Redação assistida.", "Contato com escritórios no país pretendido.", "Ponto de entrada amigável para fundadores."], cta: "Começar grátis" },
+      starter: { eyebrow: "Pague conforme usar", title: "Inicial", price: "A partir de $99.00", lede: "Precificação baseada em pacotes de créditos.", copy: "Compre créditos conforme precisar e use-os em redação, revisão de arte anterior, variantes, reivindicações e exportação.", features: ["Pacotes de créditos flexíveis.", "Economize mais de $3,000 por rascunho em comparação com custos tradicionais típicos."], cta: "Começar seu rascunho" },
+      pro: { title: "Profissional", price: "$499.00", lede: "Faturamento mensal ou anual.", copy: "Para fundadores e equipes que precisam de capacidade recorrente de redação, iteração e suporte estratégico mais profundo.", note: "Especialmente para startups, universidades e aceleradoras.", features: ["Gestão de portfólio.", "Busca de patentes recorrente.", "Análise de patentes aprimorada."], cta: "Escolher Profissional" },
+    }
+  : {
+      heading: ["Keep It Simple. ", "Three Plans"],
+      freemium: { title: "Freemium", price: "$0.00", lede: "IPnite invests in you.", copy: "For selected early-stage founders. Access may be offered in exchange for a small percentage of the venture, subject to separate terms.", features: ["Assisted drafting.", "Contact with law firms in the intended country.", "Founder-friendly entry point."], cta: "Start free" },
+      starter: { eyebrow: "Pay as you go", title: "Starter", price: "From $99.00", lede: "Credit pack-based pricing.", copy: "Buy credits as needed and use them across drafting, prior-art review, variants, claims, and export actions.", features: ["Flexible credit packs.", "Save $3,000+ per patent draft compared with typical traditional preparation costs."], cta: "Start your draft" },
+      pro: { title: "Professional", price: "$499.00", lede: "Monthly or yearly billing.", copy: "For founders and teams that need recurring drafting capacity, iteration, and deeper strategy support.", note: "Especially for startups, universities, and accelerators.", features: ["Portfolio management.", "Recurring patent search.", "Enhanced patent analysis."], cta: "Choose Professional" },
+    };
 ---
 
 <section id="plans" aria-labelledby="pricing-heading" class="pricing">
   <div class="pricing__inner">
     <h2 id="pricing-heading">
-      <span>Keep It Simple. </span>
-      <strong>Three Plans</strong>
+      <span>{copy.heading[0]}</span>
+      <strong>{copy.heading[1]}</strong>
     </h2>
 
     <div class="pricing__cards">
       <article class="plan-card">
         <header>
-          <h3>Freemium</h3>
-          <p class="plan-card__price">$0.00</p>
-          <p class="plan-card__lede">IPnite invests in you.</p>
+          <h3>{copy.freemium.title}</h3>
+          <p class="plan-card__price">{copy.freemium.price}</p>
+          <p class="plan-card__lede">{copy.freemium.lede}</p>
         </header>
 
         <p class="plan-card__copy">
-          For selected early-stage founders. Access may be offered in exchange
-          for a small percentage of the venture, subject to separate terms.
+          {copy.freemium.copy}
         </p>
 
         <ul class="plan-card__features">
-          <li><span>{check}</span>Initial guided workflow.</li>
-          <li><span>{check}</span>Founder-friendly entry point.</li>
+          {copy.freemium.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
         <a class="plan-card__cta" href="/coming-soon">
-          Start free
+          {copy.freemium.cta}
         </a>
       </article>
 
       <article class="plan-card plan-card--featured">
         <header>
-          <p class="plan-card__eyebrow">Pay as you go</p>
-          <h3>Starter</h3>
-          <p class="plan-card__price">From $99.00</p>
-          <p class="plan-card__lede">Credit pack-based pricing.</p>
+          <p class="plan-card__eyebrow">{copy.starter.eyebrow}</p>
+          <h3>{copy.starter.title}</h3>
+          <p class="plan-card__price">{copy.starter.price}</p>
+          <p class="plan-card__lede">{copy.starter.lede}</p>
         </header>
 
         <p class="plan-card__copy">
-          Buy credits as needed and use them across drafting, prior-art review,
-          variants, claims, and export actions.
+          {copy.starter.copy}
         </p>
 
         <div class="credit-packs" aria-label="Starter credit packs">
@@ -54,39 +77,37 @@ const check = "✓";
           <div>
             <strong>Pro</strong>
             <span>$199 USD</span>
-            <small>500 credits</small>
+            <small>350 credits</small>
           </div>
         </div>
 
         <ul class="plan-card__features">
-          <li><span>{check}</span>Flexible credit packs.</li>
-          <li><span>{check}</span>Save $3,000+ per patent draft compared with typical traditional preparation costs.</li>
+          {copy.starter.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
         <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          Start your draft
+          {copy.starter.cta}
         </a>
       </article>
 
       <article class="plan-card">
         <header>
-          <h3>Professional</h3>
-          <p class="plan-card__price">$299.00</p>
-          <p class="plan-card__lede">Monthly or yearly billing.</p>
+          <h3>{copy.pro.title}</h3>
+          <p class="plan-card__price">{copy.pro.price}</p>
+          <p class="plan-card__lede">{copy.pro.lede}</p>
         </header>
 
         <p class="plan-card__copy">
-          For founders and teams that need recurring drafting capacity,
-          iteration, and deeper strategy support.
+          {copy.pro.copy}
+          <small class="plan-card__note">{copy.pro.note}</small>
         </p>
 
         <ul class="plan-card__features">
-          <li><span>{check}</span>Recurring workflow access.</li>
-          <li><span>{check}</span>More room to iterate.</li>
+          {copy.pro.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
         <a class="plan-card__cta" href="/coming-soon">
-          Choose Professional
+          {copy.pro.cta}
         </a>
       </article>
     </div>
@@ -96,7 +117,7 @@ const check = "✓";
 <style>
   .pricing {
     background: #fff;
-    padding: 35px clamp(18px, 5vw, 80px) 120px;
+    padding: 18px clamp(18px, 5vw, 80px) 88px;
     overflow: hidden;
   }
 
@@ -189,6 +210,18 @@ const check = "✓";
     font-size: 17px;
     font-weight: 500;
     line-height: 1.45;
+  }
+
+  .plan-card__note {
+    display: block;
+    margin-top: 8px;
+    color: #8f6e72;
+    font-family: "Roboto", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
 
   .credit-packs {

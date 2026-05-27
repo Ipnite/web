@@ -1,13 +1,14 @@
 ---
 interface Props {
-  lang?: "en" | "es";
+  lang?: "en" | "es" | "pt";
   alternatePath?: string;
 }
 
 const { lang = "en", alternatePath } = Astro.props;
 const isEs = lang === "es";
-const home = isEs ? "/es" : "/";
-const prefix = isEs ? "/es" : "";
+const isPt = lang === "pt";
+const home = isEs ? "/es" : isPt ? "/pt-br" : "/";
+const prefix = isEs ? "/es" : isPt ? "/pt-br" : "";
 const navLinks = isEs
   ? [
       { label: "Por Que", href: `${prefix}/#why-we-do-it` },
@@ -16,6 +17,14 @@ const navLinks = isEs
       { label: "Planes", href: `${prefix}/#plans` },
       { label: "Learn", href: `${prefix}/learn` },
     ]
+  : isPt
+  ? [
+      { label: "Por que", href: `${prefix}/#why-we-do-it` },
+      { label: "Equipe", href: `${prefix}/#ip-team` },
+      { label: "Como funciona", href: `${prefix}/#how-it-works` },
+      { label: "Planos", href: `${prefix}/#plans` },
+      { label: "Aprender", href: `${prefix}/learn` },
+    ]
   : [
       { label: "Why We Do It", href: "/#why-we-do-it" },
       { label: "IP Team", href: "/#ip-team" },
@@ -23,8 +32,19 @@ const navLinks = isEs
       { label: "Plans", href: "/#plans" },
       { label: "Learn", href: "/learn" },
     ];
-const enPath = isEs ? alternatePath ?? "/" : Astro.url.pathname;
-const esPath = isEs ? Astro.url.pathname : alternatePath ?? "/es";
+
+function localizedPath(targetLocale) {
+  const pathname = Astro.url.pathname || "/";
+  const stripped = pathname.replace(/^\/(es|pt-br)(?=\/|$)/, "") || "/";
+  const prefixMap = { en: "", es: "/es", pt: "/pt-br" };
+  const targetPrefix = prefixMap[targetLocale] ?? "";
+  if (stripped === "/") return targetPrefix ? `${targetPrefix}/` : "/";
+  return `${targetPrefix}${stripped}`;
+}
+
+const enPath = localizedPath("en");
+const esPath = localizedPath("es");
+const ptPath = localizedPath("pt");
 ---
 
 <header class="site-nav" data-site-nav>
@@ -33,25 +53,27 @@ const esPath = isEs ? Astro.url.pathname : alternatePath ?? "/es";
       <img src="/images/cerebro.png" alt="IPnite" loading="eager" />
     </a>
 
-    <button class="site-nav__toggle" type="button" aria-label={isEs ? "Abrir menu" : "Open menu"} aria-expanded="false" data-nav-toggle>
+    <button class="site-nav__toggle" type="button" aria-label={isEs ? "Abrir menu" : isPt ? "Abrir menu" : "Open menu"} aria-expanded="false" data-nav-toggle>
       <span></span>
       <span></span>
       <span></span>
     </button>
 
     <div class="site-nav__menu" data-nav-menu>
-      <nav aria-label={isEs ? "Navegacion principal" : "Primary navigation"} class="site-nav__links">
+      <nav aria-label={isEs ? "Navegacion principal" : isPt ? "Navegação principal" : "Primary navigation"} class="site-nav__links">
         {navLinks.map((link) => (
           <a href={link.href}>{link.label}</a>
         ))}
       </nav>
 
-      <a href={`${prefix}/#contact`} class="site-nav__contact">{isEs ? "Contacto" : "Contact"}</a>
+      <a href={`${prefix}/#contact`} class="site-nav__contact">{isEs ? "Contacto" : isPt ? "Contato" : "Contact"}</a>
 
-      <div class="site-nav__langs" role="group" aria-label={isEs ? "Selector de idioma" : "Language selector"}>
-      <a href={enPath} aria-current={!isEs ? "true" : "false"} data-lang-link="en">EN</a>
+      <div class="site-nav__langs" role="group" aria-label={isEs ? "Selector de idioma" : isPt ? "Seletor de idioma" : "Language selector"}>
+      <a href={enPath} aria-current={!isEs && !isPt ? "true" : "false"} data-lang-link="en">EN</a>
         <span aria-hidden="true"></span>
         <a href={esPath} aria-current={isEs ? "true" : "false"} data-lang-link="es">ES</a>
+        <span aria-hidden="true"></span>
+        <a href={ptPath} aria-current={isPt ? "true" : "false"} data-lang-link="pt">PT</a>
       </div>
     </div>
   </div>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeroImage from "@components/PageHeroImage.astro";
+
+const sections = [
+  ["1. Aceitacao dos termos", "Estes Termos e Condicoes regem seu acesso e uso do site, da plataforma, dos fluxos de trabalho de patente com IA, dos rascunhos gerados, dos servicos baseados em creditos e do suporte humano opcional da IPnite."],
+  ["2. Elegibilidade e autoridade", "Voce deve ter pelo menos 18 anos, ou a maioridade em sua jurisdicao, para usar os Servicos. Se usar os Servicos em nome de uma empresa ou entidade, declara que tem autoridade para vincular essa entidade a estes Termos."],
+  ["3. Natureza dos servicos", "A IPnite fornece ferramentas e fluxos de trabalho assistidos por IA para coleta de invencoes, preparacao de rascunhos de patente, apoio a estrutura de claims, revisao de arte anterior, organizacao de documentos e tarefas relacionadas."],
+  ["4. Sem aconselhamento juridico", "Os Servicos nao constituem aconselhamento juridico, de patentes, fiscal, empresarial, financeiro, de investimento ou qualquer outro servico profissional licenciado. O uso dos Servicos nao cria relacao advogado-cliente."],
+  ["5. Profissionais registrados e terceiros", "A IPnite e uma ferramenta tecnologica e nao pode ser usada para deturpar qualificacoes profissionais. Quem oferecer servicos de redacao, deposito, revisao juridica, estrategia ou representacao usando a IPnite e o unico responsavel por autorizacao adequada."],
+  ["6. Conteudo do usuario", "Conteudo do usuario inclui divulgacoes de invencao, descricoes tecnicas, desenhos, documentos, notas, referencias de arte anterior, informacoes comerciais, informacoes pessoais, segredos comerciais, informacoes confidenciais, arquivos, prompts e materiais relacionados enviados pelos Servicos."],
+  ["7. Responsabilidade do usuario", "A qualidade de qualquer saida depende da clareza, precisao, completude e especificidade tecnica das informacoes fornecidas. Voce e responsavel por revisar rascunhos gerados e corrigir erros ou omissoes."],
+  ["8. Extensoes do navegador e ferramentas de terceiros", "Voce e responsavel por proteger seu dispositivo, navegador, extensoes, plug-ins, leitores de IA, capturas de tela, ferramentas de traducao ou outro software de terceiros que possa acessar informacoes confidenciais de invencao."],
+  ["9. Sessao de redacao e contagem regressiva", "Quando voce inicia um processo de patente dentro da IPnite, pode comecar uma contagem regressiva de cerca de 72 horas. Ao final, a IPnite pode excluir, anonimizar ou tornar inacessiveis as informacoes do projeto."],
+  ["10. Pagamentos e creditos", "A IPnite pode operar com pacotes de creditos pre-pagos, assinaturas, tarifas por uso ou acordos personalizados. Creditos usados em acoes iniciadas ou concluidas nao sao reembolsaveis, salvo quando exigido por lei."],
+  ["11. Propriedade e uso das saidas", "Sujeito a estes Termos, voce pode usar rascunhos, sugestoes de claims, resumos, notas de arte anterior e outras saidas geradas por IA para fins internos de negocios, documentacao e revisao profissional."],
+  ["12. Confidencialidade e uso de dados", "Levamos a serio a confidencialidade de materiais relacionados a invencoes. Nao usamos suas divulgacoes ou materiais de rascunho para treinar modelos de IA de proposito geral sem consentimento expresso."],
+  ["13. Sem garantia de patenteabilidade", "Nao garantimos que qualquer rascunho, conjunto de claims, resultado de arte anterior, recomendacao ou nota estrategica sera patenteavel, novo, nao obvio, habilitado ou legalmente suficiente."],
+  ["14. Suporte humano opcional", "A IPnite pode oferecer suporte humano opcional, como coordenacao de revisao juridica, apoio de deposito, consultoria estrategica, revisao tecnica ou apresentacoes a profissionais externos."],
+  ["15. Uso aceitavel", "Voce concorda em nao usar os Servicos de forma indevida, incluir materiais nao autorizados, infringir direitos de terceiros, deturpar inventoria ou propriedade, prestar servicos juridicos sem autorizacao ou usar os Servicos para fins ilicitos ou nocivos."],
+  ["16. Propriedade intelectual da plataforma", "O site, a plataforma, a interface, os fluxos, modelos, codigo, software, branding, marcas, documentacao, elementos de design e tecnologia subjacente pertencem a ik-holcan LLC ou seus licenciantes."],
+  ["17. Politica de privacidade", "Seu uso dos Servicos tambem e regido por nossa Politica de Privacidade, que explica como coletamos, usamos, armazenamos, protegemos e divulgamos informacoes pessoais e materiais enviados pelo usuario."],
+  ["18. Seguranca da conta", "Voce e responsavel por manter a confidencialidade de suas credenciais, dispositivos, navegadores, redes e tokens de acesso, bem como por toda atividade em sua conta."],
+  ["19. Servicos de terceiros", "Os Servicos podem se integrar a servicos de terceiros, incluindo processadores de pagamento, provedores de hospedagem, infraestrutura de IA, analitica, autenticacao, armazenamento em nuvem, bases de patentes ou profissionais externos."],
+  ["20. Isencao de garantias", "Os Servicos sao fornecidos no estado em que se encontram e conforme disponibilidade, sem garantias de qualquer tipo, na medida maxima permitida por lei."],
+  ["21. Limitacao de responsabilidade", "Na medida maxima permitida por lei, a ik-holcan LLC e suas afiliadas nao serao responsaveis por danos indiretos, incidentais, especiais, consequenciais, punitivos ou lucros cessantes relacionados ao uso dos Servicos."],
+  ["22. Indenizacao", "Voce concorda em indenizar, defender e isentar a ik-holcan LLC e suas afiliadas de reclamacoes, danos, perdas, multas, custos e despesas decorrentes do uso dos Servicos ou da violacao destes Termos."],
+  ["23. Suspensao e encerramento", "Podemos suspender, restringir ou encerrar o acesso aos Servicos a qualquer momento se acreditarmos que voce violou estes Termos, criou risco, deixou de pagar taxas, usou creditos indevidamente ou usou os Servicos de forma prejudicial."],
+  ["24. Alteracoes nos servicos ou termos", "Podemos modificar, atualizar, suspender ou descontinuar os Servicos ou estes Termos de tempos em tempos. O uso continuado apos as alteracoes entrar em vigor constitui aceitacao dos Termos revisados."],
+  ["25. Lei aplicavel e jurisdicao", "Estes Termos sao regidos pelas leis do Estado de Delaware, Estados Unidos, sem considerar principios de conflito de leis. Disputas serao resolvidas em tribunais estaduais ou federais localizados em Delaware, salvo exigencia legal diversa."],
+  ["26. Disposicoes diversas", "Se alguma disposicao for considerada invalida ou inexequivel, as demais permanecem em vigor. Estes Termos e politicas aplicaveis constituem o acordo integral sobre os Servicos."],
+];
+---
+
+<BaseLayout lang="pt" title="Termos e Condicoes — IPnite" description="Termos e Condicoes de uso da IPnite." canonicalPath="/pt-br/termsandconditions/" alternatePath="/termsandconditions/">
+  <main class="terms-page">
+    <header class="terms-header">
+      <h1>Termos e Condicoes</h1>
+      <p class="subtitle">Estes Termos governam seu acesso e uso do site, da plataforma, dos fluxos de trabalho de patente com IA, dos rascunhos gerados, dos servicos baseados em creditos e do suporte humano opcional da IPnite.</p>
+      <p class="terms-meta">Ultima atualizacao: 30 de junho de 2025</p>
+      <div class="notice"><strong>Importante:</strong> A IPnite e uma ferramenta assistida por IA para preparacao de rascunhos de patente. Nao fornece aconselhamento juridico, nao cria relacao advogado-cliente e nao substitui um advogado de patentes registrado, agente de patentes registrado ou outro profissional qualificado.</div>
+      <PageHeroImage label="Hero da plataforma IPnite para redacao de patentes" />
+    </header>
+    <section class="terms-body">
+      <p class="intro">Bem-vindo a IPnite. Ao acessar ou usar o site ou os Servicos, criar uma conta, comprar creditos, iniciar um fluxo de redacao de patente, enviar materiais de invencao ou usar qualquer saida gerada por IA, voce concorda em ficar vinculado a estes Termos.</p>
+      {sections.map(([title, text]) => (
+        <section class="term-block">
+          <h2>{title}</h2>
+          <p>{text}</p>
+        </section>
+      ))}
+    </section>
+    <section class="contact-strip">
+      <p>Para perguntas sobre estes Termos, contate-nos em <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>.terms-page{max-width:980px;margin:0 auto;padding:68px 16px 90px;background:#fff}.terms-header{text-align:center;border-bottom:1px solid #ece7e5;padding-bottom:24px}.terms-header h1{margin:0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(42px,6vw,68px);font-weight:800;line-height:1}.subtitle{max-width:860px;margin:16px auto 0;color:#505050;font-family:"Roboto",sans-serif;font-size:16px;font-weight:500;line-height:1.65}.terms-meta{margin:14px auto 0;color:#938d8e;font-family:"Roboto Slab",serif;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.notice{max-width:860px;margin:20px auto 0;border:1px solid rgba(154,106,32,.28);border-radius:18px;background:#fff8e8;padding:16px;color:#9a6a20;text-align:left;font-family:"Roboto",sans-serif;font-size:14px;line-height:1.55}.notice strong{color:#9a6a20}.terms-body{margin-top:24px}.intro{border-bottom:1px solid #ece7e5;padding-bottom:18px;color:#505050;font-family:"Roboto",sans-serif;font-size:15px;line-height:1.7}.term-block{border-bottom:1px solid #ece7e5;padding:18px 0}.term-block h2{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px;color:#4c0815;font-family:"Roboto Slab",serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.term-block h2:before{content:"";width:5px;height:18px;border-radius:999px;background:#6b2a2f;flex:0 0 auto;margin-top:2px}.term-block p,.contact-strip p{margin:0;color:#505050;font-family:"Roboto",sans-serif;font-size:14px;font-weight:500;line-height:1.72}.contact-strip{text-align:center;padding-top:22px}.contact-strip a{color:#6b2a2f;font-weight:800}</style>

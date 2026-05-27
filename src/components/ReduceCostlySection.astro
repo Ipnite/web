@@ -1,36 +1,81 @@
 ---
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      kicker: "EQUIPO PI",
+      heading: ["Reduce", "Errores Costosos"],
+      riskLabel: "Riesgo:",
+      helpHeading: "Como ayuda IPnite",
+      cards: [
+        { risk: "Alcance débil", help: "Sugiere variantes más amplias" },
+        { risk: "Conflictos con arte previo", help: "Detecta invenciones similares" },
+        { risk: "Borradores incompletos", help: "Guía una estructura correcta" },
+        { risk: "Divulgación prematura", help: "Fomenta presentar temprano" },
+      ],
+    }
+  : lang === "pt"
+  ? {
+      kicker: "EQUIPE PI",
+      heading: ["Reduza", "Erros Custosos"],
+      riskLabel: "Risco:",
+      helpHeading: "Como a IPnite ajuda",
+      cards: [
+        { risk: "Escopo fraco", help: "Sugere variantes mais amplas" },
+        { risk: "Conflitos com arte anterior", help: "Detecta invenções similares" },
+        { risk: "Rascunhos incompletos", help: "Guia uma estrutura correta" },
+        { risk: "Divulgação prematura", help: "Incentiva o depósito cedo" },
+      ],
+    }
+  : {
+      kicker: "IP TEAM",
+      heading: ["Reduce Costly", "Mistakes"],
+      riskLabel: "Risk:",
+      helpHeading: "How Ipnite Helps",
+      cards: [
+        { risk: "Weak scope", help: "Suggests broader variants" },
+        { risk: "Conflicts with prior art", help: "Detects similar inventions" },
+        { risk: "Incomplete drafts", help: "Guides a proper structure" },
+        { risk: "Premature disclosure", help: "Encourages early filing" },
+      ],
+    };
+
 const cards = [
-  { id: "weak-scope", risk: "Weak scope", help: "Suggests broader variants" },
-  { id: "prior-art", risk: "Conflicts with prior art", help: "Detects similar inventions" },
-  { id: "incomplete-drafts", risk: "Incomplete drafts", help: "Guides a proper structure" },
-  { id: "premature-disclosure", risk: "Premature disclosure", help: "Encourages early filing" },
+  { icon: "/icons/lupa.svg", iconClass: "icon-search" },
+  { icon: "/images/cerebro.png", iconClass: "icon-brain" },
+  { icon: "/icons/lapiz.svg", iconClass: "icon-pencil" },
+  { icon: "/icons/candado.svg", iconClass: "icon-lock" },
 ];
 ---
 
 <section id="reduce-costly-mistakes" aria-labelledby="reduce-heading" class="reduce">
   <div class="reduce__inner">
-    <div class="kicker">IP TEAM</div>
+    <div class="kicker">{copy.kicker}</div>
 
     <h2 id="reduce-heading">
-      <span>Reduce Costly</span>
-      <strong>Mistakes</strong>
+      <span>{copy.heading[0]}</span>
+      <strong>{copy.heading[1]}</strong>
     </h2>
 
     <div class="reduce__cards">
-      {cards.map((card) => (
+      {cards.map((card, index) => (
         <article class="mistake-card">
           <div class="mistake-card__risk">
-            <span>Risk:</span>
-            <strong>{card.risk}</strong>
+            <span>{copy.riskLabel}</span>
+            <strong>{copy.cards[index].risk}</strong>
           </div>
 
-          <div class="mistake-card__icon" aria-hidden="true">
-            <img src="/images/cerebro.png" alt="" loading="lazy" />
+          <div class={`mistake-card__icon ${card.iconClass}`} aria-hidden="true">
+            <img src={card.icon} alt="" loading="lazy" />
           </div>
 
           <div class="mistake-card__help">
-            <h3>How Ipnite Helps</h3>
-            <p>{card.help}</p>
+            <h3>{copy.helpHeading}</h3>
+            <p>{copy.cards[index].help}</p>
           </div>
         </article>
       ))}
@@ -43,7 +88,7 @@ const cards = [
     position: relative;
     overflow: hidden;
     background: #fff;
-    padding: clamp(48px, 5vw, 72px) clamp(18px, 5.5vw, 80px) clamp(62px, 6vw, 88px);
+    padding: clamp(48px, 5vw, 72px) clamp(18px, 5.5vw, 80px) clamp(54px, 5vw, 80px);
   }
 
   .reduce__inner {
@@ -83,7 +128,7 @@ const cards = [
 
   .mistake-card {
     position: relative;
-    min-height: 310px;
+    min-height: 346px;
   }
 
   .mistake-card__risk {
@@ -120,31 +165,42 @@ const cards = [
   .mistake-card__icon {
     position: absolute;
     z-index: 4;
-    top: 106px;
+    top: 124px;
     left: 50%;
-    width: 116px;
-    height: 102px;
+    width: 87px;
+    height: 87px;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    border: 2px solid #6b2a2f;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: 0 8px 18px rgba(107, 42, 47, 0.10);
   }
 
   .mistake-card__icon img {
-    width: 120px;
-    height: 106px;
+    width: 62px;
+    height: 62px;
     object-fit: contain;
-    opacity: 0.9;
-    filter: drop-shadow(0 8px 12px rgba(76, 8, 21, 0.16));
+    opacity: 1;
+    filter: none;
+    background: transparent;
+  }
+
+  .mistake-card__icon.icon-brain img {
+    width: 58px;
+    height: 58px;
+    filter: saturate(1.35) contrast(1.08);
   }
 
   .mistake-card__help {
     position: relative;
     z-index: 3;
     min-height: 186px;
-    margin-top: 78px;
-    padding: 66px 24px 28px;
+    margin-top: 98px;
+    padding: 78px 24px 28px;
     border-radius: 26px;
     background: #fff;
     text-align: center;
@@ -193,7 +249,7 @@ const cards = [
     }
 
     .mistake-card {
-      min-height: 292px;
+      min-height: 330px;
     }
 
     .mistake-card__risk {
@@ -201,20 +257,25 @@ const cards = [
     }
 
     .mistake-card__icon {
-      top: 100px;
-      width: 96px;
-      height: 84px;
+      top: 112px;
+      width: 78px;
+      height: 78px;
     }
 
     .mistake-card__icon img {
-      width: 100px;
-      height: 88px;
+      width: 54px;
+      height: 54px;
+    }
+
+    .mistake-card__icon.icon-brain img {
+      width: 50px;
+      height: 50px;
     }
 
     .mistake-card__help {
       min-height: 170px;
-      margin-top: 66px;
-      padding-top: 58px;
+      margin-top: 86px;
+      padding-top: 70px;
     }
   }
 </style>

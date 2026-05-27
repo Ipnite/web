@@ -1,5 +1,37 @@
 ---
 // HeroStatementSection — rebuilt from /images/ipnitehero_preview.png
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      title: ["La protección no debería", "ser un privilegio"],
+      body: "La mayoría piensa que proteger una idea requiere un equipo legal enorme y una montaña de oro. <strong>En IPnite creemos que eso es incorrecto.</strong>",
+      primary: "Empezar ahora",
+      secondary: "Cómo funciona",
+      faqs: "FAQs",
+      laptopAlt: "Aplicación de IPnite en laptop",
+    }
+  : lang === "pt"
+  ? {
+      title: ["A proteção não deveria", "ser um privilégio"],
+      body: "Muita gente acha que proteger uma ideia exige uma equipe jurídica enorme e uma montanha de ouro. <strong>Na IPnite acreditamos que isso está errado.</strong>",
+      primary: "Começar agora",
+      secondary: "Como funciona",
+      faqs: "FAQs",
+      laptopAlt: "Aplicação da IPnite no laptop",
+    }
+  : {
+      title: ["Protection Shouldn't", "Be a Privilege"],
+      body: "Most people think protecting an idea requires a massive legal team and a mountain of gold. <strong>At IPnite we believe that&rsquo;s wrong.</strong>",
+      primary: "Get Started Now",
+      secondary: "How it Works",
+      faqs: "FAQs",
+      laptopAlt: "IPnite app on laptop",
+    };
 ---
 
 <section id="inicio" aria-labelledby="hero-heading" class="hero">
@@ -14,25 +46,23 @@
 
     <div class="hero__copy">
       <h1 id="hero-heading">
-        <span>Protection Shouldn't</span>
-        <span>Be a Privilege</span>
+        <span>{copy.title[0]}</span>
+        <span>{copy.title[1]}</span>
       </h1>
 
       <p>
-        Most people think protecting an idea requires a massive legal team and
-        a mountain of gold.
-        <strong>At IPnite we believe that&rsquo;s wrong.</strong>
+        <Fragment set:html={copy.body} />
       </p>
 
       <div class="hero__actions" aria-label="Primary actions">
         <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          Get Started Now
+          {copy.primary}
         </a>
         <a class="hero__cta" href="/#how-it-works">
-          How it Works
+          {copy.secondary}
         </a>
         <a class="hero__cta" href="/faqs">
-          FAQs
+          {copy.faqs}
         </a>
       </div>
     </div>
@@ -66,7 +96,7 @@
     <img
       class="hero__laptop"
       src="/images/notebook-2.png"
-      alt="IPnite app on laptop"
+      alt={copy.laptopAlt}
       loading="eager"
     />
   </div>
@@ -193,9 +223,9 @@
 
   .hero__brain {
     z-index: 1;
-    right: max(-250px, -15vw);
-    top: clamp(-168px, -12vw, -112px);
-    width: clamp(780px, 82vw, 1060px);
+    right: max(-330px, -22vw);
+    top: clamp(58px, 6vw, 92px);
+    width: clamp(520px, 54vw, 700px);
     height: auto;
     opacity: 0.38;
     filter: blur(2px);
@@ -271,9 +301,9 @@
     }
 
     .hero__brain {
-      right: -170px;
-      top: 248px;
-      width: 540px;
+      right: -245px;
+      top: 320px;
+      width: 360px;
       opacity: 0.28;
     }
 
@@ -349,9 +379,9 @@
     }
 
     .hero__brain {
-      right: -220px;
-      top: 292px;
-      width: 480px;
+      right: -255px;
+      top: 342px;
+      width: 330px;
     }
 
     .hero__capture--disclosure {
@@ -408,9 +438,9 @@
     }
 
     .hero__brain {
-      top: 328px;
-      right: -220px;
-      width: 420px;
+      top: 362px;
+      right: -240px;
+      width: 295px;
     }
 
     .hero__capture--disclosure {

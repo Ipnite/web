@@ -1,0 +1,217 @@
+---
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      eyebrow: "JURISDICCIONES",
+      title: "Donde IPnite puede usarse hoy",
+      body: "6 jurisdicciones activas hoy pero creciendo.",
+    }
+  : lang === "pt"
+  ? {
+      eyebrow: "JURISDIÇÕES",
+      title: "Onde a IPnite pode ser usada hoje",
+      body: "6 jurisdições ativas hoje, mas crescendo.",
+    }
+  : {
+      eyebrow: "JURISDICTIONS",
+      title: "Where IPnite can be used today",
+      body: "6 active jurisdictions today but growing.",
+    };
+
+const jurisdictions = [
+  { code: "US", office: "USPTO" },
+  { code: "MX", office: "IMPI" },
+  { code: "AR", office: "INPI" },
+  { code: "BR", office: "INPI" },
+  { code: "EP", office: "EPO" },
+  { code: "PCT", office: "WIPO" },
+];
+---
+
+<section class="jurisdictions" aria-labelledby="jurisdictions-heading">
+  <div class="jurisdictions__inner">
+    <div class="jurisdictions__copy">
+      <div class="jurisdictions__eyebrow">{copy.eyebrow}</div>
+      <h2 id="jurisdictions-heading">{copy.title}</h2>
+      <p>{copy.body}</p>
+    </div>
+
+    <div class="jurisdictions__visual">
+      <div class="jurisdictions__grid" aria-label="Jurisdiction cards">
+        {jurisdictions.map((item) => (
+          <article class="jurisdiction-card">
+            <div class="jurisdiction-card__badge">{item.code}</div>
+            <p>{item.office}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .jurisdictions {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    padding: 18px clamp(18px, 5vw, 80px) 44px;
+  }
+
+  .jurisdictions__inner {
+    width: min(100%, 1280px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.86fr 1.14fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .jurisdictions__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: #6b2a2f;
+    color: #ededed;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+
+  .jurisdictions__copy h2 {
+    margin: 12px 0 0;
+    color: #4c0815;
+    font-family: "Roboto Slab", serif;
+    font-size: clamp(34px, 4vw, 56px);
+    font-weight: 800;
+    line-height: 1.08;
+  }
+
+  .jurisdictions__copy p {
+    margin: 18px 0 0;
+    max-width: 540px;
+    color: #505050;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .jurisdictions__visual {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .jurisdictions__grid {
+    width: min(100%, 760px);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .jurisdiction-card {
+    position: relative;
+    min-height: 170px;
+    border: 1px solid #f0ebe9;
+    border-radius: 31px;
+    background: #fff;
+    padding: 22px 20px 20px;
+    text-align: center;
+    box-shadow: 0 5px 12px rgba(107, 42, 47, 0.18);
+    transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease, background .24s ease;
+  }
+
+  .jurisdiction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(107, 42, 47, 0.22);
+    border-color: rgba(107, 42, 47, 0.22);
+  }
+
+  .jurisdiction-card__badge {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 14px;
+    border-radius: 999px;
+    background: #6b2a2f;
+    border: 2px solid #6b2a2f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: "Roboto Slab", serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 8px 18px rgba(107, 42, 47, 0.10);
+  }
+
+  .jurisdiction-card p {
+    margin: 0;
+    color: #3f3f46;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .jurisdictions__inner {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .jurisdictions__visual {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .jurisdictions__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .jurisdictions {
+      padding: 24px 16px 40px;
+    }
+
+    .jurisdictions__copy p {
+      font-size: 16px;
+    }
+
+    .jurisdictions__grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .jurisdiction-card {
+      min-height: 112px;
+      padding: 18px 16px 16px;
+    }
+
+    .jurisdiction-card__badge {
+      width: 52px;
+      height: 52px;
+      font-size: 18px;
+    }
+
+    .jurisdiction-card p {
+      font-size: 12px;
+      letter-spacing: .1em;
+    }
+  }
+</style>

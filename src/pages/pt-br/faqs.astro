@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeroImage from "@components/PageHeroImage.astro";
+
+const faqs = [
+  ["Como a IPnite e diferente do ChatGPT?", "A IPnite foi criada especificamente para propriedade intelectual. Enquanto o ChatGPT e generico, a IPnite aplica uma metodologia estruturada de patentes pensada para consistencia juridica e preparacao mais forte."],
+  ["Posso redigir uma patente usando apenas o ChatGPT?", "Sim, mas ha riscos. O ChatGPT nao garante estrutura correta de claims, expansao do escopo da invencao ou consistencia entre secoes. A IPnite ajuda nesses passos."],
+  ["Por que a IPnite gera rascunhos mais fortes?", "A IPnite amplia variacoes tecnicas, estrutura claims amplas e dependentes e verifica consistencia interna. Isso reflete partes importantes da forma como profissionais de patentes organizam divulgacoes de invencao."],
+  ["A IPnite substitui um advogado de patentes?", "Nao. A IPnite reduz custos iniciais de redacao e ajuda a organizar a invencao. Para registros criticos, a revisao profissional continua recomendada."],
+  ["Que erros a IPnite ajuda a evitar?", "A IPnite ajuda a reduzir claims estreitas demais, modalidades faltantes, inconsistencias entre desenhos e texto, e divulgacoes incompletas."],
+  ["A IPnite verifica se minha invencao ja existe?", "A IPnite faz uma avaliacao inicial de novidade contra informacoes de patentes existentes. Isso nao substitui uma busca profissional completa de patenteabilidade."],
+];
+---
+
+<BaseLayout lang="pt" title="FAQs — IPnite" description="Perguntas frequentes sobre a IPnite e redacao de patentes com IA." canonicalPath="/pt-br/faqs/" alternatePath="/faqs/">
+  <section class="faq-es">
+    <p class="pill">FAQs</p>
+    <h1>Perguntas frequentes</h1>
+    <PageHeroImage label="Hero da plataforma IPnite para redacao de patentes" />
+    <div class="list">{faqs.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div>
+  </section>
+</BaseLayout>
+
+<style>.faq-es{max-width:1000px;margin:0 auto;padding:86px 20px 120px;text-align:center}.pill{display:inline-flex;border-radius:999px;background:#6b2a2f;color:#ededed;padding:10px 20px;font-family:"Roboto Slab",serif;font-weight:800;text-transform:uppercase}.faq-es h1{margin:22px 0 0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(50px,8vw,90px);font-weight:800;line-height:1}.list{display:grid;gap:14px;text-align:left;margin-top:46px}details{border:1px solid rgba(107,42,47,.16);border-radius:24px;background:#fff;padding:22px;box-shadow:0 14px 32px rgba(107,42,47,.06)}summary{cursor:pointer;color:#4c0815;font-family:"Roboto Slab",serif;font-size:22px;font-weight:800}details p{margin:14px 0 0;color:#505050;font-family:"Roboto",sans-serif;font-size:17px;font-weight:500;line-height:1.6}@media(max-width:760px){.faq-es{padding:56px 16px 80px}.faq-es h1{font-size:42px}.list{margin-top:32px}summary{font-size:18px}}</style>

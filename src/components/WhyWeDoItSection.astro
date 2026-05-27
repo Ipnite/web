@@ -1,27 +1,51 @@
 ---
 // Fuente: index.tsx — sección "Why We Do It" (Figma 4:206)
 // Las tarjetas tienen flip: frente blanco con título, dorso rojo con texto
-const cards = [
-  {
-    id: "no-idea-too-small",
-    title: ["No Idea", "Too Small"],
-  },
-  {
-    id: "simple-transparent",
-    title: ["Simple &", "Transparent"],
-  },
-  {
-    id: "empowering-creators",
-    title: ["Empowering", "Creators"],
-  },
-];
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      heading: "Por qué lo hacemos",
+      intro: "Las ideas son una de las monedas más valiosas del mundo, pero demasiadas se pierden porque los inventores creen que la protección solo es para grandes corporaciones.",
+      emphasis: "IPnite existe para cambiar esa narrativa.",
+      cards: [
+        { title: ["Ninguna idea", "es demasiado pequena"], back: "Si es importante para ti, tambien lo es para nosotros. Cada chispa merece la oportunidad de convertirse en una llama." },
+        { title: ["Simple y", "transparente"], back: "Sin pasos confusos ni barreras innecesarias. Solo un camino claro y guiado desde la idea hasta el borrador estructurado." },
+        { title: ["Impulsamos", "a los creadores"], back: "Herramientas para fundadores, inventores y equipos tecnicos que necesitan avanzar con seriedad." },
+      ],
+    }
+  : lang === "pt"
+  ? {
+      heading: "Por que fazemos isso",
+      intro: "As ideias são uma das moedas mais valiosas do mundo, mas muitas se perdem porque os inventores acham que a proteção é só para grandes empresas.",
+      emphasis: "A IPnite existe para mudar essa narrativa.",
+      cards: [
+        { title: ["Nenhuma ideia", "é pequena demais"], back: "Se é importante para você, também é importante para nós. Cada centelha merece a chance de virar uma chama." },
+        { title: ["Simples e", "transparente"], back: "Sem passos confusos nem barreiras desnecessárias. Apenas um caminho claro e guiado da ideia ao rascunho estruturado." },
+        { title: ["Fortalecemos", "os criadores"], back: "Ferramentas para fundadores, inventores e equipes técnicas que precisam avançar com seriedade." },
+      ],
+    }
+  : {
+      heading: "Why we do it",
+      intro: "Ideas are the world's most valuable currency, but too many are lost because inventors believe protection is only for large corporations.",
+      emphasis: "IPnite exists to change that narrative.",
+      cards: [
+        { title: ["No Idea", "Too Small"], back: "If it's important to you, it's important to us. Every spark deserves a chance to become a flame." },
+        { title: ["Simple &", "Transparent"], back: "No confusing first steps. Just a guided path from idea to structured draft." },
+        { title: ["Empowering", "Creators"], back: "Tools for builders, founders, and creators preparing their inventions for review." },
+      ],
+    };
 ---
 
 <section
   id="why-we-do-it"
   aria-labelledby="why-heading"
   class="relative z-0 w-full overflow-hidden bg-white"
-  style="padding-top: 12px; padding-bottom: 120px;"
+  style="padding-top: 12px; padding-bottom: 88px;"
 >
   <!-- Gradiente decorativo -->
   <div class="absolute top-0 left-0 w-[1439px] h-[1260px] opacity-15 pointer-events-none" aria-hidden="true">
@@ -37,7 +61,7 @@ const cards = [
       id="why-heading"
       class="absolute top-[36px] left-[calc(50%-216px)] w-[433px] [font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] text-5xl text-center tracking-[0] leading-[64.8px]"
     >
-      Why we do it
+      {copy.heading}
     </h2>
 
     <!-- Separador -->
@@ -46,10 +70,10 @@ const cards = [
     <!-- Párrafo -->
     <p class="absolute top-[133px] left-[calc(50%-380px)] w-[760px] [font-family:'Roboto',sans-serif] text-[#505050] text-[22px] text-center tracking-[-0.42px] leading-[33px]">
       <span class="font-medium">
-        Ideas are the world's most valuable currency, but too many are lost because inventors believe protection is only for large corporations.
+        {copy.intro}
       </span>
       <br />
-      <strong class="[font-family:'Roboto',sans-serif] font-bold">IPnite exists to change that narrative.</strong>
+      <strong class="[font-family:'Roboto',sans-serif] font-bold">{copy.emphasis}</strong>
     </p>
 
     <!-- Card 1: No Idea Too Small -->
@@ -58,15 +82,13 @@ const cards = [
       <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
         style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
         <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <span class="font-medium">If it's important to you, </span>
-          <strong class="font-bold">it's important to us</strong>
-          <span class="font-medium">. Every spark deserves a chance to become a flame</span>
+          {copy.cards[0].back}
         </p>
       </div>
       <!-- Frente (blanco) -->
       <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
         <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
-          No Idea<br />Too Small
+          {copy.cards[0].title[0]}<br />{copy.cards[0].title[1]}
         </div>
       </div>
     </article>
@@ -76,14 +98,12 @@ const cards = [
       <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
         style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
         <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <span class="font-medium">If it's important to you, </span>
-          <strong class="font-bold">it's important to us</strong>
-          <span class="font-medium">. Every spark deserves a chance to become a flame</span>
+          {copy.cards[1].back}
         </p>
       </div>
       <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
         <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
-          Simple &amp;<br />Transparent
+          {copy.cards[1].title[0]}<br />{copy.cards[1].title[1]}
         </div>
       </div>
     </article>
@@ -93,26 +113,24 @@ const cards = [
       <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
         style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
         <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <span class="font-medium">If it's important to you, </span>
-          <strong class="font-bold">it's important to us</strong>
-          <span class="font-medium">. Every spark deserves a chance to become a flame</span>
+          {copy.cards[2].back}
         </p>
       </div>
       <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
         <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
-          Empowering<br />Creators
+          {copy.cards[2].title[0]}<br />{copy.cards[2].title[1]}
         </div>
       </div>
     </article>
 
     <!-- Ícono entre card 1 y 2 -->
-    <div class="absolute top-[415px] left-[465px] w-[75px] h-[75px] rounded-full bg-[#6b2a2f] shadow-[0px_8px_18px_#6b2a2f33] flex items-center justify-center" aria-hidden="true">
-      <img class="w-[44px] h-[40px] object-contain brightness-0 invert" alt="" src="/images/cerebro.png" />
+    <div class="why-brain-ring absolute top-[415px] left-[465px] w-[75px] h-[75px] rounded-full flex items-center justify-center" aria-hidden="true">
+      <img class="why-brain-icon w-[44px] h-[40px] object-contain" alt="" src="/images/cerebro.png" />
     </div>
 
     <!-- Ícono entre card 2 y 3 -->
-    <div class="absolute top-[365px] left-[899px] w-[75px] h-[75px] rounded-full bg-[#6b2a2f] shadow-[0px_8px_18px_#6b2a2f33] flex items-center justify-center" aria-hidden="true">
-      <img class="w-[44px] h-[40px] object-contain brightness-0 invert" alt="" src="/images/cerebro.png" />
+    <div class="why-brain-ring absolute top-[365px] left-[899px] w-[75px] h-[75px] rounded-full flex items-center justify-center" aria-hidden="true">
+      <img class="why-brain-icon w-[44px] h-[40px] object-contain" alt="" src="/images/cerebro.png" />
     </div>
   </div>
 
@@ -121,6 +139,16 @@ const cards = [
 </section>
 
 <style>
+  .why-brain-ring {
+    border: 2px solid #6b2a2f;
+    background: transparent;
+    box-shadow: 0 8px 18px rgba(107, 42, 47, 0.10);
+  }
+
+  .why-brain-icon {
+    filter: saturate(1.35) contrast(1.08);
+  }
+
   @media (max-width: 900px) {
     #why-we-do-it {
       padding: 58px 16px 72px !important;

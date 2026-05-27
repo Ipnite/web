@@ -1,6 +1,56 @@
 ---
 // Fuente: index.tsx + PlatformHighlightsSection.tsx (Figma 4:252)
 // height Figma: 600px, top: 2080
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      heading: ["Tu equipo de PI en", "una sola interfaz"],
+      discoveryTitle: "Agente de descubrimiento",
+      discoveryBody: "Te ayuda a estructurar ideas e identificar tecnologías similares",
+      draftingTitle: "Agente de redacción",
+      draftingBody: "Genera un borrador provisional de patente estructurado",
+      specializedTitle: "Agente especializado",
+      specializedBody: "Revisa el lenguaje específico del campo de la invención",
+      drawingTitle: "Agente de dibujos",
+      drawingBody: "Genera diagramas y dibujos de referencia",
+      qaTitle: "Agente QA",
+      qaBody: "Verifica el formato y prepara el documento para descargarlo",
+      laptopAlt: "Aplicacion de IPnite en laptop",
+    }
+  : lang === "pt"
+  ? {
+      heading: ["Seu time de PI em", "uma única interface"],
+      discoveryTitle: "Agente de descoberta",
+      discoveryBody: "Ajuda a estruturar ideias e identificar tecnologias semelhantes",
+      draftingTitle: "Agente de redação",
+      draftingBody: "Gera um rascunho provisório de patente estruturado",
+      specializedTitle: "Agente especializado",
+      specializedBody: "Revisa a linguagem específica do campo da invenção",
+      drawingTitle: "Agente de desenhos",
+      drawingBody: "Gera diagramas e desenhos de referencia",
+      qaTitle: "Agente QA",
+      qaBody: "Confere a formatacao e prepara o documento para download",
+      laptopAlt: "Aplicacao da IPnite no laptop",
+    }
+  : {
+      heading: ["Your IP Team in", "One Interface"],
+      discoveryTitle: "Discovery Agent",
+      discoveryBody: "Helps you structure ideas and identify similar technologies",
+      draftingTitle: "Drafting Agent",
+      draftingBody: "Generates a structured provisional patent draft",
+      specializedTitle: "Specialized Agent",
+      specializedBody: "Reviews the language specific to the field of the invention",
+      drawingTitle: "Drawing Agent",
+      drawingBody: "Generates diagrams and reference drawings",
+      qaTitle: "QA Agent",
+      qaBody: "Checks formatting and prepares the document for download",
+      laptopAlt: "IPnite app on laptop",
+    };
 ---
 
 <section
@@ -21,7 +71,7 @@
     <div class="absolute top-[131px] left-[20px] w-[560px] h-[339px]">
       <img
         src="/images/notebook-1.png"
-        alt="IPnite app on a laptop"
+        alt={copy.laptopAlt}
         class="w-full h-full object-contain"
         loading="lazy"
       />
@@ -34,37 +84,37 @@
         class="[font-family:'Roboto_Slab',serif] font-normal text-[#6b2a2f] text-5xl text-center tracking-[0] leading-[72px] whitespace-nowrap"
         style="margin-left:27px"
       >
-        Your IP Team in <strong class="font-bold">One Interface</strong>
+        {copy.heading[0]} <strong class="font-bold">{copy.heading[1]}</strong>
       </h2>
 
       <!-- Top row agentes -->
       <div class="relative mt-6 flex gap-0" style="height:96px">
         <!-- Discovery Agent -->
         <p class="absolute top-0 left-0 w-[301px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">Discovery Agent </strong>
-          <span class="font-medium text-[#505050]">Helps you structure ideas and identify similar technologies</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.discoveryTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.discoveryBody}</span>
         </p>
         <!-- Drafting Agent -->
         <p class="absolute top-0 left-[290px] w-[242px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">Drafting Agent </strong>
-          <span class="font-medium text-[#505050]">Generates a structured provisional patent draft</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.draftingTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.draftingBody}</span>
         </p>
         <!-- Specialized Agent -->
         <p class="absolute top-0 left-[521px] w-[265px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">Specialized Agent</strong><br />
-          <span class="font-medium text-[#505050]">Reviews the language specific to the field of the invention</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.specializedTitle}</strong><br />
+          <span class="font-medium text-[#505050]">{copy.specializedBody}</span>
         </p>
       </div>
 
       <!-- Bottom row agentes -->
       <div class="relative mt-6 ml-[134px] flex gap-2.5" style="height:96px">
         <p class="w-[237px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">Drawing Agent </strong>
-          <span class="font-medium text-[#505050]">Generates diagrams and reference drawings</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.drawingTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.drawingBody}</span>
         </p>
         <p class="w-[306px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">QA Agent </strong>
-          <span class="font-medium text-[#505050]">Checks formatting and prepares the document for download</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.qaTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.qaBody}</span>
         </p>
       </div>
     </div>

@@ -9,7 +9,7 @@ interface Props {
   canonicalPath?: string;
   keywords?: string;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
-  lang?: "en" | "es";
+  lang?: "en" | "es" | "pt";
   alternatePath?: string;
 }
 
@@ -52,7 +52,7 @@ const baseStructuredData = [
 ].filter(Boolean);
 ---
 
-<html lang={lang}>
+<html lang={lang === "pt" ? "pt-BR" : lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -219,6 +219,6 @@ const baseStructuredData = [
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

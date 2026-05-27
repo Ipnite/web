@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import HeroSection          from "@components/HeroSection.astro";
 import WhyWeDoItSection     from "@components/WhyWeDoItSection.astro";
 import IpnitePromiseSection from "@components/IpnitePromiseSection.astro";
+import JurisdictionsSection  from "@components/JurisdictionsImageSection.astro";
 import YourIPTeamSection    from "@components/YourIPTeamSection.astro";
 import ReduceCostlySection  from "@components/ReduceCostlySection.astro";
 import HowItWorksSection    from "@components/HowItWorksSection.astro";
@@ -94,8 +95,13 @@ const homeStructuredData = [
     try {
       const chosenLang = localStorage.getItem("ipnite_lang");
       const browserLang = navigator.language || "";
-      if (!chosenLang && browserLang.toLowerCase().startsWith("es")) {
-        window.location.replace("/es/");
+      if (!chosenLang) {
+        const normalized = browserLang.toLowerCase();
+        if (normalized.startsWith("pt")) {
+          window.location.replace("/pt-br/");
+        } else if (normalized.startsWith("es")) {
+          window.location.replace("/es/");
+        }
       }
     } catch (error) {}
   </script>
@@ -125,6 +131,7 @@ const homeStructuredData = [
   <ReduceCostlySection />
   <HowItWorksSection />
   <TrustSection />
+  <JurisdictionsSection />
   <PricingSection />
   <ContactSection />
   <CTAFinalSection />

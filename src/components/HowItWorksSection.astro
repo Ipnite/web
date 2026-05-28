@@ -185,13 +185,13 @@ const copy = lang === "es"
       gap: 14px;
     }
 
-      #how-it-works article {
+    #how-it-works article {
       position: relative !important;
       top: auto !important;
       left: auto !important;
       width: 100% !important;
       height: auto !important;
-      min-height: 94px;
+      min-height: 96px;
       display: grid;
       grid-template-columns: 52px 1fr;
       align-items: center;
@@ -201,6 +201,10 @@ const copy = lang === "es"
       border: 1px solid #f0ebe9;
       background: #fff;
       box-shadow: 0 5px 12px rgba(107, 42, 47, 0.18);
+    }
+
+    #how-it-works article > div:first-child:not(.hiw-step__icon) {
+      display: none !important;
     }
 
     #how-it-works .hiw-step__icon {
@@ -232,6 +236,17 @@ const copy = lang === "es"
       text-align: left !important;
       color: #2b2b2f !important;
       font-weight: 400 !important;
+      margin: 0 !important;
+      align-self: center;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    #how-it-works article > p > span {
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
     }
   }
 </style>

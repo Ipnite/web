@@ -180,7 +180,8 @@ const jurisdictions = [
 
   @media (max-width: 760px) {
     .jurisdictions__grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
   }
 
@@ -193,25 +194,22 @@ const jurisdictions = [
       font-size: 16px;
     }
 
-    .jurisdictions__grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
     .jurisdiction-card {
-      min-height: 112px;
-      padding: 18px 16px 16px;
+      min-height: 104px;
+      padding: 14px 8px 12px;
+      border-radius: 22px;
     }
 
     .jurisdiction-card__badge {
-      width: 52px;
-      height: 52px;
-      font-size: 18px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 10px;
+      font-size: 17px;
     }
 
     .jurisdiction-card p {
-      font-size: 12px;
-      letter-spacing: .1em;
+      font-size: 11px;
+      letter-spacing: .06em;
     }
   }
 </style>

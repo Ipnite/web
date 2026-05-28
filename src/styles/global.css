@@ -20,6 +20,43 @@
 html, body {
   background-color: #ffffff;
   color: var(--gris-3);
+  min-width: 0;
+  overflow-x: clip;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+a,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+span,
+strong,
+small {
+  overflow-wrap: anywhere;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  max-width: 100%;
 }
 
 /* ─── Typography helpers ──────────────────────────────────── */
@@ -61,7 +98,7 @@ html, body {
   font-family: "Roboto Slab", serif;
   font-weight: 800;
   font-size: 14px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--gris-2);
   text-transform: uppercase;
 }

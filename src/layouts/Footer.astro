@@ -38,16 +38,27 @@ const socialLinks = [
   { label: "TikTok", href: "https://www.tiktok.com/@ipnite" },
   { label: "Facebook", href: "https://www.facebook.com/ipnite" },
 ];
+
+const legalLinks = [
+  {
+    label: lang === "es" ? "Términos y condiciones" : lang === "pt" ? "Termos e condições" : "Terms and Conditions",
+    href: `${prefix}/termsandconditions`,
+  },
+  {
+    label: lang === "es" ? "Política de privacidad" : lang === "pt" ? "Política de privacidade" : "Privacy Policy",
+    href: `${prefix}/privacy`,
+  },
+];
 ---
 
 <footer
-  class="relative overflow-hidden bg-[#6b2a2f]"
+  class="site-footer relative overflow-hidden bg-[#6b2a2f]"
   style="min-height: 325px;"
   aria-label={lang === "es" ? "Pie de página" : lang === "pt" ? "Rodapé" : "Footer"}
 >
-  <div class="relative mx-auto h-[325px] w-full max-w-[1440px]">
+  <div class="site-footer__inner relative mx-auto h-[325px] w-full max-w-[1440px]">
     <!-- Logo -->
-    <div class="absolute left-[69px] top-[39px]">
+    <div class="site-footer__brand absolute left-[69px] top-[39px]">
       <img
         class="h-[68px] w-[217px] object-contain"
         alt="IPnite logo"
@@ -57,7 +68,7 @@ const socialLinks = [
     </div>
 
     <!-- Legal text -->
-    <div class="absolute left-[81px] top-[123px] w-[433px]">
+    <div class="site-footer__notice absolute left-[81px] top-[123px] w-[433px]">
         <p class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
           {lang === "es"
             ? "Aviso legal: Esta herramienta es un asistente de escritura con IA y no constituye asesoramiento legal ni una relacion abogado-cliente formal. Revisa todos los borradores con un profesional registrado."
@@ -74,7 +85,7 @@ const socialLinks = [
     </div>
 
     <!-- Nav links -->
-    <nav class="absolute left-[1059px] top-[123px]" aria-label="Footer navigation">
+    <nav class="footer-nav absolute left-[1059px] top-[123px]" aria-label="Footer navigation">
       <ul class="m-0 list-none p-0">
         {footerLinks.map((link, i) => (
           <li class={`flex h-[25px] ${i > 0 ? "mt-[4px]" : ""}`}>
@@ -86,11 +97,21 @@ const socialLinks = [
             </a>
           </li>
         ))}
+        {legalLinks.map((link) => (
+          <li class="flex">
+            <a
+              href={link.href}
+              class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22px] tracking-[-0.28px] text-white hover:underline"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
 
     <!-- Social links -->
-    <nav class="footer-social absolute left-[1059px] top-[234px]" aria-label="Social links">
+    <nav class="footer-social absolute left-[1059px] top-[244px]" aria-label="Social links">
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
         {socialLinks.map((link) => (
           <li>
@@ -110,39 +131,154 @@ const socialLinks = [
 </footer>
 
 <style>
+  .site-footer {
+    padding: 44px clamp(24px, 5vw, 80px) 38px;
+    overflow: visible;
+  }
+
+  .site-footer__inner {
+    height: auto !important;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) minmax(260px, auto);
+    grid-template-areas:
+      "links social"
+      "brand notice";
+    gap: 40px clamp(40px, 8vw, 120px);
+    align-items: start;
+  }
+
+  .site-footer__inner > div,
+  .site-footer__inner nav {
+    position: static !important;
+    width: auto !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .site-footer__brand {
+    grid-area: brand;
+    align-self: end;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .site-footer__notice {
+    grid-area: notice;
+    max-width: 720px;
+    justify-self: end;
+    align-self: end;
+    padding-top: 26px;
+    text-align: right;
+  }
+
+  .footer-nav {
+    grid-area: links;
+    justify-self: start;
+  }
+
+  .footer-social {
+    grid-area: social;
+    justify-self: end;
+    text-align: right;
+  }
+
+  .site-footer li {
+    height: auto !important;
+    min-height: 0;
+    margin-top: 0 !important;
+  }
+
+  .site-footer a,
+  .site-footer p {
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer nav ul {
+    display: grid;
+    gap: 7px;
+  }
+
+  .site-footer .footer-social ul {
+    justify-content: flex-end;
+  }
+
+  .site-footer__notice p {
+    margin-top: 10px !important;
+  }
+
+  .site-footer__notice p:first-child {
+    margin-top: 0 !important;
+  }
+
   @media (max-width: 760px) {
-    footer[aria-label="Footer"] {
+    .site-footer {
       min-height: auto !important;
       padding: 36px 20px 34px;
+      overflow: visible !important;
     }
 
-    footer[aria-label="Footer"] > div {
+    .site-footer__inner {
       width: 100% !important;
       height: auto !important;
       max-width: 420px !important;
       display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: none;
       gap: 24px;
     }
 
-    footer[aria-label="Footer"] > div > div,
-    footer[aria-label="Footer"] nav {
-      position: static !important;
+    .site-footer__inner > div,
+    .site-footer__inner nav {
       width: 100% !important;
-      left: auto !important;
-      top: auto !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      grid-area: auto !important;
     }
 
-    footer[aria-label="Footer"] img[alt="IPnite logo"] {
+    .site-footer__brand,
+    .site-footer__notice {
+      padding-top: 0;
+      border-top: 0;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .site-footer__brand {
+      order: 3;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .site-footer__notice {
+      order: 4;
+    }
+
+    .footer-nav {
+      order: 1;
+    }
+
+    .footer-legal,
+    .footer-social {
+      order: 2;
+      margin-top: 0;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .site-footer img[alt="IPnite logo"] {
       width: 150px !important;
       height: auto !important;
     }
 
-    footer[aria-label="Footer"] nav ul {
+    .site-footer nav ul {
       display: grid;
       gap: 4px;
     }
 
-    footer[aria-label="Footer"] .footer-social ul {
+    .site-footer .footer-social ul {
       display: flex;
       gap: 10px 16px;
     }

@@ -5,6 +5,8 @@ interface Props {
 }
 
 const { lang = "en" } = Astro.props;
+const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
+const localizedHref = (path) => `${prefix}${path}`;
 
 const copy = lang === "es"
   ? {
@@ -58,10 +60,10 @@ const copy = lang === "es"
         <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
           {copy.primary}
         </a>
-        <a class="hero__cta" href="/#how-it-works">
+        <a class="hero__cta" href={localizedHref("/#how-it-works")}>
           {copy.secondary}
         </a>
-        <a class="hero__cta" href="/faqs">
+        <a class="hero__cta" href={localizedHref("/faqs")}>
           {copy.faqs}
         </a>
       </div>
@@ -353,7 +355,11 @@ const copy = lang === "es"
     }
 
     .hero__panel {
-      min-height: 690px;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 28px;
       border-radius: 28px;
     }
 
@@ -373,102 +379,44 @@ const copy = lang === "es"
     }
 
     .hero__cta {
-      height: 40px;
-      min-width: 164px;
+      min-height: 40px;
+      height: auto;
+      min-width: 0;
+      width: min(100%, 250px);
       font-size: 16px;
+      line-height: 1.2;
+      text-align: center;
+      white-space: normal;
     }
 
-    .hero__brain {
-      right: -255px;
-      top: 342px;
-      width: 330px;
-    }
-
-    .hero__capture--disclosure {
-      left: 18px;
-      top: 296px;
-      width: 138px;
-    }
-
-    .hero__capture--problem {
-      left: 18px;
-      bottom: 188px;
-      width: 210px;
-    }
-
-    .hero__capture--title {
-      right: 12px;
-      top: 398px;
-      width: 210px;
-    }
-
+    .hero__brain,
+    .hero__capture,
     .hero__icon {
-      width: 50px;
-    }
-
-    .hero__icon--search {
-      left: 124px;
-      top: 394px;
-    }
-
-    .hero__icon--pencil {
-      right: 4px;
-      top: 462px;
-    }
-
-    .hero__icon--lock {
-      left: 62%;
-      bottom: 58px;
+      display: none;
     }
 
     .hero__laptop {
-      bottom: 78px;
-      width: min(510px, 96vw);
-      transform: translateX(-50%);
+      position: relative;
+      left: auto;
+      top: auto;
+      bottom: auto;
+      width: min(520px, 108vw);
+      margin-top: 24px;
+      transform: none;
     }
   }
 
   @media (max-width: 430px) {
     .hero__panel {
-      min-height: 650px;
+      min-height: 0;
     }
 
     .hero p {
       max-width: 320px;
     }
 
-    .hero__brain {
-      top: 362px;
-      right: -240px;
-      width: 295px;
-    }
-
-    .hero__capture--disclosure {
-      top: 330px;
-      width: 122px;
-    }
-
-    .hero__capture--problem {
-      bottom: 166px;
-      width: 188px;
-    }
-
-    .hero__capture--title {
-      top: 422px;
-      width: 186px;
-    }
-
-    .hero__icon--search {
-      left: 105px;
-      top: 408px;
-    }
-
-    .hero__icon--pencil {
-      top: 480px;
-    }
-
     .hero__laptop {
-      bottom: 72px;
+      width: min(500px, 112vw);
     }
   }
 </style>

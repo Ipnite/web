@@ -122,6 +122,112 @@ const copy = lang === "es"
 </section>
 
 <style>
+  #ip-team {
+    height: auto !important;
+    padding: 72px clamp(18px, 5vw, 80px);
+    overflow: visible !important;
+  }
+
+  #ip-team > div {
+    position: relative !important;
+    inset: auto !important;
+    width: min(100%, 1280px) !important;
+    display: grid;
+    grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1.38fr);
+    gap: clamp(24px, 3vw, 48px);
+    align-items: center;
+    border-radius: 50px;
+    background: rgba(217, 217, 217, 0.2);
+    padding: clamp(30px, 3.6vw, 50px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 1px 0 0 rgba(255,255,255,.32), inset 0 -1px 1px rgba(0,0,0,.13), inset -1px 0 1px rgba(0,0,0,.11);
+  }
+
+  #ip-team > div > div:first-child {
+    display: none;
+  }
+
+  #ip-team > div > div:nth-child(2),
+  #ip-team > div > div:nth-child(3) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  #ip-team > div > div:nth-child(2) img {
+    height: auto !important;
+  }
+
+  #ip-team > div > div:nth-child(3) {
+    display: grid;
+    gap: 20px;
+  }
+
+  #ipteam-heading {
+    width: 100% !important;
+    margin: 0 !important;
+    font-size: clamp(38px, 3.6vw, 48px) !important;
+    line-height: 1.16 !important;
+    white-space: normal !important;
+    text-wrap: balance;
+  }
+
+  #ip-team > div > div:nth-child(3) > div {
+    position: static !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px !important;
+  }
+
+  #ip-team > div > div:nth-child(3) > div:last-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 74%;
+    justify-self: center;
+  }
+
+  #ip-team p {
+    position: static !important;
+    width: 100% !important;
+    min-height: 104px;
+    display: block;
+    border-radius: 18px;
+    padding: 16px 14px;
+    background: rgba(255, 255, 255, 0.65);
+    font-size: clamp(13px, 1.05vw, 16px) !important;
+    line-height: 1.28 !important;
+    letter-spacing: 0 !important;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  #ip-team p strong,
+  #ip-team p span {
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  #ip-team p strong {
+    display: block;
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+
+  @media (max-width: 1060px) {
+    #ip-team > div {
+      grid-template-columns: 1fr;
+    }
+
+    #ip-team > div > div:nth-child(2) {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+  }
+
   @media (max-width: 760px) {
     #ip-team {
       height: auto !important;
@@ -136,6 +242,10 @@ const copy = lang === "es"
       max-width: 420px !important;
       display: grid;
       gap: 22px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     #ip-team > div > div:first-child {

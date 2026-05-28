@@ -5,6 +5,8 @@ interface Props {
 
 const { lang = "en" } = Astro.props;
 const check = "✓";
+const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
+const localizedPath = (path) => `${prefix}${path}`;
 
 const copy = lang === "es"
   ? {
@@ -51,7 +53,11 @@ const copy = lang === "es"
           {copy.freemium.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
-        <a class="plan-card__cta" href="/coming-soon">
+        <a
+          class="plan-card__cta"
+          href={localizedPath("/coming-soon")}
+          data-analytics-label={`pricing_${lang}_freemium_coming_soon`}
+        >
           {copy.freemium.cta}
         </a>
       </article>
@@ -106,7 +112,11 @@ const copy = lang === "es"
           {copy.pro.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
-        <a class="plan-card__cta" href="/coming-soon">
+        <a
+          class="plan-card__cta"
+          href={localizedPath("/coming-soon")}
+          data-analytics-label={`pricing_${lang}_professional_coming_soon`}
+        >
           {copy.pro.cta}
         </a>
       </article>
@@ -349,8 +359,58 @@ const copy = lang === "es"
       padding: 26px 20px 24px;
     }
 
+    .plan-card__eyebrow {
+      font-size: 15px;
+    }
+
+    .plan-card h3 {
+      font-size: 34px;
+    }
+
+    .plan-card__price {
+      font-size: 28px;
+    }
+
+    .plan-card__lede {
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .plan-card__copy {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .plan-card__features li {
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .plan-card__cta {
+      width: 100%;
+      font-size: 16px;
+      white-space: normal;
+      text-align: center;
+    }
+
     .credit-packs {
       grid-template-columns: 1fr;
+    }
+
+    .credit-packs div {
+      padding: 12px 10px;
+    }
+
+    .credit-packs strong {
+      font-size: 20px;
+    }
+
+    .credit-packs span {
+      font-size: 15px;
+    }
+
+    .credit-packs small {
+      font-size: 13px;
     }
   }
 </style>

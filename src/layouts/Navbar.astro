@@ -245,6 +245,8 @@ const ptPath = localizedPath("pt");
       left: clamp(14px, 4vw, 32px);
       right: clamp(14px, 4vw, 32px);
       top: calc(100% + 10px);
+      max-height: calc(100dvh - 96px);
+      overflow-y: auto;
       display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
@@ -274,6 +276,7 @@ const ptPath = localizedPath("pt");
 
     .site-nav__links a {
       font-size: 18px;
+      white-space: normal;
     }
 
     .site-nav__contact,

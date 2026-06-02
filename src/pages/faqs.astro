@@ -4,6 +4,21 @@ import PageHeroImage from "@components/PageHeroImage.astro";
 
 const faqs = [
   {
+    question: "Is IPnite just a general LLM?",
+    answer:
+      "No. IPnite is a structured patent drafting workflow. It uses AI to support invention disclosure, claims, defensibility, draft organization, and patent-specific consistency instead of acting like a generic chat tool.",
+  },
+  {
+    question: "Does IPnite create an attorney-client relationship?",
+    answer:
+      "No. IPnite is not a law firm, does not replace a patent attorney or patent agent, and does not create an attorney-client relationship. It is a drafting support tool, and professional review is recommended before filing.",
+  },
+  {
+    question: "Who should use IPnite?",
+    answer:
+      "IPnite is built for independent inventors, entrepreneurs, startups, founders, universities, accelerators, and venture funds that need to prepare or evaluate intellectual property with limited resources.",
+  },
+  {
     question: "How is IPnite different from ChatGPT?",
     answer:
       "IPnite is built specifically for intellectual property. While ChatGPT is general-purpose, IPnite applies a structured patent methodology designed for legal consistency and stronger patent preparation.",
@@ -71,10 +86,10 @@ const faqStructuredData = {
 
 <BaseLayout
   title="FAQs — IPnite"
-  description="Frequently asked questions about IPnite, how it compares with ChatGPT, patent attorneys, free tools, claim drafting, novelty checks, drawings, and patent preparation workflows."
+  description="Frequently asked questions about IPnite, The Drafter, AI patent drafting, attorney-client relationship limits, patent attorneys, claim drafting, novelty checks, drawings, and patent preparation workflows."
   canonicalPath="/faqs/"
   alternatePath="/es/faqs/"
-  keywords="IPnite FAQs, ChatGPT patent drafting, AI patent drafting questions, patent claims AI, patent drawings, novelty assessment, patent attorney alternative, IPnite vs ChatGPT"
+  keywords="IPnite FAQs, The Drafter, AI patent drafting, patent application drafts, provisional patent draft, patent claims AI, novelty assessment, attorney client relationship, patent attorney support, IPnite vs ChatGPT"
   structuredData={faqStructuredData}
 >
   <section class="faq-page">

@@ -11,6 +11,7 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   lang?: "en" | "es" | "pt";
   alternatePath?: string;
+  robots?: string;
 }
 
 const {
@@ -21,24 +22,54 @@ const {
   structuredData = [],
   lang = "en",
   alternatePath,
+  robots = "index, follow, max-image-preview:large",
 } = Astro.props;
 
 const siteUrl = "https://www.ipnite.com";
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+
+function localizedCanonicalPath(targetLocale: "en" | "es" | "pt") {
+  const stripped = canonicalPath.replace(/^\/(es|pt-br)(?=\/|$)/, "") || "/";
+  const prefixMap = { en: "", es: "/es", pt: "/pt-br" };
+  const targetPrefix = prefixMap[targetLocale];
+  if (stripped === "/") return targetPrefix ? targetPrefix + "/" : "/";
+  return targetPrefix + stripped;
+}
+
+const alternateUrls = [
+  { hreflang: "en", href: new URL(localizedCanonicalPath("en"), siteUrl).toString() },
+  { hreflang: "es", href: new URL(localizedCanonicalPath("es"), siteUrl).toString() },
+  { hreflang: "pt-BR", href: new URL(localizedCanonicalPath("pt"), siteUrl).toString() },
+  { hreflang: "x-default", href: new URL(localizedCanonicalPath("en"), siteUrl).toString() },
+];
 const schemaItems = Array.isArray(structuredData) ? structuredData : [structuredData];
 const baseStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
     name: "IPnite",
+    legalName: "IPnite",
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
+    email: "info@ipnite.com",
     foundingLocation: [
       { "@type": "Place", name: "United States" },
       { "@type": "Place", name: "Argentina" },
-      { "@type": "Place", name: "Paraguay" },
       { "@type": "Place", name: "Mexico" },
     ],
+    areaServed: [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Place", name: "Latin America" },
+      { "@type": "Place", name: "European Patent Office jurisdictions" },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "info@ipnite.com",
+      contactType: "customer support",
+      areaServed: ["US", "MX", "AR", "LATAM", "EPO"],
+      availableLanguage: ["English", "Spanish", "Portuguese"],
+    },
     sameAs: [
       "https://www.linkedin.com/company/ipnite/",
       "https://www.instagram.com/ip_nite",
@@ -46,7 +77,18 @@ const baseStructuredData = [
       "https://www.tiktok.com/@ipnite",
     ],
     description:
-      "IPnite is an AI-assisted patent preparation platform for inventors, founders, startups, and companies that need a guided way to document inventions, review prior art, draft claims, and prepare exportable patent drafts.",
+      "IPnite is an AI-assisted patent preparation platform that helps independent inventors, entrepreneurs, startups, and venture-backed teams generate structured patent application drafts faster and at lower cost for the United States, Latin America, and EPO-oriented workflows.",
+    knowsAbout: [
+      "AI patent drafting",
+      "provisional patent applications",
+      "patent claims",
+      "prior-art review",
+      "invention disclosure",
+      "startup intellectual property",
+      "patent preparation in the United States",
+      "patent preparation in Latin America",
+      "EPO patent workflows",
+    ],
   },
   ...schemaItems,
 ].filter(Boolean);
@@ -58,8 +100,12 @@ const baseStructuredData = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="IPnite information for AI assistants" />
+    {alternateUrls.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+    ))}
     <link rel="icon" type="image/png" href="/images/cerebro.png" />
     <link rel="apple-touch-icon" href="/images/cerebro.png" />
     <meta property="og:site_name" content="IPnite" />

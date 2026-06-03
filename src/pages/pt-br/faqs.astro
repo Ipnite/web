@@ -10,9 +10,22 @@ const faqs = [
   ["Que erros a IPnite ajuda a evitar?", "A IPnite ajuda a reduzir claims estreitas demais, modalidades faltantes, inconsistencias entre desenhos e texto, e divulgacoes incompletas."],
   ["A IPnite verifica se minha invencao ja existe?", "A IPnite faz uma avaliacao inicial de novidade contra informacoes de patentes existentes. Isso nao substitui uma busca profissional completa de patenteabilidade."],
 ];
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(([question, answer]) => ({
+    "@type": "Question",
+    "name": question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": answer,
+    },
+  })),
+};
 ---
 
-<BaseLayout lang="pt" title="FAQs — IPnite" description="Perguntas frequentes sobre a IPnite e redacao de patentes com IA." canonicalPath="/pt-br/faqs/" alternatePath="/faqs/">
+<BaseLayout lang="pt" title="FAQs — IPnite" description="Perguntas frequentes sobre a IPnite e redacao de patentes com IA." canonicalPath="/pt-br/faqs/" alternatePath="/faqs/" structuredData={faqStructuredData}>
   <section class="faq-es">
     <p class="pill">FAQs</p>
     <h1>Perguntas frequentes</h1>

@@ -1,6 +1,54 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageHeroImage from "@components/PageHeroImage.astro";
+
+const aboutStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Sobre a IPnite",
+    "url": "https://www.ipnite.com/pt-br/about-us/",
+    "description":
+      "Sobre a IPnite: filosofia, missao, visao e equipe por tras de uma plataforma assistida por IA para preparacao de patentes.",
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": "https://www.ipnite.com/#organization",
+      "name": "IPnite",
+      "description":
+        "A IPnite torna mais acessivel a preparacao seria de propriedade intelectual por meio de fluxos guiados de redacao de patentes assistidos por IA.",
+      "areaServed": ["United States", "Mexico", "Argentina", "Latin America", "European Patent Office jurisdictions"],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Equipe de lideranca da IPnite",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Person",
+          "name": "Rafael Betanzos San Juan",
+          "jobTitle": "CEO · IP Strategy · Platform Builder",
+          "worksFor": { "@type": "Organization", "name": "IPnite" },
+          "sameAs": "https://www.linkedin.com/in/rafabetanzos/",
+        },
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Person",
+          "name": "Lucas Larrosa",
+          "jobTitle": "CSO · Platform Security",
+          "worksFor": { "@type": "Organization", "name": "IPnite" },
+          "sameAs": "https://www.linkedin.com/in/lucaslarrosa/",
+        },
+      },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -9,6 +57,7 @@ import PageHeroImage from "@components/PageHeroImage.astro";
   description="Conheca a filosofia, missao, visao e equipe por tras da IPnite."
   canonicalPath="/pt-br/about-us/"
   alternatePath="/about-us/"
+  structuredData={aboutStructuredData}
 >
   <section class="about-page">
     <div class="about-glow about-glow-left" aria-hidden="true"></div>

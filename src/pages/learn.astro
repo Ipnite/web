@@ -1,6 +1,18 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import LearnLanding from "@components/LearnLanding.astro";
+
+const learnStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.ipnite.com/learn/#webpage",
+  "url": "https://www.ipnite.com/learn/",
+  "name": "IPnite Learn",
+  "inLanguage": "en",
+  "description": "Learn patent basics in plain English with IPnite, including patents, provisional applications, claims, patent pending status, and invention drafting workflows.",
+  "isPartOf": { "@id": "https://www.ipnite.com/#website" },
+  "about": { "@id": "https://www.ipnite.com/#organization" },
+};
 ---
 
 <BaseLayout
@@ -9,6 +21,7 @@ import LearnLanding from "@components/LearnLanding.astro";
   canonicalPath="/learn/"
   alternatePath="/es/learn/"
   keywords="learn patents, patent basics, provisional patent application, patent claims, patent pending, invention disclosure, IPnite learning"
+  structuredData={learnStructuredData}
 >
   <LearnLanding lang="en" />
 </BaseLayout>

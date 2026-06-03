@@ -59,6 +59,20 @@ select {
   max-width: 100%;
 }
 
+
+/* Screen-reader and crawler-readable utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ─── Typography helpers ──────────────────────────────────── */
 .font-slab     { font-family: "Roboto Slab", serif; }
 .font-roboto   { font-family: "Roboto", sans-serif; }

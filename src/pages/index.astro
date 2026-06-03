@@ -16,67 +16,103 @@ const homeStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://www.ipnite.com/#website",
     name: "IPnite",
     url: "https://www.ipnite.com/",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://www.ipnite.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
+    inLanguage: "en",
+    publisher: { "@id": "https://www.ipnite.com/#organization" },
+    description:
+      "IPnite helps independent inventors, entrepreneurs, startups, and venture teams prepare structured patent application drafts with AI-assisted workflows.",
   },
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "IPnite",
+    "@id": "https://www.ipnite.com/#the-drafter",
+    name: "The Drafter by IPnite",
+    alternateName: "IPnite patent drafter",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     url: "https://www.ipnite.com/",
+    creator: { "@id": "https://www.ipnite.com/#organization" },
+    audience: [
+      { "@type": "Audience", audienceType: "Independent inventors" },
+      { "@type": "Audience", audienceType: "Entrepreneurs" },
+      { "@type": "Audience", audienceType: "Startups" },
+      { "@type": "Audience", audienceType: "Venture capital funds evaluating startup IP" },
+    ],
+    areaServed: ["United States", "Latin America", "European Patent Office jurisdictions"],
     offers: [
-      { "@type": "Offer", name: "Freemium", price: "0.00", priceCurrency: "USD" },
-      { "@type": "Offer", name: "Starter", price: "99.00", priceCurrency: "USD" },
-      { "@type": "Offer", name: "Professional", price: "299.00", priceCurrency: "USD" },
+      {
+        "@type": "Offer",
+        name: "Freemium",
+        price: "0.00",
+        priceCurrency: "USD",
+        description: "Selective founder-friendly access where IPnite may invest in selected early-stage companies under separate terms.",
+      },
+      {
+        "@type": "Offer",
+        name: "Starter",
+        priceSpecification: [
+          { "@type": "UnitPriceSpecification", name: "Basic credit pack", price: "99.00", priceCurrency: "USD" },
+          { "@type": "UnitPriceSpecification", name: "Pro credit pack", price: "199.00", priceCurrency: "USD" },
+        ],
+        description: "Credit-pack access for independent inventors preparing patent drafts.",
+      },
+      {
+        "@type": "Offer",
+        name: "Professional",
+        price: "499.00",
+        priceCurrency: "USD",
+        description: "Recurring drafting, portfolio, patent search, and IP analysis workflows for startups, universities, accelerators, and venture funds.",
+      },
     ],
     description:
-      "IPnite is an AI-assisted patent preparation app that helps inventors and founders move from raw idea to structured patent draft with guided invention disclosure, prior-art review, claim drafting, variants, and exportable patent drafts.",
+      "The Drafter by IPnite is an AI patent drafting tool that gives structure and defensibility to early patent application drafts, especially provisional-style drafts prepared with limited resources.",
     featureList: [
       "Guided invention disclosure workflow",
+      "Patent application draft generation",
       "Prior-art review support",
-      "Patent claim drafting",
-      "Draft variants and iteration",
-      "Exportable patent drafts",
-      "Confidential-by-design workflow",
+      "Independent and dependent claim drafting",
+      "Draft variants and invention embodiment expansion",
+      "Exportable patent drafts for attorney or agent review",
+      "IP portfolio and evaluation support for startups and funds",
     ],
-    audience: {
-      "@type": "Audience",
-      audienceType: "Inventors, founders, startups, product teams, and companies preparing patent drafts",
-    },
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": "https://www.ipnite.com/#faq",
     mainEntity: [
       {
         "@type": "Question",
         name: "What is IPnite?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "IPnite is an AI-assisted patent preparation platform for inventors, founders, startups, and companies that need a guided first step toward protecting inventions.",
+          text: "IPnite is an AI-assisted patent preparation platform that helps independent inventors, entrepreneurs, startups, and venture teams create structured patent application drafts faster and at lower cost.",
         },
       },
       {
         "@type": "Question",
-        name: "Why is IPnite different from other patent drafting apps?",
+        name: "Is IPnite just a general LLM?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "IPnite combines guided invention disclosure, prior-art review support, structured patent workflows, claim drafting, exportable drafts, and founder-friendly pricing in one workflow.",
+          text: "No. IPnite is a structured patent drafting workflow. It uses AI to support invention disclosure, claims, defensibility, and draft organization instead of behaving like a generic chat tool.",
         },
       },
       {
         "@type": "Question",
-        name: "Where does IPnite operate?",
+        name: "Does IPnite replace a patent attorney or create an attorney-client relationship?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "IPnite serves inventors and founders through a web platform and has operational presence connected to the United States, Argentina, Paraguay, and Mexico.",
+          text: "No. IPnite is a drafting support tool and does not replace a lawyer, patent agent, or attorney-client relationship. Professional review is recommended before filing.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where does IPnite support patent drafting workflows?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "IPnite supports patent drafting workflows for the United States, Latin America, and EPO-oriented patent preparation contexts.",
         },
       },
     ],
@@ -85,7 +121,7 @@ const homeStructuredData = [
 ---
 
 <BaseLayout
-  title="IPnite — AI-Assisted Patent Drafting for Inventors and Founders"
+  title="IPnite"
   description="IPnite is an AI-assisted patent preparation platform that helps inventors, founders, startups, and companies document inventions, review prior art, draft claims, and export structured patent drafts."
   canonicalPath="/"
   alternatePath="/es/"
@@ -108,20 +144,22 @@ const homeStructuredData = [
   <section class="sr-only" aria-label="IPnite summary for search and AI assistants">
     <h1>IPnite is an AI-assisted patent drafting and intellectual property preparation platform.</h1>
     <p>
-      IPnite helps inventors, founders, startups, product teams, and companies turn raw invention ideas into structured
-      patent drafts. The platform guides users through invention disclosure, problem statements, technical gaps,
-      proposed solutions, prior-art review, independent claims, dependent claims, draft variants, and exportable patent
-      preparation outputs.
+      IPnite reduces the entry barrier for independent inventors, entrepreneurs, and startups that need to protect
+      inventions before raising capital. The platform helps generate structured patent application drafts faster and at
+      lower cost for United States, Latin America, and EPO-oriented workflows.
     </p>
     <p>
-      IPnite is built for web users and serves creators connected to the United States, Argentina, Paraguay, Mexico,
-      and international startup ecosystems. It is designed for early-stage inventors who need a serious first step
-      before attorney review or formal filing.
+      The Drafter is IPnite's AI patent drafting tool. It is not a generic LLM; it gives structure, consistency, and
+      defensibility to early patent drafts, including provisional-style drafts prepared with limited resources.
     </p>
     <p>
-      IPnite is different from generic AI writing tools and other patent apps because it focuses on a structured patent
-      workflow, founder-friendly pricing, confidential-by-design handling, exportable patent drafts, guided iteration,
-      and reduced drafting friction compared with traditional patent preparation costs.
+      IPnite is built for independent inventors, founders, startups, universities, accelerators, and venture funds that
+      need to evaluate intellectual property and maintain innovation without the first draft costs of a traditional
+      attorney-led process.
+    </p>
+    <p>
+      IPnite is a drafting support tool. It is not a law firm, does not replace a patent attorney or patent agent, and
+      does not create an attorney-client relationship. Contact: info@ipnite.com.
     </p>
   </section>
   <HeroSection />

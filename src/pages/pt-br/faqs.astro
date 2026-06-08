@@ -1,37 +1,117 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import PageHeroImage from "@components/PageHeroImage.astro";
+import FaqPage from "@components/FaqPage.astro";
 
 const faqs = [
-  ["Como a IPnite e diferente do ChatGPT?", "A IPnite foi criada especificamente para propriedade intelectual. Enquanto o ChatGPT e generico, a IPnite aplica uma metodologia estruturada de patentes pensada para consistencia juridica e preparacao mais forte."],
-  ["Posso redigir uma patente usando apenas o ChatGPT?", "Sim, mas ha riscos. O ChatGPT nao garante estrutura correta de claims, expansao do escopo da invencao ou consistencia entre secoes. A IPnite ajuda nesses passos."],
-  ["Por que a IPnite gera rascunhos mais fortes?", "A IPnite amplia variacoes tecnicas, estrutura claims amplas e dependentes e verifica consistencia interna. Isso reflete partes importantes da forma como profissionais de patentes organizam divulgacoes de invencao."],
-  ["A IPnite substitui um advogado de patentes?", "Nao. A IPnite reduz custos iniciais de redacao e ajuda a organizar a invencao. Para registros criticos, a revisao profissional continua recomendada."],
-  ["Que erros a IPnite ajuda a evitar?", "A IPnite ajuda a reduzir claims estreitas demais, modalidades faltantes, inconsistencias entre desenhos e texto, e divulgacoes incompletas."],
-  ["A IPnite verifica se minha invencao ja existe?", "A IPnite faz uma avaliacao inicial de novidade contra informacoes de patentes existentes. Isso nao substitui uma busca profissional completa de patenteabilidade."],
+  {
+    question: "A IPnite e apenas um LLM generico?",
+    answer:
+      "Nao. A IPnite e um fluxo estruturado de redacao de patentes. Ela usa IA para apoiar a divulgacao da invencao, as reivindicacoes, a defensabilidade, a organizacao do rascunho e a consistencia especifica de patentes, em vez de funcionar como uma ferramenta de conversa generica.",
+  },
+  {
+    question: "A IPnite cria uma relacao advogado-cliente?",
+    answer:
+      "Nao. A IPnite nao e um escritorio de advocacia, nao substitui um advogado ou agente de patentes, e nao cria uma relacao advogado-cliente. E uma ferramenta de apoio a redacao, e a revisao profissional e recomendada antes do deposito.",
+  },
+  {
+    question: "Quem deveria usar a IPnite?",
+    answer:
+      "A IPnite foi criada para inventores independentes, empreendedores, startups, fundadores, universidades, aceleradoras e fundos de venture capital que precisam preparar ou avaliar propriedade intelectual com recursos limitados.",
+  },
+  {
+    question: "Como a IPnite se diferencia do ChatGPT?",
+    answer:
+      "A IPnite foi criada especificamente para propriedade intelectual. Enquanto o ChatGPT e de uso geral, a IPnite aplica uma metodologia estruturada de patentes pensada para consistencia juridica e preparacao mais forte.",
+  },
+  {
+    question: "Posso redigir uma patente usando apenas o ChatGPT?",
+    answer:
+      "Sim, mas com riscos. O ChatGPT nao garante uma estrutura correta de reivindicacoes, a expansao do escopo da invencao ou a consistencia entre secoes. A IPnite foi desenhada para ajudar exatamente nessas etapas.",
+  },
+  {
+    question: "Por que a IPnite produz rascunhos de patente mais fortes?",
+    answer:
+      "A IPnite amplia variacoes tecnicas, estrutura reivindicacoes amplas e dependentes, e verifica a consistencia interna. Isso reflete partes centrais de como profissionais de patentes organizam a divulgacao de uma invencao.",
+  },
+  {
+    question: "A IPnite substitui um advogado de patentes?",
+    answer:
+      "Nao. A IPnite reduz custos de redacao nas fases iniciais e ajuda a organizar a invencao. Para depositos criticos, a revisao profissional continua recomendada.",
+  },
+  {
+    question: "Que erros a IPnite ajuda a evitar?",
+    answer:
+      "A IPnite ajuda a reduzir reivindicacoes excessivamente estreitas, modalidades ausentes, inconsistencias entre desenhos e texto, e divulgacoes incompletas.",
+  },
+  {
+    question: "A IPnite verifica se minha invencao ja existe?",
+    answer:
+      "A IPnite faz uma avaliacao inicial de novidade com base em informacoes de patentes existentes. Isso nao substitui uma busca profissional completa de patenteabilidade."
+  },
+  {
+    question: "A IPnite gera reivindicacoes automaticamente?",
+    answer:
+      "Sim. A IPnite cria reivindicacoes independentes e dependentes, que normalmente estao entre as partes mais dificeis de preparar em um rascunho de patente.",
+  },
+  {
+    question: "Os desenhos seguem os padroes de patentes?",
+    answer:
+      "A IPnite foi desenhada para gerar desenhos em preto e branco, numeracao adequada e referencias legalmente consistentes.",
+  },
+  {
+    question: "Por que nao usar apenas uma ferramenta gratuita?",
+    answer:
+      "Porque o custo real nao e a ferramenta. O custo real e depositar um rascunho de patente fraco ou inutilizavel.",
+  },
+  {
+    question: "Para quem e a IPnite?",
+    answer:
+      "A IPnite e para inventores, startups, equipes tecnicas e fundadores sem orcamento juridico inicial.",
+  },
 ];
-
-const faqStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(([question, answer]) => ({
-    "@type": "Question",
-    "name": question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": answer,
-    },
-  })),
-};
 ---
 
-<BaseLayout lang="pt" title="FAQs — IPnite" description="Perguntas frequentes sobre a IPnite e redacao de patentes com IA." canonicalPath="/pt-br/faqs/" alternatePath="/faqs/" structuredData={faqStructuredData}>
-  <section class="faq-es">
-    <p class="pill">FAQs</p>
-    <h1>Perguntas frequentes</h1>
-    <PageHeroImage label="Hero da plataforma IPnite para redacao de patentes" />
-    <div class="list">{faqs.map(([q,a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div>
-  </section>
-</BaseLayout>
-
-<style>.faq-es{max-width:1000px;margin:0 auto;padding:86px 20px 120px;text-align:center}.pill{display:inline-flex;border-radius:999px;background:#6b2a2f;color:#ededed;padding:10px 20px;font-family:"Roboto Slab",serif;font-weight:800;text-transform:uppercase}.faq-es h1{margin:22px 0 0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(50px,8vw,90px);font-weight:800;line-height:1}.list{display:grid;gap:14px;text-align:left;margin-top:46px}details{border:1px solid rgba(107,42,47,.16);border-radius:24px;background:#fff;padding:22px;box-shadow:0 14px 32px rgba(107,42,47,.06)}summary{cursor:pointer;color:#4c0815;font-family:"Roboto Slab",serif;font-size:22px;font-weight:800}details p{margin:14px 0 0;color:#505050;font-family:"Roboto",sans-serif;font-size:17px;font-weight:500;line-height:1.6}@media(max-width:760px){.faq-es{padding:56px 16px 80px}.faq-es h1{font-size:42px}.list{margin-top:32px}summary{font-size:18px}}</style>
+<FaqPage
+  lang="pt"
+  title="FAQs — IPnite"
+  description="Perguntas frequentes sobre a IPnite, redacao de patentes com IA, reivindicacoes, revisao profissional, novidade e fluxos de preparacao de patentes."
+  canonicalPath="/pt-br/faqs/"
+  alternatePath="/faqs/"
+  heroLabel="Hero da plataforma IPnite para redacao de patentes"
+  heroPill="FAQs da IPnite"
+  heroHeading="Perguntas Antes de Redigir"
+  heroSubtitle="Entenda como a IPnite se compara a ferramentas genericas de IA antes de transformar sua ideia em um rascunho de patente."
+  heroLead="A IPnite foi desenhada para fundadores, inventores e equipes tecnicas que precisam de uma forma estruturada de preparar trabalho de propriedade intelectual antes da revisao profissional."
+  primaryActionLabel="Comecar a redigir"
+  listActionLabel="Ler FAQs"
+  howItWorksLabel="Como funciona"
+  noteStrong="Ferramenta de redacao com IA, nao um escritorio de advocacia."
+  noteText="A IPnite ajuda a preparar rascunhos de patente, mas a estrategia final de deposito deve ser revisada por assessoria qualificada ou por um profissional de patentes registrado."
+  visualNodeOne="Claims"
+  visualNodeTwo="Desenhos"
+  visualNodeThree="Novidade"
+  visualNodeFour="Estrategia"
+  visualCenterLabel="Pergunte Melhor"
+  listPill="Respostas Claras"
+  listHeading="Perguntas frequentes"
+  listIntro="O objetivo e simples: ajudar voce a entender o que a IPnite faz, o que nao faz, e por que a estrutura importa na redacao de patentes."
+  trustPill="A Estrutura Importa"
+  trustHeading="Feita para trabalho de patentes, nao para prompts casuais"
+  trustCards={[
+    {
+      title: "Claims-first",
+      body: "Rascunhos de patente precisam de limites juridicos, nao apenas descricoes de produto.",
+    },
+    {
+      title: "Consistencia",
+      body: "Desenhos, modalidades, reivindicacoes e descricoes devem se sustentar mutuamente.",
+    },
+    {
+      title: "Pronta para revisao",
+      body: "O objetivo e tornar o primeiro rascunho mais facil para revisao profissional.",
+    },
+  ]}
+  ctaHeading="Pronto para estruturar sua invencao?"
+  ctaText="Use a IPnite para organizar a divulgacao tecnica, a direcao das reivindicacoes, as modalidades, os desenhos e as secoes do rascunho antes da revisao profissional."
+  ctaButtonLabel="Comecar a redigir"
+  faqs={faqs}
+/>

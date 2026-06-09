@@ -6,7 +6,7 @@ interface Props {
 const { lang = "en" } = Astro.props;
 const check = "✓";
 const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
-const localizedPath = (path) => `${prefix}${path}`;
+const localizedPath = (path: string) => `${prefix}${path}`;
 
 const copy = lang === "es"
   ? {
@@ -55,8 +55,10 @@ const copy = lang === "es"
 
         <a
           class="plan-card__cta"
-          href={localizedPath("/coming-soon")}
-          data-analytics-label={`pricing_${lang}_freemium_coming_soon`}
+          href="https://forms.gle/83QhdXPJK4UPJ9n28"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-analytics-label={`pricing_${lang}_freemium_form`}
         >
           {copy.freemium.cta}
         </a>

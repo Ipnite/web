@@ -4,7 +4,7 @@ interface Props {
   alternatePath?: string;
 }
 
-const { lang = "en", alternatePath } = Astro.props;
+const { lang = "en" } = Astro.props;
 const isEs = lang === "es";
 const isPt = lang === "pt";
 const home = isEs ? "/es" : isPt ? "/pt-br" : "/";
@@ -33,7 +33,7 @@ const navLinks = isEs
       { label: "Learn", href: "/learn" },
     ];
 
-function localizedPath(targetLocale) {
+function localizedPath(targetLocale: "en" | "es" | "pt") {
   const pathname = Astro.url.pathname || "/";
   const stripped = pathname.replace(/^\/(es|pt-br)(?=\/|$)/, "") || "/";
   const prefixMap = { en: "", es: "/es", pt: "/pt-br" };

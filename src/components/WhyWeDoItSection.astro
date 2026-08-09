@@ -1,5 +1,5 @@
 ---
-// Fuente: index.tsx — sección "Why We Do It" (Figma 4:206)
+// Fuente: index.tsx — sección "Who We Do It For" (antes "Why We Do It", Figma 4:206)
 // Las tarjetas tienen flip: frente blanco con título, dorso rojo con texto
 interface Props {
   lang?: "en" | "es" | "pt";
@@ -9,41 +9,44 @@ const { lang = "en" } = Astro.props;
 
 const copy = lang === "es"
   ? {
-      heading: "Por qué lo hacemos",
-      intro: "Las ideas son una de las monedas más valiosas del mundo, pero demasiadas se pierden porque los inventores creen que la protección solo es para grandes corporaciones.",
-      emphasis: "IPnite existe para cambiar esa narrativa.",
+      heading: "Para quién lo hacemos",
+      intro: "Desde un inventor que presenta su primera idea hasta una oficina de transferencia tecnológica universitaria, IPnite está pensado para quien convierte una idea en propiedad intelectual protegida.",
+      emphasis: "Si estás construyendo algo que vale la pena proteger, IPnite es para vos.",
       cards: [
-        { title: ["Ninguna idea", "es demasiado pequena"], back: "Si es importante para ti, tambien lo es para nosotros. Cada chispa merece la oportunidad de convertirse en una llama." },
-        { title: ["Simple y", "transparente"], back: "Sin pasos confusos ni barreras innecesarias. Solo un camino claro y guiado desde la idea hasta el borrador estructurado." },
-        { title: ["Impulsamos", "a los creadores"], back: "Herramientas para fundadores, inventores y equipos tecnicos que necesitan avanzar con seriedad." },
+        { title: ["Inventores"], back: "Inventores independientes que convierten una idea en un borrador de patente estructurado y listo para revisión, sin necesitar un abogado desde el primer día." },
+        { title: ["Startups"], back: "Fundadores y equipos de producto que documentan invenciones y gestionan su PI como parte de construir su empresa." },
+        { title: ["Centros de Investigación", "y Universidades"], back: "Instituciones y oficinas de transferencia tecnológica que preparan divulgaciones y borradores de patente para las invenciones de sus laboratorios." },
+        { title: ["Profesionales", "de PI"], back: "Abogados y agentes que usan IPnite para acelerar la redacción, la revisión de arte previo y la tramitación para sus clientes." },
       ],
     }
   : lang === "pt"
   ? {
-      heading: "Por que fazemos isso",
-      intro: "As ideias são uma das moedas mais valiosas do mundo, mas muitas se perdem porque os inventores acham que a proteção é só para grandes empresas.",
-      emphasis: "A IPnite existe para mudar essa narrativa.",
+      heading: "Para quem fazemos isso",
+      intro: "De um inventor que apresenta sua primeira ideia a um escritório de transferência de tecnologia universitário, a IPnite é feita para quem transforma uma ideia em propriedade intelectual protegida.",
+      emphasis: "Se você está construindo algo que vale a pena proteger, a IPnite é para você.",
       cards: [
-        { title: ["Nenhuma ideia", "é pequena demais"], back: "Se é importante para você, também é importante para nós. Cada centelha merece a chance de virar uma chama." },
-        { title: ["Simples e", "transparente"], back: "Sem passos confusos nem barreiras desnecessárias. Apenas um caminho claro e guiado da ideia ao rascunho estruturado." },
-        { title: ["Fortalecemos", "os criadores"], back: "Ferramentas para fundadores, inventores e equipes técnicas que precisam avançar com seriedade." },
+        { title: ["Inventores"], back: "Inventores independentes que transformam uma ideia em um rascunho de patente estruturado e pronto para revisão, sem precisar de um advogado desde o primeiro dia." },
+        { title: ["Startups"], back: "Fundadores e equipes de produto que documentam invenções e gerenciam sua PI como parte da construção da empresa." },
+        { title: ["Centros de Pesquisa", "e Universidades"], back: "Instituições e escritórios de transferência de tecnologia que preparam divulgações e rascunhos de patente para as invenções de seus laboratórios." },
+        { title: ["Profissionais", "de PI"], back: "Advogados e agentes que usam a IPnite para acelerar a redação, a revisão de arte anterior e a prosecução para seus clientes." },
       ],
     }
   : {
-      heading: "Why we do it",
-      intro: "Ideas are the world's most valuable currency, but too many are lost because inventors believe protection is only for large corporations.",
-      emphasis: "IPnite exists to change that narrative.",
+      heading: "Who We Do It For",
+      intro: "From a first-time inventor to a university tech transfer office, IPnite is built for anyone turning an idea into protected intellectual property.",
+      emphasis: "If you're building something worth protecting, IPnite is for you.",
       cards: [
-        { title: ["No Idea", "Too Small"], back: "If it's important to you, it's important to us. Every spark deserves a chance to become a flame." },
-        { title: ["Simple &", "Transparent"], back: "No confusing first steps. Just a guided path from idea to structured draft." },
-        { title: ["Empowering", "Creators"], back: "Tools for builders, founders, and creators preparing their inventions for review." },
+        { title: ["Inventors"], back: "Independent inventors turning a raw idea into a structured, review-ready patent draft without needing an attorney from day one." },
+        { title: ["Startups"], back: "Founders and product teams documenting inventions and managing IP as part of building their company." },
+        { title: ["Research Centers", "& Universities"], back: "Institutions and tech transfer offices preparing disclosures and patent drafts for the inventions coming out of their labs." },
+        { title: ["IP", "Professionals"], back: "Attorneys and agents who use IPnite to speed up drafting, prior-art review, and prosecution work for their clients." },
       ],
     };
 ---
 
 <section
-  id="why-we-do-it"
-  aria-labelledby="why-heading"
+  id="who-we-do-it-for"
+  aria-labelledby="who-heading"
   class="relative z-0 w-full overflow-hidden bg-white"
   style="padding-top: 12px; padding-bottom: 88px;"
 >
@@ -58,121 +61,63 @@ const copy = lang === "es"
   <div class="relative w-[1440px] mx-auto">
     <!-- Heading -->
     <h2
-      id="why-heading"
-      class="absolute top-[36px] left-[calc(50%-216px)] w-[433px] [font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] text-5xl text-center tracking-[0] leading-[64.8px]"
+      id="who-heading"
+      class="relative [font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] text-5xl text-center tracking-[0] leading-[64.8px]"
     >
       {copy.heading}
     </h2>
 
     <!-- Separador -->
-    <div class="absolute top-[116px] left-[calc(50%-197px)] w-[395px] h-[3px] bg-[#6b2a2f] opacity-40"></div>
+    <div class="relative h-[3px] bg-[#6b2a2f] opacity-40"></div>
 
     <!-- Párrafo -->
-    <p class="absolute top-[133px] left-[calc(50%-380px)] w-[760px] [font-family:'Roboto',sans-serif] text-[#505050] text-[22px] text-center tracking-[-0.42px] leading-[33px]">
+    <p class="relative [font-family:'Roboto',sans-serif] text-[#505050] text-[22px] text-center tracking-[-0.42px] leading-[33px]">
       <span class="font-medium">
         {copy.intro}
       </span>
-      <br />
-      <strong class="[font-family:'Roboto',sans-serif] font-bold">{copy.emphasis}</strong>
     </p>
 
-    <!-- Card 1: No Idea Too Small -->
-    <article class="absolute top-[275px] left-[85px] w-[405px] h-[180px] group cursor-default">
-      <!-- Dorso (rojo) -->
-      <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
-        style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
-        <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-          {copy.cards[0].back}
-        </p>
-      </div>
-      <!-- Frente (blanco) -->
-      <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-        <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
-          {copy.cards[0].title[0]}<br />{copy.cards[0].title[1]}
+    <!-- Audience cards -->
+    {copy.cards.map((card) => (
+      <article class="who-card group cursor-default">
+        <!-- Dorso (rojo) -->
+        <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
+          style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
+          <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
+            {card.back}
+          </p>
         </div>
-      </div>
-    </article>
-
-    <!-- Card 2: Simple & Transparent -->
-    <article class="absolute top-[356px] left-[519px] w-[405px] h-[180px] group cursor-default">
-      <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
-        style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
-        <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-          {copy.cards[1].back}
-        </p>
-      </div>
-      <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-        <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
-          {copy.cards[1].title[0]}<br />{copy.cards[1].title[1]}
+        <!-- Frente (blanco) -->
+        <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 p-6">
+          <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[36px] text-center tracking-[0] leading-[43.2px]">
+            {card.title.map((line, i) => <>{i > 0 && <br />}{line}</>)}
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    ))}
 
-    <!-- Card 3: Empowering Creators -->
-    <article class="absolute top-[275px] left-[954px] w-[405px] h-[180px] group cursor-default">
-      <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
-        style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
-        <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-          {copy.cards[2].back}
-        </p>
-      </div>
-      <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-        <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[42px] text-center tracking-[0] leading-[50.4px]">
-          {copy.cards[2].title[0]}<br />{copy.cards[2].title[1]}
-        </div>
-      </div>
-    </article>
-
-    <!-- Ícono entre card 1 y 2 -->
-    <div class="why-brain-ring absolute top-[415px] left-[465px] w-[75px] h-[75px] rounded-full flex items-center justify-center" aria-hidden="true">
-      <img class="why-brain-icon w-[44px] h-[40px] object-contain" alt="" src="/images/cerebro.png" />
-    </div>
-
-    <!-- Ícono entre card 2 y 3 -->
-    <div class="why-brain-ring absolute top-[365px] left-[899px] w-[75px] h-[75px] rounded-full flex items-center justify-center" aria-hidden="true">
-      <img class="why-brain-icon w-[44px] h-[40px] object-contain" alt="" src="/images/cerebro.png" />
-    </div>
+    <!-- Énfasis final -->
+    <p class="who-emphasis [font-family:'Roboto',sans-serif] font-bold text-[#4c0815] text-center">
+      {copy.emphasis}
+    </p>
   </div>
-
-  <!-- Spacer para que el section ocupe altura correcta (tarjetas absolutas) -->
-  <div style="height: 570px;"></div>
 </section>
 
 <style>
-  .why-brain-ring {
-    border: 2px solid #6b2a2f;
-    background: transparent;
-    box-shadow: 0 8px 18px rgba(107, 42, 47, 0.10);
+  #who-we-do-it-for {
+    padding: 52px clamp(18px, 5vw, 80px) 56px !important;
   }
 
-  .why-brain-icon {
-    filter: saturate(1.35) contrast(1.08);
-  }
-
-  #why-we-do-it {
-    padding: 52px clamp(18px, 5vw, 80px) 96px !important;
-  }
-
-  #why-we-do-it > .relative.w-\[1440px\].mx-auto {
+  #who-we-do-it-for > .relative.w-\[1440px\].mx-auto {
+    position: relative;
     width: min(100%, 1280px);
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
     align-items: stretch;
   }
 
-  #why-we-do-it h2,
-  #why-we-do-it > .relative.w-\[1440px\].mx-auto > p,
-  #why-we-do-it article,
-  #why-we-do-it > .relative.w-\[1440px\].mx-auto > div {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-  }
-
-  #why-we-do-it h2 {
+  #who-we-do-it-for h2 {
     grid-column: 1 / -1;
     width: min(100%, 760px) !important;
     margin: 0 auto !important;
@@ -181,14 +126,13 @@ const copy = lang === "es"
     text-wrap: balance;
   }
 
-  #why-we-do-it > .relative.w-\[1440px\].mx-auto > div:first-of-type {
+  #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > div:first-of-type {
     grid-column: 1 / -1;
     width: min(395px, 70vw) !important;
-    height: 3px !important;
     margin: -8px auto 0 !important;
   }
 
-  #why-we-do-it > .relative.w-\[1440px\].mx-auto > p {
+  #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > p {
     grid-column: 1 / -1;
     width: min(100%, 820px) !important;
     margin: 0 auto 32px !important;
@@ -197,37 +141,33 @@ const copy = lang === "es"
     letter-spacing: 0 !important;
   }
 
-  #why-we-do-it article {
-    width: 100% !important;
+  .who-card {
+    position: relative;
+    width: 100%;
     min-height: 190px;
-    height: auto !important;
+    height: auto;
   }
 
-  #why-we-do-it article:nth-of-type(1),
-  #why-we-do-it article:nth-of-type(2),
-  #why-we-do-it article:nth-of-type(3) {
-    grid-column: auto;
-  }
-
-  #why-we-do-it .why-brain-ring {
-    display: none;
-  }
-
-  #why-we-do-it > div:last-child {
-    display: none;
+  .who-emphasis {
+    grid-column: 1 / -1;
+    width: min(100%, 820px);
+    margin: 32px auto 0;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
   }
 
   @media (max-width: 900px) {
-    #why-we-do-it {
-      padding: 58px 16px 72px !important;
+    #who-we-do-it-for {
+      padding: 58px 16px 44px !important;
       overflow: hidden;
     }
 
-    #why-we-do-it > div:first-child {
+    #who-we-do-it-for > div:first-child {
       display: none;
     }
 
-    #why-we-do-it > .relative.w-\[1440px\].mx-auto {
+    #who-we-do-it-for > .relative.w-\[1440px\].mx-auto {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -235,19 +175,7 @@ const copy = lang === "es"
       gap: 16px;
     }
 
-    #why-we-do-it h2,
-    #why-we-do-it p,
-    #why-we-do-it article,
-    #why-we-do-it > .relative.w-\[1440px\].mx-auto > div {
-      position: relative !important;
-      top: auto !important;
-      left: auto !important;
-      right: auto !important;
-      transform: none !important;
-    }
-
-    #why-we-do-it h2 {
-      order: 1;
+    #who-we-do-it-for h2 {
       width: 100% !important;
       max-width: 360px;
       margin: 0 !important;
@@ -256,15 +184,12 @@ const copy = lang === "es"
       text-wrap: balance;
     }
 
-    #why-we-do-it > .relative.w-\[1440px\].mx-auto > div:first-of-type {
-      order: 2;
+    #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > div:first-of-type {
       width: min(260px, 74vw) !important;
-      height: 3px !important;
       margin: 0 auto 2px !important;
     }
 
-    #why-we-do-it > .relative.w-\[1440px\].mx-auto > p {
-      order: 3;
+    #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > p {
       width: 100% !important;
       max-width: 360px;
       margin: 0 0 16px !important;
@@ -274,8 +199,7 @@ const copy = lang === "es"
       text-wrap: pretty;
     }
 
-    #why-we-do-it article {
-      order: 4;
+    .who-card {
       width: 100% !important;
       max-width: 360px;
       height: auto !important;
@@ -287,7 +211,7 @@ const copy = lang === "es"
       box-shadow: 0 14px 30px rgba(107, 42, 47, 0.08);
     }
 
-    #why-we-do-it article > div {
+    .who-card > div {
       position: relative !important;
       inset: auto !important;
       opacity: 1 !important;
@@ -296,33 +220,33 @@ const copy = lang === "es"
       transition: none !important;
     }
 
-    #why-we-do-it article > div:first-child {
+    .who-card > div:first-child {
       order: 2;
     }
 
-    #why-we-do-it article > div:nth-child(2) {
+    .who-card > div:nth-child(2) {
       order: 1;
     }
 
-    #why-we-do-it article [class*="text-[42px]"] {
+    .who-card [class*="text-[36px]"] {
       padding: 24px 20px 12px;
-      font-size: 30px !important;
-      line-height: 1.15 !important;
+      font-size: 28px !important;
+      line-height: 1.18 !important;
     }
 
-    #why-we-do-it article p {
+    .who-card p {
       max-width: none;
       padding: 18px 20px 22px;
       font-size: 16px !important;
       line-height: 1.45 !important;
     }
 
-    #why-we-do-it > .relative.w-\[1440px\].mx-auto > div:not(:first-of-type) {
-      display: none;
-    }
-
-    #why-we-do-it > div:last-child {
-      height: 0 !important;
+    .who-emphasis {
+      width: 100%;
+      max-width: 360px;
+      margin: 16px 0 0;
+      font-size: 19px;
+      line-height: 1.4;
     }
   }
 </style>

@@ -6,7 +6,7 @@ interface Props {
 
 const { lang = "en" } = Astro.props;
 const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
-const localizedHref = (path) => `${prefix}${path}`;
+const localizedHref = (path: string) => `${prefix}${path}`;
 
 const copy = lang === "es"
   ? {

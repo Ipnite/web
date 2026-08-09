@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageHeroImage from "@components/PageHeroImage.astro";
+import FlagBadge from "@components/FlagBadge.astro";
 
 const aboutStructuredData = [
   {
@@ -41,12 +42,22 @@ const aboutStructuredData = [
         "item": {
           "@type": "Person",
           "name": "Lucas Larrosa",
-          "jobTitle": "CSO · Platform Security",
+          "jobTitle": "CTO · Platform Security",
           "worksFor": { "@type": "Organization", "name": "IPnite" },
           "sameAs": "https://www.linkedin.com/in/lucaslarrosa/",
         },
       },
     ],
+  },
+];
+
+const collaborators = [
+  {
+    photo: "/images/israel.jpeg",
+    name: "Israel Flores",
+    role: "Advogado de PI · Prosecução",
+    country: "Mexico" as const,
+    href: "https://mx.linkedin.com/in/israel-flores-a75a44125",
   },
 ];
 ---
@@ -57,6 +68,7 @@ const aboutStructuredData = [
   description="Conheca a filosofia, missao, visao e equipe por tras da IPnite."
   canonicalPath="/pt-br/about-us/"
   alternatePath="/about-us/"
+  keywords="Sobre a IPnite, equipe IPnite, missao IPnite, redacao de patentes DIY, melhor ferramenta para redigir patentes, gestao de PI para startups, plataforma de propriedade intelectual"
   structuredData={aboutStructuredData}
 >
   <section class="about-page">
@@ -105,17 +117,40 @@ const aboutStructuredData = [
       </div>
       <div class="team-grid">
         <article class="team-card">
-          <div class="team-avatar" aria-hidden="true">R</div>
+          <div class="team-avatar" aria-hidden="true"><img src="/images/rafael.jpg" alt="Rafael Betanzos San Juan" loading="lazy" /></div>
           <h3>Rafael Betanzos San Juan</h3>
           <p class="team-role">CEO · Estrategia de IP · Plataforma</p>
+          <FlagBadge country="Mexico" label="México" />
           <p>Ele lidera a plataforma da IPnite, os agentes de IA, os fluxos de redacao, a direcao do produto e a estrategia de propriedade intelectual.</p>
         </article>
         <article class="team-card">
-          <div class="team-avatar" aria-hidden="true">L</div>
+          <div class="team-avatar" aria-hidden="true"><img src="/images/lucas.jpg" alt="Lucas Larrosa" loading="lazy" /></div>
           <h3>Lucas Larrosa</h3>
-          <p class="team-role">CSO · Seguranca da plataforma</p>
+          <p class="team-role">CTO · Seguranca da plataforma</p>
+          <FlagBadge country="Argentina" />
           <p>Ele lidera a seguranca da plataforma, a protecao de acessos, a infraestrutura e as operacoes tecnicas seguras.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="about-section collaborators-section" aria-labelledby="collaborators-heading">
+      <div class="about-section-head">
+        <h2 id="collaborators-heading">Nossos Parceiros</h2>
+      </div>
+      <div class="team-grid collaborators-grid">
+        {collaborators.map((person) => (
+          <article class="team-card collaborator-card">
+            <div class="collaborator-avatar">
+              <img src={person.photo} alt={person.name} loading="lazy" />
+            </div>
+            <h3>{person.name}</h3>
+            <p class="team-role">{person.role}</p>
+            <div class="collaborator-meta">
+              <FlagBadge country={person.country} label="México" />
+              <a href={person.href} target="_blank" rel="noopener" class="profile-link">Ver LinkedIn</a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -145,7 +180,12 @@ const aboutStructuredData = [
   .principle-card,.team-card{background:rgba(255,255,255,.88);border:1px solid rgba(107,42,47,.12);border-radius:30px;box-shadow:0 22px 50px rgba(107,42,47,.07)}
   .principle-card{min-height:230px;padding:34px 28px;text-align:center}.principle-card span{display:block;color:rgba(107,42,47,.28);font-family:"Roboto Slab",serif;font-size:44px;font-weight:800;line-height:1;margin-bottom:18px}.principle-card h3,.team-card h3{margin:0;color:#6b2a2f;font-family:"Roboto Slab",serif;font-size:30px;font-weight:800;line-height:1.18}.principle-card p{margin:14px 0 0;font-size:16px}
   .promise-section{padding-top:48px}.promise-card{max-width:1000px;margin:0 auto;text-align:center}.promise-card h2 em{color:#6b2a2f;font-style:italic}
-  .team-card{padding:28px;text-align:center}.team-avatar{width:72px;height:72px;border-radius:999px;margin:0 auto 18px;background:#6b2a2f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Roboto Slab",serif;font-size:32px;font-weight:800}.team-role{color:#6b2a2f;font-weight:800}
+  .team-card{padding:28px;text-align:center}.team-avatar{width:72px;height:72px;border-radius:999px;margin:0 auto 18px;overflow:hidden;background:#6b2a2f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Roboto Slab",serif;font-size:32px;font-weight:800}.team-avatar img{width:100%;height:100%;object-fit:cover;background:#fff}.team-role{color:#6b2a2f;font-weight:800}
+  .team-card :global(.flag-badge){justify-content:center;margin-top:10px}
+  .collaborators-section{padding-top:24px}.collaborators-grid{grid-template-columns:repeat(auto-fit,minmax(220px,260px));justify-content:center}
+  .collaborator-avatar{width:132px;height:132px;margin:0 auto 22px;border-radius:30px;overflow:hidden;background:#fff;border:1px solid rgba(107,42,47,.12)}.collaborator-avatar img{width:100%;height:100%;object-fit:cover;background:#fff}
+  .collaborator-meta{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:16px}.collaborator-meta :global(.flag-badge){justify-content:center}
+  .profile-link{min-height:44px;display:inline-flex;align-items:center;justify-content:center;margin-top:4px;border:1px solid rgba(107,42,47,.18);border-radius:999px;padding:0 18px;color:#4c0815;font-family:"Roboto Slab",serif;font-size:14px;font-weight:800;text-decoration:underline;transition:transform 180ms ease,box-shadow 180ms ease}.profile-link:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(107,42,47,.13)}
   .about-final{padding:28px 0 0;text-align:center}
   @media (max-width: 980px){.principle-grid,.team-grid{grid-template-columns:1fr}}
   @media (max-width: 760px){.about-page{padding:0 16px 72px}.about-hero{min-height:0;padding:60px 0 56px}.about-hero h1{font-size:clamp(44px,12vw,70px)}.about-statement{font-size:clamp(24px,7vw,38px)}.about-section{padding:54px 0}}

@@ -5,28 +5,137 @@ interface Props {
 
 const { lang = "en" } = Astro.props;
 const check = "✓";
-const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
-const localizedPath = (path: string) => `${prefix}${path}`;
 
 const copy = lang === "es"
   ? {
       heading: ["Mantenlo simple. ", "Tres planes"],
-      freemium: { title: "Freemium", price: "$0.00", lede: "IPnite invierte en ti.", copy: "Para fundadores seleccionados en etapa temprana. El acceso puede ofrecerse a cambio de un pequeño porcentaje del emprendimiento, sujeto a términos separados.", features: ["Redacción asistida.", "Contacto con despachos en el país objetivo.", "Punto de entrada amigable para fundadores."], cta: "Empezar gratis" },
-      starter: { eyebrow: "Paga sobre la marcha", title: "Inicial", price: "Desde $99.00", lede: "Precio basado en paquetes de créditos.", copy: "Compra créditos según necesites y úsalos en redacción, revisión de arte previo, variantes, reivindicaciones y exportación.", features: ["Paquetes de créditos flexibles.", "Ahorra más de $3,000 por borrador frente a costos tradicionales típicos."], cta: "Empezar tu borrador" },
-      pro: { title: "Profesional", price: "$499.00", lede: "Facturación mensual o anual.", copy: "Para fundadores y equipos que necesitan capacidad recurrente de redacción, iteración y soporte estratégico más profundo.", note: "Especialmente para startups, universidades y aceleradoras.", features: ["Gestión de portafolio.", "Búsqueda de patentes recurrente.", "Análisis de patentes mejorado."], cta: "Elegir Profesional" },
+      freemium: {
+        title: "Freemium",
+        price: "$0",
+        lede: "Para siempre, gratis.",
+        copy: "Un plan gratuito para explorar el flujo de redacción de IPnite antes de subir de plan.",
+        features: [
+          "1 proyecto activo.",
+          "2 búsquedas de arte previo por mes.",
+        ],
+        cta: "Empezar gratis",
+      },
+      starter: {
+        title: "Inicial",
+        price: "$199",
+        priceUnit: "/mes",
+        lede: "o $1,990/año.",
+        copy: "Para inventores y equipos chicos que necesitan más de un proyecto y capacidad para invitar colaboradores.",
+        features: [
+          "Hasta 10 proyectos activos.",
+          "10 búsquedas de arte previo por mes.",
+          "Hasta 2 colaboradores activos por proyecto.",
+          "El dueño puede exportar proyectos como JSON y ZIP.",
+        ],
+        cta: "Elegir Inicial",
+      },
+      pro: {
+        title: "Profesional",
+        price: "$499",
+        priceUnit: "/mes",
+        lede: "o $4,990/año.",
+        copy: "Para startups, universidades y aceleradoras que necesitan capacidad recurrente de redacción, búsqueda FTO y equipos más grandes.",
+        features: [
+          "Proyectos activos ilimitados.",
+          "50 búsquedas de arte previo por mes.",
+          "Hasta 10 colaboradores activos por proyecto.",
+          "Incluye búsqueda FTO.",
+          "El dueño puede exportar proyectos como JSON y ZIP.",
+        ],
+        cta: "Elegir Profesional",
+      },
     }
   : lang === "pt"
   ? {
       heading: ["Mantenha simples. ", "Tres planos"],
-      freemium: { title: "Freemium", price: "$0.00", lede: "A IPnite investe em você.", copy: "Para fundadores selecionados em fase inicial. O acesso pode ser oferecido em troca de uma pequena porcentagem do empreendimento, sujeito a termos separados.", features: ["Redação assistida.", "Contato com escritórios no país pretendido.", "Ponto de entrada amigável para fundadores."], cta: "Começar grátis" },
-      starter: { eyebrow: "Pague conforme usar", title: "Inicial", price: "A partir de $99.00", lede: "Precificação baseada em pacotes de créditos.", copy: "Compre créditos conforme precisar e use-os em redação, revisão de arte anterior, variantes, reivindicações e exportação.", features: ["Pacotes de créditos flexíveis.", "Economize mais de $3,000 por rascunho em comparação com custos tradicionais típicos."], cta: "Começar seu rascunho" },
-      pro: { title: "Profissional", price: "$499.00", lede: "Faturamento mensal ou anual.", copy: "Para fundadores e equipes que precisam de capacidade recorrente de redação, iteração e suporte estratégico mais profundo.", note: "Especialmente para startups, universidades e aceleradoras.", features: ["Gestão de portfólio.", "Busca de patentes recorrente.", "Análise de patentes aprimorada."], cta: "Escolher Profissional" },
+      freemium: {
+        title: "Freemium",
+        price: "$0",
+        lede: "Para sempre, grátis.",
+        copy: "Um plano gratuito para explorar o fluxo de redação da IPnite antes de fazer upgrade.",
+        features: [
+          "1 projeto ativo.",
+          "2 buscas de arte anterior por mês.",
+        ],
+        cta: "Começar grátis",
+      },
+      starter: {
+        title: "Inicial",
+        price: "$199",
+        priceUnit: "/mês",
+        lede: "ou $1,990/ano.",
+        copy: "Para inventores e equipes pequenas que precisam de mais de um projeto e capacidade para convidar colaboradores.",
+        features: [
+          "Até 10 projetos ativos.",
+          "10 buscas de arte anterior por mês.",
+          "Até 2 colaboradores ativos por projeto.",
+          "O dono pode exportar projetos como JSON e ZIP.",
+        ],
+        cta: "Escolher Inicial",
+      },
+      pro: {
+        title: "Profissional",
+        price: "$499",
+        priceUnit: "/mês",
+        lede: "ou $4,990/ano.",
+        copy: "Para startups, universidades e aceleradoras que precisam de capacidade recorrente de redação, busca FTO e equipes maiores.",
+        features: [
+          "Projetos ativos ilimitados.",
+          "50 buscas de arte anterior por mês.",
+          "Até 10 colaboradores ativos por projeto.",
+          "Inclui busca FTO.",
+          "O dono pode exportar projetos como JSON e ZIP.",
+        ],
+        cta: "Escolher Profissional",
+      },
     }
   : {
       heading: ["Keep It Simple. ", "Three Plans"],
-      freemium: { title: "Freemium", price: "$0.00", lede: "IPnite invests in you.", copy: "For selected early-stage founders. Access may be offered in exchange for a small percentage of the venture, subject to separate terms.", features: ["Assisted drafting.", "Contact with law firms in the intended country.", "Founder-friendly entry point."], cta: "Start free" },
-      starter: { eyebrow: "Pay as you go", title: "Starter", price: "From $99.00", lede: "Credit pack-based pricing.", copy: "Buy credits as needed and use them across drafting, prior-art review, variants, claims, and export actions.", features: ["Flexible credit packs.", "Save $3,000+ per patent draft compared with typical traditional preparation costs."], cta: "Start your draft" },
-      pro: { title: "Professional", price: "$499.00", lede: "Monthly or yearly billing.", copy: "For founders and teams that need recurring drafting capacity, iteration, and deeper strategy support.", note: "Especially for startups, universities, and accelerators.", features: ["Portfolio management.", "Recurring patent search.", "Enhanced patent analysis."], cta: "Choose Professional" },
+      freemium: {
+        title: "Freemium",
+        price: "$0",
+        lede: "Free, forever.",
+        copy: "A free tier to explore IPnite's drafting workflow before upgrading.",
+        features: [
+          "1 active project.",
+          "2 Prior Art searches per month.",
+        ],
+        cta: "Start free",
+      },
+      starter: {
+        title: "Starter",
+        price: "$199",
+        priceUnit: "/mo",
+        lede: "or $1,990/yr.",
+        copy: "For inventors and small teams who need more than one project and the ability to invite collaborators.",
+        features: [
+          "Up to 10 active projects.",
+          "10 Prior Art searches per month.",
+          "Up to 2 active collaborators per project.",
+          "Owner can export projects as JSON and ZIP.",
+        ],
+        cta: "Choose Starter",
+      },
+      pro: {
+        title: "Professional",
+        price: "$499",
+        priceUnit: "/mo",
+        lede: "or $4,990/yr.",
+        copy: "For startups, universities, and accelerators that need recurring drafting capacity, FTO search, and larger teams.",
+        features: [
+          "Unlimited active projects.",
+          "50 Prior Art searches per month.",
+          "Up to 10 active collaborators per project.",
+          "FTO Search included.",
+          "Owner can export projects as JSON and ZIP.",
+        ],
+        cta: "Choose Professional",
+      },
     };
 ---
 
@@ -53,41 +162,21 @@ const copy = lang === "es"
           {copy.freemium.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
-        <a
-          class="plan-card__cta"
-          href="https://forms.gle/83QhdXPJK4UPJ9n28"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-analytics-label={`pricing_${lang}_freemium_form`}
-        >
+        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
           {copy.freemium.cta}
         </a>
       </article>
 
       <article class="plan-card plan-card--featured">
         <header>
-          <p class="plan-card__eyebrow">{copy.starter.eyebrow}</p>
           <h3>{copy.starter.title}</h3>
-          <p class="plan-card__price">{copy.starter.price}</p>
+          <p class="plan-card__price">{copy.starter.price}<span class="plan-card__price-unit">{copy.starter.priceUnit}</span></p>
           <p class="plan-card__lede">{copy.starter.lede}</p>
         </header>
 
         <p class="plan-card__copy">
           {copy.starter.copy}
         </p>
-
-        <div class="credit-packs" aria-label="Starter credit packs">
-          <div>
-            <strong>Basic</strong>
-            <span>$99 USD</span>
-            <small>150 credits</small>
-          </div>
-          <div>
-            <strong>Pro</strong>
-            <span>$199 USD</span>
-            <small>350 credits</small>
-          </div>
-        </div>
 
         <ul class="plan-card__features">
           {copy.starter.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
@@ -101,24 +190,19 @@ const copy = lang === "es"
       <article class="plan-card">
         <header>
           <h3>{copy.pro.title}</h3>
-          <p class="plan-card__price">{copy.pro.price}</p>
+          <p class="plan-card__price">{copy.pro.price}<span class="plan-card__price-unit">{copy.pro.priceUnit}</span></p>
           <p class="plan-card__lede">{copy.pro.lede}</p>
         </header>
 
         <p class="plan-card__copy">
           {copy.pro.copy}
-          <small class="plan-card__note">{copy.pro.note}</small>
         </p>
 
         <ul class="plan-card__features">
           {copy.pro.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
-        <a
-          class="plan-card__cta"
-          href={localizedPath("/coming-soon")}
-          data-analytics-label={`pricing_${lang}_professional_coming_soon`}
-        >
+        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
           {copy.pro.cta}
         </a>
       </article>
@@ -179,15 +263,6 @@ const copy = lang === "es"
     box-shadow: 0 16px 36px rgba(107, 42, 47, 0.12);
   }
 
-  .plan-card__eyebrow {
-    margin: -4px 0 8px;
-    color: #6b2a2f;
-    font-family: "Roboto Slab", serif;
-    font-size: 17px;
-    font-weight: 800;
-    line-height: 1.2;
-  }
-
   .plan-card h3 {
     margin: 0;
     color: #505050;
@@ -204,6 +279,14 @@ const copy = lang === "es"
     font-size: clamp(30px, 2.8vw, 42px);
     font-weight: 800;
     line-height: 1.08;
+  }
+
+  .plan-card__price-unit {
+    margin-left: 4px;
+    color: #8f6e72;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(15px, 1.3vw, 18px);
+    font-weight: 700;
   }
 
   .plan-card__lede {
@@ -224,58 +307,6 @@ const copy = lang === "es"
     line-height: 1.45;
   }
 
-  .plan-card__note {
-    display: block;
-    margin-top: 8px;
-    color: #8f6e72;
-    font-family: "Roboto", sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 1.4;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  .credit-packs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 20px;
-  }
-
-  .credit-packs div {
-    border-radius: 16px;
-    background: #ededed;
-    padding: 14px 10px;
-    color: #4c0815;
-    font-family: "Roboto", sans-serif;
-  }
-
-  .credit-packs strong,
-  .credit-packs span,
-  .credit-packs small {
-    display: block;
-  }
-
-  .credit-packs strong {
-    font-family: "Roboto Slab", serif;
-    font-size: 22px;
-    font-weight: 800;
-  }
-
-  .credit-packs span {
-    margin-top: 5px;
-    font-size: 17px;
-    font-weight: 800;
-  }
-
-  .credit-packs small {
-    margin-top: 4px;
-    color: #505050;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
   .plan-card__features {
     display: grid;
     gap: 13px;
@@ -292,7 +323,7 @@ const copy = lang === "es"
     align-items: start;
     color: #505050;
     font-family: "Roboto", sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.32;
   }
@@ -361,10 +392,6 @@ const copy = lang === "es"
       padding: 26px 20px 24px;
     }
 
-    .plan-card__eyebrow {
-      font-size: 15px;
-    }
-
     .plan-card h3 {
       font-size: 34px;
     }
@@ -393,26 +420,6 @@ const copy = lang === "es"
       font-size: 16px;
       white-space: normal;
       text-align: center;
-    }
-
-    .credit-packs {
-      grid-template-columns: 1fr;
-    }
-
-    .credit-packs div {
-      padding: 12px 10px;
-    }
-
-    .credit-packs strong {
-      font-size: 20px;
-    }
-
-    .credit-packs span {
-      font-size: 15px;
-    }
-
-    .credit-packs small {
-      font-size: 13px;
     }
   }
 </style>

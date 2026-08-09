@@ -37,7 +37,7 @@ const homeStructuredData = [
     audience: [
       { "@type": "Audience", audienceType: "Independent inventors" },
       { "@type": "Audience", audienceType: "Entrepreneurs" },
-      { "@type": "Audience", audienceType: "Startups" },
+      { "@type": "Audience", audienceType: "Startups managing IP in-house (DIY)" },
       { "@type": "Audience", audienceType: "Venture capital funds evaluating startup IP" },
     ],
     areaServed: ["United States", "Latin America", "European Patent Office jurisdictions"],
@@ -47,34 +47,38 @@ const homeStructuredData = [
         name: "Freemium",
         price: "0.00",
         priceCurrency: "USD",
-        description: "Selective founder-friendly access where IPnite may invest in selected early-stage companies under separate terms.",
+        description: "Free tier with 1 active project and 2 Prior Art searches per month.",
       },
       {
         "@type": "Offer",
         name: "Starter",
         priceSpecification: [
-          { "@type": "UnitPriceSpecification", name: "Basic credit pack", price: "99.00", priceCurrency: "USD" },
-          { "@type": "UnitPriceSpecification", name: "Pro credit pack", price: "199.00", priceCurrency: "USD" },
+          { "@type": "UnitPriceSpecification", name: "Monthly", price: "199.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
+          { "@type": "UnitPriceSpecification", name: "Annual", price: "1990.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
         ],
-        description: "Credit-pack access for independent inventors preparing patent drafts.",
+        description: "Up to 10 active projects, 10 Prior Art searches per month, and up to 2 active collaborators per project.",
       },
       {
         "@type": "Offer",
         name: "Professional",
-        price: "499.00",
-        priceCurrency: "USD",
-        description: "Recurring drafting, portfolio, patent search, and IP analysis workflows for startups, universities, accelerators, and venture funds.",
+        priceSpecification: [
+          { "@type": "UnitPriceSpecification", name: "Monthly", price: "499.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
+          { "@type": "UnitPriceSpecification", name: "Annual", price: "4990.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
+        ],
+        description: "Unlimited active projects, 50 Prior Art searches per month, FTO Search included, and up to 10 active collaborators per project.",
       },
     ],
     description:
-      "The Drafter by IPnite is an AI patent drafting tool that gives structure and defensibility to early patent application drafts, especially provisional-style drafts prepared with limited resources.",
+      "The Drafter by IPnite is a DIY (do-it-yourself) AI patent drafting tool that gives structure and defensibility to early patent application drafts, especially provisional-style drafts prepared with limited resources, and doubles as a lightweight IP management tool for startups.",
     featureList: [
+      "DIY patent drafting for founders without an attorney yet",
       "Guided invention disclosure workflow",
       "Patent application draft generation",
       "Prior-art review support",
       "Independent and dependent claim drafting",
       "Draft variants and invention embodiment expansion",
       "Exportable patent drafts for attorney or agent review",
+      "Startup IP management: organize disclosures, claims, and drafts in one place",
       "IP portfolio and evaluation support for startups and funds",
     ],
   },
@@ -115,14 +119,23 @@ const homeStructuredData = [
           text: "IPnite supports patent drafting workflows for the United States, Latin America, and EPO-oriented patent preparation contexts.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Is IPnite a good DIY tool for patent writing and startup IP management?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. IPnite is built as a DIY (do-it-yourself) patent drafting tool for founders and inventors without an attorney yet, and it also works as a lightweight way for startups to manage their intellectual property: disclosures, claims, drawings, and drafts organized in one place.",
+        },
+      },
     ],
   },
 ];
 ---
 
 <BaseLayout
-  title="IPnite"
-  description="IPnite is an AI-assisted patent preparation platform that helps inventors, founders, startups, and companies document inventions, review prior art, draft claims, and export structured patent drafts."
+  title="IPnite — DIY Patent Drafting & Startup IP Management"
+  description="IPnite is the AI-assisted DIY patent drafting platform for inventors, founders, and startups. Document inventions, review prior art, draft claims, and manage your startup's IP in one place, without needing an attorney to get started."
+  keywords="IPnite, AI patent drafting, DIY patent drafting, best tool for patent writing, startup IP management, provisional patent draft, intellectual property, inventors, founders, patent workflow, prior art review, patent claims"
   canonicalPath="/"
   alternatePath="/es/"
   structuredData={homeStructuredData}

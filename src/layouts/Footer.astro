@@ -9,25 +9,28 @@ const { lang = "en" } = Astro.props;
 const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
 const footerLinks = lang === "es"
   ? [
-      { label: "Por que hacemos esto", href: `${prefix}/#why-we-do-it` },
+      { label: "Para Quién Es", href: `${prefix}/#who-we-do-it-for` },
       { label: "Equipo IP", href: `${prefix}/#ip-team` },
       { label: "Como funciona", href: `${prefix}/#how-it-works` },
       { label: "Planes", href: `${prefix}/#plans` },
+      { label: "Sobre nosotros", href: `${prefix}/about-us/` },
       { label: "Contacto", href: `${prefix}/#contact` },
     ]
   : lang === "pt"
   ? [
-      { label: "Por que fazemos isso", href: `${prefix}/#why-we-do-it` },
+      { label: "Para Quem É", href: `${prefix}/#who-we-do-it-for` },
       { label: "Equipe IP", href: `${prefix}/#ip-team` },
       { label: "Como funciona", href: `${prefix}/#how-it-works` },
       { label: "Planos", href: `${prefix}/#plans` },
+      { label: "Sobre nós", href: `${prefix}/about-us/` },
       { label: "Contato", href: `${prefix}/#contact` },
     ]
   : [
-      { label: "Why We Do It", href: "/#why-we-do-it" },
+      { label: "Who It's For", href: "/#who-we-do-it-for" },
       { label: "IP Team", href: "/#ip-team" },
       { label: "How It Works", href: "/#how-it-works" },
       { label: "Plans", href: "/#plans" },
+      { label: "About Us", href: "/about-us/" },
       { label: "Contact", href: "/#contact" },
     ];
 
@@ -87,8 +90,8 @@ const legalLinks = [
     <!-- Nav links -->
     <nav class="footer-nav absolute left-[1059px] top-[123px]" aria-label="Footer navigation">
       <ul class="m-0 list-none p-0">
-        {footerLinks.map((link, i) => (
-          <li class={`flex h-[25px] ${i > 0 ? "mt-[4px]" : ""}`}>
+        {footerLinks.map((link) => (
+          <li class="flex h-[25px]">
             <a
               href={link.href}
               class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[28.5px] tracking-[-0.28px] text-white hover:underline"
@@ -197,8 +200,10 @@ const legalLinks = [
   }
 
   .site-footer nav ul {
-    display: grid;
-    gap: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 22px;
   }
 
   .site-footer .footer-social ul {

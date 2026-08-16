@@ -13,10 +13,10 @@ const copy = lang === "es"
       intro: "Desde un inventor que presenta su primera idea hasta una oficina de transferencia tecnológica universitaria, IPnite está pensado para quien convierte una idea en propiedad intelectual protegida.",
       emphasis: "Si estás construyendo algo que vale la pena proteger, IPnite es para vos.",
       cards: [
-        { title: ["Inventores"], back: "Inventores independientes que convierten una idea en un borrador de patente estructurado y listo para revisión, sin necesitar un abogado desde el primer día." },
-        { title: ["Startups"], back: "Fundadores y equipos de producto que documentan invenciones y gestionan su PI como parte de construir su empresa." },
-        { title: ["Centros de Investigación", "y Universidades"], back: "Instituciones y oficinas de transferencia tecnológica que preparan divulgaciones y borradores de patente para las invenciones de sus laboratorios." },
-        { title: ["Profesionales", "de PI"], back: "Abogados y agentes que usan IPnite para acelerar la redacción, la revisión de arte previo y la tramitación para sus clientes." },
+        { title: ["Inventores"], image: "/images/inventor-card.webp", alt: "Inventor", back: "Inventores independientes que convierten una idea en un borrador de patente estructurado y listo para revisión, sin necesitar un abogado desde el primer día." },
+        { title: ["Startups"], image: "/images/startups-card.webp", alt: "Startup", back: "Fundadores y equipos de producto que documentan invenciones y gestionan su PI como parte de construir su empresa." },
+        { title: ["Centros de Investigación", "y Universidades"], image: "/images/academic-card.webp", alt: "Investigación académica", back: "Instituciones y oficinas de transferencia tecnológica que preparan divulgaciones y borradores de patente para las invenciones de sus laboratorios." },
+        { title: ["Profesionales", "de PI"], image: "/images/lawyer-card.webp", alt: "Profesional de propiedad intelectual", back: "Abogados y agentes que usan IPnite para acelerar la redacción, la revisión de arte previo y la tramitación para sus clientes." },
       ],
     }
   : lang === "pt"
@@ -25,10 +25,10 @@ const copy = lang === "es"
       intro: "De um inventor que apresenta sua primeira ideia a um escritório de transferência de tecnologia universitário, a IPnite é feita para quem transforma uma ideia em propriedade intelectual protegida.",
       emphasis: "Se você está construindo algo que vale a pena proteger, a IPnite é para você.",
       cards: [
-        { title: ["Inventores"], back: "Inventores independentes que transformam uma ideia em um rascunho de patente estruturado e pronto para revisão, sem precisar de um advogado desde o primeiro dia." },
-        { title: ["Startups"], back: "Fundadores e equipes de produto que documentam invenções e gerenciam sua PI como parte da construção da empresa." },
-        { title: ["Centros de Pesquisa", "e Universidades"], back: "Instituições e escritórios de transferência de tecnologia que preparam divulgações e rascunhos de patente para as invenções de seus laboratórios." },
-        { title: ["Profissionais", "de PI"], back: "Advogados e agentes que usam a IPnite para acelerar a redação, a revisão de arte anterior e a prosecução para seus clientes." },
+        { title: ["Inventores"], image: "/images/inventor-card.webp", alt: "Inventor", back: "Inventores independentes que transformam uma ideia em um rascunho de patente estruturado e pronto para revisão, sem precisar de um advogado desde o primeiro dia." },
+        { title: ["Startups"], image: "/images/startups-card.webp", alt: "Startup", back: "Fundadores e equipes de produto que documentam invenções e gerenciam sua PI como parte da construção da empresa." },
+        { title: ["Centros de Pesquisa", "e Universidades"], image: "/images/academic-card.webp", alt: "Pesquisa acadêmica", back: "Instituições e escritórios de transferência de tecnologia que preparam divulgações e rascunhos de patente para as invenções de seus laboratórios." },
+        { title: ["Profissionais", "de PI"], image: "/images/lawyer-card.webp", alt: "Profissional de propriedade intelectual", back: "Advogados e agentes que usam a IPnite para acelerar a redação, a revisão de arte anterior e a prosecução para seus clientes." },
       ],
     }
   : {
@@ -36,10 +36,10 @@ const copy = lang === "es"
       intro: "From a first-time inventor to a university tech transfer office, IPnite is built for anyone turning an idea into protected intellectual property.",
       emphasis: "If you're building something worth protecting, IPnite is for you.",
       cards: [
-        { title: ["Inventors"], back: "Independent inventors turning a raw idea into a structured, review-ready patent draft without needing an attorney from day one." },
-        { title: ["Startups"], back: "Founders and product teams documenting inventions and managing IP as part of building their company." },
-        { title: ["Research Centers", "& Universities"], back: "Institutions and tech transfer offices preparing disclosures and patent drafts for the inventions coming out of their labs." },
-        { title: ["IP", "Professionals"], back: "Attorneys and agents who use IPnite to speed up drafting, prior-art review, and prosecution work for their clients." },
+        { title: ["Inventors"], image: "/images/inventor-card.webp", alt: "Inventor", back: "Independent inventors turning a raw idea into a structured, review-ready patent draft without needing an attorney from day one." },
+        { title: ["Startups"], image: "/images/startups-card.webp", alt: "Startup", back: "Founders and product teams documenting inventions and managing IP as part of building their company." },
+        { title: ["Research Centers", "& Universities"], image: "/images/academic-card.webp", alt: "Academic research", back: "Institutions and tech transfer offices preparing disclosures and patent drafts for the inventions coming out of their labs." },
+        { title: ["IP", "Professionals"], image: "/images/lawyer-card.webp", alt: "Intellectual property professional", back: "Attorneys and agents who use IPnite to speed up drafting, prior-art review, and prosecution work for their clients." },
       ],
     };
 ---
@@ -59,40 +59,15 @@ const copy = lang === "es"
   </div>
 
   <div class="relative w-[1440px] mx-auto">
-    <!-- Heading -->
-    <h2
-      id="who-heading"
-      class="relative [font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] text-5xl text-center tracking-[0] leading-[64.8px]"
-    >
-      {copy.heading}
-    </h2>
-
-    <!-- Separador -->
+    <h2 id="who-heading" class="relative [font-family:'Roboto_Slab',serif] font-bold text-[#4c0815] text-5xl text-center tracking-[0] leading-[64.8px]">{copy.heading}</h2>
     <div class="relative h-[3px] bg-[#6b2a2f] opacity-40"></div>
-
-    <!-- Párrafo -->
-    <p class="relative [font-family:'Roboto',sans-serif] text-[#505050] text-[22px] text-center tracking-[-0.42px] leading-[33px]">
-      <span class="font-medium">
-        {copy.intro}
-      </span>
-    </p>
+    <p class="relative [font-family:'Roboto',sans-serif] text-[#505050] text-[22px] text-center tracking-[-0.42px] leading-[33px]"><span class="font-medium">{copy.intro}</span></p>
 
     <!-- Audience cards -->
     {copy.cards.map((card) => (
-      <article class="who-card group cursor-default">
-        <!-- Dorso (rojo) -->
-        <div class="absolute inset-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
-          style="background:linear-gradient(180deg,#996c6f 0%,#865155 49%,#6c2b30 100%)">
-          <p class="[font-family:'Roboto',sans-serif] font-normal text-white text-xl text-center tracking-[-0.38px] leading-[30px]">
-            {card.back}
-          </p>
-        </div>
-        <!-- Frente (blanco) -->
-        <div class="absolute inset-0 rounded-[30px] bg-white flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 p-6">
-          <div class="[font-family:'Roboto_Slab',serif] font-semibold text-[#6b2a2f] text-[36px] text-center tracking-[0] leading-[43.2px]">
-            {card.title.map((line, i) => <>{i > 0 && <br />}{line}</>)}
-          </div>
-        </div>
+      <article class="who-card">
+        <div class="who-card-art"><span aria-hidden="true"></span><img src={card.image} alt={card.alt} width="800" height="800" loading="lazy" decoding="async" /></div>
+        <div class="who-card-content"><h3>{card.title.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h3><p>{card.back}</p></div>
       </article>
     ))}
 
@@ -104,149 +79,5 @@ const copy = lang === "es"
 </section>
 
 <style>
-  #who-we-do-it-for {
-    padding: 52px clamp(18px, 5vw, 80px) 56px !important;
-  }
-
-  #who-we-do-it-for > .relative.w-\[1440px\].mx-auto {
-    position: relative;
-    width: min(100%, 1280px);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    align-items: stretch;
-  }
-
-  #who-we-do-it-for h2 {
-    grid-column: 1 / -1;
-    width: min(100%, 760px) !important;
-    margin: 0 auto !important;
-    font-size: clamp(44px, 4vw, 58px) !important;
-    line-height: 1.12 !important;
-    text-wrap: balance;
-  }
-
-  #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > div:first-of-type {
-    grid-column: 1 / -1;
-    width: min(395px, 70vw) !important;
-    margin: -8px auto 0 !important;
-  }
-
-  #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > p {
-    grid-column: 1 / -1;
-    width: min(100%, 820px) !important;
-    margin: 0 auto 32px !important;
-    font-size: clamp(18px, 1.65vw, 22px) !important;
-    line-height: 1.5 !important;
-    letter-spacing: 0 !important;
-  }
-
-  .who-card {
-    position: relative;
-    width: 100%;
-    min-height: 190px;
-    height: auto;
-  }
-
-  .who-emphasis {
-    grid-column: 1 / -1;
-    width: min(100%, 820px);
-    margin: 32px auto 0;
-    font-size: clamp(20px, 2vw, 24px);
-    line-height: 1.4;
-    letter-spacing: -0.02em;
-  }
-
-  @media (max-width: 900px) {
-    #who-we-do-it-for {
-      padding: 58px 16px 44px !important;
-      overflow: hidden;
-    }
-
-    #who-we-do-it-for > div:first-child {
-      display: none;
-    }
-
-    #who-we-do-it-for > .relative.w-\[1440px\].mx-auto {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    #who-we-do-it-for h2 {
-      width: 100% !important;
-      max-width: 360px;
-      margin: 0 !important;
-      font-size: 42px !important;
-      line-height: 1.15 !important;
-      text-wrap: balance;
-    }
-
-    #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > div:first-of-type {
-      width: min(260px, 74vw) !important;
-      margin: 0 auto 2px !important;
-    }
-
-    #who-we-do-it-for > .relative.w-\[1440px\].mx-auto > p {
-      width: 100% !important;
-      max-width: 360px;
-      margin: 0 0 16px !important;
-      font-size: 18px !important;
-      line-height: 1.5 !important;
-      letter-spacing: 0 !important;
-      text-wrap: pretty;
-    }
-
-    .who-card {
-      width: 100% !important;
-      max-width: 360px;
-      height: auto !important;
-      margin-top: 6px;
-      display: grid;
-      overflow: hidden;
-      border-radius: 30px;
-      background: #fff;
-      box-shadow: 0 14px 30px rgba(107, 42, 47, 0.08);
-    }
-
-    .who-card > div {
-      position: relative !important;
-      inset: auto !important;
-      opacity: 1 !important;
-      border-radius: 0 !important;
-      min-height: 0 !important;
-      transition: none !important;
-    }
-
-    .who-card > div:first-child {
-      order: 2;
-    }
-
-    .who-card > div:nth-child(2) {
-      order: 1;
-    }
-
-    .who-card [class*="text-[36px]"] {
-      padding: 24px 20px 12px;
-      font-size: 28px !important;
-      line-height: 1.18 !important;
-    }
-
-    .who-card p {
-      max-width: none;
-      padding: 18px 20px 22px;
-      font-size: 16px !important;
-      line-height: 1.45 !important;
-    }
-
-    .who-emphasis {
-      width: 100%;
-      max-width: 360px;
-      margin: 16px 0 0;
-      font-size: 19px;
-      line-height: 1.4;
-    }
-  }
+#who-we-do-it-for{padding:64px clamp(18px,5vw,80px)!important}#who-we-do-it-for>.relative.w-\[1440px\].mx-auto{position:relative;width:min(100%,1280px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}#who-we-do-it-for h2{grid-column:1/-1;width:min(100%,760px)!important;margin:0 auto!important;font-size:clamp(44px,4vw,58px)!important;line-height:1.12!important}#who-we-do-it-for>.relative.w-\[1440px\].mx-auto>div:first-of-type{grid-column:1/-1;width:min(395px,70vw)!important;margin:-8px auto 0!important}#who-we-do-it-for>.relative.w-\[1440px\].mx-auto>p{grid-column:1/-1;width:min(100%,820px)!important;margin:0 auto 32px!important;font-size:clamp(18px,1.65vw,22px)!important;line-height:1.5!important}.who-card{min-height:270px;overflow:hidden;display:grid;grid-template-columns:minmax(170px,34%) 1fr;border:1px solid rgba(107,42,47,.12);border-radius:30px;background:#fff;box-shadow:0 15px 34px rgba(107,42,47,.08);transition:.3s}.who-card:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(107,42,47,.16)}.who-card-art{position:relative;min-height:270px;overflow:visible;background:transparent}.who-card-art span{position:absolute;inset:16% 8% 7% 8%;border-radius:28px;background:#7d4147;box-shadow:0 18px 30px rgba(76,8,21,.16);transition:transform .35s ease,box-shadow .35s ease}.who-card-art img{position:absolute;z-index:1;left:50%;bottom:0;width:112%;height:96%;object-fit:contain;object-position:center bottom;transform:translateX(-50%);transition:transform .35s ease}.who-card:hover .who-card-art img{transform:translateX(-50%) translateY(-3px)}.who-card:hover .who-card-art span{transform:translateY(-2px);box-shadow:0 22px 36px rgba(76,8,21,.22)}.who-card-content{display:flex;flex-direction:column;justify-content:center;padding:28px 30px}.who-card h3{margin:0;font-family:'Roboto Slab',serif;font-size:clamp(27px,2.5vw,35px);line-height:1.15;color:#6b2a2f}.who-card p{margin:14px 0 0;font-family:Roboto,sans-serif;font-size:16px;line-height:1.5;color:#505050}.who-emphasis{grid-column:1/-1;width:min(100%,820px);margin:32px auto 0;font-size:clamp(20px,2vw,24px);line-height:1.4}@media(max-width:900px){#who-we-do-it-for{padding:56px 16px!important}#who-we-do-it-for>div:first-child{display:none}#who-we-do-it-for>.relative.w-\[1440px\].mx-auto{width:100%;display:flex;flex-direction:column;align-items:center;gap:16px}#who-we-do-it-for h2{width:100%!important;max-width:360px;font-size:42px!important;line-height:1.15!important}#who-we-do-it-for>.relative.w-\[1440px\].mx-auto>p{width:100%!important;max-width:360px;margin:0 0 16px!important;font-size:18px!important}.who-card{width:100%;max-width:360px;grid-template-columns:1fr}.who-card:hover{transform:none}.who-card-art{min-height:280px;overflow:visible}.who-card-art span{inset:18% 10% 6% 10%;border-radius:26px}.who-card-art img{width:min(112%,340px);height:270px;left:50%;bottom:0;transform:translateX(-50%)}.who-card:hover .who-card-art img{transform:translateX(-50%)}.who-card-content{padding:24px 22px 26px;text-align:center}.who-card h3{font-size:28px}.who-emphasis{width:100%;max-width:360px;margin:16px 0 0;font-size:19px}}@media(prefers-reduced-motion:reduce){.who-card,.who-card-art img,.who-card-art span{transition:none}}
 </style>

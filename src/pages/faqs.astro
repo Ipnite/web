@@ -3,80 +3,61 @@ import FaqPage from "@components/FaqPage.astro";
 
 const faqs = [
   {
-    question: "Is IPnite just a general LLM?",
-    answer:
-      "No. IPnite is a structured patent drafting workflow. It uses AI to support invention disclosure, claims, defensibility, draft organization, and patent-specific consistency instead of acting like a generic chat tool.",
+    "question": "What is IPnite?",
+    "answer": "IPnite is an AI-assisted patent preparation and intellectual property workspace. It guides users through invention disclosure, prior-art research, claim drafting, drawings, application drafting, IP documents, and portfolio organization."
   },
   {
-    question: "Does IPnite create an attorney-client relationship?",
-    answer:
-      "No. IPnite is not a law firm, does not replace a patent attorney or patent agent, and does not create an attorney-client relationship. It is a drafting support tool, and professional review is recommended before filing.",
+    "question": "Does IPnite provide legal advice or create an attorney-client relationship?",
+    "answer": "No. IPnite is not a law firm and does not provide legal advice or create an attorney-client relationship. AI output can be incomplete or inaccurate, so users remain responsible for review and should obtain qualified professional advice before filing or relying on a result."
   },
   {
-    question: "Who should use IPnite?",
-    answer:
-      "IPnite is built for independent inventors, entrepreneurs, startups, founders, universities, accelerators, and venture funds that need to prepare or evaluate intellectual property with limited resources.",
+    "question": "How is IPnite different from a general AI chat tool?",
+    "answer": "IPnite organizes work into patent-specific, jurisdiction-aware workflows and keeps related research, evidence, drafts, drawings, and project versions together. It does not guarantee patentability, validity, clearance, or filing acceptance."
   },
   {
-    question: "How is IPnite different from ChatGPT?",
-    answer:
-      "IPnite is built specifically for intellectual property. While ChatGPT is general-purpose, IPnite applies a structured patent methodology designed for legal consistency and stronger patent preparation.",
+    "question": "What is the difference between Prior Art and FTO?",
+    "answer": "Prior Art helps investigate whether technical features may already be disclosed and supports an initial novelty assessment. Freedom to Operate (FTO) examines potentially relevant enforceable rights for a planned product or activity. Neither replaces a professional legal search or opinion."
   },
   {
-    question: "Can I write a patent using ChatGPT alone?",
-    answer:
-      "Yes, but it comes with risks. ChatGPT does not enforce proper claim structure, invention scope expansion, or consistency across sections. IPnite is designed to help with those steps.",
+    "question": "Can I open reference patent PDFs inside IPnite?",
+    "answer": "When a supported patent source provides an accessible document, IPnite can display the reference PDF in its viewer. Availability can depend on the source, document format, browser security rules, and the original provider."
   },
   {
-    question: "Why does IPnite produce stronger patent drafts?",
-    answer:
-      "IPnite expands technical variations, structures broad and dependent claims, and checks internal consistency. This mirrors key parts of how patent professionals organize invention disclosures.",
+    "question": "Which subscription plans are available?",
+    "answer": "Basic costs $20 monthly or $200 annually, Starter costs $199 monthly or $1,990 annually, and Professional costs $499 monthly or $4,990 annually. Checkout defaults to annual billing, and users can select monthly billing before continuing."
   },
   {
-    question: "Does IPnite replace a patent attorney?",
-    answer:
-      "No. IPnite reduces early-stage drafting costs and helps organize the invention. For critical filings, professional review is still recommended.",
+    "question": "How does the seven-day Basic trial work?",
+    "answer": "New eligible users can start a seven-day Basic trial. A payment card is required. Unless cancelled, the Basic subscription starts automatically after the trial at the billing interval and price shown during checkout."
   },
   {
-    question: "What mistakes does IPnite help prevent?",
-    answer:
-      "IPnite helps reduce overly narrow claims, missing embodiments, inconsistencies between drawings and text, and incomplete disclosures.",
+    "question": "What happens when the trial ends or I cancel?",
+    "answer": "If the trial is not cancelled, Stripe starts the selected Basic subscription automatically. If it is cancelled, paid access does not begin. Subscription status and billing can be reviewed in the subscription management portal."
   },
   {
-    question: "Does IPnite check if my invention already exists?",
-    answer:
-      "IPnite performs an initial novelty assessment against existing patent information. This is not a substitute for a full professional patentability search.",
+    "question": "What are the main plan limits?",
+    "answer": "Basic includes 1 active project, 2 Prior Art searches per month, and 1 GB of storage. Starter includes up to 10 active projects, 10 searches, 2 active collaborators per project, and 15 GB. Professional includes unlimited active projects, 50 searches, FTO, up to 10 active collaborators per project, and 50 GB."
   },
   {
-    question: "Does IPnite generate claims automatically?",
-    answer:
-      "Yes. IPnite creates independent claims and dependent claims, which are typically among the hardest parts of a patent draft to prepare.",
+    "question": "What happens when storage is full?",
+    "answer": "The app warns the user when storage reaches its limit. The account owner can remove unneeded project material or projects to recover space, or open subscription management to upgrade."
   },
   {
-    question: "Are the drawings compliant with patent standards?",
-    answer:
-      "IPnite is designed to generate black-and-white drawings, proper numbering, and legally consistent references.",
+    "question": "Can I change or cancel my subscription?",
+    "answer": "Yes. The Manage subscription action opens Stripe's secure customer portal, where supported billing changes and cancellation options are shown for the account."
   },
   {
-    question: "Why not just use a free tool?",
-    answer:
-      "Because the real cost is not the tool. The real cost is filing a weak or unusable patent draft.",
+    "question": "Can projects be archived, shared, and exported?",
+    "answer": "Plan permissions determine collaboration and export access. Project owners control invitations and exports. Archived projects do not count toward the active-project limit and are retained according to the service's current retention policy."
   },
   {
-    question: "Who is IPnite for?",
-    answer:
-      "IPnite is for inventors, startups, technical teams, and founders without initial legal budgets.",
+    "question": "How does IPnite handle confidential invention information?",
+    "answer": "IPnite states that invention disclosures and patent materials are not used to train general-purpose AI models unless the user expressly opts in or provides written consent. Users should still avoid uploading information they are not authorized to process and review the Privacy Policy."
   },
   {
-    question: "Is IPnite the best DIY tool for writing a patent?",
-    answer:
-      "IPnite is built specifically for DIY (do-it-yourself) patent drafting: it guides founders and inventors who don't have an attorney yet through invention disclosure, claims, prior-art review, and drawings, producing a structured, review-ready draft instead of a blank page.",
-  },
-  {
-    question: "Can IPnite help my startup manage all of its IP, not just one patent draft?",
-    answer:
-      "Yes. IPnite works as a lightweight IP management tool for startups: it keeps invention disclosures, claims, drawings, prior-art findings, and draft versions organized in one place as your startup's patent portfolio grows, not just for a single one-off draft.",
-  },
+    "question": "Which languages does IPnite support?",
+    "answer": "The website and core application interface support English, Spanish, and Brazilian Portuguese. Patent drafting language and jurisdiction support depend on the selected workflow."
+  }
 ];
 ---
 
@@ -85,7 +66,7 @@ const faqs = [
   description="Frequently asked questions about IPnite, The Drafter, AI patent drafting, attorney-client relationship limits, patent attorneys, claim drafting, novelty checks, drawings, and patent preparation workflows."
   canonicalPath="/faqs/"
   alternatePath="/es/faqs/"
-  keywords="IPnite FAQs, The Drafter, AI patent drafting, DIY patent drafting, best tool for patent writing, startup IP management, patent application drafts, provisional patent draft, patent claims AI, novelty assessment, attorney client relationship, patent attorney support, IPnite vs ChatGPT"
+  keywords="IPnite FAQs, The Drafter, AI patent drafting, DIY patent drafting, startup IP management, patent application drafts, provisional patent draft, patent claims AI, novelty assessment, attorney client relationship, patent attorney support, IPnite vs ChatGPT"
   heroLabel="IPnite patent drafting platform hero"
   heroPill="IPnite FAQs"
   heroHeading="Questions Before You Draft"

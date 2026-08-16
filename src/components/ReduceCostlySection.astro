@@ -7,7 +7,7 @@ const { lang = "en" } = Astro.props;
 
 const copy = lang === "es"
   ? {
-      kicker: "EQUIPO PI",
+      kicker: "REDUCE EL RIESGO",
       heading: ["Reduce", "Errores Costosos"],
       riskLabel: "Riesgo:",
       helpHeading: "Como ayuda IPnite",
@@ -20,7 +20,7 @@ const copy = lang === "es"
     }
   : lang === "pt"
   ? {
-      kicker: "EQUIPE PI",
+      kicker: "REDUZA O RISCO",
       heading: ["Reduza", "Erros Custosos"],
       riskLabel: "Risco:",
       helpHeading: "Como a IPnite ajuda",
@@ -32,7 +32,7 @@ const copy = lang === "es"
       ],
     }
   : {
-      kicker: "IP TEAM",
+      kicker: "REDUCE RISK",
       heading: ["Reduce Costly", "Mistakes"],
       riskLabel: "Risk:",
       helpHeading: "How Ipnite Helps",
@@ -54,12 +54,7 @@ const cards = [
 
 <section id="reduce-costly-mistakes" aria-labelledby="reduce-heading" class="reduce">
   <div class="reduce__inner">
-    <div class="kicker">{copy.kicker}</div>
-
-    <h2 id="reduce-heading">
-      <span>{copy.heading[0]}</span>
-      <strong>{copy.heading[1]}</strong>
-    </h2>
+    <h2 id="reduce-heading"><span>{copy.heading[0]}</span>{" "}<strong>{copy.heading[1]}</strong></h2>
 
     <div class="reduce__cards">
       {cards.map((card, index) => (
@@ -88,7 +83,7 @@ const cards = [
     position: relative;
     overflow: hidden;
     background: #fff;
-    padding: clamp(48px, 5vw, 72px) clamp(18px, 5.5vw, 80px) clamp(54px, 5vw, 80px);
+    padding: 64px clamp(18px, 5.5vw, 80px);
   }
 
   .reduce__inner {
@@ -101,13 +96,16 @@ const cards = [
   }
 
   .reduce h2 {
+    width: 100%;
     margin: 0;
-    color: #505050;
+    color: #6b2a2f;
     font-family: "Roboto Slab", serif;
-    font-size: clamp(40px, 4.1vw, 54px);
+    font-size: clamp(42px, 4.45vw, 64px);
     font-weight: 400;
-    line-height: 1.15;
+    line-height: 1.08;
     letter-spacing: 0;
+    text-align: center;
+    text-wrap: balance;
   }
 
   .reduce h2 span,
@@ -115,9 +113,8 @@ const cards = [
     display: inline;
   }
 
-  .reduce h2 strong {
-    font-weight: 800;
-  }
+  .reduce h2 span { color: #6b2a2f; font-weight: 400; }
+  .reduce h2 strong { color: #505050; font-weight: 700; }
 
   .reduce__cards {
     display: grid;
@@ -250,7 +247,12 @@ const cards = [
 
   @media (max-width: 640px) {
     .reduce {
-      padding-inline: 18px;
+      padding: 56px 18px;
+    }
+
+    .reduce h2 {
+      font-size: 42px;
+      line-height: 1.08;
     }
 
     .reduce h2 span,

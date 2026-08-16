@@ -92,6 +92,8 @@ const baseStructuredData = [
   },
   ...schemaItems,
 ].filter(Boolean);
+const consentCopy=lang==="es"?{title:"Tu privacidad importa",body:"Usamos Analytics solo con tu permiso para entender qué páginas y funciones resultan útiles. No usamos publicidad ni enviamos contenido de proyectos. Rechazar mantiene activas las funciones esenciales de seguridad y sesión.",accept:"Aceptar Analytics",reject:"Rechazar",settings:"Privacidad",policy:"Ver política de privacidad"}:lang==="pt"?{title:"Sua privacidade importa",body:"Usamos o Analytics somente com sua permissão para entender quais páginas e recursos são úteis. Não usamos publicidade nem enviamos conteúdo de projetos. Recusar mantém ativas as funções essenciais de segurança e sessão.",accept:"Aceitar Analytics",reject:"Recusar",settings:"Privacidade",policy:"Ver política de privacidade"}:{title:"Your privacy matters",body:"We use Analytics only with your permission to understand which pages and features are useful. We do not use advertising or send project content. Reject keeps essential security and session functions active.",accept:"Accept Analytics",reject:"Reject",settings:"Privacy",policy:"View privacy policy"};
+const privacyPath=lang==="es"?"/es/privacy/":lang==="pt"?"/pt-br/privacy/":"/privacy/";
 ---
 
 <html lang={lang === "pt" ? "pt-BR" : lang}>
@@ -118,146 +120,7 @@ const baseStructuredData = [
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHW3X20ZSJ"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-KHW3X20ZSJ");
-    </script>
-    <script is:inline>
-      (function () {
-        var measurementId = "G-KHW3X20ZSJ";
-        var minSectionMs = 1500;
-        var sectionTimes = {};
-        var activeSections = {};
-        var observer;
-
-        function clean(value) {
-          return String(value || "")
-            .replace(/\s+/g, " ")
-            .trim()
-            .slice(0, 140);
-        }
-
-        function getElementLabel(element) {
-          return clean(
-            element.getAttribute("data-analytics-label") ||
-              element.getAttribute("aria-label") ||
-              element.innerText ||
-              element.textContent ||
-              element.getAttribute("href") ||
-              element.tagName
-          );
-        }
-
-        function getSectionName(element) {
-          var section = element.closest("section, article, header, footer, main, [id]");
-          if (!section) return "unknown";
-          return clean(
-            section.getAttribute("data-analytics-section") ||
-              section.getAttribute("aria-label") ||
-              section.id ||
-              section.className ||
-              section.tagName
-          );
-        }
-
-        function sendEvent(name, params) {
-          if (typeof window.gtag !== "function") return;
-          window.gtag("event", name, Object.assign({
-            page_path: window.location.pathname,
-            page_title: document.title,
-          }, params || {}));
-        }
-
-        function trackClick(event) {
-          var target = event.target && event.target.closest && event.target.closest("a, button");
-          if (!target) return;
-
-          var href = target.getAttribute("href") || "";
-          var isExternal = false;
-          try {
-            isExternal = href ? new URL(href, window.location.href).origin !== window.location.origin : false;
-          } catch (error) {}
-
-          sendEvent("ipnite_button_click", {
-            button_text: getElementLabel(target),
-            button_type: target.tagName.toLowerCase(),
-            button_url: href || "none",
-            section_name: getSectionName(target),
-            is_external: isExternal ? "true" : "false",
-          });
-        }
-
-        function sectionId(section, index) {
-          if (section.id) return section.id;
-          var heading = section.querySelector && section.querySelector("h1, h2, h3");
-          if (heading) return clean(heading.textContent).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-          return "section-" + index;
-        }
-
-        function startSection(id) {
-          if (!activeSections[id]) activeSections[id] = Date.now();
-        }
-
-        function stopSection(id) {
-          if (!activeSections[id]) return;
-          sectionTimes[id] = (sectionTimes[id] || 0) + Date.now() - activeSections[id];
-          delete activeSections[id];
-        }
-
-        function flushSections(reason) {
-          Object.keys(activeSections).forEach(stopSection);
-          Object.keys(sectionTimes).forEach(function (id) {
-            var ms = sectionTimes[id];
-            if (ms < minSectionMs) return;
-            sendEvent("ipnite_section_engagement", {
-              section_name: id,
-              engagement_time_msec: Math.round(ms),
-              engagement_seconds: Math.round(ms / 1000),
-              engagement_reason: reason || "flush",
-            });
-            sectionTimes[id] = 0;
-          });
-        }
-
-        function initSectionTracking() {
-          if (!("IntersectionObserver" in window)) return;
-          var sections = Array.prototype.slice.call(document.querySelectorAll("main section, main article, main header"));
-          sections.forEach(function (section, index) {
-            section.setAttribute("data-analytics-section", section.getAttribute("data-analytics-section") || sectionId(section, index));
-          });
-
-          observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              var id = entry.target.getAttribute("data-analytics-section");
-              if (!id) return;
-              if (entry.isIntersecting && entry.intersectionRatio >= 0.45 && !document.hidden) {
-                startSection(id);
-              } else {
-                stopSection(id);
-              }
-            });
-          }, { threshold: [0, 0.45, 0.75] });
-
-          sections.forEach(function (section) { observer.observe(section); });
-        }
-
-        document.addEventListener("click", trackClick, true);
-        document.addEventListener("visibilitychange", function () {
-          if (document.hidden) flushSections("visibility_hidden");
-        });
-        window.addEventListener("pagehide", function () { flushSections("pagehide"); });
-        window.addEventListener("beforeunload", function () { flushSections("beforeunload"); });
-        window.addEventListener("load", initSectionTracking);
-
-        window.ipniteAnalytics = {
-          flushSections: flushSections,
-          measurementId: measurementId,
-        };
-      })();
-    </script>
+    <script src="/ipnite-analytics.js" defer></script>
     <script type="application/ld+json" set:html={JSON.stringify(baseStructuredData)} />
   </head>
   <body class="bg-white text-gris3 antialiased">
@@ -266,5 +129,11 @@ const baseStructuredData = [
       <slot />
     </main>
     <Footer lang={lang} />
+    <aside id="analytics-consent" class="analytics-consent" hidden aria-labelledby="analytics-consent-title"><div><strong id="analytics-consent-title">{consentCopy.title}</strong><p>{consentCopy.body} <a href={privacyPath}>{consentCopy.policy}</a>.</p></div><div class="analytics-consent-actions"><button type="button" data-consent-choice="denied">{consentCopy.reject}</button><button type="button" class="primary" data-consent-choice="granted">{consentCopy.accept}</button></div></aside>
+    <button type="button" id="analytics-preferences" class="analytics-preferences">{consentCopy.settings}</button>
   </body>
 </html>
+
+<style is:global>
+.analytics-consent{position:fixed;z-index:10000;left:18px;right:18px;bottom:18px;max-width:860px;margin:auto;padding:18px;border:1px solid rgba(107,42,47,.22);border-radius:18px;background:rgba(255,255,255,.98);color:#3f1018;box-shadow:0 20px 60px rgba(47,10,17,.2);display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:Roboto,sans-serif}.analytics-consent[hidden]{display:none}.analytics-consent strong{display:block;margin-bottom:5px;font-family:'Roboto Slab',serif;font-size:18px}.analytics-consent p{margin:0;max-width:590px;color:#505050;font-size:14px;line-height:1.5}.analytics-consent a{color:#6b2a2f;text-decoration:underline}.analytics-consent-actions{display:flex;flex-shrink:0;gap:8px}.analytics-consent button,.analytics-preferences{border:1px solid rgba(107,42,47,.3);border-radius:999px;background:#fff;color:#6b2a2f;padding:10px 15px;font-weight:700;cursor:pointer}.analytics-consent button.primary{background:#6b2a2f;color:#fff}.analytics-preferences{position:fixed;z-index:9998;left:12px;bottom:10px;padding:6px 10px;background:rgba(255,255,255,.92);font-size:11px}@media(max-width:720px){.analytics-consent{align-items:stretch;flex-direction:column;gap:14px}.analytics-consent-actions button{flex:1}}
+</style>

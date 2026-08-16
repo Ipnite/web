@@ -42,21 +42,11 @@ const copy = lang === "es"
   id="how-it-works"
   aria-labelledby="hiw-heading"
   class="relative w-full overflow-hidden bg-white"
-  style="height: 648px;"
+  style="height: 590px;"
 >
   <div class="absolute inset-0" style="width:1440px;margin:auto;left:0;right:0;">
-    <!-- Título -->
-    <h2
-      id="hiw-heading"
-      class="absolute top-[11px] left-[calc(50%-214px)] w-[429px] [font-family:'Roboto_Slab',serif] text-[#6b2a2f] text-[64px] tracking-[0] leading-[96px] whitespace-nowrap"
-    >
-      <span class="font-normal">{copy.title[0]}</span>
-      {copy.title[1] ? <strong class="font-bold">{copy.title[1]}</strong> : null}
-    </h2>
-
-    <p class="absolute top-[105px] left-[calc(50%-111px)] w-[222px] [font-family:'Roboto',sans-serif] font-bold italic text-[#505050] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
-      {copy.subtitle}
-    </p>
+    <h2 id="hiw-heading" class="absolute top-[11px] left-1/2 w-[960px] -translate-x-1/2 text-center [font-family:'Roboto_Slab',serif] text-[64px] leading-[76px] whitespace-nowrap"><span class="font-normal text-[#6b2a2f]">{copy.title.filter(Boolean).join(" ")}</span></h2>
+    <p class="absolute top-[92px] left-1/2 w-[760px] -translate-x-1/2 [font-family:'Roboto_Slab',serif] font-bold text-[#505050] text-[56px] text-center leading-[68px] whitespace-nowrap">{copy.subtitle}</p>
 
     <!-- Ilustración izquierda -->
     <img

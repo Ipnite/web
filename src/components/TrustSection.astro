@@ -9,7 +9,7 @@ const { lang = "en" } = Astro.props;
 
 const copy = lang === "es"
   ? {
-      badge: "CÓMO FUNCIONA",
+      badge: "POR QUÉ CONFIAR EN IPNITE",
       headingTop: "Estándar profesional",
       headingBottom: "Hecho para inventores tempranos",
       confidential: "Confidencial por diseño",
@@ -20,7 +20,7 @@ const copy = lang === "es"
     }
   : lang === "pt"
   ? {
-      badge: "COMO FUNCIONA",
+      badge: "POR QUE CONFIAR NA IPNITE",
       headingTop: "Padrão profissional",
       headingBottom: "Feito para inventores em fase inicial",
       confidential: "Confidencial por padrão",
@@ -30,7 +30,7 @@ const copy = lang === "es"
       disclaimer: "A IPnite não substitui aconselhamento jurídico. Acelera e estrutura o processo de redação.",
     }
   : {
-      badge: "HOW IT WORKS",
+      badge: "WHY TRUST IPNITE",
       headingTop: "Professional Standard",
       headingBottom: "Built for Early Inventors",
       confidential: "Confidential by design",
@@ -42,31 +42,14 @@ const copy = lang === "es"
 ---
 
 <section
+  id="why-trust-ipnite"
   aria-labelledby="trust-heading"
   class="trust-section relative w-full overflow-hidden bg-white"
   style="height: 585px;"
 >
   <div class="absolute inset-0 flex flex-col" style="width:1440px;margin:auto;left:0;right:0;">
-    <!-- Badge "HOW IT WORKS" -->
-    <div class="ml-[625px] mt-px flex min-w-[191px] items-start">
-      <div class="flex w-[191px] justify-center">
-        <div class="relative ml-0.5 h-[35px] w-[193px]">
-          <div class="absolute left-[calc(50%-96px)] top-0 h-[35px] w-[191px] rounded-[33px] bg-[#6b2a2f]"></div>
-          <div class="absolute top-[calc(50%-12px)] left-5 flex h-[23px] w-[151px] items-center justify-center whitespace-nowrap text-center [font-family:'Roboto_Slab',serif] text-[17.9px] font-extrabold leading-[26.8px] tracking-[-0.34px] text-[#ededed]">
-            {copy.badge}
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Heading -->
-    <h2
-      id="trust-heading"
-      class="mt-[5px] h-[154px] w-[918px] self-center text-center [font-family:'Roboto_Slab',serif] text-[64px] font-normal leading-[75px] tracking-[0] text-[#505050]"
-    >
-      {copy.headingTop} <br />
-      <strong class="font-bold">{copy.headingBottom}</strong>
-    </h2>
+    <div class="trust-heading"><h2 id="trust-heading"><span>{copy.headingTop}</span><strong>{copy.headingBottom}</strong></h2></div>
 
     <div class="relative mt-[32px] h-[166px] w-[760px] self-center">
       <div class="absolute left-[66px] top-0 h-[78px] w-[628px] rounded-[78px] bg-[#ededed]"></div>
@@ -92,30 +75,11 @@ const copy = lang === "es"
       </p>
     </div>
 
-    <!-- Pills de beneficios -->
-    <div class="relative mt-[54px] ml-[307px] h-[50px] w-[827px]" role="group" aria-label="Core drafting benefits">
-      <!-- Structured patent workflow -->
-      <div class="absolute top-0 left-[calc(50%-414px)] w-96 h-[50px]">
-        <div class="absolute top-0 left-[calc(50%-192px)] w-[382px] h-[50px] bg-white rounded-[40px]"></div>
-        <div class="absolute top-[7px] left-[19px] w-[343px] [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[0.96px] leading-9 whitespace-nowrap">
-          {copy.workflow}
-        </div>
-      </div>
-
-      <!-- Ícono conector (SVG ya incluye círculo) -->
-      <img
-        class="absolute top-0 left-[407px] w-[50px] h-[50px]"
-        alt="" aria-hidden="true"
-        src="/icons/engranaje.svg"
-      />
-
-      <!-- Exportable patent drafts -->
-      <div class="absolute top-0 left-[calc(50%+68px)] w-[347px] h-[50px]">
-        <div class="absolute top-0 left-[calc(50%-174px)] w-[345px] h-[50px] bg-[#ededed] rounded-[40px]"></div>
-        <div class="absolute top-[7px] left-[22px] w-[302px] [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[0.96px] leading-9 whitespace-nowrap">
-          {copy.exportable}
-        </div>
-      </div>
+    <!-- Core benefits -->
+    <div class="trust-benefits" role="group" aria-label="Core drafting benefits">
+      <div class="trust-benefit">{copy.workflow}</div>
+      <img alt="" aria-hidden="true" src="/icons/engranaje.svg" />
+      <div class="trust-benefit">{copy.exportable}</div>
     </div>
 
     <!-- Disclaimer -->
@@ -128,13 +92,13 @@ const copy = lang === "es"
 <style>
   .trust-section {
     height: auto !important;
-    padding: 64px clamp(18px, 5vw, 80px) 74px;
+    padding: 64px clamp(18px, 5vw, 80px);
   }
 
   .trust-section > .absolute.inset-0.flex.flex-col {
     position: relative !important;
     inset: auto !important;
-    width: min(100%, 1000px) !important;
+    width: min(100%, 1280px) !important;
     margin: 0 auto !important;
     align-items: center;
   }
@@ -149,13 +113,13 @@ const copy = lang === "es"
     margin-left: 0 !important;
   }
 
-  .trust-section h2 {
-    max-width: 940px;
-    margin-top: 18px !important;
-    font-size: clamp(44px, 4.5vw, 64px) !important;
-    line-height: 1.12 !important;
-    text-wrap: balance;
-  }
+  .trust-heading { display: flex; width: 100%; align-self: center; justify-content: center; text-align: center; }
+  .trust-heading h2 { flex: 0 1 940px; width: min(100%, 940px) !important; margin-left: auto !important; margin-right: auto !important; }
+  .trust-section h2 { max-width: 940px; margin: 18px auto 0 !important; font-family: "Roboto Slab", serif; font-size: clamp(44px, 4.5vw, 64px) !important; font-weight: 400; line-height: 1.12 !important; text-align: center; text-wrap: balance; }
+  .trust-section h2 { align-self: center; width: min(100%, 940px) !important; }
+  .trust-section h2 span, .trust-section h2 strong { display: block; width: 100%; text-align: center; }
+  .trust-section h2 span { color: #6b2a2f; font-weight: 400; }
+  .trust-section h2 strong { color: #505050; font-weight: 700; }
 
   .trust-section .relative.mt-\[32px\] {
     display: grid !important;
@@ -179,6 +143,9 @@ const copy = lang === "es"
   }
 
   .trust-section .relative.mt-\[32px\] > h3 {
+    width: fit-content !important;
+    max-width: 100%;
+    justify-self: center;
     min-height: 74px !important;
     display: flex !important;
     align-items: center;
@@ -199,11 +166,12 @@ const copy = lang === "es"
   }
 
   .trust-section .relative.mt-\[54px\] {
-    width: min(100%, 860px) !important;
+    width: fit-content !important;
+    max-width: 100%;
     height: auto !important;
     margin: 42px auto 0 !important;
     display: grid !important;
-    grid-template-columns: 1fr 56px 1fr;
+    grid-template-columns: max-content 56px max-content;
     gap: 18px;
     align-items: center;
   }
@@ -218,6 +186,11 @@ const copy = lang === "es"
     height: auto !important;
   }
 
+  .trust-section .relative.mt-\[54px\] > div {
+    width: fit-content !important;
+    max-width: 100%;
+  }
+
   .trust-section .relative.mt-\[54px\] > img {
     width: 50px !important;
     justify-self: center;
@@ -230,7 +203,8 @@ const copy = lang === "es"
   .trust-section .relative.mt-\[54px\] .absolute.top-\[7px\] {
     position: relative !important;
     inset: auto !important;
-    width: 100% !important;
+    width: fit-content !important;
+    max-width: 100%;
     min-height: 50px;
     display: flex;
     align-items: center;
@@ -255,7 +229,7 @@ const copy = lang === "es"
   @media (max-width: 900px) {
     .trust-section {
       height: auto !important;
-      padding: 56px 16px 72px;
+      padding: 56px 16px;
       overflow: hidden;
     }
 
@@ -392,9 +366,50 @@ const copy = lang === "es"
       line-height: 1.25 !important;
     }
 
+    .trust-section .relative.mt-\[32px\] > h3,
+    .trust-section .relative.mt-\[54px\],
+    .trust-section .relative.mt-\[54px\] > div,
+    .trust-section .relative.mt-\[54px\] .absolute.top-\[7px\] {
+      width: fit-content !important;
+      max-width: 100% !important;
+      justify-self: center;
+    }
+
     .trust-section > .absolute.inset-0.flex.flex-col > p:last-child {
       margin-top: 22px !important;
       height: auto !important;
     }
+  }
+  .trust-benefits {
+    width: fit-content !important;
+    max-width: 100%;
+    margin: 42px auto 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+  .trust-benefit {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #ededed;
+    color: #4c0815;
+    font-family: 'Roboto Slab', serif;
+    font-size: clamp(18px, 1.6vw, 24px);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .trust-benefits > img { width: 50px; height: 50px; flex: 0 0 auto; }
+  @media (max-width: 900px) {
+    .trust-benefits { flex-direction: column; gap: 12px; margin-top: 28px !important; }
+    .trust-benefits > img { display: none; }
+    .trust-benefit { font-size: 18px; }
   }
 </style>

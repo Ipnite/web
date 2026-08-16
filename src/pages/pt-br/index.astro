@@ -11,24 +11,32 @@ import TrustSection from "@components/TrustSection.astro";
 import PricingSection from "@components/PricingSection.astro";
 import ContactSection from "@components/ContactSection.astro";
 import CTAFinalSection from "@components/CTAFinalSection.astro";
+const homeStructuredData = [{
+  "@context":"https://schema.org","@type":"SoftwareApplication",name:"The Drafter by IPnite",applicationCategory:"BusinessApplication",operatingSystem:"Web",url:"https://www.ipnite.com/pt-br/",inLanguage:"pt-BR",creator:{"@id":"https://www.ipnite.com/#organization"},offers:[
+    {"@type":"Offer",name:"Basic",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"20.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"200.00",priceCurrency:"USD",unitCode:"MON"}]},
+    {"@type":"Offer",name:"Professional",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"499.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"4990.00",priceCurrency:"USD",unitCode:"MON"}]},
+    {"@type":"Offer",name:"Starter",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"199.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"1990.00",priceCurrency:"USD",unitCode:"MON"}]}
+  ]
+}];
 ---
 
 <BaseLayout
   lang="pt"
   title="IPnite — Redacao de Patentes DIY e Gestao de PI para Startups"
   description="A IPnite e a plataforma DIY (faca voce mesmo) de redacao de patentes com IA para inventores, fundadores e startups. Documente invencoes, revise arte anterior, redija reivindicacoes e gerencie a PI da sua startup em um so lugar, sem precisar de um advogado para comecar."
-  keywords="IPnite, redacao de patentes com IA, redacao de patentes DIY, melhor ferramenta para escrever patentes, gestao de PI para startups, rascunho de patente provisorio, propriedade intelectual, inventores, fundadores"
+  keywords="IPnite, redacao de patentes com IA, redacao de patentes DIY, gestao de PI para startups, rascunho de patente provisorio, propriedade intelectual, inventores, fundadores"
   canonicalPath="/pt-br/"
   alternatePath="/"
+  structuredData={homeStructuredData}
 >
   <HeroSection lang="pt" />
   <WhyWeDoItSection lang="pt" />
-  <IpnitePromiseSection lang="pt" />
-  <YourIPTeamSection lang="pt" />
   <ReduceCostlySection lang="pt" />
-  <HowItWorksSection lang="pt" />
+  <YourIPTeamSection lang="pt" />
   <TrustSection lang="pt" />
+  <HowItWorksSection lang="pt" />
   <JurisdictionsSection lang="pt" />
+  <IpnitePromiseSection lang="pt" />
   <PricingSection lang="pt" />
   <ContactSection lang="pt" />
   <CTAFinalSection lang="pt" />

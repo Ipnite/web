@@ -162,10 +162,7 @@ const copy = lang === "es"
 
 <section id="plans" aria-labelledby="pricing-heading" class="pricing">
   <div class="pricing__inner">
-    <h2 id="pricing-heading">
-      <span>{copy.heading[0]}</span>
-      <strong>{copy.heading[1]}</strong>
-    </h2>
+    <h2 id="pricing-heading"><span>{copy.heading[0]}</span><strong>{copy.heading[1]}</strong></h2>
 
     <div class="pricing__cards">
       <article class="plan-card">
@@ -261,10 +258,8 @@ const copy = lang === "es"
     letter-spacing: 0;
   }
 
-  .pricing h2 strong {
-    color: #6b2a2f;
-    font-weight: 800;
-  }
+  .pricing h2 span { color: #6b2a2f; font-weight: 400; }
+  .pricing h2 strong { color: #505050; font-weight: 700; }
 
   .pricing__cards {
     display: grid;

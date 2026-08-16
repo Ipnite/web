@@ -3,80 +3,61 @@ import FaqPage from "@components/FaqPage.astro";
 
 const faqs = [
   {
-    question: "A IPnite e apenas um LLM generico?",
-    answer:
-      "Nao. A IPnite e um fluxo estruturado de redacao de patentes. Ela usa IA para apoiar a divulgacao da invencao, as reivindicacoes, a defensabilidade, a organizacao do rascunho e a consistencia especifica de patentes, em vez de funcionar como uma ferramenta de conversa generica.",
+    "question": "O que é a IPnite?",
+    "answer": "A IPnite é um espaço de trabalho de preparação de patentes e propriedade intelectual assistido por IA. Ela orienta divulgação da invenção, pesquisa de anterioridade, reivindicações, desenhos, redação de pedidos, documentos de PI e organização do portfólio."
   },
   {
-    question: "A IPnite cria uma relacao advogado-cliente?",
-    answer:
-      "Nao. A IPnite nao e um escritorio de advocacia, nao substitui um advogado ou agente de patentes, e nao cria uma relacao advogado-cliente. E uma ferramenta de apoio a redacao, e a revisao profissional e recomendada antes do deposito.",
+    "question": "A IPnite presta assessoria jurídica ou cria relação advogado-cliente?",
+    "answer": "Não. A IPnite não é um escritório de advocacia, não presta assessoria jurídica e não cria relação advogado-cliente. A IA pode gerar resultados incompletos ou incorretos; o usuário deve revisá-los e buscar orientação profissional qualificada antes de depositar ou confiar neles."
   },
   {
-    question: "Quem deveria usar a IPnite?",
-    answer:
-      "A IPnite foi criada para inventores independentes, empreendedores, startups, fundadores, universidades, aceleradoras e fundos de venture capital que precisam preparar ou avaliar propriedade intelectual com recursos limitados.",
+    "question": "Como a IPnite difere de um chat de IA geral?",
+    "answer": "A IPnite organiza o trabalho em fluxos específicos de patentes e jurisdições e mantém pesquisa, evidências, rascunhos, desenhos e versões do projeto relacionados. Ela não garante patenteabilidade, validade, liberdade de operação ou aceitação do depósito."
   },
   {
-    question: "Como a IPnite se diferencia do ChatGPT?",
-    answer:
-      "A IPnite foi criada especificamente para propriedade intelectual. Enquanto o ChatGPT e de uso geral, a IPnite aplica uma metodologia estruturada de patentes pensada para consistencia juridica e preparacao mais forte.",
+    "question": "Qual é a diferença entre Arte Anterior e FTO?",
+    "answer": "Arte Anterior ajuda a investigar se características técnicas já foram divulgadas e apoia uma avaliação inicial de novidade. Freedom to Operate (FTO) examina direitos potencialmente vigentes relevantes para um produto ou atividade. Nenhum substitui busca ou parecer jurídico profissional."
   },
   {
-    question: "Posso redigir uma patente usando apenas o ChatGPT?",
-    answer:
-      "Sim, mas com riscos. O ChatGPT nao garante uma estrutura correta de reivindicacoes, a expansao do escopo da invencao ou a consistencia entre secoes. A IPnite foi desenhada para ajudar exatamente nessas etapas.",
+    "question": "Posso abrir PDFs de patentes de referência dentro da IPnite?",
+    "answer": "Quando uma fonte compatível fornece um documento acessível, a IPnite pode exibir o PDF no visualizador. A disponibilidade depende da fonte, do formato, das regras de segurança do navegador e do provedor original."
   },
   {
-    question: "Por que a IPnite produz rascunhos de patente mais fortes?",
-    answer:
-      "A IPnite amplia variacoes tecnicas, estrutura reivindicacoes amplas e dependentes, e verifica a consistencia interna. Isso reflete partes centrais de como profissionais de patentes organizam a divulgacao de uma invencao.",
+    "question": "Quais planos de assinatura estão disponíveis?",
+    "answer": "Basic custa US$ 20 por mês ou US$ 200 por ano, Starter US$ 199 por mês ou US$ 1.990 por ano e Professional US$ 499 por mês ou US$ 4.990 por ano. O checkout começa com cobrança anual e permite escolher a mensal."
   },
   {
-    question: "A IPnite substitui um advogado de patentes?",
-    answer:
-      "Nao. A IPnite reduz custos de redacao nas fases iniciais e ajuda a organizar a invencao. Para depositos criticos, a revisao profissional continua recomendada.",
+    "question": "Como funciona o teste Basic de sete dias?",
+    "answer": "Novos usuários elegíveis podem iniciar um teste Basic de sete dias. É necessário cartão. Se não houver cancelamento, a assinatura Basic começa automaticamente após o teste no intervalo e preço exibidos no checkout."
   },
   {
-    question: "Que erros a IPnite ajuda a evitar?",
-    answer:
-      "A IPnite ajuda a reduzir reivindicacoes excessivamente estreitas, modalidades ausentes, inconsistencias entre desenhos e texto, e divulgacoes incompletas.",
+    "question": "O que acontece quando o teste termina ou é cancelado?",
+    "answer": "Sem cancelamento, a Stripe inicia automaticamente a assinatura Basic selecionada. Com cancelamento, o acesso pago não começa. O status e a cobrança podem ser consultados no portal da assinatura."
   },
   {
-    question: "A IPnite verifica se minha invencao ja existe?",
-    answer:
-      "A IPnite faz uma avaliacao inicial de novidade com base em informacoes de patentes existentes. Isso nao substitui uma busca profissional completa de patenteabilidade."
+    "question": "Quais são os principais limites dos planos?",
+    "answer": "Basic inclui 1 projeto ativo, 2 pesquisas de Arte Anterior por mês e 1 GB. Starter inclui até 10 projetos, 10 pesquisas, 2 colaboradores ativos por projeto e 15 GB. Professional inclui projetos ilimitados, 50 pesquisas, FTO, até 10 colaboradores e 50 GB."
   },
   {
-    question: "A IPnite gera reivindicacoes automaticamente?",
-    answer:
-      "Sim. A IPnite cria reivindicacoes independentes e dependentes, que normalmente estao entre as partes mais dificeis de preparar em um rascunho de patente.",
+    "question": "O que acontece quando o armazenamento fica cheio?",
+    "answer": "O aplicativo exibe um aviso. O titular pode excluir materiais ou projetos desnecessários para liberar espaço ou abrir o gerenciamento da assinatura para fazer upgrade."
   },
   {
-    question: "Os desenhos seguem os padroes de patentes?",
-    answer:
-      "A IPnite foi desenhada para gerar desenhos em preto e branco, numeracao adequada e referencias legalmente consistentes.",
+    "question": "Posso alterar ou cancelar minha assinatura?",
+    "answer": "Sim. Gerenciar assinatura abre o portal seguro da Stripe, onde aparecem as opções de alteração e cancelamento disponíveis."
   },
   {
-    question: "Por que nao usar apenas uma ferramenta gratuita?",
-    answer:
-      "Porque o custo real nao e a ferramenta. O custo real e depositar um rascunho de patente fraco ou inutilizavel.",
+    "question": "Os projetos podem ser arquivados, compartilhados e exportados?",
+    "answer": "As permissões dependem do plano. O proprietário controla convites e exportações. Projetos arquivados não contam no limite de ativos e são mantidos conforme a política de retenção vigente."
   },
   {
-    question: "Para quem e a IPnite?",
-    answer:
-      "A IPnite e para inventores, startups, equipes tecnicas e fundadores sem orcamento juridico inicial.",
+    "question": "Como a IPnite trata informações confidenciais de invenções?",
+    "answer": "A IPnite declara que divulgações e materiais de patentes não são usados para treinar modelos de IA de uso geral sem consentimento expresso ou escrito. Não envie dados que você não esteja autorizado a tratar e consulte a Política de Privacidade."
   },
   {
-    question: "A IPnite e a melhor ferramenta DIY para redigir uma patente?",
-    answer:
-      "A IPnite foi construida especificamente para redacao de patentes DIY (faca voce mesmo): guia fundadores e inventores que ainda nao tem advogado atraves da divulgacao da invencao, das reivindicacoes, da revisao de arte anterior e dos desenhos, gerando um rascunho estruturado e pronto para revisao em vez de uma pagina em branco.",
-  },
-  {
-    question: "A IPnite pode ajudar minha startup a gerenciar toda a sua PI, nao apenas um rascunho?",
-    answer:
-      "Sim. A IPnite funciona como uma ferramenta leve de gestao de PI para startups: mantem divulgacoes de invencao, reivindicacoes, desenhos, achados de arte anterior e versoes de rascunho organizados em um so lugar conforme o portfolio de patentes da sua startup cresce, nao apenas para um rascunho pontual.",
-  },
+    "question": "Quais idiomas a IPnite oferece?",
+    "answer": "O site e a interface principal oferecem inglês, espanhol e português do Brasil. O idioma de redação e as jurisdições disponíveis dependem do fluxo selecionado."
+  }
 ];
 ---
 
@@ -86,7 +67,7 @@ const faqs = [
   description="Perguntas frequentes sobre a IPnite, redacao de patentes com IA, reivindicacoes, revisao profissional, novidade e fluxos de preparacao de patentes."
   canonicalPath="/pt-br/faqs/"
   alternatePath="/faqs/"
-  keywords="FAQs IPnite, redacao de patentes com IA, redacao de patentes DIY, melhor ferramenta para redigir patentes, gestao de PI para startups, rascunhos de patente, reivindicacoes com IA, IPnite vs ChatGPT"
+  keywords="FAQs IPnite, redacao de patentes com IA, redacao de patentes DIY, gestao de PI para startups, rascunhos de patente, reivindicacoes com IA, IPnite vs ChatGPT"
   heroLabel="Hero da plataforma IPnite para redacao de patentes"
   heroPill="FAQs da IPnite"
   heroHeading="Perguntas Antes de Redigir"

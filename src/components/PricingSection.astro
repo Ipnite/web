@@ -9,16 +9,19 @@ const check = "✓";
 const copy = lang === "es"
   ? {
       heading: ["Mantenlo simple. ", "Tres planes"],
-      freemium: {
-        title: "Freemium",
-        price: "$0",
-        lede: "Para siempre, gratis.",
-        copy: "Un plan gratuito para explorar el flujo de redacción de IPnite antes de subir de plan.",
+      basic: {
+        title: "Basic",
+        price: "$20",
+        priceUnit: "/mes",
+        lede: "o $200/año.",
+        copy: "Para trabajo individual y enfocado en patentes.",
         features: [
           "1 proyecto activo.",
           "2 búsquedas de arte previo por mes.",
+          "Espacio de trabajo individual.",
+          "1 GiB de almacenamiento seguro.",
         ],
-        cta: "Empezar gratis",
+        cta: "Elegir Basic",
       },
       starter: {
         title: "Inicial",
@@ -49,20 +52,27 @@ const copy = lang === "es"
         ],
         cta: "Elegir Profesional",
       },
+      trial: {
+        cta: "Prueba Basic gratis durante 7 días",
+        finePrint: "Se requiere tarjeta. La facturación comienza automáticamente después del trial, salvo que canceles.",
+      },
     }
   : lang === "pt"
   ? {
       heading: ["Mantenha simples. ", "Tres planos"],
-      freemium: {
-        title: "Freemium",
-        price: "$0",
-        lede: "Para sempre, grátis.",
-        copy: "Um plano gratuito para explorar o fluxo de redação da IPnite antes de fazer upgrade.",
+      basic: {
+        title: "Basic",
+        price: "$20",
+        priceUnit: "/mês",
+        lede: "ou $200/ano.",
+        copy: "Para trabalho individual e focado em patentes.",
         features: [
           "1 projeto ativo.",
           "2 buscas de arte anterior por mês.",
+          "Espaço de trabalho individual.",
+          "1 GiB de armazenamento seguro.",
         ],
-        cta: "Começar grátis",
+        cta: "Escolher Basic",
       },
       starter: {
         title: "Inicial",
@@ -93,19 +103,26 @@ const copy = lang === "es"
         ],
         cta: "Escolher Profissional",
       },
+      trial: {
+        cta: "Experimente o Basic grátis por 7 dias",
+        finePrint: "É necessário um cartão. A cobrança começa automaticamente após o período de teste, salvo cancelamento.",
+      },
     }
   : {
       heading: ["Keep It Simple. ", "Three Plans"],
-      freemium: {
-        title: "Freemium",
-        price: "$0",
-        lede: "Free, forever.",
-        copy: "A free tier to explore IPnite's drafting workflow before upgrading.",
+      basic: {
+        title: "Basic",
+        price: "$20",
+        priceUnit: "/mo",
+        lede: "or $200/yr.",
+        copy: "For focused individual patent work.",
         features: [
           "1 active project.",
           "2 Prior Art searches per month.",
+          "Individual workspace.",
+          "1 GiB secure storage.",
         ],
-        cta: "Start free",
+        cta: "Choose Basic",
       },
       starter: {
         title: "Starter",
@@ -136,6 +153,10 @@ const copy = lang === "es"
         ],
         cta: "Choose Professional",
       },
+      trial: {
+        cta: "Try Basic free for 7 days",
+        finePrint: "A card is required. Billing starts automatically after the trial unless you cancel.",
+      },
     };
 ---
 
@@ -149,41 +170,21 @@ const copy = lang === "es"
     <div class="pricing__cards">
       <article class="plan-card">
         <header>
-          <h3>{copy.freemium.title}</h3>
-          <p class="plan-card__price">{copy.freemium.price}</p>
-          <p class="plan-card__lede">{copy.freemium.lede}</p>
+          <h3>{copy.basic.title}</h3>
+          <p class="plan-card__price">{copy.basic.price}<span class="plan-card__price-unit">{copy.basic.priceUnit}</span></p>
+          <p class="plan-card__lede">{copy.basic.lede}</p>
         </header>
 
         <p class="plan-card__copy">
-          {copy.freemium.copy}
+          {copy.basic.copy}
         </p>
 
         <ul class="plan-card__features">
-          {copy.freemium.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
+          {copy.basic.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
         </ul>
 
         <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          {copy.freemium.cta}
-        </a>
-      </article>
-
-      <article class="plan-card plan-card--featured">
-        <header>
-          <h3>{copy.starter.title}</h3>
-          <p class="plan-card__price">{copy.starter.price}<span class="plan-card__price-unit">{copy.starter.priceUnit}</span></p>
-          <p class="plan-card__lede">{copy.starter.lede}</p>
-        </header>
-
-        <p class="plan-card__copy">
-          {copy.starter.copy}
-        </p>
-
-        <ul class="plan-card__features">
-          {copy.starter.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
-        </ul>
-
-        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          {copy.starter.cta}
+          {copy.basic.cta}
         </a>
       </article>
 
@@ -206,6 +207,33 @@ const copy = lang === "es"
           {copy.pro.cta}
         </a>
       </article>
+
+      <article class="plan-card plan-card--featured">
+        <header>
+          <h3>{copy.starter.title}</h3>
+          <p class="plan-card__price">{copy.starter.price}<span class="plan-card__price-unit">{copy.starter.priceUnit}</span></p>
+          <p class="plan-card__lede">{copy.starter.lede}</p>
+        </header>
+
+        <p class="plan-card__copy">
+          {copy.starter.copy}
+        </p>
+
+        <ul class="plan-card__features">
+          {copy.starter.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
+        </ul>
+
+        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
+          {copy.starter.cta}
+        </a>
+      </article>
+    </div>
+
+    <div class="pricing__trial">
+      <a class="pricing__trial-cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
+        {copy.trial.cta}
+      </a>
+      <p>{copy.trial.finePrint}</p>
     </div>
   </div>
 </section>
@@ -366,6 +394,47 @@ const copy = lang === "es"
     transform: translateY(-1px);
   }
 
+  .pricing__trial {
+    display: flex;
+    max-width: 620px;
+    margin: 38px auto 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .pricing__trial-cta {
+    display: inline-flex;
+    min-height: 54px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #6b2a2f;
+    padding: 0 34px;
+    color: #fff;
+    font-family: "Roboto Slab", serif;
+    font-size: 21px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(107, 42, 47, 0.2);
+    transition: background 180ms ease, transform 180ms ease;
+  }
+
+  .pricing__trial-cta:hover {
+    background: #4c0815;
+    transform: translateY(-1px);
+  }
+
+  .pricing__trial p {
+    margin: 0;
+    color: #777071;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
   @media (max-width: 1040px) {
     .pricing__cards {
       grid-template-columns: 1fr;
@@ -419,6 +488,14 @@ const copy = lang === "es"
       width: 100%;
       font-size: 16px;
       white-space: normal;
+      text-align: center;
+    }
+
+    .pricing__trial-cta {
+      width: 100%;
+      padding: 14px 22px;
+      font-size: 17px;
+      line-height: 1.25;
       text-align: center;
     }
   }

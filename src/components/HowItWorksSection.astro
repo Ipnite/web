@@ -121,7 +121,7 @@ const copy = lang === "es"
     transform: translateY(-1px);
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
     #how-it-works {
       height: auto !important;
       overflow: visible !important;
@@ -132,7 +132,7 @@ const copy = lang === "es"
       position: relative !important;
       inset: auto !important;
       width: 100% !important;
-      max-width: 420px !important;
+      max-width: 520px !important;
       display: grid;
       gap: 14px;
     }
@@ -146,20 +146,21 @@ const copy = lang === "es"
       left: auto !important;
       width: 100% !important;
       height: auto !important;
+      transform: none !important;
     }
 
     #hiw-heading {
       margin: 0 !important;
       text-align: center;
-      font-size: 42px !important;
+      font-size: clamp(38px, 10vw, 42px) !important;
       line-height: 1.08 !important;
       white-space: normal !important;
     }
 
     #how-it-works > div > p {
       margin: 0 auto 8px;
-      font-size: 18px !important;
-      line-height: 1.35 !important;
+      font-size: clamp(24px, 6.5vw, 28px) !important;
+      line-height: 1.2 !important;
       white-space: normal !important;
     }
 

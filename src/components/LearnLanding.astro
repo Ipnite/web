@@ -6,8 +6,6 @@ interface Props {
 }
 
 const { lang = "en" } = Astro.props;
-const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
-const href = (path: string) => `${prefix}${path}`;
 
 const copy = lang === "es"
   ? {
@@ -248,20 +246,42 @@ const copy = lang === "es"
       ctaButton: "Start drafting",
       ctaLabel: "Start drafting the patent",
     };
+
+const heroTitle = lang === "es"
+  ? ["Fundamentos de patentes,", "sin la neblina."]
+  : lang === "pt"
+  ? ["Fundamentos de patentes,", "sem a neblina."]
+  : ["Patent Basics,", "Without the Fog."];
+
+const sectionTitles = lang === "es"
+  ? {
+      core: ["Las ideas", "centrales."],
+      compare: ["Provisional vs.", "no provisional."],
+      timeline: ["El reloj de", "12 meses."],
+      tabs: ["Lo que los fundadores suelen", "malinterpretar."],
+      quiz: ["Chequeo", "rápido."],
+    }
+  : lang === "pt"
+  ? {
+      core: ["As ideias", "centrais."],
+      compare: ["Provisório vs.", "não provisório."],
+      timeline: ["O relógio de", "12 meses."],
+      tabs: ["O que os fundadores costumam", "entender errado."],
+      quiz: ["Checagem", "rápida."],
+    }
+  : {
+      core: ["The core", "ideas."],
+      compare: ["Provisional vs.", "nonprovisional."],
+      timeline: ["The 12-month", "clock."],
+      tabs: ["What founders usually", "misunderstand."],
+      quiz: ["Quick", "check."],
+    };
 ---
 
 <section class="learn-page">
   <section class="learn-hero">
-    <p class="learn-eyebrow">{copy.eyebrow}</p>
-    <h1>{copy.title}</h1>
-    <p class="learn-subtitle">
-      {copy.subtitle[0]}<span>{copy.subtitle[1]}</span>
-    </p>
-    <p class="learn-lead">{copy.lead}</p>
-    <div class="learn-actions">
-      <a class="learn-btn learn-btn-primary" href="https://app.ipnite.com/" target="_blank" rel="noopener">{copy.primary}</a>
-      <a class="learn-btn" href={href("/#learn-core")}>{copy.secondary}</a>
-    </div>
+    <h1><span>{heroTitle[0]}</span><strong>{heroTitle[1]}</strong></h1>
+    <p class="learn-subtitle">{copy.subtitle[0]}{copy.subtitle[1]}</p>
 
     <PageHeroImage label={copy.heroLabel} />
 
@@ -312,7 +332,7 @@ const copy = lang === "es"
 
   <section id="learn-core" class="learn-section">
     <div class="learn-head">
-      <h2>{copy.coreHeading}</h2>
+      <h2><span>{sectionTitles.core[0]}</span>{" "}<strong>{sectionTitles.core[1]}</strong></h2>
       <p>{copy.coreLead}</p>
     </div>
     <div class="core-grid">
@@ -327,9 +347,9 @@ const copy = lang === "es"
     </div>
   </section>
 
-  <section class="learn-section">
+  <section id="learn-compare" class="learn-section">
     <div class="learn-head">
-      <h2>{copy.compareHeading}</h2>
+      <h2><span>{sectionTitles.compare[0]}</span>{" "}<strong>{sectionTitles.compare[1]}</strong></h2>
       <p>{copy.compareLead}</p>
     </div>
     <div class="compare-grid">
@@ -346,9 +366,9 @@ const copy = lang === "es"
     </div>
   </section>
 
-  <section class="learn-section">
+  <section id="learn-timeline" class="learn-section">
     <div class="learn-head">
-      <h2>{copy.timelineHeading}</h2>
+      <h2><span>{sectionTitles.timeline[0]}</span>{" "}<strong>{sectionTitles.timeline[1]}</strong></h2>
       <p>{copy.timelineLead}</p>
     </div>
     <div class="timeline">
@@ -362,9 +382,9 @@ const copy = lang === "es"
     </div>
   </section>
 
-  <section class="learn-section tabs-section">
+  <section id="learn-misconceptions" class="learn-section tabs-section">
     <div class="learn-head">
-      <h2>{copy.tabsHeading}</h2>
+      <h2><span>{sectionTitles.tabs[0]}</span>{" "}<strong>{sectionTitles.tabs[1]}</strong></h2>
       <p>{copy.tabsLead}</p>
     </div>
     <div class="tabs-shell">
@@ -386,9 +406,9 @@ const copy = lang === "es"
     </div>
   </section>
 
-  <section class="learn-section quiz-section">
+  <section id="learn-quiz" class="learn-section quiz-section">
     <div class="learn-head">
-      <h2>{copy.quizHeading}</h2>
+      <h2><span>{sectionTitles.quiz[0]}</span>{" "}<strong>{sectionTitles.quiz[1]}</strong></h2>
       <p>{copy.quizLead}</p>
     </div>
     <div class="quiz-box">
@@ -416,7 +436,7 @@ const copy = lang === "es"
   .learn-page {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 76px 18px 110px;
+    padding: 0 18px 110px;
     color: #505050;
     font-family: "Roboto", sans-serif;
   }
@@ -446,29 +466,60 @@ const copy = lang === "es"
   .learn-head h2,
   .learn-cta h2 {
     margin: 22px auto 0;
-    color: #4c0815;
     font-family: "Roboto Slab", serif;
     font-weight: 800;
-    line-height: 1;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .learn-hero { position: relative; isolation: isolate; width: min(100%, 1280px); min-height: 720px; margin-inline: auto; padding: 48px 24px; overflow: hidden; border-radius: clamp(28px, 3vw, 50px); background: radial-gradient(circle at 83% 44%, rgba(107, 42, 47, 0.12), transparent 32%), rgba(217, 217, 217, 0.15); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.40), inset 1px 0 0 rgba(255,255,255,0.32), inset 0 -1px 1px rgba(0,0,0,0.13), inset -1px 0 1px rgba(0,0,0,0.11); }
+
+  .learn-hero :global(.page-hero-brain) { z-index: 1 !important; right: max(-330px, -22vw) !important; left: auto !important; top: clamp(58px, 6vw, 92px) !important; width: clamp(520px, 54vw, 700px) !important; height: auto !important; transform: none; opacity: 0.38 !important; filter: blur(2px) !important; }
+
+  .learn-hero :global(.page-hero-brain img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    transform: none;
+  }
+
+  .learn-hero h1,
+  .learn-hero .learn-subtitle {
+    position: relative;
+    z-index: 1;
   }
 
   .learn-hero h1 {
-    max-width: 980px;
-    font-size: clamp(54px, 7.8vw, 104px);
+    max-width: 780px;
+    color: #505050;
+    font-size: clamp(48px, 5.4vw, 72px);
+    font-weight: 800;
+    line-height: 1.04;
+    text-wrap: balance;
   }
 
+  .learn-hero h1 span,
+  .learn-hero h1 strong {
+    display: block;
+  }
+
+  .learn-hero h1 span { color: #505050; }
+  .learn-hero h1 strong { color: #6b2a2f; }
+
   .learn-subtitle {
-    max-width: 820px;
-    margin: 24px auto 0;
+    max-width: 680px;
+    margin: 18px auto 0;
     color: #505050;
-    font-family: "Roboto Slab", serif;
-    font-size: clamp(28px, 3.7vw, 48px);
-    font-weight: 700;
-    line-height: 1.1;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(18px, 1.7vw, 22px);
+    font-weight: 500;
+    line-height: 1.5;
   }
 
   .learn-subtitle span {
-    color: #4c0815;
+    color: inherit;
   }
 
   .learn-lead,
@@ -550,7 +601,38 @@ const copy = lang === "es"
 
   .learn-head h2,
   .learn-cta h2 {
-    font-size: clamp(40px, 5vw, 64px);
+    color: #4c0815;
+    font-size: clamp(40px, 4vw, 58px);
+    line-height: 1.12;
+  }
+
+  .learn-head h2 {
+    max-width: 940px;
+    margin: 0 auto;
+    color: #6b2a2f;
+    font-size: clamp(42px, 4.45vw, 64px);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  .learn-head h2 > span {
+    color: #6b2a2f;
+    font-weight: 400;
+  }
+
+  .learn-head h2 > strong {
+    color: #505050;
+    font-weight: 700;
+  }
+
+  .learn-head > p {
+    max-width: 760px;
+    margin: 18px auto 0;
+    color: #505050;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 500;
+    line-height: 1.55;
   }
 
   .core-grid,
@@ -724,14 +806,23 @@ const copy = lang === "es"
   }
 
   @media (max-width: 640px) {
-    .learn-page { padding: 54px 12px 80px; }
-    .learn-hero h1 { font-size: 48px; }
-    .learn-subtitle, .learn-head h2, .learn-cta h2 { font-size: 34px; }
+    .learn-page { padding: 0 16px 80px; }
+    .learn-hero { min-height: 0; padding: 30px 16px 28px; }
+    .learn-hero :global(.page-hero-brain) { display: none !important; }
+
+    .learn-hero h1 { font-size: clamp(44px, 12vw, 54px); }
+    .learn-subtitle { max-width: 350px; font-size: 18px; line-height: 1.5; }
+    .learn-head h2, .learn-cta h2 { font-size: clamp(34px, 10vw, 42px); }
+    .learn-head > p { max-width: 360px; font-size: 16px; line-height: 1.5; }
     .learn-actions, .quiz-box, .timeline { grid-template-columns: 1fr; }
     .learn-btn { width: 100%; max-width: 330px; }
     .learn-stage, .learn-cta { border-radius: 28px; }
-    .learn-stage svg { min-width: 760px; transform: translateX(-185px); }
-    .learn-stage { overflow: hidden; }
+    .learn-stage svg { min-width: 680px; transform: none; }
+    .learn-stage {
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scrollbar-color: rgba(107, 42, 47, 0.45) transparent;
+    }
   }
 </style>
 

@@ -1,6 +1,8 @@
 ---
 // Fuente: ApplicationFooterSection.tsx (Figma 4:498)
 // height: 325
+import NewsletterForm from "@components/NewsletterForm.astro";
+
 interface Props {
   lang?: "en" | "es" | "pt";
 }
@@ -130,6 +132,11 @@ const legalLinks = [
         ))}
       </ul>
     </nav>
+
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <NewsletterForm lang={lang} />
+    </div>
   </div>
 </footer>
 
@@ -146,6 +153,7 @@ const legalLinks = [
     grid-template-columns: minmax(220px, 1fr) minmax(260px, auto);
     grid-template-areas:
       "links social"
+      "newsletter newsletter"
       "brand notice";
     gap: 40px clamp(40px, 8vw, 120px);
     align-items: start;
@@ -186,6 +194,14 @@ const legalLinks = [
     grid-area: social;
     justify-self: end;
     text-align: right;
+  }
+
+  .footer-newsletter {
+    grid-area: newsletter;
+  }
+
+  .footer-newsletter :global(.newsletter-form) {
+    max-width: 420px;
   }
 
   .site-footer li {
@@ -269,6 +285,12 @@ const legalLinks = [
     .footer-social {
       order: 2;
       margin-top: 0;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .footer-newsletter {
+      order: 2;
       justify-self: start;
       text-align: left;
     }

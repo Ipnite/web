@@ -1,0 +1,58 @@
+---
+interface Props {
+  lang?: "en" | "es" | "pt";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = lang === "es"
+  ? {
+      label: "Suscríbete a nuestro boletín",
+      placeholder: "Ingresa tu correo electrónico",
+      button: "Suscribirse",
+    }
+  : lang === "pt"
+  ? {
+      label: "Assine nossa newsletter",
+      placeholder: "Digite seu e-mail",
+      button: "Assinar",
+    }
+  : {
+      label: "Subscribe to our newsletter",
+      placeholder: "Enter your email address",
+      button: "Subscribe",
+    };
+
+// Mailchimp classic embed action + audience/list IDs.
+const MC_ACTION = "https://ipnite.us1.list-manage.com/subscribe/post?u=07b8982a9cdceb65fd713ee49&id=ef2681748d&f_id=0073c7e1f0";
+const MC_HONEYPOT_NAME = "b_07b8982a9cdceb65fd713ee49_ef2681748d";
+---
+
+<div class="newsletter-form">
+  <p class="[font-family:'Roboto_Slab',serif] text-[15px] font-bold leading-[20px] tracking-[-0.28px] text-white">
+    {copy.label}
+  </p>
+  <form
+    action={MC_ACTION}
+    method="post"
+    target="_blank"
+    class="relative mt-3 flex flex-wrap gap-2"
+  >
+    <label class="sr-only" for="newsletter-email">{copy.placeholder}</label>
+    <input
+      id="newsletter-email"
+      type="email"
+      name="EMAIL"
+      required
+      placeholder={copy.placeholder}
+      class="h-10 min-w-[200px] flex-1 rounded-full bg-white px-5 font-roboto text-[15px] text-[#4c0815] outline-none placeholder:text-gris1"
+    />
+    <!-- Honeypot: real users leave this blank; do not remove. -->
+    <div aria-hidden="true" class="absolute left-[-5000px]">
+      <input type="text" name={MC_HONEYPOT_NAME} tabindex="-1" value="" />
+    </div>
+    <button type="submit" class="btn-bordo h-10 px-6 text-[15px]">
+      {copy.button}
+    </button>
+  </form>
+</div>

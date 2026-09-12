@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import PageHeroImage from "@components/PageHeroImage.astro";
+import AboutHero from "@components/AboutHero.astro";
 import FlagBadge from "@components/FlagBadge.astro";
 
 const principles = [
@@ -26,10 +26,10 @@ const team = [
     initial: "R",
     photo: "/images/rafael.jpg",
     name: "Rafael Betanzos San Juan",
-    role: "CEO · IP Strategy · Platform Builder",
+    role: "CEO · Lawyer · Biotechnologist · Patent Expert",
     bio: "Leads IPnite's platform, AI agents, drafting workflows, product direction, and intellectual property strategy.",
     tags: ["IP strategy", "AI workflows", "Product"],
-    href: "https://www.linkedin.com/in/rafabetanzos/",
+    href: "/rafael-betanzos-san-juan/",
     country: "Mexico" as const,
   },
   {
@@ -80,9 +80,12 @@ const aboutStructuredData = [
         position: 1,
         item: {
           "@type": "Person",
+          "@id": "https://www.ipnite.com/#rafael-betanzos-san-juan",
           name: "Rafael Betanzos San Juan",
-          jobTitle: "CEO · IP Strategy · Platform Builder",
-          worksFor: { "@type": "Organization", name: "IPnite" },
+          url: "https://www.ipnite.com/rafael-betanzos-san-juan/",
+          jobTitle: ["Lawyer", "Biotechnologist", "Patent expert", "Founder of IPnite"],
+          description: "Lawyer, biotechnologist, IPnite founder, and patent expert focused on intellectual property strategy, biotechnology patents, provisional applications, and PCT.",
+          worksFor: { "@id": "https://www.ipnite.com/#organization" },
           sameAs: "https://www.linkedin.com/in/rafabetanzos/",
         },
       },
@@ -114,20 +117,7 @@ const aboutStructuredData = [
       <div class="about-glow about-glow-left" aria-hidden="true"></div>
     <div class="about-glow about-glow-right" aria-hidden="true"></div>
 
-    <section class="about-hero" aria-labelledby="about-heading">
-      <h1 id="about-heading"><span>Our</span> <strong>Philosophy</strong></h1>
-      <p class="about-statement">
-        The tools that once belonged to a few are moving within reach of everyone.
-      </p>
-      <p class="about-mission">To ignite the potential of human ingenuity by securing the assets that define the future.</p>
-      <div class="about-actions">
-        <a href="https://app.ipnite.com/" target="_blank" rel="noopener" class="about-button about-button-primary">
-          Start drafting with IPnite
-        </a>
-        <a href="/#how-it-works" class="about-button about-button-secondary">How It Works</a>
-      </div>
-      <PageHeroImage label="IPnite patent drafting platform hero" />
-    </section>
+    <AboutHero lang="en" />
 
     <section class="about-section" aria-labelledby="about-why-heading">
       <div class="about-section-head">
@@ -212,7 +202,7 @@ const aboutStructuredData = [
 
       <div class="team-grid">
         {team.map((member) => (
-          <article class="team-card">
+          <article class:list={["team-card", { "founder-card": member.name === "Rafael Betanzos San Juan" }]}>
             <div class="team-avatar" aria-hidden="true">
               {member.photo ? <img src={member.photo} alt={member.name} loading="lazy" /> : member.initial}
             </div>
@@ -223,7 +213,7 @@ const aboutStructuredData = [
             <div class="team-tags">
               {member.tags.map((tag) => <span>{tag}</span>)}
             </div>
-            <a href={member.href} target="_blank" rel="noopener" class="profile-link">View LinkedIn</a>
+            <a href={member.href} target={member.href.startsWith("http") ? "_blank" : undefined} rel={member.href.startsWith("http") ? "noopener" : undefined} class="profile-link">{member.name === "Rafael Betanzos San Juan" ? "View profile" : "View LinkedIn"}</a>
           </article>
         ))}
       </div>
@@ -1039,6 +1029,16 @@ const aboutStructuredData = [
     font-weight: 800;
     text-decoration: underline;
     transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .founder-card {
+    position: relative;
+  }
+
+  .founder-card .profile-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
   }
 
   .profile-link:hover {

@@ -11,6 +11,8 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   lang?: "en" | "es" | "pt";
   alternatePath?: string;
+  includeLanguageAlternates?: boolean;
+  ogImage?: string;
   robots?: string;
 }
 
@@ -22,11 +24,14 @@ const {
   structuredData = [],
   lang = "en",
   alternatePath,
+  includeLanguageAlternates = true,
+  ogImage = "/logo.png",
   robots = "index, follow, max-image-preview:large",
 } = Astro.props;
 
 const siteUrl = "https://www.ipnite.com";
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const ogImageUrl = new URL(ogImage, siteUrl).toString();
 
 function localizedCanonicalPath(targetLocale: "en" | "es" | "pt") {
   const stripped = canonicalPath.replace(/^\/(es|pt-br)(?=\/|$)/, "") || "/";
@@ -36,12 +41,12 @@ function localizedCanonicalPath(targetLocale: "en" | "es" | "pt") {
   return targetPrefix + stripped;
 }
 
-const alternateUrls = [
+const alternateUrls = includeLanguageAlternates ? [
   { hreflang: "en", href: new URL(localizedCanonicalPath("en"), siteUrl).toString() },
   { hreflang: "es", href: new URL(localizedCanonicalPath("es"), siteUrl).toString() },
   { hreflang: "pt-BR", href: new URL(localizedCanonicalPath("pt"), siteUrl).toString() },
   { hreflang: "x-default", href: new URL(localizedCanonicalPath("en"), siteUrl).toString() },
-];
+] : [];
 const schemaItems = Array.isArray(structuredData) ? structuredData : [structuredData];
 const baseStructuredData = [
   {
@@ -53,6 +58,7 @@ const baseStructuredData = [
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     email: "info@ipnite.com",
+    founder: { "@id": `${siteUrl}/#rafael-betanzos-san-juan` },
     foundingLocation: [
       { "@type": "Place", name: "United States" },
       { "@type": "Place", name: "Argentina" },
@@ -117,7 +123,7 @@ const privacyPath=lang==="es"?"/es/privacy/":lang==="pt"?"/pt-br/privacy/":"/pri
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={`${siteUrl}/logo.png`} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

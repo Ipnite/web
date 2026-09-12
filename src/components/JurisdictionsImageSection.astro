@@ -24,10 +24,10 @@ const copy = lang === "es"
     };
 
 const jurisdictions = [
-  { code: "US", office: "USPTO" },
-  { code: "MX", office: "IMPI" },
-  { code: "AR", office: "INPI" },
+  { code: "MX", office: "IMPI", href: "/es/patentes-mexico/" },
   { code: "BR", office: "INPI" },
+  { code: "AR", office: "INPI" },
+  { code: "US", office: "USPTO" },
   { code: "EP", office: "EPO" },
   { code: "PCT", office: "WIPO" },
 ];
@@ -42,7 +42,12 @@ const jurisdictions = [
 
     <div class="jurisdictions__visual">
       <div class="jurisdictions__grid" aria-label="Jurisdiction cards">
-        {jurisdictions.map((item) => (
+        {jurisdictions.map((item) => item.href ? (
+          <a class="jurisdiction-card" href={item.href} hreflang="es-MX" aria-label="Ver soluciones de patentes para México">
+            <div class="jurisdiction-card__badge">{item.code}</div>
+            <p>{item.office}</p>
+          </a>
+        ) : (
           <article class="jurisdiction-card">
             <div class="jurisdiction-card__badge">{item.code}</div>
             <p>{item.office}</p>
@@ -120,6 +125,8 @@ const jurisdictions = [
   }
 
   .jurisdiction-card {
+    color: inherit;
+    text-decoration: none;
     position: relative;
     min-height: 170px;
     border: 1px solid #f0ebe9;
@@ -130,6 +137,8 @@ const jurisdictions = [
     box-shadow: 0 5px 12px rgba(107, 42, 47, 0.18);
     transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease, background .24s ease;
   }
+
+  .jurisdiction-card:focus-visible { outline: 3px solid rgba(107,42,47,.35); outline-offset: 4px; }
 
   .jurisdiction-card:hover {
     transform: translateY(-5px);

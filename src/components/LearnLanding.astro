@@ -1,5 +1,5 @@
 ---
-import PageHeroImage from "@components/PageHeroImage.astro";
+import LearnHero from "@components/LearnHero.astro";
 
 interface Props {
   lang?: "en" | "es" | "pt";
@@ -279,56 +279,7 @@ const sectionTitles = lang === "es"
 ---
 
 <section class="learn-page">
-  <section class="learn-hero">
-    <h1><span>{heroTitle[0]}</span><strong>{heroTitle[1]}</strong></h1>
-    <p class="learn-subtitle">{copy.subtitle[0]}{copy.subtitle[1]}</p>
-
-    <PageHeroImage label={copy.heroLabel} />
-
-    <div class="learn-stage" aria-label={copy.stageLabel}>
-      <svg viewBox="0 0 1200 520" role="img" aria-label={copy.stageLabel}>
-        <rect width="1200" height="520" rx="28" fill="#fff" />
-        <g class="stage-step stage-idea" transform="translate(90 128)">
-          <circle class="pulse" cx="86" cy="92" r="58" fill="#7B1D2C" opacity=".08" />
-          <circle cx="86" cy="92" r="28" fill="#fff" stroke="#7B1D2C" stroke-width="5" />
-          <path d="M86 64 C68 76 68 98 84 109 L84 122 L91 122 L91 109 C108 98 105 76 86 64Z" fill="none" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-          <line x1="78" y1="134" x2="96" y2="134" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" />
-          <text x="86" y="230" text-anchor="middle" fill="#7B1D2C" font-family="Roboto, sans-serif" font-size="17" font-weight="900" letter-spacing="2">{copy.idea[0]}</text>
-          <text x="86" y="256" text-anchor="middle" fill="#71717A" font-family="Roboto, sans-serif" font-size="15" font-weight="700">{copy.idea[1]}</text>
-        </g>
-        <g transform="translate(396 122)">
-          <rect x="0" y="0" width="158" height="184" rx="22" fill="#fff" stroke="#ECE7E5" stroke-width="3" />
-          <g class="draft-lines">
-            <path d="M30 46 H126" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" />
-            <path d="M30 80 H112" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" />
-            <path d="M30 114 H122" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" />
-          </g>
-          <rect x="30" y="140" width="76" height="10" rx="5" fill="#7B1D2C" opacity=".16" />
-          <text x="79" y="240" text-anchor="middle" fill="#7B1D2C" font-family="Roboto, sans-serif" font-size="17" font-weight="900" letter-spacing="2">{copy.draft[0]}</text>
-          <text x="79" y="266" text-anchor="middle" fill="#71717A" font-family="Roboto, sans-serif" font-size="15" font-weight="700">{copy.draft[1]}</text>
-        </g>
-        <g transform="translate(690 122)">
-          <circle cx="76" cy="100" r="66" fill="#fff" stroke="#ECE7E5" stroke-width="3" />
-          <circle cx="76" cy="100" r="42" fill="#fff" stroke="#7B1D2C" stroke-width="4" opacity=".86" />
-          <line x1="76" y1="100" x2="76" y2="72" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" />
-          <g class="clock-hand"><line x1="76" y1="100" x2="103" y2="100" stroke="#7B1D2C" stroke-width="5" stroke-linecap="round" /></g>
-          <circle cx="76" cy="100" r="5" fill="#7B1D2C" />
-          <text x="76" y="236" text-anchor="middle" fill="#7B1D2C" font-family="Roboto, sans-serif" font-size="17" font-weight="900" letter-spacing="2">{copy.months[0]}</text>
-          <text x="76" y="262" text-anchor="middle" fill="#71717A" font-family="Roboto, sans-serif" font-size="15" font-weight="700">{copy.months[1]}</text>
-        </g>
-        <g transform="translate(1000 128)">
-          <path class="shield-glow" d="M76 0 L142 24 V82 C142 128 112 157 76 176 C40 157 10 128 10 82 V24 Z" fill="#7B1D2C" opacity=".14" />
-          <path d="M76 12 L128 32 V82 C128 116 107 140 76 158 C45 140 24 116 24 82 V32 Z" fill="#fff" stroke="#7B1D2C" stroke-width="4" />
-          <text x="76" y="84" text-anchor="middle" fill="#7B1D2C" font-family="Roboto, sans-serif" font-size="12" font-weight="900" letter-spacing="2">{copy.status[0]}</text>
-          <circle class="spark spark-a" cx="148" cy="32" r="4" fill="#7B1D2C" />
-          <circle class="spark spark-b" cx="14" cy="142" r="3" fill="#7B1D2C" />
-          <circle class="spark spark-c" cx="156" cy="138" r="3" fill="#7B1D2C" />
-          <text x="76" y="228" text-anchor="middle" fill="#7B1D2C" font-family="Roboto, sans-serif" font-size="17" font-weight="900" letter-spacing="2">{copy.status[1].toUpperCase()}</text>
-          <text x="76" y="254" text-anchor="middle" fill="#71717A" font-family="Roboto, sans-serif" font-size="15" font-weight="700">{lang === "en" ? "Patent pending" : lang === "es" ? "Patente pendiente" : "Patente pendente"}</text>
-        </g>
-      </svg>
-    </div>
-  </section>
+  <LearnHero lang={lang} />
 
   <section id="learn-core" class="learn-section">
     <div class="learn-head">

@@ -12,19 +12,19 @@ import PricingSection from "@components/PricingSection.astro";
 import ContactSection from "@components/ContactSection.astro";
 import CTAFinalSection from "@components/CTAFinalSection.astro";
 const homeStructuredData = [{
-  "@context":"https://schema.org","@type":"SoftwareApplication",name:"The Drafter by IPnite",applicationCategory:"BusinessApplication",operatingSystem:"Web",url:"https://www.ipnite.com/pt-br/",inLanguage:"pt-BR",creator:{"@id":"https://www.ipnite.com/#organization"},offers:[
-    {"@type":"Offer",name:"Basic",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"20.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"200.00",priceCurrency:"USD",unitCode:"MON"}]},
-    {"@type":"Offer",name:"Professional",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"499.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"4990.00",priceCurrency:"USD",unitCode:"MON"}]},
-    {"@type":"Offer",name:"Starter",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"199.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"1990.00",priceCurrency:"USD",unitCode:"MON"}]}
-  ]
+  "@context":"https://schema.org","@type":["SoftwareApplication","WebApplication"],"@id":"https://www.ipnite.com/#the-drafter",name:"The Drafter by IPnite",alternateName:["IPnite","IPnite Patent Drafting Software"],applicationCategory:"BusinessApplication",applicationSubCategory:"LegalTech / Patent Drafting Software",operatingSystem:"Web",url:"https://www.ipnite.com/pt-br/",inLanguage:"pt-BR",creator:{"@id":"https://www.ipnite.com/#organization"},description:"Plataforma de inteligência artificial para redação de patentes, análise de anterioridade e aceleração de rascunhos. Desenvolvida para inventores independentes, startups, advogados, agentes de propriedade industrial, universidades, equipes de P&D e firmas jurídicas.",audience:[{"@type":"Audience",audienceType:"Advogados de patentes, agentes de propriedade industrial e firmas jurídicas"},{"@type":"Audience",audienceType:"Inventores, startups de tecnologia, equipes de P&D, universidades e TTOs"}],featureList:["Geração automatizada de reivindicações (claims)","Pesquisa de anterioridade e análise FTO conforme o plano","Geração de diagramas e desenhos de referência para patentes","Fluxos de trabalho colaborativos para firmas de PI","Exportação nos formatos DOCX, JSON e ZIP"],offers:{"@type":"AggregateOffer",priceCurrency:"USD",lowPrice:"20",highPrice:"499",offerCount:3,offers:[
+    {"@type":"Offer",name:"Basic",price:"20.00",priceCurrency:"USD",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"20.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"200.00",priceCurrency:"USD",unitCode:"MON"}]},
+    {"@type":"Offer",name:"Professional",price:"499.00",priceCurrency:"USD",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"499.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"4990.00",priceCurrency:"USD",unitCode:"MON"}]},
+    {"@type":"Offer",name:"Starter",price:"199.00",priceCurrency:"USD",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"199.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"1990.00",priceCurrency:"USD",unitCode:"MON"}]}
+  ]}
 }];
 ---
 
 <BaseLayout
   lang="pt"
-  title="IPnite — Redacao de Patentes DIY e Gestao de PI para Startups"
-  description="A IPnite e a plataforma DIY (faca voce mesmo) de redacao de patentes com IA para inventores, fundadores e startups. Documente invencoes, revise arte anterior, redija reivindicacoes e gerencie a PI da sua startup em um so lugar, sem precisar de um advogado para comecar."
-  keywords="IPnite, redacao de patentes com IA, redacao de patentes DIY, gestao de PI para startups, rascunho de patente provisorio, propriedade intelectual, inventores, fundadores"
+  title="IPnite — Software de Redação de Patentes com IA para Advogados, Firmas e Startups"
+  description="Acelere a redação de patentes e a análise de anterioridade com IA. A ferramenta criada para agentes de PI, advogados de patentes, universidades e startups."
+  keywords="redação de patentes com IA, software para advogados de patentes, patent drafting tool, software de propriedade industrial, legaltech de patentes, software para agentes de patentes"
   canonicalPath="/pt-br/"
   alternatePath="/"
   structuredData={homeStructuredData}

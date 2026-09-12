@@ -22,4 +22,16 @@ Allow: /
 User-agent: GoogleOther
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
 Sitemap: https://www.ipnite.com/sitemap.xml

@@ -26,25 +26,37 @@ const homeStructuredData = [
   },
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": ["SoftwareApplication", "WebApplication"],
     "@id": "https://www.ipnite.com/#the-drafter",
     name: "The Drafter by IPnite",
-    alternateName: "IPnite patent drafter",
+    alternateName: ["IPnite", "IPnite Patent Drafting Software"],
     applicationCategory: "BusinessApplication",
+    applicationSubCategory: "LegalTech / Patent Drafting Software",
     operatingSystem: "Web",
     url: "https://www.ipnite.com/",
+    inLanguage: "en",
     creator: { "@id": "https://www.ipnite.com/#organization" },
     audience: [
+      { "@type": "Audience", audienceType: "Patent attorneys, IP agents, and law firms" },
       { "@type": "Audience", audienceType: "Independent inventors" },
       { "@type": "Audience", audienceType: "Entrepreneurs" },
       { "@type": "Audience", audienceType: "Startups managing IP in-house (DIY)" },
+      { "@type": "Audience", audienceType: "R&D teams, universities, and technology transfer offices" },
       { "@type": "Audience", audienceType: "Venture capital funds evaluating startup IP" },
     ],
     areaServed: ["United States", "Latin America", "European Patent Office jurisdictions"],
-    offers: [
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      lowPrice: "20",
+      highPrice: "499",
+      offerCount: 3,
+      offers: [
       {
         "@type": "Offer",
         name: "Basic",
+        price: "20.00",
+        priceCurrency: "USD",
         priceSpecification: [
           { "@type": "UnitPriceSpecification", name: "Monthly", price: "20.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
           { "@type": "UnitPriceSpecification", name: "Annual", price: "200.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
@@ -54,6 +66,8 @@ const homeStructuredData = [
       {
         "@type": "Offer",
         name: "Starter",
+        price: "199.00",
+        priceCurrency: "USD",
         priceSpecification: [
           { "@type": "UnitPriceSpecification", name: "Monthly", price: "199.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
           { "@type": "UnitPriceSpecification", name: "Annual", price: "1990.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
@@ -63,15 +77,18 @@ const homeStructuredData = [
       {
         "@type": "Offer",
         name: "Professional",
+        price: "499.00",
+        priceCurrency: "USD",
         priceSpecification: [
           { "@type": "UnitPriceSpecification", name: "Monthly", price: "499.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
           { "@type": "UnitPriceSpecification", name: "Annual", price: "4990.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
         ],
         description: "Unlimited active projects, 50 Prior Art searches per month, FTO Search included, and up to 10 active collaborators per project.",
       },
-    ],
+      ],
+    },
     description:
-      "The Drafter by IPnite is a DIY (do-it-yourself) AI patent drafting tool that gives structure and defensibility to early patent application drafts, especially provisional-style drafts prepared with limited resources, and doubles as a lightweight IP management tool for startups.",
+      "The Drafter by IPnite is an AI-assisted patent drafting, prior-art analysis, and IP workflow platform for patent attorneys, IP agents, law firms, inventors, startups, universities, and R&D teams.",
     featureList: [
       "DIY patent drafting for founders without an attorney yet",
       "Guided invention disclosure workflow",
@@ -82,15 +99,17 @@ const homeStructuredData = [
       "Exportable patent drafts for attorney or agent review",
       "Startup IP management: organize disclosures, claims, and drafts in one place",
       "IP portfolio and evaluation support for startups and funds",
+      "Collaborative patent workflows for patent attorneys, IP agents, and law firms",
+      "DOCX, JSON, and ZIP project exports",
     ],
   },
 ];
 ---
 
 <BaseLayout
-  title="IPnite — DIY Patent Drafting & Startup IP Management"
-  description="IPnite is the AI-assisted DIY patent drafting platform for inventors, founders, and startups. Document inventions, review prior art, draft claims, and manage your startup's IP in one place, without needing an attorney to get started."
-  keywords="IPnite, AI patent drafting, DIY patent drafting, startup IP management, provisional patent draft, intellectual property, inventors, founders, patent workflow, prior art review, patent claims"
+  title="IPnite — AI Patent Drafting Software for Attorneys, Firms & Startups"
+  description="Accelerate patent drafting and prior-art analysis with AI. Built for patent attorneys, IP agents, law firms, universities, startups, and inventors."
+  keywords="AI patent drafting, patent attorney software, patent drafting tool, intellectual property software, patent legaltech, patent agent software, startup IP management"
   canonicalPath="/"
   alternatePath="/es/"
   structuredData={homeStructuredData}

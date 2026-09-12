@@ -24,10 +24,10 @@ const copy = lang === "es"
     };
 
 const jurisdictions = [
-  { code: "MX", office: "IMPI", href: "/es/patentes-mexico/" },
-  { code: "BR", office: "INPI" },
-  { code: "AR", office: "INPI" },
-  { code: "US", office: "USPTO" },
+  { code: "MX", office: "IMPI", href: "/es/patentes-mexico/", hreflang: "es-MX", label: "México" },
+  { code: "BR", office: "INPI", href: "/pt-br/patentes-brasil/", hreflang: "pt-BR", label: "Brasil" },
+  { code: "AR", office: "INPI", href: "/es/patentes-argentina/", hreflang: "es-AR", label: "Argentina" },
+  { code: "US", office: "USPTO", href: "/patents-united-states/", hreflang: "en-US", label: "United States" },
   { code: "EP", office: "EPO" },
   { code: "PCT", office: "WIPO" },
 ];
@@ -43,7 +43,7 @@ const jurisdictions = [
     <div class="jurisdictions__visual">
       <div class="jurisdictions__grid" aria-label="Jurisdiction cards">
         {jurisdictions.map((item) => item.href ? (
-          <a class="jurisdiction-card" href={item.href} hreflang="es-MX" aria-label="Ver soluciones de patentes para México">
+          <a class="jurisdiction-card" href={item.href} hreflang={item.hreflang} aria-label={`Patent solutions for ${item.label}`}>
             <div class="jurisdiction-card__badge">{item.code}</div>
             <p>{item.office}</p>
           </a>

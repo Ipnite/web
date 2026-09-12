@@ -1,0 +1,381 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const faqs = [
+  {
+    question: "A IPnite permite preparar pedidos provisórios para o Brasil?",
+    answer: "O INPI brasileiro não oferece o modelo de pedido provisório dos Estados Unidos. A IPnite ajuda a organizar a divulgação técnica e a preparar um rascunho estruturado para o depósito nacional ou uma estratégia internacional, sempre sujeito à revisão profissional.",
+  },
+  {
+    question: "A IPnite substitui um advogado ou agente de propriedade industrial?",
+    answer: "Não. A IPnite funciona como copiloto de redação e gestão. Ela acelera o trabalho técnico inicial, mas não presta assessoria jurídica nem substitui a revisão profissional.",
+  },
+  {
+    question: "Posso preparar um pedido para o INPI?",
+    answer: "A IPnite ajuda a estruturar o relatório descritivo, o quadro reivindicatório, o resumo e os desenhos que integram a preparação de um pedido de patente. Antes do depósito, os documentos devem ser revisados conforme os requisitos vigentes do INPI.",
+  },
+  {
+    question: "A IPnite também ajuda em uma estratégia internacional?",
+    answer: "Sim. O Brasil é Estado contratante do PCT e a IPnite pode apoiar a preparação e a organização do projeto para uma estratégia internacional. A escolha dos países, os prazos e a via de depósito exigem orientação profissional.",
+  },
+  {
+    question: "Em quais formatos posso exportar o projeto?",
+    answer: "Os projetos podem ser exportados em formatos como DOCX, JSON e pacotes ZIP, conforme os recursos e permissões do plano contratado.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.ipnite.com/pt-br/patentes-brasil/#webpage",
+    url: "https://www.ipnite.com/pt-br/patentes-brasil/",
+    name: "Redação de patentes para o Brasil com IA | IPnite",
+    description: "Prepare rascunhos de pedidos de patente para o Brasil com IA, fluxos estruturados, busca de anterioridade, desenhos e exportação em DOCX.",
+    inLanguage: "pt-BR",
+    about: { "@id": "https://www.ipnite.com/#the-drafter" },
+    audience: [
+      { "@type": "Audience", audienceType: "Advogados e agentes de propriedade industrial no Brasil" },
+      { "@type": "Audience", audienceType: "Inventores, startups, universidades e equipes de P&D no Brasil" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "IPnite", item: "https://www.ipnite.com/es/" },
+      { "@type": "ListItem", position: 2, name: "Patentes no Brasil", item: "https://www.ipnite.com/pt-br/patentes-brasil/" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  lang="pt"
+  title="Redação de patentes para o Brasil com IA | IPnite"
+  description="Prepare rascunhos de pedidos de patente para o Brasil com IA. Estruture reivindicações, anterioridades, desenhos e documentos editáveis."
+  keywords="redação de patentes Brasil, software de patentes INPI, inteligência artificial patentes, busca de anterioridade Brasil, software para agentes de propriedade industrial, PCT Brasil"
+  canonicalPath="/pt-br/patentes-brasil/"
+  alternatePath="/"
+  includeLanguageAlternates={false}
+  structuredData={structuredData}
+>
+  <main class="mx-page">
+    <section class="mx-hero" aria-labelledby="mx-hero-heading">
+      <div class="mx-hero__inner">
+        <div class="mx-hero__copy">
+          <a class="breadcrumb" href="/pt-br/">IPnite <span aria-hidden="true">/</span> Brasil</a>
+          <p class="eyebrow">BRASIL · INPI · PCT</p>
+          <h1 id="mx-hero-heading">Redação de patentes para o <strong>Brasil com IA</strong></h1>
+          <p class="mx-hero__lead">Prepare rascunhos estruturados de pedidos de patente, desde a divulgação técnica até as reivindicações, desenhos e documentos prontos para revisão profissional.</p>
+          <div class="mx-hero__actions">
+            <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Começar a redigir</a>
+            <a class="button button--secondary" href="#fluxo-brasil">Ver o fluxo</a>
+          </div>
+          <ul class="mx-hero__signals" aria-label="Principais recursos">
+            <li>Divulgação técnica</li>
+            <li>Fluxo INPI</li>
+            <li>Rota internacional PCT</li>
+          </ul>
+        </div>
+
+        <div class="mx-hero__visual" aria-label="Visão da plataforma IPnite">
+          <div class="visual-orbit visual-orbit--one" aria-hidden="true"></div>
+          <div class="visual-orbit visual-orbit--two" aria-hidden="true"></div>
+          <img class="visual-brain" src="/images/cerebro.png" alt="" aria-hidden="true" />
+          <img class="visual-laptop" src="/images/notebook-2.png" alt="Aplicativo da IPnite para redação de patentes" loading="eager" />
+          <div class="visual-chip visual-chip--top"><span>BR</span><strong>Divulgação técnica</strong></div>
+          <div class="visual-chip visual-chip--bottom"><span>PCT</span><strong>Projeção internacional</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pathways" aria-labelledby="pathways-heading">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">UMA ESTRATÉGIA QUE PODE CRESCER</p>
+          <h2 id="pathways-heading">Comece no Brasil. <strong>Prepare-se para avançar.</strong></h2>
+          <p>A IPnite reúne o trabalho técnico em um único projeto para que o rascunho possa evoluir com uma estratégia definida e revisão profissional.</p>
+        </div>
+
+        <div class="pathway-grid">
+          <article class="pathway-card pathway-card--featured">
+            <div class="pathway-card__number">01</div>
+            <img src="/icons/lapiz.svg" alt="" aria-hidden="true" />
+            <h3>Divulgação técnica</h3>
+            <p>Documente a invenção, organize variantes e construa uma base técnica completa para a redação do pedido.</p>
+          </article>
+          <article class="pathway-card">
+            <div class="pathway-card__number">02</div>
+            <img src="/icons/engranaje.svg" alt="" aria-hidden="true" />
+            <h3>Pedido perante o INPI</h3>
+            <p>Estruture relatório descritivo, reivindicações, resumo e desenhos para revisão antes do depósito nacional.</p>
+          </article>
+          <article class="pathway-card">
+            <div class="pathway-card__number">03</div>
+            <img src="/icons/lupa.svg" alt="" aria-hidden="true" />
+            <h3>Estratégia PCT</h3>
+            <p>Mantenha anterioridades, versões e documentos organizados quando o projeto exigir uma rota de proteção internacional.</p>
+          </article>
+        </div>
+
+        <p class="legal-note"><strong>Importante:</strong> A IPnite ajuda a preparar e estruturar documentos; não deposita pedidos automaticamente nem substitui o critério de um advogado ou agente de propriedade industrial.</p>
+      </div>
+    </section>
+
+    <section id="fluxo-brasil" class="workflow" aria-labelledby="workflow-heading">
+      <div class="section-inner workflow__inner">
+        <div class="workflow__visual">
+          <div class="workflow__screen">
+            <img src="/images/notebook-1.png" alt="Espaço de trabalho da IPnite" loading="lazy" />
+          </div>
+          <div class="workflow__badge"><span>✓</span> Documento exportável</div>
+        </div>
+
+        <div class="workflow__copy">
+          <p class="eyebrow">FLUXO GUIADO</p>
+          <h2 id="workflow-heading">Da invenção a um <strong>rascunho revisável</strong></h2>
+          <ol>
+            <li><span>1</span><div><h3>Descreva a invenção</h3><p>Registre o problema, a solução, seus componentes, variantes e vantagens técnicas.</p></div></li>
+            <li><span>2</span><div><h3>Pesquise anterioridades</h3><p>Organize referências relevantes para avaliar o estado da técnica e orientar o escopo.</p></div></li>
+            <li><span>3</span><div><h3>Gere e refine</h3><p>Trabalhe reivindicações, relatório descritivo, resumo e desenhos com agentes especializados.</p></div></li>
+            <li><span>4</span><div><h3>Revise e exporte</h3><p>Baixe o rascunho em DOCX e mantenha o projeto para acompanhamento e colaboração.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities" aria-labelledby="capabilities-heading">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">MAIS QUE UM GERADOR DE TEXTO</p>
+          <h2 id="capabilities-heading">Um espaço de trabalho para <strong>todo o projeto</strong></h2>
+        </div>
+        <div class="capability-grid">
+          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Anterioridades e FTO</h3><p>Centralize buscas de estado da técnica e, conforme o plano, análises de FTO.</p></article>
+          <article><img src="/icons/lapiz.svg" alt="" aria-hidden="true" /><h3>Redação assistida</h3><p>Gere e revise seções conectadas às informações técnicas do projeto.</p></article>
+          <article><img src="/icons/engranaje.svg" alt="" aria-hidden="true" /><h3>Trabalho colaborativo</h3><p>Convide colaboradores e mantenha o contexto do processo em um único lugar.</p></article>
+          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Portfólio e exportação</h3><p>Acompanhe seus projetos e exporte documentos em DOCX, JSON e ZIP conforme o plano.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="audiences" aria-labelledby="audiences-heading">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">PARA O ECOSSISTEMA DE INOVAÇÃO</p>
+          <h2 id="audiences-heading">Feito para quem <strong>protege tecnologia no Brasil</strong></h2>
+        </div>
+        <div class="audience-grid">
+          <article><img src="/images/lawyer-card.webp" alt="Advogado de patentes" loading="lazy" /><div><h3>Escritórios, advogados e agentes</h3><p>Aumente a capacidade de redação inicial, organize a colaboração e entregue rascunhos editáveis para o refinamento jurídico.</p></div></article>
+          <article><img src="/images/startups-card.webp" alt="Equipe de uma startup" loading="lazy" /><div><h3>Startups e inventores</h3><p>Transforme o conhecimento técnico em um documento estruturado antes de revisá-lo com seu assessor jurídico.</p></div></article>
+          <article><img src="/images/academic-card.webp" alt="Pesquisadores universitários" loading="lazy" /><div><h3>Universidades e centros de P&D</h3><p>Organize divulgações de invenção, avalie anterioridades e acompanhe o portfólio institucional.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-heading">
+      <div class="section-inner faq__inner">
+        <div class="faq__heading">
+          <p class="eyebrow">PERGUNTAS FREQUENTES</p>
+          <h2 id="faq-heading">Patentes no Brasil <strong>com mais clareza</strong></h2>
+          <p>Respostas breves sobre o papel da IPnite no processo.</p>
+        </div>
+        <div class="faq__list">
+          {faqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-cta" aria-labelledby="mx-cta-heading">
+      <div class="mx-cta__inner">
+        <img src="/images/cerebro.png" alt="" aria-hidden="true" />
+        <div>
+          <p class="eyebrow">SEU PRÓXIMO RASCUNHO COMEÇA AQUI</p>
+          <h2 id="mx-cta-heading">Transforme sua inovação em um <strong>projeto de patente estruturado</strong></h2>
+          <p>Comece com um fluxo guiado e mantenha todo o trabalho pronto para revisão, colaboração e acompanhamento.</p>
+          <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Começar na IPnite</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .mx-page { overflow: hidden; background: #fff; color: #505050; }
+  .section-inner { width: min(100% - 36px, 1280px); margin: 0 auto; }
+  .eyebrow { margin: 0 0 16px; color: #6b2a2f; font-family: "Roboto", sans-serif; font-size: 13px; font-weight: 900; letter-spacing: .13em; line-height: 1.3; }
+  .section-heading { width: min(100%, 850px); margin: 0 auto 44px; text-align: center; }
+  .section-heading h2, .workflow h2, .faq h2, .mx-cta h2 { margin: 0; color: #6b2a2f; font-family: "Roboto Slab", serif; font-size: clamp(38px, 4.2vw, 58px); font-weight: 400; line-height: 1.1; text-wrap: balance; }
+  .section-heading h2 strong, .workflow h2 strong, .faq h2 strong, .mx-cta h2 strong { color: #505050; font-weight: 800; }
+  .section-heading > p:last-child { width: min(100%, 720px); margin: 20px auto 0; font-family: "Roboto", sans-serif; font-size: clamp(17px, 1.55vw, 20px); line-height: 1.55; }
+  .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; border: 1px solid #6b2a2f; border-radius: 999px; padding: 11px 24px; font-family: "Roboto Slab", serif; font-size: 17px; font-weight: 800; line-height: 1.15; text-align: center; text-decoration: none; transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+  .button:hover { transform: translateY(-2px); }
+  .button--primary { background: #6b2a2f; color: #fff; box-shadow: 0 10px 24px rgba(76,8,21,.18); }
+  .button--primary:hover { background: #4c0815; }
+  .button--secondary { background: #ededed; color: #4c0815; }
+  .button--secondary:hover { background: #fff; }
+
+  .mx-hero { padding: 30px clamp(18px, 4.5vw, 80px) 54px; }
+  .mx-hero__inner { width: min(100%, 1280px); margin: 0 auto; min-height: 620px; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(420px, .98fr); align-items: center; gap: clamp(26px, 4vw, 64px); overflow: hidden; border-radius: clamp(30px, 3.5vw, 50px); background: radial-gradient(circle at 88% 16%, rgba(107,42,47,.16), transparent 34%), rgba(217,217,217,.18); padding: clamp(32px, 5vw, 70px); box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 1px rgba(0,0,0,.1); }
+  .breadcrumb { display: inline-flex; gap: 8px; margin-bottom: 24px; color: #787173; font-family: "Roboto", sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; }
+  .breadcrumb:hover { color: #4c0815; }
+  .mx-hero h1 { max-width: 680px; margin: 0; color: #505050; font-family: "Roboto Slab", serif; font-size: clamp(45px, 5vw, 70px); font-weight: 800; letter-spacing: -.025em; line-height: 1.02; text-wrap: balance; }
+  .mx-hero h1 strong { display: block; color: #6b2a2f; }
+  .mx-hero__lead { max-width: 650px; margin: 24px 0 0; font-family: "Roboto", sans-serif; font-size: clamp(17px, 1.5vw, 20px); font-weight: 500; line-height: 1.55; }
+  .mx-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .mx-hero__signals { display: flex; flex-wrap: wrap; gap: 9px; margin: 26px 0 0; padding: 0; list-style: none; }
+  .mx-hero__signals li { border: 1px solid rgba(107,42,47,.2); border-radius: 999px; background: rgba(255,255,255,.7); padding: 7px 12px; color: #6b2a2f; font-family: "Roboto", sans-serif; font-size: 13px; font-weight: 800; }
+  .mx-hero__visual { position: relative; min-height: 440px; display: flex; align-items: center; justify-content: center; }
+  .visual-orbit { position: absolute; border: 1px solid rgba(107,42,47,.15); border-radius: 50%; }
+  .visual-orbit--one { width: 420px; height: 420px; }
+  .visual-orbit--two { width: 310px; height: 310px; }
+  .visual-brain { position: absolute; width: min(95%, 500px); opacity: .19; filter: blur(1px); }
+  .visual-laptop { position: relative; z-index: 2; width: min(112%, 620px); filter: drop-shadow(0 24px 30px rgba(76,8,21,.14)); }
+  .visual-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(107,42,47,.14); border-radius: 18px; background: rgba(255,255,255,.93); padding: 10px 15px 10px 10px; box-shadow: 0 12px 28px rgba(76,8,21,.14); font-family: "Roboto", sans-serif; font-size: 13px; color: #505050; }
+  .visual-chip span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: #6b2a2f; color: #fff; font-weight: 900; }
+  .visual-chip strong { max-width: 125px; line-height: 1.25; }
+  .visual-chip--top { top: 38px; right: 0; }
+  .visual-chip--bottom { bottom: 34px; left: 0; }
+
+  .pathways { padding: 82px 0; }
+  .pathway-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .pathway-card { position: relative; min-height: 340px; overflow: hidden; border: 1px solid rgba(107,42,47,.15); border-radius: 28px; background: #fff; padding: 34px; box-shadow: 0 15px 34px rgba(107,42,47,.07); }
+  .pathway-card--featured { background: #6b2a2f; color: #fff; }
+  .pathway-card__number { position: absolute; top: 18px; right: 24px; color: rgba(107,42,47,.13); font-family: "Roboto Slab", serif; font-size: 68px; font-weight: 900; line-height: 1; }
+  .pathway-card--featured .pathway-card__number { color: rgba(255,255,255,.13); }
+  .pathway-card > img { width: 62px; height: 62px; object-fit: contain; }
+  .pathway-card--featured > img { filter: brightness(0) invert(1); }
+  .pathway-card h3 { margin: 28px 0 0; color: #6b2a2f; font-family: "Roboto Slab", serif; font-size: clamp(25px, 2.3vw, 32px); line-height: 1.15; }
+  .pathway-card--featured h3 { color: #fff; }
+  .pathway-card p { margin: 16px 0 0; font-family: "Roboto", sans-serif; font-size: 17px; line-height: 1.55; }
+  .legal-note { width: min(100%, 900px); margin: 30px auto 0; border-radius: 18px; background: #f6f3f3; padding: 17px 22px; font-family: "Roboto", sans-serif; font-size: 14px; line-height: 1.55; text-align: center; }
+  .legal-note strong { color: #6b2a2f; }
+
+  .workflow { padding: 82px 0; background: rgba(217,217,217,.16); }
+  .workflow__inner { display: grid; grid-template-columns: minmax(340px, .88fr) minmax(0, 1.12fr); align-items: center; gap: clamp(42px, 6vw, 86px); }
+  .workflow__visual { position: relative; min-height: 460px; display: flex; align-items: center; justify-content: center; border-radius: 38px; background: radial-gradient(circle, rgba(107,42,47,.17), rgba(255,255,255,.5) 65%); }
+  .workflow__screen img { position: relative; z-index: 1; width: min(100%, 570px); filter: drop-shadow(0 22px 28px rgba(76,8,21,.13)); }
+  .workflow__badge { position: absolute; z-index: 2; right: 24px; bottom: 38px; border-radius: 16px; background: #fff; padding: 13px 18px; box-shadow: 0 12px 24px rgba(76,8,21,.14); font-family: "Roboto", sans-serif; font-size: 14px; font-weight: 800; }
+  .workflow__badge span { margin-right: 7px; color: #6b2a2f; }
+  .workflow__copy > .eyebrow { margin-bottom: 14px; }
+  .workflow__copy > h2 { text-align: left; }
+  .workflow ol { display: grid; gap: 18px; margin: 34px 0 0; padding: 0; list-style: none; }
+  .workflow li { display: grid; grid-template-columns: 46px 1fr; gap: 16px; align-items: start; }
+  .workflow li > span { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: #6b2a2f; color: #fff; font-family: "Roboto Slab", serif; font-size: 18px; font-weight: 900; }
+  .workflow h3 { margin: 0; color: #4c0815; font-family: "Roboto Slab", serif; font-size: 21px; line-height: 1.2; }
+  .workflow li p { margin: 5px 0 0; font-family: "Roboto", sans-serif; font-size: 16px; line-height: 1.45; }
+
+  .capabilities { padding: 88px 0; }
+  .capability-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  .capability-grid article { min-height: 260px; border: 1px solid rgba(107,42,47,.13); border-radius: 26px; padding: 28px 24px; text-align: center; box-shadow: 0 10px 25px rgba(107,42,47,.06); }
+  .capability-grid img { width: 58px; height: 58px; object-fit: contain; }
+  .capability-grid h3 { margin: 20px 0 0; color: #6b2a2f; font-family: "Roboto Slab", serif; font-size: 22px; line-height: 1.2; }
+  .capability-grid p { margin: 13px 0 0; font-family: "Roboto", sans-serif; font-size: 15px; line-height: 1.5; }
+
+  .audiences { padding: 82px 0 92px; background: linear-gradient(180deg, rgba(107,42,47,.04), rgba(255,255,255,0)); }
+  .audience-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .audience-grid article { overflow: hidden; border: 1px solid rgba(107,42,47,.14); border-radius: 28px; background: #fff; box-shadow: 0 14px 32px rgba(107,42,47,.08); }
+  .audience-grid article > img { width: 100%; height: 245px; display: block; object-fit: contain; object-position: center bottom; background: #7d4147; }
+  .audience-grid article > div { padding: 26px 26px 30px; }
+  .audience-grid h3 { margin: 0; color: #6b2a2f; font-family: "Roboto Slab", serif; font-size: 25px; line-height: 1.18; }
+  .audience-grid p { margin: 13px 0 0; font-family: "Roboto", sans-serif; font-size: 16px; line-height: 1.5; }
+
+  .faq { padding: 88px 0; }
+  .faq__inner { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: clamp(40px, 7vw, 100px); align-items: start; }
+  .faq__heading { position: sticky; top: 116px; }
+  .faq h2 { text-align: left; }
+  .faq__heading > p:last-child { margin: 20px 0 0; font-family: "Roboto", sans-serif; font-size: 18px; line-height: 1.5; }
+  .faq__list { border-top: 1px solid rgba(107,42,47,.18); }
+  .faq details { border-bottom: 1px solid rgba(107,42,47,.18); padding: 0; }
+  .faq summary { display: grid; grid-template-columns: 1fr 32px; gap: 16px; align-items: center; padding: 23px 0; color: #4c0815; font-family: "Roboto Slab", serif; font-size: 20px; font-weight: 800; line-height: 1.3; cursor: pointer; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary span { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid #6b2a2f; border-radius: 50%; font-size: 20px; transition: transform 180ms ease; }
+  .faq details[open] summary span { transform: rotate(45deg); }
+  .faq details > p { margin: -6px 50px 22px 0; font-family: "Roboto", sans-serif; font-size: 16px; line-height: 1.6; }
+
+  .mx-cta { padding: 32px clamp(18px, 5vw, 80px) 88px; }
+  .mx-cta__inner { position: relative; width: min(100%, 1280px); margin: 0 auto; min-height: 420px; display: grid; place-items: center; overflow: hidden; border-radius: clamp(30px, 3.5vw, 50px); background: #6b2a2f; padding: clamp(42px, 7vw, 88px); text-align: center; }
+  .mx-cta__inner > img { position: absolute; right: -90px; bottom: -180px; width: 520px; opacity: .15; filter: brightness(0) invert(1); }
+  .mx-cta__inner > div { position: relative; z-index: 1; width: min(100%, 850px); }
+  .mx-cta .eyebrow, .mx-cta h2, .mx-cta h2 strong, .mx-cta p { color: #fff; }
+  .mx-cta p:not(.eyebrow) { width: min(100%, 690px); margin: 22px auto 28px; font-family: "Roboto", sans-serif; font-size: 18px; line-height: 1.55; }
+  .mx-cta .button--primary { border-color: #fff; background: #fff; color: #4c0815; }
+
+  @media (max-width: 1050px) {
+    .mx-hero__inner { grid-template-columns: 1fr; }
+    .mx-hero__copy { text-align: center; }
+    .mx-hero h1, .mx-hero__lead { margin-left: auto; margin-right: auto; }
+    .mx-hero__actions, .mx-hero__signals { justify-content: center; }
+    .mx-hero__visual { width: min(100%, 650px); margin: -24px auto 0; }
+    .capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 820px) {
+    .pathway-grid, .audience-grid { grid-template-columns: 1fr; }
+    .pathway-card { min-height: 0; }
+    .audience-grid { width: min(100%, 560px); margin: 0 auto; }
+    .workflow__inner { grid-template-columns: 1fr; }
+    .workflow__visual { min-height: 360px; }
+    .workflow__copy { width: min(100%, 650px); margin: 0 auto; }
+    .workflow__copy > h2, .workflow__copy > .eyebrow { text-align: center; }
+    .faq__inner { grid-template-columns: 1fr; }
+    .faq__heading { position: static; text-align: center; }
+    .faq h2 { text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .section-inner { width: min(100% - 32px, 1280px); }
+    .section-heading { margin-bottom: 30px; }
+    .mx-hero { padding: 16px 16px 38px; }
+    .mx-hero__inner { min-height: 0; border-radius: 28px; padding: 30px 20px 24px; }
+    .breadcrumb { margin-bottom: 18px; }
+    .mx-hero h1 { font-size: clamp(39px, 12vw, 52px); }
+    .mx-hero__lead { margin-top: 20px; font-size: 16px; }
+    .mx-hero__actions { display: grid; }
+    .button { width: 100%; }
+    .mx-hero__signals { gap: 7px; }
+    .mx-hero__signals li { font-size: 11px; }
+    .mx-hero__visual { min-height: 300px; margin-top: -4px; }
+    .visual-orbit--one { width: 290px; height: 290px; }
+    .visual-orbit--two { width: 220px; height: 220px; }
+    .visual-laptop { width: 115%; }
+    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 10px; }
+    .visual-chip span { width: 34px; height: 34px; border-radius: 10px; }
+    .visual-chip strong { max-width: 92px; }
+    .visual-chip--top { top: 18px; right: -3px; }
+    .visual-chip--bottom { bottom: 20px; left: -3px; }
+    .pathways, .workflow, .capabilities, .audiences, .faq { padding: 62px 0; }
+    .pathway-card { padding: 28px 24px; border-radius: 24px; }
+    .pathway-card__number { font-size: 58px; }
+    .workflow__visual { min-height: 280px; border-radius: 28px; }
+    .workflow__badge { right: 12px; bottom: 24px; font-size: 11px; }
+    .workflow li { grid-template-columns: 40px 1fr; gap: 12px; }
+    .workflow li > span { width: 38px; height: 38px; }
+    .capability-grid { grid-template-columns: 1fr; }
+    .capability-grid article { min-height: 0; }
+    .audience-grid article > img { height: 220px; }
+    .faq summary { padding: 20px 0; font-size: 18px; }
+    .faq details > p { margin-right: 0; }
+    .mx-cta { padding: 16px 16px 64px; }
+    .mx-cta__inner { min-height: 0; padding: 48px 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button, .faq summary span { transition: none; }
+  }
+</style>

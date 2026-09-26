@@ -11,25 +11,23 @@ import TrustSection from "@components/TrustSection.astro";
 import PricingSection from "@components/PricingSection.astro";
 import ContactSection from "@components/ContactSection.astro";
 import CTAFinalSection from "@components/CTAFinalSection.astro";
-const homeStructuredData = [{
-  "@context":"https://schema.org","@type":["SoftwareApplication","WebApplication"],"@id":"https://www.ipnite.com/#the-drafter",name:"The Drafter by IPnite",alternateName:["IPnite","IPnite Patent Drafting Software"],applicationCategory:"BusinessApplication",applicationSubCategory:"LegalTech / Patent Drafting Software",operatingSystem:"Web",url:"https://www.ipnite.com/es/",inLanguage:"es",creator:{"@id":"https://www.ipnite.com/#organization"},description:"Plataforma de inteligencia artificial para la redacción de patentes, análisis de arte previo y aceleración de borradores. Diseñada tanto para inventores independientes y startups como para abogados, agentes de propiedad industrial, universidades, equipos de I+D y firmas legales.",audience:[{"@type":"Audience",audienceType:"Abogados de patentes, agentes de propiedad industrial y firmas legales"},{"@type":"Audience",audienceType:"Inventores, startups tecnológicas, equipos de I+D, universidades y TTOs"}],featureList:["Generación automatizada de reivindicaciones (claims)","Búsqueda de arte previo y análisis FTO según el plan","Generación de diagramas y dibujos de referencia para patentes","Flujos de trabajo colaborativos para firmas de PI","Exportación en formatos DOCX, JSON y ZIP"],offers:{"@type":"AggregateOffer",priceCurrency:"USD",lowPrice:"20",highPrice:"499",offerCount:3,offers:[
-    {"@type":"Offer",name:"Basic",price:"20.00",priceCurrency:"USD",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"20.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"200.00",priceCurrency:"USD",unitCode:"MON"}]},
-    {"@type":"Offer",name:"Professional",price:"499.00",priceCurrency:"USD",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"499.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"4990.00",priceCurrency:"USD",unitCode:"MON"}]},
-    {"@type":"Offer",name:"Starter",price:"199.00",priceCurrency:"USD",priceSpecification:[{"@type":"UnitPriceSpecification",name:"Monthly",price:"199.00",priceCurrency:"USD",unitCode:"MON"},{"@type":"UnitPriceSpecification",name:"Annual",price:"1990.00",priceCurrency:"USD",unitCode:"MON"}]}
-  ]}
-}];
+import TrustedByMarquee from "@components/TrustedByMarquee.astro";
+import PlatformOverviewSection from "@components/PlatformOverviewSection.astro";
+const homeStructuredData = [{"@context":"https://schema.org","@type":["SoftwareApplication","WebApplication"],"@id":"https://www.ipnite.com/#the-drafter",name:"IPnite",applicationCategory:"BusinessApplication",operatingSystem:"Web",url:"https://www.ipnite.com/es/",inLanguage:"es",creator:{"@id":"https://www.ipnite.com/#organization"},description:"Plataforma integral de inteligencia artificial para búsqueda de anterioridades, redacción, dibujos y gestión de carteras de patentes."}];
 ---
 
 <BaseLayout
   lang="es"
-  title="IPnite — Software de Redacción de Patentes con IA para Abogados, Firmas y Startups"
-  description="Acelera la redacción de patentes y el análisis de arte previo con IA. La herramienta creada para agentes de PI, abogados de patentes, universidades y startups."
+  title="IPnite"
+  description="Redacta solicitudes con IA, busca anterioridades, crea dibujos y gestiona tu cartera de patentes en una plataforma integral para Latinoamérica."
   keywords="redacción de patentes IA, software para abogados de patentes, patent drafting tool, software propiedad industrial, legaltech patentes, agente de patentes software"
   canonicalPath="/es/"
   alternatePath="/"
   structuredData={homeStructuredData}
 >
   <HeroSection lang="es" />
+  <TrustedByMarquee lang="es" />
+  <PlatformOverviewSection lang="es" />
   <WhyWeDoItSection lang="es" />
   <ReduceCostlySection lang="es" />
   <YourIPTeamSection lang="es" />

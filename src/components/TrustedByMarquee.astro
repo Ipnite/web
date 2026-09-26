@@ -1,0 +1,37 @@
+---
+import { trustedOrganizations } from "../config/trustedOrganizations";
+interface Props { lang?: "en" | "es" | "pt"; }
+const { lang = "en" } = Astro.props;
+const title = lang === "es"
+  ? "La confianza de innovadores, emprendedores y profesionales de PI"
+  : lang === "pt"
+  ? "A confiança de inovadores, empreendedores e profissionais de PI"
+  : "Trusted by innovators, founders and IP professionals";
+const organizations = trustedOrganizations.filter((organization) => organization.approvedForPublicDisplay);
+---
+
+{organizations.length > 0 && (
+  <section class="trusted" aria-labelledby="trusted-heading">
+    <div class="trusted__inner">
+      <h2 id="trusted-heading">{title}</h2>
+      <div class="trusted__viewport">
+        <div class="trusted__track">
+          {[0, 1].map((group) => (
+            <div class="trusted__group" aria-hidden={group === 1 ? "true" : undefined}>
+              {organizations.map((organization) => (
+                <a href={organization.website} target="_blank" rel="noopener noreferrer" aria-label={group === 0 ? organization.ariaLabel : undefined} tabindex={group === 1 ? "-1" : undefined}>
+                  <span class="trusted__logo" style={`--logo:url('${organization.logo}')`}></span>
+                  <span class="sr-only">{organization.name}</span>
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .trusted{padding:108px clamp(18px,5vw,80px) 42px;background:#fff;overflow:hidden}.trusted__inner{width:min(100%,1280px);margin:auto}.trusted h2{margin:0 0 22px;color:#6b2a2f;font-family:"Roboto Slab",serif;font-size:clamp(18px,2vw,24px);font-weight:700;text-align:center}.trusted__viewport{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}.trusted__track{display:flex;width:max-content;animation:trusted-scroll 34s linear infinite}.trusted__viewport:hover .trusted__track,.trusted__viewport:focus-within .trusted__track{animation-play-state:paused}.trusted__group{display:flex;align-items:center;gap:56px;padding-right:56px}.trusted a{width:210px;height:72px;display:grid;place-items:center;border-radius:22px}.trusted a:focus-visible{outline:3px solid rgba(107,42,47,.25);outline-offset:3px}.trusted__logo{display:block;width:170px;height:48px;background:#6b2a2f;mask:var(--logo) center/contain no-repeat;-webkit-mask:var(--logo) center/contain no-repeat}@keyframes trusted-scroll{to{transform:translateX(-50%)}}@media(max-width:640px){.trusted{padding-top:20px}.trusted__group{gap:30px;padding-right:30px}.trusted a{width:160px}.trusted__logo{width:138px;height:42px}}@media(prefers-reduced-motion:reduce){.trusted__viewport{overflow-x:auto;mask-image:none}.trusted__track{animation:none}.trusted__group[aria-hidden="true"]{display:none}.trusted__group{padding:0}}
+</style>

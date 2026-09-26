@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
+    "analytics:audit": "node scripts/analytics-audit.mjs",
+    "seo:audit": "node scripts/seo-audit.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

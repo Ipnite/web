@@ -11,6 +11,19 @@ import TrustSection         from "@components/TrustSection.astro";
 import PricingSection       from "@components/PricingSection.astro";
 import ContactSection       from "@components/ContactSection.astro";
 import CTAFinalSection      from "@components/CTAFinalSection.astro";
+import TrustedByMarquee from "@components/TrustedByMarquee.astro";
+import PlatformOverviewSection from "@components/PlatformOverviewSection.astro";
+import { marketPricing } from "../config/pricing";
+
+const regionalOffers = Object.values(marketPricing).flatMap((market) => Object.entries(market.prices).map(([plan, prices]) => ({
+  "@type": "Offer", name: `${plan[0].toUpperCase()}${plan.slice(1)} — ${market.countryLabel.en}`,
+  price: String(prices.monthly), priceCurrency: market.currency,
+  eligibleRegion: { "@type": "Place", name: market.countryLabel.en },
+  priceSpecification: [
+    { "@type": "UnitPriceSpecification", name: "Monthly", price: String(prices.monthly), priceCurrency: market.currency, unitCode: "MON" },
+    { "@type": "UnitPriceSpecification", name: "Annual", price: String(prices.annual), priceCurrency: market.currency, billingIncrement: 12, unitCode: "MON" },
+  ],
+})));
 
 const homeStructuredData = [
   {
@@ -45,48 +58,7 @@ const homeStructuredData = [
       { "@type": "Audience", audienceType: "Venture capital funds evaluating startup IP" },
     ],
     areaServed: ["United States", "Latin America", "European Patent Office jurisdictions"],
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "USD",
-      lowPrice: "20",
-      highPrice: "499",
-      offerCount: 3,
-      offers: [
-      {
-        "@type": "Offer",
-        name: "Basic",
-        price: "20.00",
-        priceCurrency: "USD",
-        priceSpecification: [
-          { "@type": "UnitPriceSpecification", name: "Monthly", price: "20.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
-          { "@type": "UnitPriceSpecification", name: "Annual", price: "200.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
-        ],
-        description: "1 active project, 2 Prior Art searches per month, and 1 GB of storage. Eligible new users can start a seven-day trial with a card.",
-      },
-      {
-        "@type": "Offer",
-        name: "Starter",
-        price: "199.00",
-        priceCurrency: "USD",
-        priceSpecification: [
-          { "@type": "UnitPriceSpecification", name: "Monthly", price: "199.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
-          { "@type": "UnitPriceSpecification", name: "Annual", price: "1990.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
-        ],
-        description: "Up to 10 active projects, 10 Prior Art searches per month, and up to 2 active collaborators per project.",
-      },
-      {
-        "@type": "Offer",
-        name: "Professional",
-        price: "499.00",
-        priceCurrency: "USD",
-        priceSpecification: [
-          { "@type": "UnitPriceSpecification", name: "Monthly", price: "499.00", priceCurrency: "USD", billingIncrement: 1, unitCode: "MON" },
-          { "@type": "UnitPriceSpecification", name: "Annual", price: "4990.00", priceCurrency: "USD", billingIncrement: 12, unitCode: "MON" },
-        ],
-        description: "Unlimited active projects, 50 Prior Art searches per month, FTO Search included, and up to 10 active collaborators per project.",
-      },
-      ],
-    },
+    offers: regionalOffers,
     description:
       "The Drafter by IPnite is an AI-assisted patent drafting, prior-art analysis, and IP workflow platform for patent attorneys, IP agents, law firms, inventors, startups, universities, and R&D teams.",
     featureList: [
@@ -107,28 +79,16 @@ const homeStructuredData = [
 ---
 
 <BaseLayout
-  title="IPnite — AI Patent Drafting Software for Attorneys, Firms & Startups"
-  description="Accelerate patent drafting and prior-art analysis with AI. Built for patent attorneys, IP agents, law firms, universities, startups, and inventors."
+  title="IPnite"
+  description="Draft patent applications with AI, search prior art, create patent drawings, and manage your patent portfolio in one secure platform."
   keywords="AI patent drafting, patent attorney software, patent drafting tool, intellectual property software, patent legaltech, patent agent software, startup IP management"
   canonicalPath="/"
   alternatePath="/es/"
   structuredData={homeStructuredData}
 >
-  <script is:inline>
-    try {
-      const chosenLang = localStorage.getItem("ipnite_lang");
-      const browserLang = navigator.language || "";
-      if (!chosenLang) {
-        const normalized = browserLang.toLowerCase();
-        if (normalized.startsWith("pt")) {
-          window.location.replace("/pt-br/");
-        } else if (normalized.startsWith("es")) {
-          window.location.replace("/es/");
-        }
-      }
-    } catch (error) {}
-  </script>
   <HeroSection />
+  <TrustedByMarquee />
+  <PlatformOverviewSection />
   <WhyWeDoItSection />
   <ReduceCostlySection />
   <YourIPTeamSection />

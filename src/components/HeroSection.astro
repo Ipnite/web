@@ -11,7 +11,8 @@ const localizedHref = (path: string) => `${prefix}${path}`;
 const copy = lang === "es"
   ? {
       title: ["La protección no debería", "ser un privilegio"],
-      body: "El ingenio humano no debe detenerse por los costos. <strong>Por eso hacemos que la preparación de patentes sea más clara, ágil y accesible.</strong>",
+      seoTitle: "Redacción de Patentes para Inventores, Startups y Profesionales de PI",
+      body: "Busca anterioridades, estructura tu invención, redacta solicitudes, crea dibujos y gestiona tu cartera en una plataforma integral para Latinoamérica.",
       primary: "Empezar ahora",
       secondary: "Cómo funciona",
       faqs: "FAQs",
@@ -20,7 +21,8 @@ const copy = lang === "es"
   : lang === "pt"
   ? {
       title: ["A proteção não deveria", "ser um privilégio"],
-      body: "A engenhosidade humana não deve ser limitada pelos custos. <strong>Por isso, tornamos a preparação de patentes mais clara, ágil e acessível.</strong>",
+      seoTitle: "Redação de Patentes para Inventores, Startups e Profissionais de PI",
+      body: "Busque anterioridades, estruture sua invenção, redija pedidos, crie desenhos e gerencie seu portfólio em uma plataforma integrada para a América Latina.",
       primary: "Começar agora",
       secondary: "Como funciona",
       faqs: "FAQs",
@@ -28,7 +30,8 @@ const copy = lang === "es"
     }
   : {
       title: ["Protection Shouldn't", "Be a Privilege"],
-      body: "Human ingenuity should not be held back by cost. <strong>That is why we make patent preparation clearer, faster, and more accessible.</strong>",
+      seoTitle: "Patent Drafting for Inventors, Startups and IP Professionals",
+      body: "Search prior art, structure your invention, draft patent applications, create patent drawings, and manage your portfolio in one secure platform.",
       primary: "Get Started Now",
       secondary: "How it Works",
       faqs: "FAQs",
@@ -36,7 +39,7 @@ const copy = lang === "es"
     };
 ---
 
-<section id="inicio" aria-labelledby="hero-heading" class="hero">
+<section id="inicio" aria-labelledby="hero-heading" class="hero" data-analytics-location="hero">
   <div class="hero__panel">
     <img
       class="hero__brain"
@@ -47,17 +50,19 @@ const copy = lang === "es"
     />
 
     <div class="hero__copy">
-      <h1 id="hero-heading">
+      <p class="hero__brand" aria-hidden="true">
         <span>{copy.title[0]}</span>
         <span>{copy.title[1]}</span>
-      </h1>
+      </p>
+
+      <h1 id="hero-heading">{copy.seoTitle}</h1>
 
       <p>
         <Fragment set:html={copy.body} />
       </p>
 
       <div class="hero__actions" aria-label="Primary actions">
-        <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
+        <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="start_drafting" data-analytics-event="start_drafting_clicked">
           {copy.primary}
         </a>
         <a class="hero__cta" href={localizedHref("/#how-it-works")}>
@@ -144,7 +149,7 @@ const copy = lang === "es"
     text-align: center;
   }
 
-  .hero h1 {
+  .hero__brand {
     margin: 0;
     font-family: "Roboto Slab", serif;
     font-size: clamp(40px, 3.9vw, 52px);
@@ -154,13 +159,15 @@ const copy = lang === "es"
     color: #505050;
   }
 
-  .hero h1 span {
+  .hero__brand span {
     display: block;
   }
 
-  .hero h1 span + span {
+  .hero__brand span + span {
     color: #6b2a2f;
   }
+
+  .hero h1{max-width:760px;margin:16px auto 0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(22px,2.2vw,30px);font-weight:800;line-height:1.2;text-wrap:balance}
 
   .hero p {
     max-width: 650px;
@@ -279,9 +286,9 @@ const copy = lang === "es"
   }
 
   .hero__laptop {
-    z-index: 13;
+    z-index: 8;
     left: 50%;
-    top: clamp(282px, 21.6vw, 304px);
+    top: clamp(344px, 25.5vw, 364px);
     width: clamp(540px, 43.5vw, 610px);
     height: auto;
     transform: translateX(-50%);
@@ -343,6 +350,7 @@ const copy = lang === "es"
     }
 
     .hero__laptop {
+      top: 372px;
       bottom: 34px;
       width: min(560px, 78vw);
       transform: translateX(-50%);

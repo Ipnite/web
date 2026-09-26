@@ -3,237 +3,288 @@ interface Props {
   lang?: "en" | "es" | "pt";
 }
 
+import { marketPricing, defaultMarketForLocale, formatPrice, type PlanCode } from "../config/pricing";
+
 const { lang = "en" } = Astro.props;
 const check = "✓";
+const defaultMarket = defaultMarketForLocale[lang];
+const defaultPricing = marketPricing[defaultMarket];
+const price = (plan: PlanCode, period: "monthly" | "annual") => formatPrice(defaultPricing.prices[plan][period], defaultPricing.currency, lang);
+const priceData = Object.fromEntries(Object.entries(marketPricing).map(([market, config]) => [market, { currency: config.currency, prices: config.prices, additionalUser: config.additionalUser }]));
+const unit = lang === "es" ? "/mes" : lang === "pt" ? "/mês" : "/mo";
+const annualText = (plan: PlanCode) => lang === "es" ? `o ${price(plan,"annual")}/año · ahorra 2 meses` : lang === "pt" ? `ou ${price(plan,"annual")}/ano · economize 2 meses` : `or ${price(plan,"annual")}/yr · save 2 months`;
 
 const copy = lang === "es"
   ? {
-      heading: ["Mantenlo simple. ", "Tres planes"],
-      basic: {
-        title: "Basic",
-        price: "$20",
-        priceUnit: "/mes",
-        lede: "o $200/año.",
-        copy: "Para trabajo individual y enfocado en patentes.",
+      heading: ["Busca, redacta y gestiona. ", "Tres planes"],
+      freeCta: "Prueba IPnite gratis",
+      inventor: {
+        title: "INVENTOR",
+        copy: "Para inventores independientes que protegen y gestionan sus ideas.",
         features: [
           "1 proyecto activo.",
-          "2 búsquedas de arte previo por mes.",
-          "Espacio de trabajo individual.",
+          "2 búsquedas de anterioridades por mes.",
+          "Búsqueda de patentabilidad.",
+          "Redacción, dibujos y control de calidad asistidos.",
+          "Gestión de presentaciones, calendario y guía de próximos pasos.",
+          "Plantillas de NDA.",
+          "1 colaborador externo.",
           "1 GiB de almacenamiento seguro.",
+          "FTO disponible como complemento.",
         ],
-        cta: "Elegir Basic",
+        cta: "Comenzar gratis",
       },
-      starter: {
-        title: "Inicial",
-        price: "$199",
-        priceUnit: "/mes",
-        lede: "o $1,990/año.",
-        copy: "Para inventores y equipos chicos que necesitan más de un proyecto y capacidad para invitar colaboradores.",
+      startup: {
+        title: "STARTUP",
+        copy: "Para startups que construyen y gestionan una cartera de propiedad intelectual.",
         features: [
           "Hasta 10 proyectos activos.",
-          "10 búsquedas de arte previo por mes.",
-          "Hasta 2 colaboradores activos por proyecto.",
-          "El dueño puede exportar proyectos como JSON y ZIP.",
+          "10 búsquedas de anterioridades por mes.",
+          "Búsqueda de patentabilidad.",
+          "Redacción, dibujos y control de calidad asistidos.",
+          "Gestión de cartera y presentaciones.",
+          "Documentos de PI: NDA, licencias y más.",
+          "Hasta 3 colaboradores por proyecto.",
+          "15 GB de almacenamiento seguro.",
+          "Exportación de proyectos como JSON y ZIP.",
+          "FTO disponible como complemento.",
         ],
-        cta: "Elegir Inicial",
+        cta: "Comenzar gratis",
       },
-      pro: {
-        title: "Profesional",
-        price: "$499",
-        priceUnit: "/mes",
-        lede: "o $4,990/año.",
-        copy: "Para startups, universidades y aceleradoras que necesitan capacidad recurrente de redacción, búsqueda FTO y equipos más grandes.",
+      institutional: {
+        title: "INSTITUTIONAL",
+        copy: "Para firmas, universidades, TTO y equipos de propiedad intelectual. Incluye 3 usuarios.",
         features: [
-          "Proyectos activos ilimitados.",
-          "50 búsquedas de arte previo por mes.",
-          "Hasta 10 colaboradores activos por proyecto.",
-          "Incluye búsqueda FTO.",
-          "El dueño puede exportar proyectos como JSON y ZIP.",
+          "Proyectos activos ilimitados*.",
+          "50 búsquedas de anterioridades por mes.",
+          "Todos los módulos de IPnite.",
+          "Módulo FTO incluido.",
+          "Gestión avanzada de cartera y presentaciones.",
+          "Gestión de equipos y permisos.",
+          "Gestión de divulgaciones de invención.",
+          "Plantillas para firmas y organizaciones.",
+          "50 GiB de almacenamiento seguro.",
         ],
-        cta: "Elegir Profesional",
+        cta: "Hablar con Ventas",
       },
-      trial: {
-        cta: "Prueba Basic gratis durante 7 días",
-        finePrint: "Se requiere tarjeta. La facturación comienza automáticamente después del trial, salvo que canceles.",
-      },
+      additionalUsers: "Usuarios adicionales",
+      showAll: "Ver todos los beneficios",
+      researchTitle: "IPnite for Research",
+      researchBody: "Universidades, centros de investigación y TTO elegibles reciben 50% de descuento en planes Institutional y usuarios adicionales.",
+      fairUse: "*Sujeto a una política de uso razonable.",
+      regionalNote: "Selecciona tu país o región para ver precios locales. Cuando estén disponibles, usa medios de pago nacionales o regionales para evitar costos internacionales innecesarios. Impuestos, comisiones y total final se confirman al pagar.",
     }
   : lang === "pt"
   ? {
-      heading: ["Mantenha simples. ", "Tres planos"],
-      basic: {
-        title: "Basic",
-        price: "$20",
-        priceUnit: "/mês",
-        lede: "ou $200/ano.",
-        copy: "Para trabalho individual e focado em patentes.",
+      heading: ["Pesquise, redija e gerencie. ", "Três planos"],
+      freeCta: "Experimente a IPnite grátis",
+      inventor: {
+        title: "INVENTOR",
+        copy: "Para inventores independentes que protegem e gerenciam suas ideias.",
         features: [
           "1 projeto ativo.",
-          "2 buscas de arte anterior por mês.",
-          "Espaço de trabalho individual.",
+          "2 buscas de anterioridade por mês.",
+          "Busca de patenteabilidade.",
+          "Redação, desenhos e controle de qualidade assistidos.",
+          "Gestão de depósitos, calendário e orientação sobre próximos passos.",
+          "Modelos de NDA.",
+          "1 colaborador externo.",
           "1 GiB de armazenamento seguro.",
+          "FTO disponível como complemento.",
         ],
-        cta: "Escolher Basic",
+        cta: "Começar grátis",
       },
-      starter: {
-        title: "Inicial",
-        price: "$199",
-        priceUnit: "/mês",
-        lede: "ou $1,990/ano.",
-        copy: "Para inventores e equipes pequenas que precisam de mais de um projeto e capacidade para convidar colaboradores.",
+      startup: {
+        title: "STARTUP",
+        copy: "Para startups que constroem e gerenciam um portfólio de propriedade intelectual.",
         features: [
           "Até 10 projetos ativos.",
-          "10 buscas de arte anterior por mês.",
-          "Até 2 colaboradores ativos por projeto.",
-          "O dono pode exportar projetos como JSON e ZIP.",
+          "10 buscas de anterioridade por mês.",
+          "Busca de patenteabilidade.",
+          "Redação, desenhos e controle de qualidade assistidos.",
+          "Gestão de portfólio e depósitos.",
+          "Documentos de PI: NDA, licenças e mais.",
+          "Até 3 colaboradores por projeto.",
+          "15 GB de armazenamento seguro.",
+          "Exportação de projetos em JSON e ZIP.",
+          "FTO disponível como complemento.",
         ],
-        cta: "Escolher Inicial",
+        cta: "Começar grátis",
       },
-      pro: {
-        title: "Profissional",
-        price: "$499",
-        priceUnit: "/mês",
-        lede: "ou $4,990/ano.",
-        copy: "Para startups, universidades e aceleradoras que precisam de capacidade recorrente de redação, busca FTO e equipes maiores.",
+      institutional: {
+        title: "INSTITUTIONAL",
+        copy: "Para escritórios, universidades, TTOs e equipes de propriedade intelectual. Inclui 3 usuários.",
         features: [
-          "Projetos ativos ilimitados.",
-          "50 buscas de arte anterior por mês.",
-          "Até 10 colaboradores ativos por projeto.",
-          "Inclui busca FTO.",
-          "O dono pode exportar projetos como JSON e ZIP.",
+          "Projetos ativos ilimitados*.",
+          "50 buscas de anterioridade por mês.",
+          "Todos os módulos da IPnite.",
+          "Módulo FTO incluído.",
+          "Gestão avançada de portfólio e depósitos.",
+          "Gestão de equipes e permissões.",
+          "Gestão de divulgações de invenção.",
+          "Modelos para escritórios e organizações.",
+          "50 GiB de armazenamento seguro.",
         ],
-        cta: "Escolher Profissional",
+        cta: "Falar com Vendas",
       },
-      trial: {
-        cta: "Experimente o Basic grátis por 7 dias",
-        finePrint: "É necessário um cartão. A cobrança começa automaticamente após o período de teste, salvo cancelamento.",
-      },
+      additionalUsers: "Usuários adicionais",
+      showAll: "Ver todos os benefícios",
+      researchTitle: "IPnite for Research",
+      researchBody: "Universidades, centros de pesquisa e TTOs elegíveis recebem 50% de desconto nos planos Institutional e em usuários adicionais.",
+      fairUse: "*Sujeito a uma política de uso razoável.",
+      regionalNote: "Selecione seu país ou região para ver preços locais. Quando disponíveis, use meios de pagamento nacionais ou regionais para evitar custos internacionais desnecessários. Impostos, tarifas e total final são confirmados no pagamento.",
     }
   : {
-      heading: ["Keep It Simple. ", "Three Plans"],
-      basic: {
-        title: "Basic",
-        price: "$20",
-        priceUnit: "/mo",
-        lede: "or $200/yr.",
-        copy: "For focused individual patent work.",
+      heading: ["Search, draft and manage. ", "Three plans"],
+      freeCta: "Try IPnite free",
+      inventor: {
+        title: "INVENTOR",
+        copy: "For independent inventors protecting and managing their ideas.",
         features: [
           "1 active project.",
-          "2 Prior Art searches per month.",
-          "Individual workspace.",
+          "2 prior-art searches per month.",
+          "Patentability Search.",
+          "AI-assisted drafting, drawings and QA.",
+          "Filing management, calendar and next-step guidance.",
+          "NDA templates.",
+          "1 external collaborator.",
           "1 GiB secure storage.",
+          "FTO available as an add-on.",
         ],
-        cta: "Choose Basic",
+        cta: "Start free",
       },
-      starter: {
-        title: "Starter",
-        price: "$199",
-        priceUnit: "/mo",
-        lede: "or $1,990/yr.",
-        copy: "For inventors and small teams who need more than one project and the ability to invite collaborators.",
+      startup: {
+        title: "STARTUP",
+        copy: "For startups building and managing an IP portfolio.",
         features: [
           "Up to 10 active projects.",
-          "10 Prior Art searches per month.",
-          "Up to 2 active collaborators per project.",
-          "Owner can export projects as JSON and ZIP.",
+          "10 prior-art searches per month.",
+          "Patentability Search.",
+          "AI-assisted drafting, drawings and QA.",
+          "Portfolio and filing management.",
+          "IP documents: NDAs, licenses and more.",
+          "Up to 3 collaborators per project.",
+          "15 GB secure storage.",
+          "Export projects as JSON and ZIP.",
+          "FTO available as an add-on.",
         ],
-        cta: "Choose Starter",
+        cta: "Start free",
       },
-      pro: {
-        title: "Professional",
-        price: "$499",
-        priceUnit: "/mo",
-        lede: "or $4,990/yr.",
-        copy: "For startups, universities, and accelerators that need recurring drafting capacity, FTO search, and larger teams.",
+      institutional: {
+        title: "INSTITUTIONAL",
+        copy: "For law firms, universities, TTOs and IP teams. Includes 3 users.",
         features: [
-          "Unlimited active projects.",
-          "50 Prior Art searches per month.",
-          "Up to 10 active collaborators per project.",
-          "FTO Search included.",
-          "Owner can export projects as JSON and ZIP.",
+          "Unlimited active projects*.",
+          "50 prior-art searches per month.",
+          "All IPnite modules.",
+          "FTO module included.",
+          "Advanced portfolio and filing management.",
+          "Team management and permissions.",
+          "Invention disclosure management.",
+          "Firm and organization templates.",
+          "50 GiB secure storage.",
         ],
-        cta: "Choose Professional",
+        cta: "Talk to Sales",
       },
-      trial: {
-        cta: "Try Basic free for 7 days",
-        finePrint: "A card is required. Billing starts automatically after the trial unless you cancel.",
-      },
+      additionalUsers: "Additional users",
+      showAll: "View all benefits",
+      researchTitle: "IPnite for Research",
+      researchBody: "Eligible universities, research centers and TTOs receive 50% off Institutional plans and additional users.",
+      fairUse: "*Subject to a reasonable-use policy.",
+      regionalNote: "Select your country or region to see local pricing. Where available, use national or regional payment methods to avoid unnecessary international transaction costs. Taxes, fees and the final total are confirmed at checkout.",
     };
+
+const plans: Array<{ code: PlanCode; content: typeof copy.inventor; featured?: boolean; sales?: boolean }> = [
+  { code: "inventor", content: copy.inventor },
+  { code: "startup", content: copy.startup, featured: true },
+  { code: "institutional", content: copy.institutional, sales: true },
+];
+const contactPath = lang === "es" ? "/es/contact/" : lang === "pt" ? "/pt-br/contact/" : "/contact/";
 ---
 
-<section id="plans" aria-labelledby="pricing-heading" class="pricing">
+<section id="plans" aria-labelledby="pricing-heading" class="pricing" data-analytics-location="pricing">
   <div class="pricing__inner">
     <h2 id="pricing-heading"><span>{copy.heading[0]}</span><strong>{copy.heading[1]}</strong></h2>
 
-    <div class="pricing__cards">
-      <article class="plan-card">
-        <header>
-          <h3>{copy.basic.title}</h3>
-          <p class="plan-card__price">{copy.basic.price}<span class="plan-card__price-unit">{copy.basic.priceUnit}</span></p>
-          <p class="plan-card__lede">{copy.basic.lede}</p>
-        </header>
-
-        <p class="plan-card__copy">
-          {copy.basic.copy}
-        </p>
-
-        <ul class="plan-card__features">
-          {copy.basic.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
-        </ul>
-
-        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          {copy.basic.cta}
-        </a>
-      </article>
-
-      <article class="plan-card">
-        <header>
-          <h3>{copy.pro.title}</h3>
-          <p class="plan-card__price">{copy.pro.price}<span class="plan-card__price-unit">{copy.pro.priceUnit}</span></p>
-          <p class="plan-card__lede">{copy.pro.lede}</p>
-        </header>
-
-        <p class="plan-card__copy">
-          {copy.pro.copy}
-        </p>
-
-        <ul class="plan-card__features">
-          {copy.pro.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
-        </ul>
-
-        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          {copy.pro.cta}
-        </a>
-      </article>
-
-      <article class="plan-card plan-card--featured">
-        <header>
-          <h3>{copy.starter.title}</h3>
-          <p class="plan-card__price">{copy.starter.price}<span class="plan-card__price-unit">{copy.starter.priceUnit}</span></p>
-          <p class="plan-card__lede">{copy.starter.lede}</p>
-        </header>
-
-        <p class="plan-card__copy">
-          {copy.starter.copy}
-        </p>
-
-        <ul class="plan-card__features">
-          {copy.starter.features.map((feature) => <li><span>{check}</span>{feature}</li>)}
-        </ul>
-
-        <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-          {copy.starter.cta}
-        </a>
-      </article>
-    </div>
-
     <div class="pricing__trial">
-      <a class="pricing__trial-cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">
-        {copy.trial.cta}
+      <a class="pricing__trial-cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="try_ipnite_free" data-analytics-event="pricing_cta_clicked" data-analytics-plan="Free">
+        {copy.freeCta}
       </a>
-      <p>{copy.trial.finePrint}</p>
     </div>
+
+    <div class="pricing__cards">
+      {plans.map(({ code, content, featured, sales }) => (
+        <article class:list={["plan-card", { "plan-card--featured": featured }]}>
+          <header>
+            <h3>{content.title}</h3>
+            <p class="plan-card__price" data-price-plan={code}>{price(code,"monthly")}<span class="plan-card__price-unit">{unit}</span></p>
+            <p class="plan-card__lede" data-annual-plan={code}>{annualText(code)}</p>
+          </header>
+          <p class="plan-card__copy">{content.copy}</p>
+          <ul class="plan-card__features plan-card__features--primary">
+            {content.features.slice(0, 4).map((feature) => <li><span>{check}</span>{feature}</li>)}
+          </ul>
+          <details class="plan-card__details">
+            <summary>{copy.showAll}</summary>
+            <ul class="plan-card__features plan-card__features--extra">
+              {content.features.slice(4).map((feature) => <li><span>{check}</span>{feature}</li>)}
+            </ul>
+            {code === "institutional" && (
+              <p class="plan-card__additional" data-additional-user>{copy.additionalUsers}: {formatPrice(defaultPricing.additionalUser.monthly, defaultPricing.currency, lang)}{unit} · {formatPrice(defaultPricing.additionalUser.annual, defaultPricing.currency, lang)}/{lang === "es" ? "año" : lang === "pt" ? "ano" : "yr"}</p>
+            )}
+          </details>
+          <a class="plan-card__cta" href={sales ? contactPath : "https://app.ipnite.com"} target={sales ? undefined : "_blank"} rel={sales ? undefined : "noopener noreferrer"} data-analytics-cta={sales ? "talk_to_sales" : `start_${code}_free`} data-analytics-event="pricing_cta_clicked" data-analytics-plan={content.title}>
+            {content.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="pricing__research">
+      <strong>{copy.researchTitle}</strong>
+      <p>{copy.researchBody}</p>
+    </div>
+    <p class="pricing__fair-use">{copy.fairUse}</p>
+    <p class="pricing__regional-note">{copy.regionalNote}</p>
   </div>
 </section>
+
+<script is:inline define:vars={{ priceData, lang, unit }}>
+  (() => {
+    const locale = lang === "es" ? "es-MX" : lang === "pt" ? "pt-BR" : "en-US";
+    const defaultMarket = lang === "es" ? "LATAM" : lang === "pt" ? "BR" : "US";
+    const format = (amount, currency) => new Intl.NumberFormat(locale, { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
+    function update(market) {
+      const config = priceData[market] || priceData[defaultMarket];
+      document.querySelectorAll("[data-price-plan]").forEach((node) => {
+        const plan = node.getAttribute("data-price-plan");
+        node.innerHTML = `${format(config.prices[plan].monthly, config.currency)}<span class="plan-card__price-unit">${unit}</span>`;
+      });
+      document.querySelectorAll("[data-annual-plan]").forEach((node) => {
+        const plan = node.getAttribute("data-annual-plan");
+        const annual = format(config.prices[plan].annual, config.currency);
+        node.textContent = lang === "es" ? `o ${annual}/año · ahorra 2 meses` : lang === "pt" ? `ou ${annual}/ano · economize 2 meses` : `or ${annual}/yr · save 2 months`;
+      });
+      document.querySelectorAll("[data-additional-user]").forEach((node) => {
+        const monthly = format(config.additionalUser.monthly, config.currency);
+        const annual = format(config.additionalUser.annual, config.currency);
+        const label = lang === "es" ? "Usuarios adicionales" : lang === "pt" ? "Usuários adicionais" : "Additional users";
+        const year = lang === "es" ? "año" : lang === "pt" ? "ano" : "yr";
+        node.textContent = `${label}: ${monthly}${unit} · ${annual}/${year}`;
+      });
+    }
+    let market = defaultMarket;
+    try { market = localStorage.getItem("ipnite_market") || defaultMarket; } catch (error) {}
+    update(market);
+    document.addEventListener("change", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLSelectElement) || !target.matches("[data-country-selector]")) return;
+      const selector = target;
+      const selectedMarket = selector.value;
+      if (priceData[selectedMarket]) update(selectedMarket);
+    });
+  })();
+</script>
 
 <style>
   .pricing {
@@ -266,12 +317,11 @@ const copy = lang === "es"
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
     margin-top: 48px;
-    align-items: stretch;
+    align-items: start;
   }
 
   .plan-card {
     display: flex;
-    min-height: 610px;
     flex-direction: column;
     border: 1px solid rgba(107, 42, 47, 0.45);
     border-radius: 24px;
@@ -364,10 +414,64 @@ const copy = lang === "es"
     line-height: 1;
   }
 
+  .plan-card__details {
+    margin: 22px 0 0;
+    border-top: 1px solid rgba(107, 42, 47, 0.16);
+    padding-top: 16px;
+    text-align: left;
+  }
+
+  .plan-card__details summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: #6b2a2f;
+    font-family: "Roboto Slab", serif;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .plan-card__details summary::-webkit-details-marker { display: none; }
+
+  .plan-card__details summary::after {
+    content: "+";
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(107, 42, 47, 0.4);
+    border-radius: 999px;
+    font-family: "Roboto", sans-serif;
+    line-height: 1;
+  }
+
+  .plan-card__details[open] summary::after { content: "−"; }
+
+  .plan-card__details summary:focus-visible {
+    border-radius: 6px;
+    outline: 3px solid rgba(107, 42, 47, 0.24);
+    outline-offset: 4px;
+  }
+
+  .plan-card__features--extra { margin-top: 18px; }
+
+  .plan-card__additional {
+    margin: 22px 0 0;
+    color: #4c0815;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
   .plan-card__cta {
     display: inline-flex;
     min-height: 45px;
-    margin: auto auto 0;
+    margin: 24px auto 0;
     align-items: center;
     justify-content: center;
     border: 1px solid #6b2a2f;
@@ -429,6 +533,38 @@ const copy = lang === "es"
     font-weight: 500;
     line-height: 1.45;
   }
+
+  .pricing__research {
+    max-width: 820px;
+    margin: 34px auto 0;
+    border: 1px solid rgba(107, 42, 47, 0.24);
+    border-radius: 24px;
+    background: rgba(107, 42, 47, 0.04);
+    padding: 24px clamp(20px, 4vw, 38px);
+    text-align: center;
+  }
+
+  .pricing__research strong {
+    color: #4c0815;
+    font-family: "Roboto Slab", serif;
+    font-size: 24px;
+  }
+
+  .pricing__research p,
+  .pricing__fair-use,
+  .pricing__regional-note {
+    max-width: 760px;
+    margin: 10px auto 0;
+    color: #777071;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .pricing__fair-use { margin-top: 18px; }
+  .pricing__regional-note { margin-top: 12px; }
 
   @media (max-width: 1040px) {
     .pricing__cards {

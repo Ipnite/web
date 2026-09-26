@@ -33,6 +33,7 @@ const copy = lang === "es"
   aria-labelledby="cta-heading"
   class="relative w-full overflow-hidden bg-white"
   style="height: 349px;"
+  data-analytics-location="final_cta"
 >
   <!-- Imágenes decorativas cerebro -->
   <img
@@ -65,6 +66,8 @@ const copy = lang === "es"
       rel="noopener noreferrer"
       class="absolute inset-0 flex items-center justify-center [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[-0.46px] leading-9 underline whitespace-nowrap"
       aria-label={copy.buttonLabel}
+      data-analytics-cta="start_drafting"
+      data-analytics-event="start_drafting_clicked"
     >
       {copy.button}
     </a>

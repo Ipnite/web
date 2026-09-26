@@ -4,6 +4,8 @@ interface Props {
   alternatePath?: string;
 }
 
+import CountrySelector from "../components/CountrySelector.astro";
+
 const { lang = "en" } = Astro.props;
 const isEs = lang === "es";
 const isPt = lang === "pt";
@@ -11,40 +13,28 @@ const home = isEs ? "/es" : isPt ? "/pt-br" : "/";
 const prefix = isEs ? "/es" : isPt ? "/pt-br" : "";
 const navLinks = isEs
   ? [
-      { label: "Para Quién Es", href: `${prefix}/#who-we-do-it-for` },
-      { label: "Cómo Funciona", href: `${prefix}/#how-it-works` },
-      { label: "Por Qué Confiar", href: `${prefix}/#why-trust-ipnite` },
-      { label: "Precios", href: `${prefix}/#plans` },
-      { label: "Learn", href: `${prefix}/learn` },
+      { label: "Producto", href: `${prefix}/ai-patent-drafting/` },
+      { label: "Anterioridades", href: `${prefix}/prior-art-search/` },
+      { label: "Soluciones", href: `${prefix}/for-startups/` },
+      { label: "Seguridad", href: `${prefix}/patent-ai-security/` },
+      { label: "Aprende", href: `${prefix}/learn/` },
     ]
   : isPt
   ? [
-      { label: "Para Quem É", href: `${prefix}/#who-we-do-it-for` },
-      { label: "Como Funciona", href: `${prefix}/#how-it-works` },
-      { label: "Por Que Confiar", href: `${prefix}/#why-trust-ipnite` },
-      { label: "Preços", href: `${prefix}/#plans` },
-      { label: "Learn", href: `${prefix}/learn` },
+      { label: "Produto", href: `${prefix}/ai-patent-drafting/` },
+      { label: "Anterioridade", href: `${prefix}/prior-art-search/` },
+      { label: "Soluções", href: `${prefix}/for-startups/` },
+      { label: "Segurança", href: `${prefix}/patent-ai-security/` },
+      { label: "Aprenda", href: `${prefix}/learn/` },
     ]
   : [
-      { label: "Who It's For", href: "/#who-we-do-it-for" },
-      { label: "How It Works", href: "/#how-it-works" },
-      { label: "Why Trust IPnite", href: "/#why-trust-ipnite" },
-      { label: "Pricing", href: "/#plans" },
-      { label: "Learn", href: "/learn" },
+      { label: "Product", href: "/ai-patent-drafting/" },
+      { label: "Prior Art", href: "/prior-art-search/" },
+      { label: "Solutions", href: "/for-startups/" },
+      { label: "Security", href: "/patent-ai-security/" },
+      { label: "Learn", href: "/learn/" },
     ];
 
-function localizedPath(targetLocale: "en" | "es" | "pt") {
-  const pathname = Astro.url.pathname || "/";
-  const stripped = pathname.replace(/^\/(es|pt-br)(?=\/|$)/, "") || "/";
-  const prefixMap = { en: "", es: "/es", pt: "/pt-br" };
-  const targetPrefix = prefixMap[targetLocale] ?? "";
-  if (stripped === "/") return targetPrefix ? `${targetPrefix}/` : "/";
-  return `${targetPrefix}${stripped}`;
-}
-
-const enPath = localizedPath("en");
-const esPath = localizedPath("es");
-const ptPath = localizedPath("pt");
 ---
 
 <header class="site-nav" data-site-nav>
@@ -68,13 +58,7 @@ const ptPath = localizedPath("pt");
 
       <a href={`${prefix}/#contact`} class="site-nav__contact">{isEs ? "Contacto" : isPt ? "Contato" : "Contact"}</a>
 
-      <div class="site-nav__langs" role="group" aria-label={isEs ? "Selector de idioma" : isPt ? "Seletor de idioma" : "Language selector"}>
-      <a href={enPath} aria-current={!isEs && !isPt ? "true" : "false"} data-lang-link="en">EN</a>
-        <span aria-hidden="true"></span>
-        <a href={esPath} aria-current={isEs ? "true" : "false"} data-lang-link="es">ES</a>
-        <span aria-hidden="true"></span>
-        <a href={ptPath} aria-current={isPt ? "true" : "false"} data-lang-link="pt">PT</a>
-      </div>
+      <CountrySelector lang={lang} />
     </div>
   </div>
 </header>
@@ -99,13 +83,6 @@ const ptPath = localizedPath("pt");
       });
     });
 
-    nav.querySelectorAll("[data-lang-link]").forEach((link) => {
-      link.addEventListener("click", () => {
-        try {
-          localStorage.setItem("ipnite_lang", link.getAttribute("data-lang-link") || "");
-        } catch (error) {}
-      });
-    });
   });
 </script>
 
@@ -170,8 +147,7 @@ const ptPath = localizedPath("pt");
     transition: color 180ms ease;
   }
 
-  .site-nav__links a:hover,
-  .site-nav__langs a[aria-current="true"] {
+  .site-nav__links a:hover {
     color: #4c0815;
   }
 
@@ -188,23 +164,6 @@ const ptPath = localizedPath("pt");
     line-height: 1;
   }
 
-  .site-nav__langs {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .site-nav__langs a {
-    color: #938d8e;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .site-nav__langs span {
-    width: 1px;
-    height: 10px;
-    background: #938d8e;
-  }
 
   .site-nav__toggle {
     display: none;
@@ -279,8 +238,7 @@ const ptPath = localizedPath("pt");
       white-space: normal;
     }
 
-    .site-nav__contact,
-    .site-nav__langs {
+    .site-nav__contact {
       justify-self: center;
     }
 

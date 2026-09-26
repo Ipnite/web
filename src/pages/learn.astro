@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import LearnLanding from "@components/LearnLanding.astro";
+import LearnContentHub from "@components/LearnContentHub.astro";
 
 const learnStructuredData = {
   "@context": "https://schema.org",
@@ -24,4 +25,5 @@ const learnStructuredData = {
   structuredData={learnStructuredData}
 >
   <LearnLanding lang="en" />
+  <LearnContentHub lang="en" />
 </BaseLayout>

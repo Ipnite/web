@@ -14,10 +14,9 @@ Current Lighthouse/PageSpeed context reported by the user on June 2, 2026:
 
 Primary optimization opportunities to address next:
 
-1. Defer Google Analytics / gtag
-   - Current issue: `googletagmanager.com/gtag/js?id=G-0Y2V71G958` is loaded during initial page load and Lighthouse reports unused JS.
-   - Recommended fix: remove direct early network load and replace it with an inline lazy loader that defines `window.dataLayer` and `window.gtag`, then loads gtag on first user interaction, browser idle, or a timed fallback.
-   - Expected result: lower initial JS/network cost and lower main-thread work. Analytics still works, but page view/event timing may be slightly delayed.
+1. Google Analytics / gtag
+   - Completed: the existing direct GA4 implementation is consent-gated, asynchronous, disabled outside production by default, and sends one explicit sanitized page view.
+   - Maintenance and GA4 Admin instructions live in `docs/analytics.md`.
 
 2. Improve LCP image priority
    - LCP element reported: `/images/notebook-2.png`, rendered as `img.hero__laptop` in the hero.
@@ -43,11 +42,9 @@ Primary optimization opportunities to address next:
    - Better fix: self-host Roboto and Roboto Slab as WOFF2 and remove the Google Fonts import.
    - Expected result: shorter external critical chain and more reliable FCP/LCP.
 
-5. Defer internal analytics/tracking work
-   - Relevant file: `src/layouts/BaseLayout.astro`.
-   - Current behavior: inline analytics code initializes click and section engagement tracking globally.
-   - Recommended fix: initialize heavier tracking on `requestIdleCallback`, after `load`, or after first interaction.
-   - Expected result: lower main-thread work and potentially lower TBT/forced reflow warnings.
+5. Analytics maintenance
+   - Relevant files: `public/ipnite-analytics.js` and `docs/analytics.md`.
+   - Tracking observers initialize only after consent and only on approved environments.
 
 6. Cache TTL limitations
    - Lighthouse reports 10 minute cache TTL on public image assets.
@@ -86,7 +83,7 @@ Static marketing website for IPnite, built with Astro, Tailwind, and a small amo
 
 ## What This Site Is
 
-IPnite is an AI-assisted patent preparation platform. The public website explains the product, positioning, pricing, trust/legal notes, learning content, FAQs, and localized pages for English, Spanish, and Brazilian Portuguese.
+IPnite is an AI-assisted patent preparation platform. The public website explains the product, positioning, pricing, trust/legal notes, learning content, FAQs, and localized pages for English, Spanish, and Portuguese.
 
 The site is intentionally static. It is meant to be fast, indexable, and easy for search engines and generative engines to understand.
 

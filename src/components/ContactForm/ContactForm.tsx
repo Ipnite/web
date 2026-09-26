@@ -1,4 +1,4 @@
-import { type FormEvent, useId, useState } from "react";
+import { useId, useState } from "react";
 
 type FormData = {
   name: string;
@@ -24,7 +24,7 @@ export default function ContactForm() {
     { key: "subject" as const, id: subjectId, label: "Subject", type: "text",  placeholder: "Enter your subject..."  },
   ];
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // TODO: conectar con backend / servicio de email
     setSent(true);

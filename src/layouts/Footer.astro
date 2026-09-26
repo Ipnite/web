@@ -11,29 +11,29 @@ const { lang = "en" } = Astro.props;
 const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
 const footerLinks = lang === "es"
   ? [
-      { label: "Para Quién Es", href: `${prefix}/#who-we-do-it-for` },
-      { label: "Equipo IP", href: `${prefix}/#ip-team` },
-      { label: "Como funciona", href: `${prefix}/#how-it-works` },
+      { label: "Redacción con IA", href: `${prefix}/ai-patent-drafting/` },
+      { label: "Búsqueda de anterioridades", href: `${prefix}/prior-art-search/` },
+      { label: "Dibujos de patentes", href: `${prefix}/patent-drawings/` },
+      { label: "Gestión de cartera", href: `${prefix}/patent-portfolio-management/` },
       { label: "Planes", href: `${prefix}/#plans` },
-      { label: "Sobre nosotros", href: `${prefix}/about-us/` },
-      { label: "Contacto", href: `${prefix}/#contact` },
+      { label: "Aprende", href: `${prefix}/learn/` },
     ]
   : lang === "pt"
   ? [
-      { label: "Para Quem É", href: `${prefix}/#who-we-do-it-for` },
-      { label: "Equipe IP", href: `${prefix}/#ip-team` },
-      { label: "Como funciona", href: `${prefix}/#how-it-works` },
+      { label: "Redação com IA", href: `${prefix}/ai-patent-drafting/` },
+      { label: "Busca de anterioridade", href: `${prefix}/prior-art-search/` },
+      { label: "Desenhos de patentes", href: `${prefix}/patent-drawings/` },
+      { label: "Gestão de portfólio", href: `${prefix}/patent-portfolio-management/` },
       { label: "Planos", href: `${prefix}/#plans` },
-      { label: "Sobre nós", href: `${prefix}/about-us/` },
-      { label: "Contato", href: `${prefix}/#contact` },
+      { label: "Aprenda", href: `${prefix}/learn/` },
     ]
   : [
-      { label: "Who It's For", href: "/#who-we-do-it-for" },
-      { label: "IP Team", href: "/#ip-team" },
-      { label: "How It Works", href: "/#how-it-works" },
+      { label: "AI Patent Drafting", href: "/ai-patent-drafting/" },
+      { label: "Prior Art Search", href: "/prior-art-search/" },
+      { label: "Patent Drawings", href: "/patent-drawings/" },
+      { label: "Portfolio Management", href: "/patent-portfolio-management/" },
       { label: "Plans", href: "/#plans" },
-      { label: "About Us", href: "/about-us/" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Learn", href: "/learn/" },
     ];
 
 const socialLinks = [

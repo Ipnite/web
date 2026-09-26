@@ -1,0 +1,10 @@
+---
+import SeoPage from "../../components/SeoPage.astro";
+import { pagesForLocale } from "../../data/seoContent";
+export function getStaticPaths(){
+  const existing = new Set(["patentes-mexico","patentes-argentina"]);
+  return pagesForLocale("es").filter(({page})=>!existing.has(page.slug)).map(({page})=>({params:{slug:page.slug},props:{page}}));
+}
+const { page } = Astro.props;
+---
+<SeoPage page={page} locale="es" />

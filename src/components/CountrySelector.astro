@@ -1,0 +1,56 @@
+---
+import { marketPricing, type MarketCode } from "../config/pricing";
+
+interface Props { lang?: "en" | "es" | "pt"; }
+const { lang = "en" } = Astro.props;
+const labels = lang === "es"
+  ? { label: "País o región", select: "Seleccionar país o región" }
+  : lang === "pt"
+  ? { label: "País ou região", select: "Selecionar país ou região" }
+  : { label: "Country or region", select: "Select country or region" };
+const order: MarketCode[] = ["US", "MX", "AR", "BR", "LATAM"];
+---
+
+<label class="country-selector">
+  <span>{labels.label}</span>
+  <select aria-label={labels.select} data-country-selector>
+    {order.map((code) => <option value={code}>{marketPricing[code].countryLabel[lang]}</option>)}
+  </select>
+</label>
+
+<script is:inline>
+  (() => {
+    const supportedMarkets = new Set(["US", "MX", "AR", "BR", "LATAM"]);
+    const defaultMarkets = { en: "US", es: "LATAM", pt: "BR" };
+    const currentLocale = document.documentElement.lang === "pt-BR" ? "pt" : document.documentElement.lang === "es" ? "es" : "en";
+    document.querySelectorAll("[data-country-selector]").forEach((select) => {
+      let stored = "";
+      try { stored = localStorage.getItem("ipnite_market") || ""; } catch (error) {}
+      const market = supportedMarkets.has(stored) ? stored : defaultMarkets[currentLocale];
+      select.value = market;
+      select.addEventListener("change", () => {
+        const nextMarket = select.value;
+        try { localStorage.setItem("ipnite_market", nextMarket); } catch (error) {}
+
+        // The market also determines the site's language: US → English,
+        // LATAM/MX/AR → Spanish, and BR → Portuguese.
+        const nextLocale = nextMarket === "US" ? "en" : nextMarket === "BR" ? "pt-BR" : "es";
+        const currentLocalePrefix = document.documentElement.lang === "pt-BR" ? "pt-BR" : document.documentElement.lang === "es" ? "es" : "en";
+        if (nextLocale !== currentLocalePrefix) {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+          if (pathParts[0] === "es" || pathParts[0] === "pt-br") pathParts.shift();
+          const path = pathParts.length ? `/${pathParts.join("/")}/` : "/";
+          const prefix = nextLocale === "es" ? "/es" : nextLocale === "pt-BR" ? "/pt-br" : "";
+          window.location.assign(`${prefix}${path}${window.location.search}${window.location.hash}`);
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .country-selector{display:flex;align-items:center;gap:8px;color:#6b2a2f;font-family:"Roboto Slab",serif;font-size:12px;font-weight:700;white-space:nowrap}
+  .country-selector select{max-width:160px;border:1px solid rgba(107,42,47,.3);border-radius:999px;background:#fff;color:#4c0815;padding:6px 28px 6px 11px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer}
+  .country-selector select:focus-visible{outline:3px solid rgba(107,42,47,.25);outline-offset:2px}
+  @media(max-width:1120px){.country-selector{justify-self:center;flex-direction:column}.country-selector select{max-width:220px}}
+</style>

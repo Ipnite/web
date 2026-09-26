@@ -19,21 +19,27 @@ const copy = lang === "es"
       message: "Mensaje",
       messagePlaceholder: "Escribe tu mensaje...",
       button: "Enviar",
-      alt: "Ilustración de contacto",
+      alt: "Profesional con una laptop y un cuaderno, lista para contactar a IPnite",
+      note: "Al enviar se abrirá tu aplicación de correo con el mensaje listo. También puedes escribirnos directamente a",
+      salesSubject: "Plan Institucional — solicitud de información",
+      bodyLabels: { name: "Nombre", email: "Correo" },
     }
   : lang === "pt"
   ? {
       heading: "Contato",
       name: "Nome",
       namePlaceholder: "Digite seu nome...",
-      email: "Email",
-      emailPlaceholder: "Digite seu email...",
+      email: "E-mail",
+      emailPlaceholder: "Digite seu e-mail...",
       subject: "Assunto",
       subjectPlaceholder: "Digite o assunto...",
       message: "Mensagem",
       messagePlaceholder: "Digite sua mensagem...",
       button: "Enviar",
-      alt: "Ilustração de contato",
+      alt: "Profissional com um laptop e um caderno, pronta para contatar a IPnite",
+      note: "Ao enviar, seu aplicativo de e-mail será aberto com a mensagem pronta. Você também pode nos escrever diretamente em",
+      salesSubject: "Plano Institucional — pedido de informações",
+      bodyLabels: { name: "Nome", email: "E-mail" },
     }
   : {
       heading: "Contact",
@@ -46,7 +52,10 @@ const copy = lang === "es"
       message: "Message",
       messagePlaceholder: "Enter your message...",
       button: "Send",
-      alt: "Contact illustration",
+      alt: "Professional holding a laptop and notebook, ready to contact IPnite",
+      note: "Sending opens your email app with the message ready to go. You can also write to us directly at",
+      salesSubject: "Institutional plan — information request",
+      bodyLabels: { name: "Name", email: "Email" },
     };
 ---
 
@@ -54,7 +63,7 @@ const copy = lang === "es"
   id="contact"
   aria-labelledby="contact-heading"
   class="relative w-full overflow-hidden bg-white"
-  style="height: 680px;"
+  style="height: 750px;"
 >
   <div class="absolute inset-0" style="width:1440px;margin:auto;left:0;right:0;">
     <h2 id="contact-heading" class="absolute top-5 left-[187px] w-[210px] [font-family:'Roboto_Slab',serif] font-bold text-[#6b2a2f] text-5xl tracking-[0] leading-[72px] whitespace-nowrap">{copy.heading}</h2>
@@ -63,15 +72,20 @@ const copy = lang === "es"
     <form
       class="absolute top-[123px] left-[190px] w-[425px]"
       method="post"
-      action="#contact"
+      action="mailto:info@ipnite.com"
+      enctype="text/plain"
       data-analytics-form="contact"
+      data-contact-form
+      data-sales-subject={copy.salesSubject}
+      data-label-name={copy.bodyLabels.name}
+      data-label-email={copy.bodyLabels.email}
     >
       <!-- Name -->
       <div class="absolute top-0 left-0 w-[409px]">
         <label for="contact-name" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.name}</label>
         <input
-          id="contact-name" name="name" type="text" placeholder={copy.namePlaceholder}
-          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+          id="contact-name" name="name" type="text" autocomplete="name" required maxlength="120" placeholder={copy.namePlaceholder}
+          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-5 pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         />
       </div>
 
@@ -79,8 +93,8 @@ const copy = lang === "es"
       <div class="absolute top-[109px] left-0 w-[409px]">
         <label for="contact-email" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.email}</label>
         <input
-          id="contact-email" name="email" type="email" placeholder={copy.emailPlaceholder}
-          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+          id="contact-email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder={copy.emailPlaceholder}
+          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-5 pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         />
       </div>
 
@@ -88,8 +102,8 @@ const copy = lang === "es"
       <div class="absolute top-[216px] left-0 w-[409px]">
         <label for="contact-subject" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.subject}</label>
         <input
-          id="contact-subject" name="subject" type="text" placeholder={copy.subjectPlaceholder}
-          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-[52px] pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#0000000d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+          id="contact-subject" name="subject" type="text" required maxlength="160" placeholder={copy.subjectPlaceholder}
+          class="mt-[5px] w-[409px] h-12 rounded-full bg-white pl-5 pr-5 [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#0000000d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         />
       </div>
 
@@ -97,9 +111,9 @@ const copy = lang === "es"
       <div class="absolute top-[320px] left-0 w-[409px]">
         <label for="contact-message" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.message}</label>
         <textarea
-          id="contact-message" name="message" placeholder={copy.messagePlaceholder}
+          id="contact-message" name="message" required maxlength="3000" placeholder={copy.messagePlaceholder}
           rows="4"
-          class="mt-[5px] w-[409px] h-[110px] resize-none rounded-[14px] bg-white pl-[52px] pr-5 pt-[11px] [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
+          class="mt-[5px] w-[409px] h-[110px] resize-none rounded-[14px] bg-white pl-5 pr-5 pt-[11px] [font-family:'Roboto',sans-serif] text-[#4c0815] text-[21px] shadow-[0px_4px_4px_#6b2a2f0d] outline-none placeholder:text-[#adadad] border border-[#6b2a2f20] focus:border-[#6b2a2f]"
         ></textarea>
       </div>
 
@@ -107,26 +121,47 @@ const copy = lang === "es"
       <button
         type="submit"
         class="absolute top-[497px] left-[300px] w-[109px] h-[35px] rounded-[50px] border border-solid border-[#6b2a2f] bg-[#ededed]"
-        aria-label={copy.button}
       >
         <span class="flex items-center justify-center h-full [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
           {copy.button}
         </span>
       </button>
+      <p class="contact-note absolute top-[548px] left-0 w-[409px] [font-family:'Roboto',sans-serif] text-[14px] leading-[1.5] text-[#505050]">
+        {copy.note} <a href="mailto:info@ipnite.com" class="font-bold text-[#6b2a2f] underline">info@ipnite.com</a>.
+      </p>
     </form>
 
     <!-- Imagen decorativa derecha -->
     <img
       class="absolute top-0 left-[810px] w-[497px] h-[588px] object-contain"
       alt={copy.alt}
-      src="/images/contact.png"
+      src="/images/contact.png" width="497" height="588"
       loading="lazy"
     />
   </div>
 </section>
 
+<script is:inline>
+  (() => {
+    document.querySelectorAll("[data-contact-form]").forEach((form) => {
+      const subject = form.querySelector("[name=subject]");
+      if (subject && new URLSearchParams(window.location.search).get("plan") === "institutional" && !subject.value) {
+        subject.value = form.dataset.salesSubject || "";
+      }
+      form.addEventListener("submit", (event) => {
+        if (!form.checkValidity()) return;
+        event.preventDefault();
+        const data = new FormData(form);
+        const value = (key) => String(data.get(key) || "").trim();
+        const body = `${value("message")}\n\n—\n${form.dataset.labelName}: ${value("name")}\n${form.dataset.labelEmail}: ${value("email")}`;
+        window.location.href = `mailto:info@ipnite.com?subject=${encodeURIComponent(value("subject"))}&body=${encodeURIComponent(body)}`;
+      });
+    });
+  })();
+</script>
+
 <style>
-  @media (max-width: 760px) {
+  @media (max-width: 1320px) {
     #contact {
       height: auto !important;
       overflow: visible !important;
@@ -183,6 +218,14 @@ const copy = lang === "es"
       min-height: 118px;
     }
 
+    #contact .contact-note {
+      position: relative !important;
+      top: auto !important;
+      width: 100% !important;
+      margin: 0;
+      text-align: center;
+    }
+
     #contact form button {
       justify-self: center;
       width: 132px !important;
@@ -199,6 +242,34 @@ const copy = lang === "es"
       max-width: 300px;
       margin: 0 auto;
       display: block;
+    }
+  }
+
+  @media (min-width: 761px) and (max-width: 1320px) {
+    #contact {
+      padding: 56px clamp(24px, 5vw, 64px) 72px;
+    }
+
+    #contact > div {
+      max-width: 960px !important;
+      margin: 0 auto;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+      column-gap: 56px;
+      align-items: center;
+    }
+
+    #contact-heading {
+      grid-column: 1 / -1;
+      text-align: left;
+    }
+
+    #contact form {
+      order: 1;
+    }
+
+    #contact > div > img {
+      order: 2;
+      max-width: 380px;
     }
   }
 </style>

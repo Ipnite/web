@@ -7,9 +7,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SITE_URL = "https://www.ipnite.com";
-const EXCLUDED_ROUTES = ["/coming-soon/", "/es/coming-soon/", "/pt-br/coming-soon/", "/contact/", "/es/contact/", "/pt-br/contact/"];
-
-/** Regenerates sitemap.xml from the actual build output on every build, so it never goes stale. */
+/** Regenerates sitemap.xml from the actual build output on every build, so it never goes stale.
+ * Pages marked noindex (redirects, contact shortcuts, coming-soon) are left out, and each URL
+ * lists its language alternates so search engines can pair the English, Spanish, and Portuguese versions. */
 function autoSitemap() {
   return {
     name: "auto-sitemap",
@@ -17,8 +17,9 @@ function autoSitemap() {
       /** @param {import("astro").HookParameters<"astro:build:done">} params */
       "astro:build:done": async ({ dir }) => {
         const outDir = fileURLToPath(dir);
-        /** @type {string[]} */
+        /** @type {{ route: string, alternates: [string, string][] }[]} */
         const routes = [];
+        const lastmod = new Date().toISOString().slice(0, 10);
 
         /** @param {string} current */
         function walk(current) {
@@ -27,8 +28,11 @@ function autoSitemap() {
             if (entry.isDirectory()) {
               walk(full);
             } else if (entry.name === "index.html") {
+              const html = fs.readFileSync(full, "utf-8");
+              if (/<meta name="robots" content="[^"]*noindex/.test(html)) continue;
               const relDir = path.relative(outDir, current).split(path.sep).filter(Boolean).join("/");
-              routes.push(relDir ? `/${relDir}/` : "/");
+              const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((match) => /** @type {[string, string]} */ ([match[1], match[2]]));
+              routes.push({ route: relDir ? `/${relDir}/` : "/", alternates });
             }
           }
         }
@@ -36,12 +40,14 @@ function autoSitemap() {
         walk(outDir);
 
         const urls = routes
-          .filter((route) => !EXCLUDED_ROUTES.includes(route))
-          .sort()
-          .map((route) => `  <url>\n    <loc>${SITE_URL}${route}</loc>\n  </url>`)
+          .sort((a, b) => a.route.localeCompare(b.route))
+          .map(({ route, alternates }) => {
+            const links = alternates.map(([lang, href]) => `\n    <xhtml:link rel="alternate" hreflang="${lang}" href="${href}" />`).join("");
+            return `  <url>\n    <loc>${SITE_URL}${route}</loc>\n    <lastmod>${lastmod}</lastmod>${links}\n  </url>`;
+          })
           .join("\n");
 
-        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
 
         fs.writeFileSync(path.join(outDir, "sitemap.xml"), xml, "utf-8");
       },

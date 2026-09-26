@@ -13,14 +13,14 @@ const copy = lang === "es"
       discoveryTitle: "Agente de descubrimiento",
       discoveryBody: "Te ayuda a estructurar ideas e identificar tecnologías similares",
       draftingTitle: "Agente de redacción",
-      draftingBody: "Genera un borrador provisional de patente estructurado",
+      draftingBody: "Genera un borrador de solicitud de patente estructurado",
       specializedTitle: "Agente especializado",
       specializedBody: "Revisa el lenguaje específico del campo de la invención",
       drawingTitle: "Agente de dibujos",
       drawingBody: "Genera diagramas y dibujos de referencia",
       qaTitle: "Agente QA",
-      qaBody: "Verifica el formato y prepara el documento para descargarlo",
-      laptopAlt: "Aplicacion de IPnite en laptop",
+      qaBody: "Verifica el formato y prepara el documento para descargarlo en DOCX",
+      laptopAlt: "Espacio de trabajo de IPnite en una laptop",
     }
   : lang === "pt"
   ? {
@@ -28,28 +28,28 @@ const copy = lang === "es"
       discoveryTitle: "Agente de descoberta",
       discoveryBody: "Ajuda a estruturar ideias e identificar tecnologias semelhantes",
       draftingTitle: "Agente de redação",
-      draftingBody: "Gera um rascunho provisório de patente estruturado",
+      draftingBody: "Gera um rascunho estruturado de pedido de patente",
       specializedTitle: "Agente especializado",
       specializedBody: "Revisa a linguagem específica do campo da invenção",
       drawingTitle: "Agente de desenhos",
-      drawingBody: "Gera diagramas e desenhos de referencia",
+      drawingBody: "Gera diagramas e desenhos de referência",
       qaTitle: "Agente QA",
-      qaBody: "Confere a formatacao e prepara o documento para download",
-      laptopAlt: "Aplicacao da IPnite no laptop",
+      qaBody: "Confere a formatação e prepara o documento para download em DOCX",
+      laptopAlt: "Espaço de trabalho da IPnite em um laptop",
     }
   : {
       heading: ["Your IP Team in", "One Interface"],
       discoveryTitle: "Discovery Agent",
       discoveryBody: "Helps you structure ideas and identify similar technologies",
       draftingTitle: "Drafting Agent",
-      draftingBody: "Generates a structured provisional patent draft",
+      draftingBody: "Generates a structured patent application draft",
       specializedTitle: "Specialized Agent",
       specializedBody: "Reviews the language specific to the field of the invention",
       drawingTitle: "Drawing Agent",
       drawingBody: "Generates diagrams and reference drawings",
       qaTitle: "QA Agent",
-      qaBody: "Checks formatting and prepares the document for download",
-      laptopAlt: "IPnite app on laptop",
+      qaBody: "Checks formatting and prepares the document for DOCX download",
+      laptopAlt: "IPnite workspace on a laptop",
     };
 ---
 
@@ -70,7 +70,7 @@ const copy = lang === "es"
     <!-- MacBook mockup izquierda -->
     <div class="absolute top-[131px] left-[20px] w-[560px] h-[339px]">
       <img
-        src="/images/notebook-1.png"
+        src="/images/notebook-1.png" width="750" height="457"
         alt={copy.laptopAlt}
         class="w-full h-full object-contain"
         loading="lazy"
@@ -95,7 +95,7 @@ const copy = lang === "es"
         </p>
         <!-- Specialized Agent -->
         <p class="absolute top-0 left-[521px] w-[265px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.specializedTitle}</strong><br />
+          <strong class="font-black text-[#6b2a2f]">{copy.specializedTitle} </strong>
           <span class="font-medium text-[#505050]">{copy.specializedBody}</span>
         </p>
       </div>

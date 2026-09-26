@@ -2,39 +2,25 @@
 // Fuente: ApplicationFooterSection.tsx (Figma 4:498)
 // height: 325
 import NewsletterForm from "@components/NewsletterForm.astro";
+import { routeFor } from "../data/routes";
 
 interface Props {
   lang?: "en" | "es" | "pt";
 }
 
 const { lang = "en" } = Astro.props;
-const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
-const footerLinks = lang === "es"
-  ? [
-      { label: "Redacción con IA", href: `${prefix}/ai-patent-drafting/` },
-      { label: "Búsqueda de anterioridades", href: `${prefix}/prior-art-search/` },
-      { label: "Dibujos de patentes", href: `${prefix}/patent-drawings/` },
-      { label: "Gestión de cartera", href: `${prefix}/patent-portfolio-management/` },
-      { label: "Planes", href: `${prefix}/#plans` },
-      { label: "Aprende", href: `${prefix}/learn/` },
-    ]
-  : lang === "pt"
-  ? [
-      { label: "Redação com IA", href: `${prefix}/ai-patent-drafting/` },
-      { label: "Busca de anterioridade", href: `${prefix}/prior-art-search/` },
-      { label: "Desenhos de patentes", href: `${prefix}/patent-drawings/` },
-      { label: "Gestão de portfólio", href: `${prefix}/patent-portfolio-management/` },
-      { label: "Planos", href: `${prefix}/#plans` },
-      { label: "Aprenda", href: `${prefix}/learn/` },
-    ]
-  : [
-      { label: "AI Patent Drafting", href: "/ai-patent-drafting/" },
-      { label: "Prior Art Search", href: "/prior-art-search/" },
-      { label: "Patent Drawings", href: "/patent-drawings/" },
-      { label: "Portfolio Management", href: "/patent-portfolio-management/" },
-      { label: "Plans", href: "/#plans" },
-      { label: "Learn", href: "/learn/" },
-    ];
+const home = routeFor("home", lang);
+const footerLinks = [
+  { label: lang === "es" ? "Redacción con IA" : lang === "pt" ? "Redação com IA" : "AI Patent Drafting", href: routeFor("ai-drafting", lang) },
+  { label: lang === "es" ? "Búsqueda de antecedentes" : lang === "pt" ? "Busca de anterioridade" : "Prior Art Search", href: routeFor("prior-art", lang) },
+  { label: lang === "es" ? "Dibujos de patentes" : lang === "pt" ? "Desenhos de patentes" : "Patent Drawings", href: routeFor("drawings", lang) },
+  { label: lang === "es" ? "Gestión de cartera" : lang === "pt" ? "Gestão de portfólio" : "Portfolio Management", href: routeFor("portfolio", lang) },
+  { label: lang === "es" ? "Seguridad y privacidad" : lang === "pt" ? "Segurança e privacidade" : "Security", href: routeFor("security", lang) },
+  { label: lang === "es" ? "Planes" : lang === "pt" ? "Planos" : "Plans", href: `${home}#plans` },
+  { label: lang === "es" ? "Aprende" : lang === "pt" ? "Aprenda" : "Learn", href: routeFor("learn", lang) },
+  { label: "FAQs", href: routeFor("faqs", lang) },
+  { label: lang === "es" ? "Nosotros" : lang === "pt" ? "Sobre nós" : "About", href: routeFor("about", lang) },
+];
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ipnite/" },
@@ -44,14 +30,16 @@ const socialLinks = [
   { label: "Facebook", href: "https://www.facebook.com/ipnite" },
 ];
 
+const year = new Date().getFullYear();
+const privacySettingsLabel = lang === "es" ? "Preferencias de privacidad" : lang === "pt" ? "Preferências de privacidade" : "Privacy settings";
 const legalLinks = [
   {
     label: lang === "es" ? "Términos y condiciones" : lang === "pt" ? "Termos e condições" : "Terms and Conditions",
-    href: `${prefix}/termsandconditions`,
+    href: routeFor("terms", lang),
   },
   {
     label: lang === "es" ? "Política de privacidad" : lang === "pt" ? "Política de privacidade" : "Privacy Policy",
-    href: `${prefix}/privacy`,
+    href: routeFor("privacy", lang),
   },
 ];
 ---
@@ -67,7 +55,7 @@ const legalLinks = [
       <img
         class="h-[68px] w-[217px] object-contain"
         alt="IPnite logo"
-        src="/logo-white.png"
+        src="/logo-white.png" width="948" height="298"
         loading="lazy"
       />
     </div>
@@ -76,21 +64,24 @@ const legalLinks = [
     <div class="site-footer__notice absolute left-[81px] top-[123px] w-[433px]">
         <p class="[font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
           {lang === "es"
-            ? "Aviso legal: Esta herramienta es un asistente de escritura con IA y no constituye asesoramiento legal ni una relacion abogado-cliente formal. Revisa todos los borradores con un profesional registrado."
+            ? "Aviso legal: IPnite es una herramienta de redacción asistida por IA y no constituye asesoría legal ni crea una relación abogado-cliente. Revisa tus borradores antes de presentarlos o envíalos a revisión con un profesional de patentes."
             : lang === "pt"
-            ? "Aviso legal: Esta ferramenta e um assistente de escrita com IA e nao constitui aconselhamento juridico nem uma relacao formal advogado-cliente. Revise todos os rascunhos com um profissional registrado."
-            : "Legal Notice: This tool is an AI writing assistant and does not constitute legal advice or a formal attorney-client relationship. Please review all drafts with a registered patent practitioner."}
+            ? "Aviso legal: a IPnite é uma ferramenta de redação assistida por IA e não constitui aconselhamento jurídico nem cria uma relação advogado-cliente. Revise seus rascunhos antes do depósito ou envie-os para revisão com um profissional de patentes."
+            : "Legal notice: IPnite is an AI-assisted drafting tool. It does not provide legal advice or create an attorney-client relationship. Review your drafts before filing or have them reviewed by a patent professional."}
         </p>
       <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
-        {lang === "es" ? "© IPnite — Todos los derechos reservados" : lang === "pt" ? "© IPnite — Todos os direitos reservados" : "© IPnite — All rights reserved"}
+        {lang === "es" ? `© ${year} Ik-Holcan LLC. Todos los derechos reservados.` : lang === "pt" ? `© ${year} Ik-Holcan LLC. Todos os direitos reservados.` : `© ${year} Ik-Holcan LLC. All rights reserved.`}
       </p>
       <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
-        {lang === "es" ? "Impulsado por Ik-Holcán" : lang === "pt" ? "Desenvolvido por Ik-Holcán" : "Powered by Ik-Holcán"}
+        {lang === "es" ? "IPnite es un producto de Ik-Holcan LLC." : lang === "pt" ? "IPnite é um produto da Ik-Holcan LLC." : "IPnite is a product of Ik-Holcan LLC."}
+      </p>
+      <p class="[font-family:'Roboto',sans-serif] mt-[22px] text-[15px] font-medium leading-[22.5px] tracking-[-0.28px] text-white">
+        {lang === "es" ? "Contacto, aclaraciones y reclamaciones:" : lang === "pt" ? "Contato, dúvidas e reclamações:" : "Contact, questions, and complaints:"} <a href="mailto:info@ipnite.com" class="underline">info@ipnite.com</a>
       </p>
     </div>
 
     <!-- Nav links -->
-    <nav class="footer-nav absolute left-[1059px] top-[123px]" aria-label="Footer navigation">
+    <nav class="footer-nav absolute left-[1059px] top-[123px]" aria-label={lang === "es" ? "Navegación del pie de página" : lang === "pt" ? "Navegação do rodapé" : "Footer navigation"}>
       <ul class="m-0 list-none p-0">
         {footerLinks.map((link) => (
           <li class="flex h-[25px]">
@@ -112,11 +103,16 @@ const legalLinks = [
             </a>
           </li>
         ))}
+        <li class="flex">
+          <button type="button" id="analytics-preferences" class="footer-privacy-button [font-family:'Roboto',sans-serif] text-[15px] font-medium leading-[22px] tracking-[-0.28px] text-white hover:underline">
+            {privacySettingsLabel}
+          </button>
+        </li>
       </ul>
     </nav>
 
     <!-- Social links -->
-    <nav class="footer-social absolute left-[1059px] top-[244px]" aria-label="Social links">
+    <nav class="footer-social absolute left-[1059px] top-[244px]" aria-label={lang === "es" ? "Redes sociales" : lang === "pt" ? "Redes sociais" : "Social links"}>
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
         {socialLinks.map((link) => (
           <li>
@@ -208,6 +204,20 @@ const legalLinks = [
     height: auto !important;
     min-height: 0;
     margin-top: 0 !important;
+  }
+
+  .site-footer nav a,
+  .footer-privacy-button {
+    display: inline-flex;
+    min-height: 28px;
+    align-items: center;
+  }
+
+  .footer-privacy-button {
+    border: 0;
+    background: none;
+    padding: 0;
+    cursor: pointer;
   }
 
   .site-footer a,
@@ -307,7 +317,13 @@ const legalLinks = [
 
     .site-footer .footer-social ul {
       display: flex;
-      gap: 10px 16px;
+      justify-content: flex-start;
+      gap: 6px 18px;
+    }
+
+    .site-footer nav a,
+    .footer-privacy-button {
+      min-height: 32px;
     }
   }
 </style>

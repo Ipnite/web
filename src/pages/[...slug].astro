@@ -1,10 +1,10 @@
 ---
 import SeoPage from "../components/SeoPage.astro";
-import { pagesForLocale } from "../data/seoContent";
-export function getStaticPaths(){
-  const existing = new Set(["patents-united-states"]);
-  return pagesForLocale("en").filter(({page})=>!existing.has(page.slug)).map(({page})=>({params:{slug:page.slug},props:{page}}));
+import RedirectPage from "../components/RedirectPage.astro";
+import { staticPathsForLocale } from "../data/seoContent";
+export function getStaticPaths() {
+  return staticPathsForLocale("en");
 }
-const { page } = Astro.props;
+const { page, redirectTo } = Astro.props;
 ---
-<SeoPage page={page} locale="en" />
+{redirectTo ? <RedirectPage to={redirectTo} lang="en" /> : <SeoPage page={page} locale="en" />}

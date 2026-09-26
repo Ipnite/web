@@ -13,17 +13,7 @@ import ContactSection       from "@components/ContactSection.astro";
 import CTAFinalSection      from "@components/CTAFinalSection.astro";
 import TrustedByMarquee from "@components/TrustedByMarquee.astro";
 import PlatformOverviewSection from "@components/PlatformOverviewSection.astro";
-import { marketPricing } from "../config/pricing";
-
-const regionalOffers = Object.values(marketPricing).flatMap((market) => Object.entries(market.prices).map(([plan, prices]) => ({
-  "@type": "Offer", name: `${plan[0].toUpperCase()}${plan.slice(1)} — ${market.countryLabel.en}`,
-  price: String(prices.monthly), priceCurrency: market.currency,
-  eligibleRegion: { "@type": "Place", name: market.countryLabel.en },
-  priceSpecification: [
-    { "@type": "UnitPriceSpecification", name: "Monthly", price: String(prices.monthly), priceCurrency: market.currency, unitCode: "MON" },
-    { "@type": "UnitPriceSpecification", name: "Annual", price: String(prices.annual), priceCurrency: market.currency, billingIncrement: 12, unitCode: "MON" },
-  ],
-})));
+import { softwareSchema } from "../data/structuredData";
 
 const homeStructuredData = [
   {
@@ -32,64 +22,24 @@ const homeStructuredData = [
     "@id": "https://www.ipnite.com/#website",
     name: "IPnite",
     url: "https://www.ipnite.com/",
-    inLanguage: "en",
+    inLanguage: ["en", "es", "pt-BR"],
     publisher: { "@id": "https://www.ipnite.com/#organization" },
-    description:
-      "IPnite helps independent inventors, entrepreneurs, startups, and venture teams prepare structured patent application drafts with AI-assisted workflows.",
+    description: "IPnite is an AI-assisted patent preparation platform for independent inventors, startups, law firms, universities, and R&D teams.",
   },
-  {
-    "@context": "https://schema.org",
-    "@type": ["SoftwareApplication", "WebApplication"],
-    "@id": "https://www.ipnite.com/#the-drafter",
-    name: "The Drafter by IPnite",
-    alternateName: ["IPnite", "IPnite Patent Drafting Software"],
-    applicationCategory: "BusinessApplication",
-    applicationSubCategory: "LegalTech / Patent Drafting Software",
-    operatingSystem: "Web",
-    url: "https://www.ipnite.com/",
-    inLanguage: "en",
-    creator: { "@id": "https://www.ipnite.com/#organization" },
-    audience: [
-      { "@type": "Audience", audienceType: "Patent attorneys, IP agents, and law firms" },
-      { "@type": "Audience", audienceType: "Independent inventors" },
-      { "@type": "Audience", audienceType: "Entrepreneurs" },
-      { "@type": "Audience", audienceType: "Startups managing IP in-house (DIY)" },
-      { "@type": "Audience", audienceType: "R&D teams, universities, and technology transfer offices" },
-      { "@type": "Audience", audienceType: "Venture capital funds evaluating startup IP" },
-    ],
-    areaServed: ["United States", "Latin America", "European Patent Office jurisdictions"],
-    offers: regionalOffers,
-    description:
-      "The Drafter by IPnite is an AI-assisted patent drafting, prior-art analysis, and IP workflow platform for patent attorneys, IP agents, law firms, inventors, startups, universities, and R&D teams.",
-    featureList: [
-      "DIY patent drafting for founders without an attorney yet",
-      "Guided invention disclosure workflow",
-      "Patent application draft generation",
-      "Prior-art review support",
-      "Independent and dependent claim drafting",
-      "Draft variants and invention embodiment expansion",
-      "Exportable patent drafts for attorney or agent review",
-      "Startup IP management: organize disclosures, claims, and drafts in one place",
-      "IP portfolio and evaluation support for startups and funds",
-      "Collaborative patent workflows for patent attorneys, IP agents, and law firms",
-      "DOCX, JSON, and ZIP project exports",
-    ],
-  },
+  softwareSchema("en"),
 ];
 ---
 
 <BaseLayout
-  title="IPnite"
-  description="Draft patent applications with AI, search prior art, create patent drawings, and manage your patent portfolio in one secure platform."
-  keywords="AI patent drafting, patent attorney software, patent drafting tool, intellectual property software, patent legaltech, patent agent software, startup IP management"
+  title="IPnite — AI Patent Drafting & Prior Art Search"
+  description="Draft patent applications with AI, search prior art, create patent drawings, and manage your portfolio. Try it free for 7 days, no credit card."
   canonicalPath="/"
-  alternatePath="/es/"
   structuredData={homeStructuredData}
 >
   <HeroSection />
   <TrustedByMarquee />
-  <PlatformOverviewSection />
   <WhyWeDoItSection />
+  <PlatformOverviewSection />
   <ReduceCostlySection />
   <YourIPTeamSection />
   <TrustSection />

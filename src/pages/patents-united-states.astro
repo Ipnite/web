@@ -1,26 +1,27 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { alternatesFor } from "../data/routes";
 
 const faqs = [
   {
     question: "Can IPnite help prepare a U.S. provisional patent application?",
-    answer: "Yes. IPnite helps organize the technical disclosure and generate a structured draft for a provisional application. Filing strategy, applicable requirements, and submission should be reviewed with a qualified patent professional.",
+    answer: "Yes. IPnite helps you document the invention and produce a structured provisional application ready to file. A provisional gives you 12 months to file the nonprovisional or PCT application that claims its benefit.",
   },
   {
     question: "Does IPnite replace a patent attorney or patent agent?",
-    answer: "No. IPnite is a drafting and workflow copilot. It accelerates the initial technical work but does not provide legal advice or replace professional review.",
+    answer: "No. IPnite is a drafting and workflow tool. It accelerates the technical work but does not provide legal advice. You decide whether to file on your own or have the draft professionally reviewed.",
   },
   {
     question: "Can I prepare an application for the USPTO?",
-    answer: "IPnite helps structure the specification, claims, abstract, and reference drawings used in patent preparation. Before filing, the documents should be reviewed against current USPTO requirements.",
+    answer: "Yes. IPnite helps you structure the specification, claims, abstract, and drawings. Before filing, review the documents against current USPTO requirements or have them professionally reviewed.",
   },
   {
     question: "Can IPnite also support an international strategy?",
-    answer: "Yes. The United States is a PCT Contracting State, and IPnite can support preparation and project organization for an international strategy. Country selection, deadlines, and filing routes require professional advice.",
+    answer: "Yes. The United States is a PCT Contracting State, and IPnite keeps your project organized for an international application. Country selection, deadlines, and filing routes are best reviewed with a professional.",
   },
   {
     question: "Which formats can I export?",
-    answer: "Projects can be exported in formats such as DOCX, JSON, and ZIP packages, depending on plan features and permissions.",
+    answer: "Every plan exports to DOCX. The Startup and Institutional plans also export the full project as JSON and ZIP.",
   },
 ];
 
@@ -33,7 +34,7 @@ const structuredData = [
     name: "AI Patent Drafting for the United States | IPnite",
     description: "Prepare U.S. provisional and nonprovisional patent drafts with AI-assisted workflows, prior-art research, drawings, and DOCX export.",
     inLanguage: "en-US",
-    about: { "@id": "https://www.ipnite.com/#the-drafter" },
+    about: { "@id": "https://www.ipnite.com/#software" },
     audience: [
       { "@type": "Audience", audienceType: "Patent attorneys and patent agents in the United States" },
       { "@type": "Audience", audienceType: "Inventors, startups, universities, and R&D teams targeting the United States" },
@@ -63,20 +64,19 @@ const structuredData = [
   lang="en"
   title="AI Patent Drafting for the United States | IPnite"
   description="Prepare U.S. provisional and nonprovisional patent application drafts with AI-assisted claims, prior-art research, drawings, and editable documents."
-  keywords="US patent drafting software, provisional patent application AI, USPTO patent drafting, patent attorney software, prior art search, PCT United States"
   canonicalPath="/patents-united-states/"
-  alternatePath="/"
-  alternatePaths={{ en: "/patents-united-states/", es: "/es/patents-united-states/", "pt-BR": "/pt-br/patents-united-states/", "x-default": "/patents-united-states/" }}
+  alternatePaths={alternatesFor("jurisdiction-us")}
+  pageKey="/patents-united-states/"
   structuredData={structuredData}
 >
-  <main class="mx-page">
+  <div class="mx-page">
     <section class="mx-hero" aria-labelledby="mx-hero-heading">
       <div class="mx-hero__inner">
         <div class="mx-hero__copy">
           <a class="breadcrumb" href="/">IPnite <span aria-hidden="true">/</span> United States</a>
           <p class="eyebrow">UNITED STATES · USPTO · PCT</p>
           <h1 id="mx-hero-heading">Patent drafting for the <strong>United States with AI</strong></h1>
-          <p class="mx-hero__lead">Prepare structured provisional and nonprovisional patent drafts, from technical disclosure to claims, drawings, and documents ready for professional review.</p>
+          <p class="mx-hero__lead">Prepare provisional and nonprovisional patent applications with a guided workflow: from technical disclosure to claims, drawings, and a document ready to file with the USPTO.</p>
           <div class="mx-hero__actions">
             <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Start drafting</a>
             <a class="button button--secondary" href="#us-workflow">See the workflow</a>
@@ -91,8 +91,8 @@ const structuredData = [
         <div class="mx-hero__visual" aria-label="IPnite platform preview">
           <div class="visual-orbit visual-orbit--one" aria-hidden="true"></div>
           <div class="visual-orbit visual-orbit--two" aria-hidden="true"></div>
-          <img class="visual-brain" src="/images/cerebro.png" alt="" aria-hidden="true" />
-          <img class="visual-laptop" src="/images/notebook-2.png" alt="IPnite patent drafting application" loading="eager" />
+          <img class="visual-brain" src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" />
+          <img class="visual-laptop" src="/images/notebook-2.png" width="560" height="339" alt="IPnite patent drafting application" loading="eager" />
           <div class="visual-chip visual-chip--top"><span>US</span><strong>Provisional application</strong></div>
           <div class="visual-chip visual-chip--bottom"><span>PCT</span><strong>International strategy</strong></div>
         </div>
@@ -104,7 +104,7 @@ const structuredData = [
         <div class="section-heading">
           <p class="eyebrow">A STRATEGY BUILT TO GROW</p>
           <h2 id="pathways-heading">Start in the United States. <strong>Prepare to move forward.</strong></h2>
-          <p>IPnite keeps the technical work in one project so the draft can evolve with a defined strategy and professional review.</p>
+          <p>IPnite keeps all the technical work in one project so your draft can evolve with a clear strategy.</p>
         </div>
 
         <div class="pathway-grid">
@@ -128,7 +128,7 @@ const structuredData = [
           </article>
         </div>
 
-        <p class="legal-note"><strong>Important:</strong> IPnite helps prepare and structure documents; it does not automatically file applications or replace the judgment of a patent attorney or agent.</p>
+        <p class="legal-note"><strong>Important:</strong> IPnite helps you prepare and structure your application; it does not file automatically or replace the judgment of a patent attorney or agent. Review remains your responsibility.</p>
       </div>
     </section>
 
@@ -136,19 +136,19 @@ const structuredData = [
       <div class="section-inner workflow__inner">
         <div class="workflow__visual">
           <div class="workflow__screen">
-            <img src="/images/notebook-1.png" alt="IPnite workspace" loading="lazy" />
+            <img src="/images/notebook-1.png" width="750" height="457" alt="IPnite workspace" loading="lazy" />
           </div>
           <div class="workflow__badge"><span>✓</span> Exportable document</div>
         </div>
 
         <div class="workflow__copy">
           <p class="eyebrow">GUIDED WORKFLOW</p>
-          <h2 id="workflow-heading">From invention to a <strong>review-ready draft</strong></h2>
+          <h2 id="workflow-heading">From invention to a <strong>filing-ready application</strong></h2>
           <ol>
             <li><span>1</span><div><h3>Describe the invention</h3><p>Capture the problem, solution, components, alternatives, and technical advantages.</p></div></li>
             <li><span>2</span><div><h3>Research prior art</h3><p>Organize relevant references to assess prior art and guide claim scope.</p></div></li>
             <li><span>3</span><div><h3>Generate and refine</h3><p>Develop claims, the specification, abstract, and drawings with specialized agents.</p></div></li>
-            <li><span>4</span><div><h3>Review and export</h3><p>Download the draft in DOCX and retain the project for tracking and collaboration.</p></div></li>
+            <li><span>4</span><div><h3>Review and export</h3><p>Download the application as DOCX and keep the project for tracking and collaboration.</p></div></li>
           </ol>
         </div>
       </div>
@@ -161,10 +161,10 @@ const structuredData = [
           <h2 id="capabilities-heading">One workspace for the <strong>entire project</strong></h2>
         </div>
         <div class="capability-grid">
-          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Prior art and FTO</h3><p>Centralize prior-art searches and, depending on the plan, FTO analysis.</p></article>
+          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Prior art and FTO</h3><p>Centralize prior-art searches and, depending on the plan, FTO analyses that you or your trusted professional review.</p></article>
           <article><img src="/icons/lapiz.svg" alt="" aria-hidden="true" /><h3>Assisted drafting</h3><p>Generate and review sections connected to the project's technical information.</p></article>
           <article><img src="/icons/engranaje.svg" alt="" aria-hidden="true" /><h3>Collaborative work</h3><p>Invite collaborators and keep the project context in one place.</p></article>
-          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Portfolio and export</h3><p>Track projects and export documents in DOCX, JSON, and ZIP formats according to your plan.</p></article>
+          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Portfolio and export</h3><p>Track projects and export as DOCX (all plans) or JSON and ZIP (Startup and Institutional).</p></article>
         </div>
       </div>
     </section>
@@ -176,9 +176,9 @@ const structuredData = [
           <h2 id="audiences-heading">Built for those <strong>protecting technology in the United States</strong></h2>
         </div>
         <div class="audience-grid">
-          <article><img src="/images/lawyer-card.webp" alt="Patent attorney" loading="lazy" /><div><h3>Law firms, attorneys, and agents</h3><p>Increase initial drafting capacity, organize collaboration, and deliver editable drafts for final legal refinement.</p></div></article>
-          <article><img src="/images/startups-card.webp" alt="Startup team" loading="lazy" /><div><h3>Startups and inventors</h3><p>Turn technical knowledge into a structured document before reviewing it with counsel.</p></div></article>
-          <article><img src="/images/academic-card.webp" alt="University researchers" loading="lazy" /><div><h3>Universities and R&D centers</h3><p>Organize invention disclosures, assess prior art, and track the institutional portfolio.</p></div></article>
+          <article><img src="/images/inventor-card.webp" width="800" height="800" alt="Independent inventor working on technical drawings" loading="lazy" /><div><h3>Independent inventors</h3><p>Turn your idea into a structured application, ready to review and file.</p></div></article>
+          <article><img src="/images/startups-card.webp" width="800" height="800" alt="Founder of a technology startup" loading="lazy" /><div><h3>Startups and founders</h3><p>Protect your technology before pitching investors and manage your portfolio with your team.</p></div></article>
+          <article><img src="/images/academic-card.webp" width="800" height="800" alt="Researcher working in a university laboratory" loading="lazy" /><div><h3>Law firms, universities, and R&amp;D centers</h3><p>Scale drafting capacity, manage invention disclosures, and track the institutional portfolio.</p></div></article>
         </div>
       </div>
     </section>
@@ -203,16 +203,16 @@ const structuredData = [
 
     <section class="mx-cta" aria-labelledby="mx-cta-heading">
       <div class="mx-cta__inner">
-        <img src="/images/cerebro.png" alt="" aria-hidden="true" />
+        <img src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" />
         <div>
           <p class="eyebrow">YOUR NEXT DRAFT STARTS HERE</p>
-          <h2 id="mx-cta-heading">Turn your innovation into a <strong>structured patent project</strong></h2>
-          <p>Start with a guided workflow and keep everything ready for review, collaboration, and tracking.</p>
+          <h2 id="mx-cta-heading">Turn your innovation into a <strong>filing-ready application</strong></h2>
+          <p>Start with the free trial: explore your invention with the Discovery Agent and run your first prior-art search.</p>
           <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Start with IPnite</a>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
@@ -349,12 +349,12 @@ const structuredData = [
     .mx-hero__actions { display: grid; }
     .button { width: 100%; }
     .mx-hero__signals { gap: 7px; }
-    .mx-hero__signals li { font-size: 11px; }
+    .mx-hero__signals li { font-size: 13px; }
     .mx-hero__visual { min-height: 300px; margin-top: -4px; }
     .visual-orbit--one { width: 290px; height: 290px; }
     .visual-orbit--two { width: 220px; height: 220px; }
     .visual-laptop { width: 115%; }
-    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 10px; }
+    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 13px; }
     .visual-chip span { width: 34px; height: 34px; border-radius: 10px; }
     .visual-chip strong { max-width: 92px; }
     .visual-chip--top { top: 18px; right: -3px; }
@@ -363,7 +363,7 @@ const structuredData = [
     .pathway-card { padding: 28px 24px; border-radius: 24px; }
     .pathway-card__number { font-size: 58px; }
     .workflow__visual { min-height: 280px; border-radius: 28px; }
-    .workflow__badge { right: 12px; bottom: 24px; font-size: 11px; }
+    .workflow__badge { right: 12px; bottom: 24px; font-size: 13px; }
     .workflow li { grid-template-columns: 40px 1fr; gap: 12px; }
     .workflow li > span { width: 38px; height: 38px; }
     .capability-grid { grid-template-columns: 1fr; }

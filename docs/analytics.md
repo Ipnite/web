@@ -52,7 +52,7 @@ Only recognized campaign parameters are retained in `page_location`: `utm_source
 | `patent_drawing_clicked` | Patent-drawing product CTA | No |
 | `portfolio_management_clicked` | Portfolio product CTA | No |
 | `newsletter_signup_started` | Valid Mailchimp form is submitted | No; remote success is not observable here |
-| `contact_form_submit_attempt` | Valid contact form submission is attempted | No; the current form has no delivery backend |
+| `contact_form_submit_attempt` | Valid contact form submission is attempted | No; the form opens the visitor's email app (`mailto:`) and delivery is not confirmed |
 | `faq_open` | FAQ item is opened | No |
 | `section_view` | A measured section becomes visible for the first time | No |
 | `section_engagement` | A visible measured section exits after at least 1.5 seconds | No |

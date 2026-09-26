@@ -9,13 +9,13 @@ const { lang = "en" } = Astro.props;
 
 const copy = lang === "es"
   ? {
-      title: ["Como funciona", "IPnite"],
-      subtitle: "Cuatro pasos",
+      title: ["Cómo funciona", "IPnite"],
+      subtitle: "Flujo en cuatro pasos",
       alt: "Ilustración del flujo de redacción de patentes",
       step1: "Describe tu invención",
       step2: "Los agentes analizan la estructura y las referencias",
       step3: "Se genera el borrador de patente",
-      step4: "Revisa y exporta el documento o continúa con la presentación",
+      step4: "Revisa, exporta en DOCX y presenta tu solicitud",
     }
   : lang === "pt"
   ? {
@@ -25,16 +25,16 @@ const copy = lang === "es"
       step1: "Descreva sua invenção",
       step2: "Os agentes analisam a estrutura e as referências",
       step3: "O rascunho da patente é gerado",
-      step4: "Revise e exporte o documento ou continue com o depósito",
+      step4: "Revise, exporte em DOCX e deposite seu pedido",
     }
   : {
       title: ["How It Works", ""],
-      subtitle: "Four-step Workflow",
+      subtitle: "Four-Step Workflow",
       alt: "Illustration of the patent drafting workflow",
       step1: "Describe your invention",
       step2: "Agents analyze the structure and references",
       step3: "The patent draft is generated",
-      step4: "Review and export the document or continue with the filing",
+      step4: "Review, export as DOCX, and file your application",
     };
 ---
 
@@ -52,7 +52,7 @@ const copy = lang === "es"
     <img
       class="absolute top-[93px] left-[120px] w-[522px] h-[480px] object-contain"
       alt={copy.alt}
-      src="/images/how-it-works.png"
+      src="/images/how-it-works.png" width="522" height="480"
       loading="lazy"
     />
 
@@ -121,7 +121,7 @@ const copy = lang === "es"
     transform: translateY(-1px);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1279px) {
     #how-it-works {
       height: auto !important;
       overflow: visible !important;
@@ -161,6 +161,7 @@ const copy = lang === "es"
       margin: 0 auto 8px;
       font-size: clamp(24px, 6.5vw, 28px) !important;
       line-height: 1.2 !important;
+      text-align: center;
       white-space: normal !important;
     }
 
@@ -238,6 +239,39 @@ const copy = lang === "es"
       overflow-wrap: normal;
       word-break: normal;
       hyphens: none;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1279px) {
+    #how-it-works {
+      padding: 56px clamp(24px, 5vw, 64px) 64px;
+    }
+
+    #how-it-works > div {
+      max-width: 1080px !important;
+      margin: 0 auto;
+      grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+      column-gap: 40px;
+      align-items: center;
+    }
+
+    #hiw-heading,
+    #how-it-works > div > p {
+      grid-column: 1 / -1;
+    }
+
+    #how-it-works > div > img {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    #how-it-works > div > div {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #how-it-works article > span,
+    #how-it-works article > p {
+      font-size: 16px !important;
     }
   }
 </style>

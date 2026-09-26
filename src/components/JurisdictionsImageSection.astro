@@ -2,6 +2,7 @@
 interface Props {
   lang?: "en" | "es" | "pt";
 }
+import { routeFor, type RouteKey } from "../data/routes";
 
 const { lang = "en" } = Astro.props;
 
@@ -9,28 +10,30 @@ const copy = lang === "es"
   ? {
       eyebrow: "JURISDICCIONES",
       title: "Donde IPnite puede usarse hoy",
-      body: "6 jurisdicciones activas hoy pero creciendo.",
+      body: "6 jurisdicciones activas hoy, y seguimos creciendo. Próximamente: presentación directa ante el INPI Argentina desde la plataforma.",
     }
   : lang === "pt"
   ? {
       eyebrow: "JURISDIÇÕES",
       title: "Onde a IPnite pode ser usada hoje",
-      body: "6 jurisdições ativas hoje, mas crescendo.",
+      body: "6 jurisdições ativas hoje, e seguimos crescendo. Em breve: depósito direto no INPI Argentina pela plataforma.",
     }
   : {
       eyebrow: "JURISDICTIONS",
       title: "Where IPnite can be used today",
-      body: "6 active jurisdictions today but growing.",
+      body: "6 active jurisdictions today, and growing. Coming soon: direct filing with INPI Argentina from the platform.",
     };
 
-const jurisdictions = [
-  { code: "MX", office: "IMPI", href: "/es/patentes-mexico/", hreflang: "es-MX", label: "México" },
-  { code: "BR", office: "INPI", href: "/pt-br/patentes-brasil/", hreflang: "pt-BR", label: "Brasil" },
-  { code: "AR", office: "INPI", href: "/es/patentes-argentina/", hreflang: "es-AR", label: "Argentina" },
-  { code: "US", office: "USPTO", href: "/patents-united-states/", hreflang: "en-US", label: "United States" },
-  { code: "EP", office: "EPO" },
-  { code: "PCT", office: "WIPO" },
+const jurisdictions: Array<{ code: string; office: string; route?: RouteKey; label: string }> = [
+  { code: "MX", office: "IMPI", route: "jurisdiction-mx", label: lang === "en" ? "Mexico" : "México" },
+  { code: "BR", office: "INPI", route: "jurisdiction-br", label: lang === "en" ? "Brazil" : "Brasil" },
+  { code: "AR", office: "INPI", route: "jurisdiction-ar", label: "Argentina" },
+  { code: "US", office: "USPTO", route: "jurisdiction-us", label: lang === "en" ? "the United States" : "Estados Unidos" },
+  { code: "EP", office: "EPO", label: "EPO" },
+  { code: "PCT", office: "WIPO", route: "jurisdiction-pct", label: "PCT" },
 ];
+const cardLabel = (label: string) => lang === "es" ? `Patentes en ${label}` : lang === "pt" ? `Patentes em ${label}` : `Patents in ${label}`;
+
 ---
 
 <section class="jurisdictions" aria-labelledby="jurisdictions-heading">
@@ -41,9 +44,9 @@ const jurisdictions = [
     </div>
 
     <div class="jurisdictions__visual">
-      <div class="jurisdictions__grid" aria-label="Jurisdiction cards">
-        {jurisdictions.map((item) => item.href ? (
-          <a class="jurisdiction-card" href={item.href} hreflang={item.hreflang} aria-label={`Patent solutions for ${item.label}`}>
+      <div class="jurisdictions__grid" aria-label={lang === "es" ? "Jurisdicciones" : lang === "pt" ? "Jurisdições" : "Jurisdictions"}>
+        {jurisdictions.map((item) => item.route ? (
+          <a class="jurisdiction-card" href={routeFor(item.route, lang)} aria-label={cardLabel(item.label)}>
             <div class="jurisdiction-card__badge">{item.code}</div>
             <p>{item.office}</p>
           </a>
@@ -216,7 +219,7 @@ const jurisdictions = [
     }
 
     .jurisdiction-card p {
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: .06em;
     }
   }

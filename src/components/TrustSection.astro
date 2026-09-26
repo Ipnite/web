@@ -11,20 +11,20 @@ const copy = lang === "es"
   ? {
       badge: "POR QUÉ CONFIAR EN IPNITE",
       headingTop: "Estándar profesional",
-      headingBottom: "Hecho para inventores tempranos",
+      headingBottom: "Hecho para inventores y profesionales de PI",
       confidential: "Confidencial por diseño",
-      privacy: "No usamos tus datos para entrenar modelos,\ny tú mantienes el control de tus ideas",
+      privacy: "IPnite no usa tus datos para entrenar modelos ni para ningún otro fin,\ny tú conservas la propiedad de tus ideas",
       workflow: "Flujo de patentes estructurado",
       exportable: "Borradores exportables de patente",
-      disclaimer: "IPnite no reemplaza asesoría legal. Acelera y estructura el proceso de redacción.",
+      disclaimer: "IPnite no sustituye la asesoría legal. Acelera y estructura el proceso de redacción.",
     }
   : lang === "pt"
   ? {
       badge: "POR QUE CONFIAR NA IPNITE",
       headingTop: "Padrão profissional",
-      headingBottom: "Feito para inventores em fase inicial",
-      confidential: "Confidencial por padrão",
-      privacy: "Não usamos seus dados para treinar modelos,\ne você mantém o controle de suas ideias",
+      headingBottom: "Feito para inventores e profissionais de PI",
+      confidential: "Confidencial por design",
+      privacy: "A IPnite não usa seus dados para treinar modelos nem para nenhum outro fim,\ne você mantém a propriedade de suas ideias",
       workflow: "Fluxo de patente estruturado",
       exportable: "Rascunhos exportáveis de patente",
       disclaimer: "A IPnite não substitui aconselhamento jurídico. Acelera e estrutura o processo de redação.",
@@ -32,9 +32,9 @@ const copy = lang === "es"
   : {
       badge: "WHY TRUST IPNITE",
       headingTop: "Professional Standard",
-      headingBottom: "Built for Early Inventors",
+      headingBottom: "Built for Inventors and IP Professionals",
       confidential: "Confidential by design",
-      privacy: "We don’t use your data to train models,\nand you retain control of your ideas",
+      privacy: "IPnite never uses your data to train models or for any other purpose,\nand you keep ownership of your ideas",
       workflow: "Structured patent workflow",
       exportable: "Exportable patent drafts",
       disclaimer: "IPnite does not replace legal advice. It accelerates and structures the drafting process.",
@@ -76,7 +76,7 @@ const copy = lang === "es"
     </div>
 
     <!-- Core benefits -->
-    <div class="trust-benefits" role="group" aria-label="Core drafting benefits">
+    <div class="trust-benefits" role="group" aria-label={lang === "es" ? "Beneficios principales" : lang === "pt" ? "Benefícios principais" : "Core drafting benefits"}>
       <div class="trust-benefit">{copy.workflow}</div>
       <img alt="" aria-hidden="true" src="/icons/engranaje.svg" />
       <div class="trust-benefit">{copy.exportable}</div>

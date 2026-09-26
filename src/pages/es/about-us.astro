@@ -10,14 +10,14 @@ const aboutStructuredData = [
     "name": "Acerca de IPnite",
     "url": "https://www.ipnite.com/es/about-us/",
     "description":
-      "Acerca de IPnite: la filosofia, la mision, la vision y el equipo detras de una plataforma asistida por IA para preparacion de patentes.",
+      "Acerca de IPnite: la filosofía, la misión, la visión y el equipo detrás de una plataforma de preparación de patentes asistida por IA, operada por Ik-Holcan LLC.",
     "mainEntity": {
       "@type": "Organization",
       "@id": "https://www.ipnite.com/#organization",
       "name": "IPnite",
       "description":
-        "IPnite hace mas accesible la preparacion seria de propiedad intelectual mediante flujos guiados de redaccion de patentes asistidos por IA.",
-      "areaServed": ["United States", "Mexico", "Argentina", "Latin America", "European Patent Office jurisdictions"],
+        "IPnite hace más accesible la preparación seria de propiedad intelectual mediante flujos guiados de redacción de patentes asistidos por IA.",
+      "areaServed": ["United States", "Mexico", "Argentina", "Brazil", "Latin America"],
     },
   },
   {
@@ -45,8 +45,8 @@ const aboutStructuredData = [
         "item": {
           "@type": "Person",
           "name": "Lucas Larrosa",
-          "jobTitle": "CTO · Platform Security",
-          "worksFor": { "@type": "Organization", "name": "IPnite" },
+          "jobTitle": "CTO · Seguridad de la plataforma",
+          "worksFor": { "@id": "https://www.ipnite.com/#organization" },
           "sameAs": "https://www.linkedin.com/in/lucaslarrosa/",
         },
       },
@@ -68,10 +68,8 @@ const collaborators = [
 <BaseLayout
   lang="es"
   title="Acerca de IPnite"
-  description="Conoce la filosofia, mision, vision y equipo detras de IPnite."
+  description="Conoce la filosofía, la misión, la visión y el equipo detrás de IPnite, la plataforma de redacción de patentes con IA de Ik-Holcan LLC."
   canonicalPath="/es/about-us/"
-  alternatePath="/about-us/"
-  keywords="Acerca de IPnite, equipo IPnite, mision IPnite, redaccion de patentes DIY, gestion de PI para startups, plataforma de propiedad intelectual"
   structuredData={aboutStructuredData}
 >
   <section class="about-page">
@@ -85,16 +83,16 @@ const collaborators = [
         <h2 id="about-why-heading"><span>Por qué lo</span> <strong>hacemos</strong></h2>
       </div>
       <div class="principle-grid">
-        <article class="principle-card"><span>01</span><h3>Ninguna idea es demasiado pequena</h3><p>Si es importante para ti, merece ser documentada con claridad.</p></article>
-        <article class="principle-card"><span>02</span><h3>Simple y transparente</h3><p>Sin pasos confusos. Solo un camino guiado desde la idea hasta un borrador estructurado.</p></article>
-        <article class="principle-card"><span>03</span><h3>Primero el creador</h3><p>Herramientas para inventores, fundadores y creadores que preparan sus invenciones para revision.</p></article>
+        <article class="principle-card"><span>01</span><h3>Ninguna idea es demasiado pequeña</h3><p>Si es importante para ti, merece ser documentada con claridad.</p></article>
+        <article class="principle-card"><span>02</span><h3>Simple y transparente</h3><p>Sin pasos confusos. Solo un camino guiado desde la idea hasta una solicitud estructurada.</p></article>
+        <article class="principle-card"><span>03</span><h3>Primero el creador</h3><p>Herramientas para inventores, fundadores y creadores que preparan sus invenciones para presentarlas.</p></article>
       </div>
     </section>
 
     <section class="about-section promise-section" aria-labelledby="promise-heading">
       <div class="promise-card">
         <h2 id="promise-heading"><span>La promesa de</span> <strong>IPnite</strong></h2><p class="promise-statement">Tú traes la idea. Nosotros te ayudamos a <em>estructurarla.</em></p>
-        <p>Estamos construyendo una forma más accesible de documentar, organizar y proteger la ingeniería humana sin bajar la seriedad del trabajo.</p>
+        <p>Estamos construyendo una forma más accesible de documentar, organizar y proteger el ingenio humano sin bajar la seriedad del trabajo.</p>
       </div>
     </section>
 
@@ -104,25 +102,25 @@ const collaborators = [
       </div>
       <div class="team-grid">
         <a class="team-card team-card-link" href="/es/rafael-betanzos-san-juan/" aria-label="Ver perfil profesional de Rafael Betanzos San Juan">
-          <div class="team-avatar" aria-hidden="true"><img src="/images/rafael.jpg" alt="Rafael Betanzos San Juan" loading="lazy" /></div>
+          <div class="team-avatar" aria-hidden="true"><img src="/images/rafael.jpg" width="800" height="800" alt="Rafael Betanzos San Juan" loading="lazy" /></div>
           <h3>Rafael Betanzos San Juan</h3>
           <p class="team-role">CEO · Abogado · Biotecnólogo · Experto en patentes</p>
           <FlagBadge country="Mexico" label="México" />
-          <p>Lidera la plataforma de IPnite, los agentes de IA, los flujos de redaccion, la direccion del producto y la estrategia de propiedad intelectual.</p>
+          <p>Lidera la plataforma de IPnite, los agentes de IA, los flujos de redacción, la dirección del producto y la estrategia de propiedad intelectual.</p>
         </a>
         <article class="team-card">
-          <div class="team-avatar" aria-hidden="true"><img src="/images/lucas.jpg" alt="Lucas Larrosa" loading="lazy" /></div>
+          <div class="team-avatar" aria-hidden="true"><img src="/images/lucas.jpg" width="288" height="288" alt="Lucas Larrosa" loading="lazy" /></div>
           <h3>Lucas Larrosa</h3>
           <p class="team-role">CTO · Seguridad de la plataforma</p>
           <FlagBadge country="Argentina" />
-          <p>Lidera la seguridad de la plataforma, la proteccion de accesos, la infraestructura y las operaciones tecnicas seguras.</p>
+          <p>Lidera la seguridad de la plataforma, la protección de accesos, la infraestructura y las operaciones técnicas seguras.</p>
         </article>
       </div>
     </section>
 
     <section class="about-section collaborators-section" aria-labelledby="collaborators-heading">
       <div class="about-section-head">
-        <h2 id="collaborators-heading"><span>Nuestros</span> <strong>Socios</strong></h2>
+        <h2 id="collaborators-heading"><span>Nuestros</span> <strong>socios</strong></h2>
       </div>
       <div class="team-grid collaborators-grid">
         {collaborators.map((person) => (
@@ -142,7 +140,7 @@ const collaborators = [
     </section>
 
     <section class="about-final" aria-labelledby="about-final-heading">
-      <h2 id="about-final-heading"><span>Convierte tu invención en</span> <strong>un borrador estructurado.</strong></h2>
+      <h2 id="about-final-heading"><span>Convierte tu invención en</span> <strong>una solicitud lista para presentar.</strong></h2>
       <a href="https://app.ipnite.com/" target="_blank" rel="noopener" class="about-button about-button-primary">Empezar a redactar con IPnite</a>
     </section>
   </section>

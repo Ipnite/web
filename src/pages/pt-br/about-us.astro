@@ -10,20 +10,20 @@ const aboutStructuredData = [
     "name": "Sobre a IPnite",
     "url": "https://www.ipnite.com/pt-br/about-us/",
     "description":
-      "Sobre a IPnite: filosofia, missao, visao e equipe por tras de uma plataforma assistida por IA para preparacao de patentes.",
+      "Sobre a IPnite: filosofia, missão, visão e equipe por trás de uma plataforma de preparação de patentes assistida por IA, operada pela Ik-Holcan LLC.",
     "mainEntity": {
       "@type": "Organization",
       "@id": "https://www.ipnite.com/#organization",
       "name": "IPnite",
       "description":
-        "A IPnite torna mais acessivel a preparacao seria de propriedade intelectual por meio de fluxos guiados de redacao de patentes assistidos por IA.",
-      "areaServed": ["United States", "Mexico", "Argentina", "Latin America", "European Patent Office jurisdictions"],
+        "A IPnite torna mais acessível a preparação séria de propriedade intelectual por meio de fluxos guiados de redação de patentes assistidos por IA.",
+      "areaServed": ["United States", "Mexico", "Argentina", "Brazil", "Latin America"],
     },
   },
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Equipe de lideranca da IPnite",
+    "name": "Equipe de liderança da IPnite",
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -45,8 +45,8 @@ const aboutStructuredData = [
         "item": {
           "@type": "Person",
           "name": "Lucas Larrosa",
-          "jobTitle": "CTO · Platform Security",
-          "worksFor": { "@type": "Organization", "name": "IPnite" },
+          "jobTitle": "CTO · Segurança da plataforma",
+          "worksFor": { "@id": "https://www.ipnite.com/#organization" },
           "sameAs": "https://www.linkedin.com/in/lucaslarrosa/",
         },
       },
@@ -58,7 +58,7 @@ const collaborators = [
   {
     photo: "/images/israel.jpeg",
     name: "Israel Flores",
-    role: "Advogado de PI · Prosecução",
+    role: "Advogado de PI · Processamento de patentes",
     country: "Mexico" as const,
     href: "https://mx.linkedin.com/in/israel-flores-a75a44125",
   },
@@ -68,10 +68,8 @@ const collaborators = [
 <BaseLayout
   lang="pt"
   title="Sobre a IPnite"
-  description="Conheca a filosofia, missao, visao e equipe por tras da IPnite."
+  description="Conheça a filosofia, a missão, a visão e a equipe por trás da IPnite, plataforma de redação de patentes com IA da Ik-Holcan LLC."
   canonicalPath="/pt-br/about-us/"
-  alternatePath="/about-us/"
-  keywords="Sobre a IPnite, equipe IPnite, missao IPnite, redacao de patentes DIY, gestao de PI para startups, plataforma de propriedade intelectual"
   structuredData={aboutStructuredData}
 >
   <section class="about-page">
@@ -85,16 +83,16 @@ const collaborators = [
         <h2 id="about-why-heading"><span>Por que fazemos</span> <strong>isso</strong></h2>
       </div>
       <div class="principle-grid">
-        <article class="principle-card"><span>01</span><h3>Nenhuma ideia e pequena demais</h3><p>Se importa para voce, merece ser documentada com clareza.</p></article>
-        <article class="principle-card"><span>02</span><h3>Simples e transparente</h3><p>Sem passos confusos. Apenas um caminho guiado da ideia ate um rascunho estruturado.</p></article>
-        <article class="principle-card"><span>03</span><h3>Primeiro o criador</h3><p>Ferramentas para inventores, fundadores e criadores que preparam suas invencoes para revisao.</p></article>
+        <article class="principle-card"><span>01</span><h3>Nenhuma ideia é pequena demais</h3><p>Se importa para você, merece ser documentada com clareza.</p></article>
+        <article class="principle-card"><span>02</span><h3>Simples e transparente</h3><p>Sem passos confusos. Apenas um caminho guiado da ideia até um pedido estruturado.</p></article>
+        <article class="principle-card"><span>03</span><h3>Primeiro o criador</h3><p>Ferramentas para inventores, fundadores e criadores que preparam suas invenções para depósito.</p></article>
       </div>
     </section>
 
     <section class="about-section promise-section" aria-labelledby="promise-heading">
       <div class="promise-card">
-        <h2 id="promise-heading"><span>Promessa da</span> <strong>IPnite</strong></h2><p class="promise-statement">Você traz a ideia. Nos ajudamos a <em>estruturá-la.</em></p>
-        <p>Estamos construindo uma forma mais acessível de documentar, organizar e proteger a engenharia humana sem reduzir a seriedade do trabalho.</p>
+        <h2 id="promise-heading"><span>Promessa da</span> <strong>IPnite</strong></h2><p class="promise-statement">Você traz a ideia. Nós ajudamos a <em>estruturá-la.</em></p>
+        <p>Estamos construindo uma forma mais acessível de documentar, organizar e proteger a engenhosidade humana sem reduzir a seriedade do trabalho.</p>
       </div>
     </section>
 
@@ -104,25 +102,25 @@ const collaborators = [
       </div>
       <div class="team-grid">
         <a class="team-card team-card-link" href="/pt-br/rafael-betanzos-san-juan/" aria-label="Ver o perfil profissional de Rafael Betanzos San Juan">
-          <div class="team-avatar" aria-hidden="true"><img src="/images/rafael.jpg" alt="Rafael Betanzos San Juan" loading="lazy" /></div>
+          <div class="team-avatar" aria-hidden="true"><img src="/images/rafael.jpg" width="800" height="800" alt="Rafael Betanzos San Juan" loading="lazy" /></div>
           <h3>Rafael Betanzos San Juan</h3>
           <p class="team-role">CEO · Advogado · Biotecnólogo · Especialista em patentes</p>
           <FlagBadge country="Mexico" label="México" />
-          <p>Ele lidera a plataforma da IPnite, os agentes de IA, os fluxos de redacao, a direcao do produto e a estrategia de propriedade intelectual.</p>
+          <p>Ele lidera a plataforma da IPnite, os agentes de IA, os fluxos de redação, a direção do produto e a estratégia de propriedade intelectual.</p>
         </a>
         <article class="team-card">
-          <div class="team-avatar" aria-hidden="true"><img src="/images/lucas.jpg" alt="Lucas Larrosa" loading="lazy" /></div>
+          <div class="team-avatar" aria-hidden="true"><img src="/images/lucas.jpg" width="288" height="288" alt="Lucas Larrosa" loading="lazy" /></div>
           <h3>Lucas Larrosa</h3>
-          <p class="team-role">CTO · Seguranca da plataforma</p>
+          <p class="team-role">CTO · Segurança da plataforma</p>
           <FlagBadge country="Argentina" />
-          <p>Ele lidera a seguranca da plataforma, a protecao de acessos, a infraestrutura e as operacoes tecnicas seguras.</p>
+          <p>Ele lidera a segurança da plataforma, a proteção de acessos, a infraestrutura e as operações técnicas seguras.</p>
         </article>
       </div>
     </section>
 
     <section class="about-section collaborators-section" aria-labelledby="collaborators-heading">
       <div class="about-section-head">
-        <h2 id="collaborators-heading"><span>Nossos</span> <strong>Parceiros</strong></h2>
+        <h2 id="collaborators-heading"><span>Nossos</span> <strong>parceiros</strong></h2>
       </div>
       <div class="team-grid collaborators-grid">
         {collaborators.map((person) => (
@@ -142,7 +140,7 @@ const collaborators = [
     </section>
 
     <section class="about-final" aria-labelledby="about-final-heading">
-      <h2 id="about-final-heading"><span>Transforme sua invenção em</span> <strong>um rascunho estruturado.</strong></h2>
+      <h2 id="about-final-heading"><span>Transforme sua invenção em</span> <strong>um pedido pronto para depósito.</strong></h2>
       <a href="https://app.ipnite.com/" target="_blank" rel="noopener" class="about-button about-button-primary">Começar a redigir com a IPnite</a>
     </section>
   </section>

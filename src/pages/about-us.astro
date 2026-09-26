@@ -67,7 +67,7 @@ const aboutStructuredData = [
       name: "IPnite",
       description:
         "IPnite makes high-quality intellectual property preparation more accessible through guided AI-assisted patent drafting workflows.",
-      areaServed: ["United States", "Mexico", "Argentina", "Latin America", "European Patent Office jurisdictions"],
+      areaServed: ["United States", "Mexico", "Argentina", "Brazil", "Latin America"],
     },
   },
   {
@@ -96,7 +96,7 @@ const aboutStructuredData = [
           "@type": "Person",
           name: "Lucas Larrosa",
           jobTitle: "CTO · Platform Security",
-          worksFor: { "@type": "Organization", name: "IPnite" },
+          worksFor: { "@id": "https://www.ipnite.com/#organization" },
           sameAs: "https://www.linkedin.com/in/lucaslarrosa/",
         },
       },
@@ -107,10 +107,8 @@ const aboutStructuredData = [
 
 <BaseLayout
   title="About Us — IPnite"
-  description="Learn about IPnite's philosophy, mission, vision, locations, and team behind AI-assisted patent preparation for inventors, founders, startups, and companies."
+  description="Meet the philosophy, mission, vision, and team behind IPnite, the AI patent drafting platform by Ik-Holcan LLC, for inventors, startups, and IP professionals."
   canonicalPath="/about-us/"
-  alternatePath="/es/about-us/"
-  keywords="About IPnite, IPnite team, IPnite mission, IPnite vision, AI patent drafting company, DIY patent drafting, startup IP management, patent preparation startup, intellectual property platform"
   structuredData={aboutStructuredData}
 >
   <section class="about-page">
@@ -164,7 +162,7 @@ const aboutStructuredData = [
               <span class="spark s3"></span>
             </div>
             <h3>Mission</h3>
-            <p>To make high-quality intellectual property preparation accessible to more inventors and founders.</p>
+            <p>To ignite the potential of human ingenuity by protecting the assets that define the future.</p>
           </article>
 
           <article class="mission-card">
@@ -188,7 +186,7 @@ const aboutStructuredData = [
               ))}
             </div>
             <h3>Vision</h3>
-            <p>To become the company that has helped the largest number of inventors take their first serious step toward protection.</p>
+            <p>A world where every creator has the tools to protect their brilliance.</p>
           </article>
         </div>
       </div>
@@ -1007,7 +1005,7 @@ const aboutStructuredData = [
     background: rgba(107, 42, 47, 0.07);
     color: #6b2a2f;
     font-family: "Roboto", sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 900;
     letter-spacing: 0.07em;
     padding: 8px 11px;

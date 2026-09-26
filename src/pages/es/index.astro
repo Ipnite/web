@@ -13,22 +13,21 @@ import ContactSection from "@components/ContactSection.astro";
 import CTAFinalSection from "@components/CTAFinalSection.astro";
 import TrustedByMarquee from "@components/TrustedByMarquee.astro";
 import PlatformOverviewSection from "@components/PlatformOverviewSection.astro";
-const homeStructuredData = [{"@context":"https://schema.org","@type":["SoftwareApplication","WebApplication"],"@id":"https://www.ipnite.com/#the-drafter",name:"IPnite",applicationCategory:"BusinessApplication",operatingSystem:"Web",url:"https://www.ipnite.com/es/",inLanguage:"es",creator:{"@id":"https://www.ipnite.com/#organization"},description:"Plataforma integral de inteligencia artificial para búsqueda de anterioridades, redacción, dibujos y gestión de carteras de patentes."}];
+import { softwareSchema } from "../../data/structuredData";
+const homeStructuredData = [softwareSchema("es")];
 ---
 
 <BaseLayout
   lang="es"
-  title="IPnite"
-  description="Redacta solicitudes con IA, busca anterioridades, crea dibujos y gestiona tu cartera de patentes en una plataforma integral para Latinoamérica."
-  keywords="redacción de patentes IA, software para abogados de patentes, patent drafting tool, software propiedad industrial, legaltech patentes, agente de patentes software"
+  title="IPnite — Redacción de patentes con IA y antecedentes"
+  description="Redacta solicitudes de patente con IA, busca antecedentes, crea dibujos y gestiona tu cartera. Prueba gratis 7 días, sin tarjeta."
   canonicalPath="/es/"
-  alternatePath="/"
   structuredData={homeStructuredData}
 >
   <HeroSection lang="es" />
   <TrustedByMarquee lang="es" />
-  <PlatformOverviewSection lang="es" />
   <WhyWeDoItSection lang="es" />
+  <PlatformOverviewSection lang="es" />
   <ReduceCostlySection lang="es" />
   <YourIPTeamSection lang="es" />
   <TrustSection lang="es" />

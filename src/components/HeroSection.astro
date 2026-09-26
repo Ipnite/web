@@ -5,18 +5,19 @@ interface Props {
 }
 
 const { lang = "en" } = Astro.props;
-const prefix = lang === "es" ? "/es" : lang === "pt" ? "/pt-br" : "";
-const localizedHref = (path: string) => `${prefix}${path}`;
+import { routeFor } from "../data/routes";
+
+const home = routeFor("home", lang);
 
 const copy = lang === "es"
   ? {
       title: ["La protección no debería", "ser un privilegio"],
       seoTitle: "Redacción de Patentes para Inventores, Startups y Profesionales de PI",
-      body: "Busca anterioridades, estructura tu invención, redacta solicitudes, crea dibujos y gestiona tu cartera en una plataforma integral para Latinoamérica.",
+      body: "Busca antecedentes, estructura tu invención, redacta solicitudes, crea dibujos y gestiona tu cartera en una plataforma integral para Latinoamérica.",
       primary: "Empezar ahora",
       secondary: "Cómo funciona",
       faqs: "FAQs",
-      laptopAlt: "Aplicación de IPnite en laptop",
+      laptopAlt: "Plataforma IPnite para redactar patentes en una laptop",
     }
   : lang === "pt"
   ? {
@@ -26,16 +27,16 @@ const copy = lang === "es"
       primary: "Começar agora",
       secondary: "Como funciona",
       faqs: "FAQs",
-      laptopAlt: "Aplicação da IPnite no laptop",
+      laptopAlt: "Plataforma IPnite para redigir patentes em um laptop",
     }
   : {
       title: ["Protection Shouldn't", "Be a Privilege"],
       seoTitle: "Patent Drafting for Inventors, Startups and IP Professionals",
-      body: "Search prior art, structure your invention, draft patent applications, create patent drawings, and manage your portfolio in one secure platform.",
+      body: "Search prior art, structure your invention, draft patent applications, create patent drawings, and manage your portfolio in one platform.",
       primary: "Get Started Now",
-      secondary: "How it Works",
+      secondary: "How It Works",
       faqs: "FAQs",
-      laptopAlt: "IPnite app on laptop",
+      laptopAlt: "IPnite patent drafting platform on a laptop",
     };
 ---
 
@@ -43,32 +44,30 @@ const copy = lang === "es"
   <div class="hero__panel">
     <img
       class="hero__brain"
-      src="/images/cerebro.png"
+      src="/images/cerebro.png" width="543" height="481"
       alt=""
       aria-hidden="true"
       loading="eager"
     />
 
     <div class="hero__copy">
-      <p class="hero__brand" aria-hidden="true">
+      <p class="hero__brand">
         <span>{copy.title[0]}</span>
         <span>{copy.title[1]}</span>
       </p>
 
       <h1 id="hero-heading">{copy.seoTitle}</h1>
 
-      <p>
-        <Fragment set:html={copy.body} />
-      </p>
+      <p class="hero__lead">{copy.body}</p>
 
-      <div class="hero__actions" aria-label="Primary actions">
+      <div class="hero__actions">
         <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="start_drafting" data-analytics-event="start_drafting_clicked">
           {copy.primary}
         </a>
-        <a class="hero__cta" href={localizedHref("/#how-it-works")}>
+        <a class="hero__cta" href={`${home}#how-it-works`}>
           {copy.secondary}
         </a>
-        <a class="hero__cta" href={localizedHref("/faqs")}>
+        <a class="hero__cta" href={routeFor("faqs", lang)}>
           {copy.faqs}
         </a>
       </div>
@@ -76,21 +75,21 @@ const copy = lang === "es"
 
     <img
       class="hero__capture hero__capture--disclosure"
-      src="/images/captura-1.png"
+      src="/images/captura-1.png" width="246" height="219"
       alt=""
       aria-hidden="true"
       loading="eager"
     />
     <img
       class="hero__capture hero__capture--problem"
-      src="/images/captura-3.png"
+      src="/images/captura-3.png" width="310" height="130"
       alt=""
       aria-hidden="true"
       loading="eager"
     />
     <img
       class="hero__capture hero__capture--title"
-      src="/images/captura-2.png"
+      src="/images/captura-2.png" width="310" height="130"
       alt=""
       aria-hidden="true"
       loading="eager"
@@ -102,7 +101,7 @@ const copy = lang === "es"
 
     <img
       class="hero__laptop"
-      src="/images/notebook-2.png"
+      src="/images/notebook-2.png" width="560" height="339"
       alt={copy.laptopAlt}
       loading="eager"
     />
@@ -123,7 +122,7 @@ const copy = lang === "es"
   .hero__panel {
     position: relative;
     width: min(100%, 1280px);
-    min-height: clamp(610px, calc(100svh - 118px), 650px);
+    min-height: clamp(646px, calc(100svh - 82px), 686px);
     margin: 0 auto;
     overflow-x: clip;
     overflow-y: visible;
@@ -169,7 +168,7 @@ const copy = lang === "es"
 
   .hero h1{max-width:760px;margin:16px auto 0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(22px,2.2vw,30px);font-weight:800;line-height:1.2;text-wrap:balance}
 
-  .hero p {
+  .hero__lead {
     max-width: 650px;
     margin: clamp(16px, 1.7vw, 22px) auto 0;
     color: #505050;
@@ -180,9 +179,6 @@ const copy = lang === "es"
     letter-spacing: 0;
   }
 
-  .hero p strong {
-    font-weight: 800;
-  }
 
   .hero__actions {
     display: flex;
@@ -259,7 +255,7 @@ const copy = lang === "es"
 
   .hero__capture--title {
     right: clamp(92px, calc(50% - 559px), 126px);
-    top: clamp(374px, 43vw, 410px);
+    top: clamp(374px, 43vw, 446px);
     width: clamp(210px, 20vw, 264px);
   }
 
@@ -276,23 +272,30 @@ const copy = lang === "es"
 
   .hero__icon--pencil {
     right: clamp(28px, 4.3vw, 54px);
-    top: clamp(405px, 48vw, 456px);
+    top: clamp(405px, 48vw, 492px);
   }
 
   .hero__icon--lock {
     z-index: 14;
     left: calc(50% + clamp(208px, 22vw, 238px));
-    top: clamp(568px, 43.4vw, 588px);
+    top: clamp(568px, 43.4vw, 624px);
   }
 
   .hero__laptop {
     z-index: 8;
     left: 50%;
-    top: clamp(344px, 25.5vw, 364px);
+    /* Starts below the CTA buttons (they end around 370px on wide screens). */
+    top: 400px;
     width: clamp(540px, 43.5vw, 610px);
     height: auto;
     transform: translateX(-50%);
     filter: drop-shadow(0 16px 16px rgba(76, 8, 21, 0.08));
+  }
+
+  @media (max-width: 1180px) {
+    .hero__laptop {
+      top: 350px;
+    }
   }
 
   @media (max-width: 980px) {
@@ -376,12 +379,16 @@ const copy = lang === "es"
       padding-top: 30px;
     }
 
-    .hero h1 {
-      font-size: clamp(34px, 11vw, 46px);
-      line-height: 1.05;
+    .hero__brand {
+      font-size: clamp(32px, 9vw, 40px);
     }
 
-    .hero p {
+    .hero h1 {
+      font-size: clamp(22px, 6.4vw, 28px);
+      line-height: 1.2;
+    }
+
+    .hero__lead {
       font-size: 15px;
       line-height: 1.42;
     }
@@ -419,7 +426,7 @@ const copy = lang === "es"
       min-height: 0;
     }
 
-    .hero p {
+    .hero__lead {
       max-width: 320px;
     }
 

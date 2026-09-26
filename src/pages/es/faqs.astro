@@ -4,110 +4,117 @@ import FaqPage from "@components/FaqPage.astro";
 const faqs = [
   {
     "question": "¿Qué es IPnite?",
-    "answer": "IPnite es un espacio de trabajo de preparación de patentes y propiedad intelectual asistido por IA. Guía la divulgación de la invención, investigación de arte previo, reivindicaciones, dibujos, redacción de solicitudes, documentos PI y organización del portafolio."
+    "answer": "IPnite es una plataforma de preparación de patentes asistida por IA operada por Ik-Holcan LLC. Sus agentes te ayudan a buscar antecedentes, estructurar la divulgación de tu invención, redactar las reivindicaciones y la solicitud completa con The Drafter, generar dibujos de patente, revisar la calidad, exportar en DOCX y gestionar tu cartera de patentes."
   },
   {
-    "question": "¿IPnite brinda asesoramiento legal o crea una relación abogado-cliente?",
-    "answer": "No. IPnite no es un estudio jurídico, no brinda asesoramiento legal y no crea una relación abogado-cliente. La IA puede producir resultados incompletos o inexactos; el usuario debe revisarlos y obtener asesoramiento profesional calificado antes de presentar o confiar en ellos."
+    "question": "¿IPnite brinda asesoría legal o crea una relación abogado-cliente?",
+    "answer": "No. IPnite es software, no un despacho, y no crea una relación abogado-cliente. Los resultados de la IA pueden contener errores, así que tú eres responsable de revisarlos o de enviarlos a revisión con un profesional antes de presentarlos o de basarte en ellos."
   },
   {
-    "question": "¿En qué se diferencia IPnite de un chat de IA general?",
-    "answer": "IPnite organiza el trabajo en flujos específicos de patentes y jurisdicciones, y mantiene investigación, evidencia, borradores, dibujos y versiones del proyecto relacionados. No garantiza patentabilidad, validez, libertad de operación ni aceptación de una presentación."
-  },
-  {
-    "question": "¿Cuál es la diferencia entre Arte previo y FTO?",
-    "answer": "Arte previo ayuda a investigar si ciertas características técnicas ya fueron divulgadas y apoya una evaluación inicial de novedad. Freedom to Operate (FTO) examina derechos potencialmente vigentes relevantes para un producto o actividad. Ninguno sustituye una búsqueda u opinión jurídica profesional."
-  },
-  {
-    "question": "¿Puedo abrir los PDF de patentes de referencia dentro de IPnite?",
-    "answer": "Cuando una fuente compatible ofrece un documento accesible, IPnite puede mostrar el PDF de referencia en su visor. La disponibilidad depende de la fuente, el formato, las reglas de seguridad del navegador y el proveedor original."
-  },
-  {
-    "question": "¿Qué planes de suscripción están disponibles?",
-    "answer": "Los planes Inventor, Startup e Institutional tienen precios según el país o región seleccionado. Hay precios en MXN para México, ARS para Argentina, BRL para Brasil y USD para Estados Unidos y el resto de Latinoamérica. El pago anual equivale a diez meses y permite ahorrar dos meses."
+    "question": "¿Qué oficinas de patentes cubre IPnite?",
+    "answer": "IPnite tiene flujos de preparación para la USPTO (Estados Unidos), el IMPI (México, incluida la solicitud provisional vigente desde abril de 2026), el INPI de Argentina, el INPI de Brasil y solicitudes internacionales PCT. Próximamente podrás presentar ante el INPI de Argentina directamente desde la plataforma y, más adelante, registrar marcas."
   },
   {
     "question": "¿Puedo probar IPnite gratis?",
-    "answer": "Sí. Puedes probar IPnite gratis y explorar la plataforma antes de elegir el plan adecuado para tu flujo de patentes y propiedad intelectual."
+    "answer": "Sí. La prueba gratis dura 7 días e incluye una búsqueda de antecedentes con el Agente de descubrimiento. No pide tarjeta y no hace cobros automáticos. Para redactar con The Drafter, elige un plan."
   },
   {
-    "question": "¿Cuáles son los límites principales de cada plan?",
-    "answer": "Inventor incluye 1 proyecto activo, 2 búsquedas de anterioridades, 1 colaborador externo y 1 GiB. Startup incluye hasta 10 proyectos activos, 10 búsquedas, hasta 3 colaboradores por proyecto y 15 GB. Institutional incluye 3 usuarios, proyectos activos ilimitados sujetos a uso razonable, 50 búsquedas, módulo FTO, permisos de equipo y 50 GiB."
+    "question": "¿Cuánto cuestan los planes?",
+    "answer": "El precio depende de tu país o región. En Estados Unidos, Inventor cuesta 50 USD al mes o 500 al año; Startup, 199 USD al mes o 1,990 al año; e Institucional, 499 USD al mes o 4,990 al año. México, Argentina, Brasil y el resto de Latinoamérica tienen precios locales que ves al seleccionar tu país."
   },
   {
-    "question": "¿Qué sucede cuando se llena el almacenamiento?",
-    "answer": "La aplicación muestra una advertencia. El titular puede borrar material o proyectos innecesarios para recuperar espacio, o abrir la administración de la suscripción para hacer upgrade."
+    "question": "¿Los planes se renuevan automáticamente?",
+    "answer": "Sí. Los planes mensuales se renuevan cada mes y los anuales cada año hasta que canceles. Puedes cancelar en cualquier momento desde tu cuenta; la cancelación surte efecto al terminar el periodo pagado y conservas el acceso hasta entonces. El pago anual equivale a diez pagos mensuales."
   },
   {
-    "question": "¿Puedo cambiar o cancelar mi suscripción?",
-    "answer": "Sí. Administrar suscripción abre el portal seguro de Stripe, donde aparecen las opciones de cambio y cancelación disponibles para la cuenta."
+    "question": "¿Cuáles son los límites de cada plan?",
+    "answer": "Inventor incluye 1 proyecto activo, 2 búsquedas de antecedentes al mes, 1 colaborador externo y 1 GB de almacenamiento. Startup incluye hasta 10 proyectos activos, 10 búsquedas al mes, hasta 3 colaboradores por proyecto y 15 GB. Institucional incluye 3 usuarios, proyectos activos ilimitados sujetos a uso razonable, 50 búsquedas al mes, el módulo FTO, permisos de equipo y 50 GB."
   },
   {
-    "question": "¿Los proyectos pueden archivarse, compartirse y exportarse?",
-    "answer": "Los permisos dependen del plan. El propietario controla invitaciones y exportaciones. Los proyectos archivados no cuentan para el límite de activos y se conservan según la política de retención vigente."
+    "question": "¿En qué formatos puedo exportar?",
+    "answer": "Todos los planes exportan tu solicitud como documento DOCX editable. Startup e Institucional también exportan proyectos completos en JSON y ZIP."
   },
   {
-    "question": "¿Cómo maneja IPnite la información confidencial de una invención?",
-    "answer": "IPnite declara que las divulgaciones y materiales de patentes no se usan para entrenar modelos de IA de uso general salvo consentimiento expreso o escrito. No deben subirse datos que el usuario no esté autorizado a procesar y debe consultarse la Política de privacidad."
+    "question": "¿IPnite incluye análisis de patentabilidad y FTO?",
+    "answer": "Sí. Todos los planes de pago incluyen búsqueda de patentabilidad; el análisis FTO es un complemento en Inventor y Startup y viene incluido en Institucional. Son entregables asistidos por IA: tú eres responsable de leerlos o de enviarlos a revisión profesional, e IPnite no garantiza sus conclusiones."
   },
   {
-    "question": "¿IPnite puede ser utilizado por abogados y despachos de patentes?",
-    "answer": "Sí. IPnite actúa como un copiloto de redacción de patentes para despachos y agentes de propiedad industrial. Permite generar borradores de reivindicaciones, dibujos técnicos y búsquedas de arte previo en minutos, optimizando el tiempo de factura del abogado y reduciendo los tiempos de entrega."
+    "question": "¿De quién son los borradores que genera IPnite?",
+    "answer": "Tuyos. Todo lo que se genera con tu información te pertenece: puedes editarlo, presentarlo ante cualquier oficina de patentes, licenciarlo o compartirlo sin restricciones."
   },
   {
-    "question": "¿Cómo se integra IPnite en el flujo de trabajo de una firma de PI?",
-    "answer": "IPnite permite exportar proyectos completos en formatos editables, como DOCX, JSON y paquetes ZIP, facilitando que el agente o abogado tome el borrador generado por los agentes de IA y realice la afinación legal final en su procesador de texto habitual."
+    "question": "¿IPnite usa mis invenciones para entrenar su IA?",
+    "answer": "No. IPnite nunca usa tus invenciones, instrucciones, documentos ni borradores para entrenar modelos de IA ni para otro fin que prestarte el servicio. Las solicitudes de IA se procesan con la API empresarial de Vertex AI en el entorno de Google Cloud de IPnite, y los términos de Google Cloud establecen que los datos del cliente no se usan para entrenar sus modelos sin permiso del cliente."
   },
   {
-    "question": "¿Qué idiomas admite IPnite?",
-    "answer": "La web y la interfaz principal admiten inglés, español y portugués. El idioma de redacción y las jurisdicciones disponibles dependen del flujo seleccionado."
+    "question": "¿Qué datos personales recopila IPnite?",
+    "answer": "Solo lo necesario para operar tu cuenta: datos de cuenta como nombre y correo, registros de facturación que gestionan los procesadores de pago e información demográfica agregada, como país y perfil profesional. La analítica del sitio se usa solo con tu consentimiento y nunca incluye contenido de tus proyectos."
+  },
+  {
+    "question": "¿Qué métodos de pago aceptan?",
+    "answer": "Por ahora los pagos se procesan con Stripe. Agregaremos métodos locales como Mercado Pago en Argentina y Pix en Brasil. Los impuestos y el total final se confirman al pagar."
+  },
+  {
+    "question": "¿Puedo cancelar o pedir un reembolso?",
+    "answer": "Puedes cancelar cuando quieras desde tu cuenta. Los periodos ya iniciados no son reembolsables, salvo cuando la ley de protección al consumidor de tu país te da un derecho de arrepentimiento, como el de 10 días en Argentina o el de 7 días en Brasil para compras en línea. Consulta los Términos y Condiciones."
+  },
+  {
+    "question": "¿Qué pasa con los proyectos archivados y si se llena el almacenamiento?",
+    "answer": "Los proyectos archivados no cuentan para tu límite de proyectos activos y se conservan durante tres meses; IPnite avisa al titular aproximadamente 30, 7 y 1 día antes de eliminarlos definitivamente. Si se llena el almacenamiento, puedes borrar material o cambiar de plan."
+  },
+  {
+    "question": "¿Pueden usar IPnite los despachos y agentes de patentes?",
+    "answer": "Sí. Despachos y agentes usan IPnite para agilizar la recepción de divulgaciones, la búsqueda de antecedentes, las primeras reivindicaciones, la descripción y los dibujos, y después afinan el DOCX en sus herramientas habituales. La estrategia y el criterio jurídico final siguen en manos del profesional."
+  },
+  {
+    "question": "¿En qué idiomas funciona IPnite?",
+    "answer": "El sitio y la aplicación están disponibles en español, inglés y portugués, e IPnite redacta en el idioma que exige cada oficina de patentes."
   }
 ];
 ---
 
 <FaqPage
   lang="es"
-  title="FAQs — IPnite"
-  description="Preguntas frecuentes sobre IPnite, redaccion de patentes con IA, reivindicaciones, revision profesional, novedad y flujos de preparacion de patentes."
+  title="Preguntas frecuentes sobre IPnite | IPnite"
+  description="Respuestas sobre IPnite: prueba gratis, planes y renovación, exportación en DOCX, oficinas de patentes, privacidad y propiedad de tus borradores."
   canonicalPath="/es/faqs/"
   alternatePath="/faqs/"
-  keywords="FAQs IPnite, redaccion de patentes con IA, redaccion de patentes DIY, gestion de PI para startups, borradores de patente, reivindicaciones con IA, IPnite vs ChatGPT"
-  heroLabel="Hero de la plataforma IPnite para redaccion de patentes"
-  heroPill="FAQs de IPnite"
-  heroHeading="Preguntas Antes de Redactar"
-  heroSubtitle="Entiende como se compara IPnite con las herramientas de IA genericas antes de convertir tu idea en un borrador de patente."
-  heroLead="IPnite esta disenado para fundadores, inventores y equipos tecnicos que necesitan una forma estructurada de preparar trabajo de propiedad intelectual antes de una revision profesional."
-  primaryActionLabel="Empezar a redactar"
-  listActionLabel="Leer FAQs"
-  howItWorksLabel="Como funciona"
-  noteStrong="Herramienta de redaccion con IA, no un estudio juridico."
-  noteText="IPnite ayuda a preparar borradores de patente, pero la estrategia final de presentacion debe revisarse con asesoria calificada o con un profesional de patentes registrado."
-  visualNodeOne="Claims"
+  heroLabel="Plataforma IPnite para redacción de patentes"
+  heroPill="Preguntas frecuentes"
+  heroHeading="Preguntas antes de redactar"
+  heroSubtitle="Entiende qué hace IPnite, qué no hace y en qué se diferencia de un chat de IA genérico antes de convertir tu idea en una solicitud de patente."
+  heroLead="IPnite está pensado para inventores, startups y profesionales de PI que necesitan una forma estructurada de preparar solicitudes de patente listas para presentar."
+  primaryActionLabel="Probar IPnite gratis"
+  listActionLabel="Leer las preguntas"
+  howItWorksLabel="Cómo funciona"
+  noteStrong="Una herramienta de redacción con IA, no un despacho."
+  noteText="IPnite te ayuda a preparar tu solicitud; la revisión antes de presentarla es tu responsabilidad, ya sea por tu cuenta o con un profesional de patentes."
+  visualNodeOne="Reivindicaciones"
   visualNodeTwo="Dibujos"
   visualNodeThree="Novedad"
   visualNodeFour="Estrategia"
-  visualCenterLabel="Pregunta Mejor"
-  listPill="Respuestas Claras"
+  visualCenterLabel="Pregunta mejor"
+  listPill="Respuestas claras"
   listHeading="Preguntas frecuentes"
-  listIntro="El objetivo es simple: ayudarte a entender que hace IPnite, que no hace, y por que la estructura importa en la redaccion de patentes."
-  trustPill="La Estructura Importa"
-  trustHeading="Pensado para trabajo de patentes, no para prompts casuales"
+  listIntro="El objetivo es simple: ayudarte a entender qué hace IPnite, qué no hace y por qué la estructura importa en la redacción de patentes."
+  trustPill="La estructura importa"
+  trustHeading="Pensado para el trabajo de patentes, no para prompts casuales"
   trustCards={[
     {
-      title: "Claims-first",
-      body: "Los borradores de patente necesitan limites juridicos, no solo descripciones de producto.",
+      title: "Primero las reivindicaciones",
+      body: "Una solicitud de patente necesita límites jurídicos, no solo la descripción de un producto.",
     },
     {
-      title: "Consistencia",
-      body: "Los dibujos, las modalidades, las reivindicaciones y las descripciones deben respaldarse entre si.",
+      title: "Coherencia",
+      body: "Dibujos, modalidades, reivindicaciones y descripción deben respaldarse entre sí.",
     },
     {
-      title: "Listo para revisar",
-      body: "El objetivo es que el primer borrador sea mas facil de revisar por un profesional.",
+      title: "Lista para presentar",
+      body: "El objetivo es que tu solicitud quede completa, coherente y fácil de revisar.",
     },
   ]}
-  ctaHeading="Listo para estructurar tu invencion?"
-  ctaText="Usa IPnite para organizar la divulgacion tecnica, la direccion de las reivindicaciones, las modalidades, los dibujos y las secciones del borrador antes de la revision profesional."
-  ctaButtonLabel="Empezar a redactar"
+  ctaHeading="¿Listo para estructurar tu invención?"
+  ctaText="Empieza con la prueba gratis de 7 días: explora tu invención con el Agente de descubrimiento y haz tu primera búsqueda de antecedentes. Sin tarjeta."
+  ctaButtonLabel="Probar IPnite gratis"
   faqs={faqs}
 />

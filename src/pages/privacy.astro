@@ -3,225 +3,151 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import PageHeroImage from "@components/PageHeroImage.astro";
 ---
 
-<BaseLayout title="Privacy Policy — IPnite" description="Privacy Policy for IPnite's website, platform, and AI-assisted patent preparation workflows. Compliant with GDPR, CCPA/CPRA, and LGPD." canonicalPath="/privacy/" alternatePath="/es/privacy/">
-  <main class="privacy-page">
+<BaseLayout title="Privacy Policy — IPnite" description="How IPnite (Ik-Holcan LLC) collects, uses, and protects personal data. We never use your inventions to train AI, and we do not sell personal information." canonicalPath="/privacy/">
+  <div class="privacy-page">
     <header class="privacy-header">
       <h1>Privacy Policy</h1>
-      <p class="subtitle">This policy explains how IPnite collects, uses, protects, and handles information connected to our website, platform, and AI-assisted patent preparation workflows. We collect only what is necessary to deliver our services, and we do not sell your personal information.</p>
-      <p class="privacy-meta">Last updated: May 28, 2026</p>
-      <PageHeroImage label="IPnite patent drafting platform hero" />
+      <p class="subtitle">This policy explains what information IPnite collects, why, how long it is kept, and how you can exercise your rights. We collect only what we need to provide the service, we never use your inventions to train AI, and we do not sell personal information.</p>
+      <p class="privacy-meta">Last updated: September 26, 2026</p>
+      <PageHeroImage label="IPnite patent drafting platform" />
     </header>
     <section class="privacy-body">
 
       <section class="privacy-block">
-        <h2>1. About This Policy and Data Controller</h2>
-        <p>This Privacy Policy applies to ipnite.com, app.ipnite.com, and all related products, services, AI-assisted workflows, and communications (collectively, the "Services") operated by <strong>ik-holcan LLC</strong>, a Delaware limited liability company ("IPnite," "we," "us," or "our").</p>
-        <p>This Policy is designed to comply with the California Consumer Privacy Act and California Privacy Rights Act (CCPA/CPRA), the European Union General Data Protection Regulation (GDPR), Brazil's Lei Geral de Proteção de Dados (LGPD), and applicable consumer privacy laws in Mexico, Argentina, and other jurisdictions.</p>
-        <p>For privacy questions or to exercise your rights: <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
+        <h2>1. Who Is Responsible for Your Data</h2>
+        <p>This Privacy Policy applies to ipnite.com, app.ipnite.com, and related services, communications, free trials, and subscriptions (the "Services"), operated by <strong>Ik-Holcan LLC</strong>, a Delaware limited liability company ("IPnite," "we," or "us"), which is the controller of your personal data.</p>
+        <p>This Policy is designed to meet the requirements of the laws that apply to our users, including the CCPA/CPRA (California), the GDPR (European Economic Area and United Kingdom), Brazil's LGPD, Mexico's Federal Law on the Protection of Personal Data Held by Private Parties, and Argentina's Law 25,326.</p>
+        <p>Privacy contact: <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
       </section>
 
       <section class="privacy-block">
         <h2>2. Information We Collect</h2>
-        <p><strong>Information you provide directly:</strong></p>
         <ul>
-          <li><strong>Account and identity data:</strong> name, email address, username, account ID, and password credentials.</li>
-          <li><strong>Professional information:</strong> professional affiliation or patent practitioner credentials, if voluntarily provided.</li>
-          <li><strong>Invention materials and patent content:</strong> invention disclosures, technical descriptions, drawings, documents, notes, prior-art references, trade secret materials, prompts, and any files submitted to the Services. We apply heightened protections to this category (see Section 6).</li>
-          <li><strong>Communications:</strong> support requests, feedback, and correspondence you send us.</li>
-          <li><strong>Payment metadata:</strong> subscription, add-on and transaction records, plus billing identifiers. We use third-party payment processors and do not store full payment card numbers.</li>
+          <li><strong>Account data:</strong> name, email address, and authentication credentials.</li>
+          <li><strong>Billing data:</strong> plan, transaction history, and billing identifiers. Payments are handled by processors such as Stripe and, depending on the country, Mercado Pago or Pix. We never store full card numbers.</li>
+          <li><strong>Demographic and professional profile:</strong> country or region, language, and professional category (for example, inventor, startup, law firm, or university), which we analyze in aggregate.</li>
+          <li><strong>Invention materials:</strong> disclosures, descriptions, drawings, documents, prior-art references, prompts, and files you submit. We process them only to provide the Services (see Section 5).</li>
+          <li><strong>Communications:</strong> messages you send us by email or through the contact form.</li>
+          <li><strong>Technical and usage data:</strong> IP address, browser, device, and pages or features used, needed for security and, only if you consent, for website analytics.</li>
         </ul>
-        <p><strong>Information collected automatically:</strong></p>
-        <ul>
-          <li><strong>Usage and activity data:</strong> pages visited, features used, session duration, interaction logs, and workflow activity.</li>
-          <li><strong>Device and network data:</strong> IP address, browser type, operating system, device identifiers, and referring URL.</li>
-          <li><strong>Cookies and similar technologies:</strong> described in Section 7.</li>
-        </ul>
-        <p>We do not collect social security numbers, government identification numbers, precise geolocation beyond country or region level, biometric data, or health and medical information through the Services.</p>
+        <p>We do not collect government identification numbers, precise geolocation, biometric data, or health information.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>3. Legal Bases for Processing (GDPR)</h2>
-        <p>If you are located in the European Economic Area (EEA) or United Kingdom, we process your personal data under the following legal bases:</p>
+        <h2>3. How We Use Information</h2>
         <ul>
-          <li><strong>Contract performance:</strong> to create and manage your account and deliver the Services you request.</li>
-          <li><strong>Legal obligation:</strong> to comply with applicable legal requirements, tax obligations, and lawful government orders.</li>
-          <li><strong>Legitimate interests:</strong> for platform security, fraud prevention, abuse detection, product improvement, and service communications, balanced against your rights and interests.</li>
-          <li><strong>Consent:</strong> for optional activities such as marketing communications or any future opt-in programs. You may withdraw consent at any time without affecting the lawfulness of prior processing.</li>
+          <li>Create and secure your account and provide the Services you request.</li>
+          <li>Process payments, the free trial, and subscription renewals and cancellations.</li>
+          <li>Answer your messages and provide support.</li>
+          <li>Prevent fraud and abuse and keep the platform secure.</li>
+          <li>Understand, in aggregate, which countries, profiles, pages, and features use IPnite, so we can improve it.</li>
+          <li>Send transactional notices (account, billing, security) and, only with your consent, newsletters that you can unsubscribe from at any time.</li>
+          <li>Comply with legal and tax obligations.</li>
         </ul>
+        <p>We do not build individual profiles for advertising and do not use your information for purposes incompatible with these.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>4. How We Use Your Information</h2>
-        <p>We use information collected only for the following purposes:</p>
+        <h2>4. Legal Bases</h2>
+        <p>We process personal data to perform our contract with you; to comply with legal obligations; for legitimate interests such as security and fraud prevention, balanced against your rights; and with your consent for analytics cookies and newsletters. Under Brazil's LGPD these bases correspond to Article 7, V (contract), II (legal obligation), IX (legitimate interest), and I (consent).</p>
+      </section>
+
+      <section class="privacy-block">
+        <h2>5. Invention Materials</h2>
         <ul>
-          <li>Account management: creating, securing, and maintaining your account.</li>
-          <li>Service delivery: operating patent and IP-management workflows, generating draft outputs, applying plan allowances, and providing platform features.</li>
-          <li>Payment processing: completing transactions through our payment processors.</li>
-          <li>Security and fraud prevention: detecting and preventing unauthorized access, abuse, and fraudulent activity.</li>
-          <li>Customer support: responding to requests and resolving issues.</li>
-          <li>Legal compliance: meeting applicable legal, tax, and regulatory obligations.</li>
-          <li>Platform analytics: aggregate, anonymized analysis of usage patterns to improve the Services. We do not build individual profiles for advertising purposes.</li>
-          <li>Communications: transactional notices (account, billing, security alerts). Marketing communications only with your consent, which you may withdraw at any time.</li>
-        </ul>
-        <p>We do not use your personal information for purposes incompatible with those described above without your prior consent.</p>
-      </section>
-
-      <section class="privacy-block">
-        <h2>5. Demographic and Aggregate Data</h2>
-        <p>IPnite may analyze aggregate, non-identifiable demographic information — such as geographic region, professional category, and usage patterns — solely to improve platform features, understand user needs, and ensure the Services work effectively for different inventor and practitioner communities. This analysis does not identify individual users and is not shared with third parties in identifiable form.</p>
-        <p>We do not build individual user profiles for advertising, profiling, or sale to data brokers.</p>
-      </section>
-
-      <section class="privacy-block">
-        <h2>6. Invention Materials and Patent Content</h2>
-        <p>Your invention disclosures, patent draft materials, technical descriptions, prior-art research, and related documents represent sensitive and potentially commercially valuable information. We apply the following specific protections:</p>
-        <ul>
-          <li>We do not use your invention disclosures, patent draft materials, claims, or technical descriptions to train general-purpose AI models, unless you expressly opt in or provide written consent.</li>
-          <li>Patent writing sessions may be subject to a security countdown disclosed in the product, after which project information may be deleted, purged, anonymized, or made inaccessible from the platform.</li>
-          <li>Access to your invention materials is restricted to systems and personnel necessary to deliver the Services.</li>
-          <li>If you believe any invention material has been mishandled, contact us immediately at <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</li>
+          <li>IPnite <strong>never</strong> uses your invention materials, prompts, documents, or outputs to train AI models, and never uses them for any purpose other than providing the Services to you.</li>
+          <li>Everything generated from your materials belongs to you.</li>
+          <li>AI processing runs on the enterprise Vertex AI API in IPnite's Google Cloud environment. Google Cloud's terms state that Google does not use customer data to train its models without the customer's permission, and IPnite has not given that permission. According to Google's documentation, some features may keep data temporarily for operational purposes such as caching or abuse monitoring, never for training.</li>
+          <li>Access is restricted to the systems and people needed to provide the Services, and materials are encrypted in transit and at rest.</li>
         </ul>
       </section>
 
       <section class="privacy-block">
-        <h2>7. Cookies and Tracking Technologies</h2>
-        <p><strong>Essential cookies:</strong> required for authentication, session management, security, and core functionality. These cannot be disabled without disrupting the Services.</p>
-        <p><strong>Analytics:</strong> with your permission, the website and application use separate Google Analytics measurement properties to understand page, section, feature, and subscription-flow usage. We do not send invention content, patent drafts, prompts, file names, project identifiers, names, or email addresses to Analytics. Analytics is disabled until you consent, and you can change your choice using the Privacy control.</p>
-        <p><strong>No advertising cookies:</strong> we do not use third-party advertising cookies, cross-context behavioral tracking, or sell or share data with advertising networks.</p>
-        <p>You may manage cookies through your browser settings. Disabling essential cookies will affect Service functionality.</p>
+        <h2>6. Cookies and Analytics</h2>
+        <p><strong>Essential cookies</strong> are needed for sign-in, security, and basic functions. <strong>Analytics</strong> (Google Analytics) is off until you accept it in the privacy banner; we never send invention content, drafts, prompts, file names, project identifiers, names, or email addresses to it, and you can change your choice anytime with "Privacy settings" in the footer. We do not use advertising cookies or sell data to advertising networks.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>8. Service Providers and Data Processors</h2>
-        <p>We engage trusted service providers to operate the Services, including providers of cloud hosting and infrastructure, authentication, payment processing, AI model infrastructure, analytics, email and communications, and security services. These providers:</p>
+        <h2>7. Service Providers</h2>
+        <p>We share personal data only with providers that help us operate the Services, under contracts that restrict their use of the data:</p>
         <ul>
-          <li>Access your information only as necessary to perform services on our behalf.</li>
-          <li>Are bound by contractual obligations restricting their independent use of your data.</li>
-          <li>For EEA/UK residents: transfers to service providers outside the EEA are governed by GDPR-compliant Standard Contractual Clauses (SCCs) or other approved transfer mechanisms.</li>
-          <li>For Brazil residents: transfers are governed by mechanisms compliant with LGPD Chapter V.</li>
+          <li><strong>Google Cloud</strong> (hosting and Vertex AI processing).</li>
+          <li><strong>Stripe</strong> and, depending on the country, <strong>Mercado Pago</strong> or <strong>Pix</strong> providers (payments).</li>
+          <li><strong>Google Analytics</strong> (website analytics, only with consent).</li>
+          <li><strong>Mailchimp</strong> (newsletter, only if you subscribe).</li>
+          <li>Authentication, email, and security providers needed to run the platform.</li>
+        </ul>
+        <p>We may also disclose information to comply with the law or valid legal requests, to protect the rights and safety of users and IPnite, in a merger or acquisition subject to confidentiality, or with your consent. <strong>We do not sell personal information.</strong></p>
+      </section>
+
+      <section class="privacy-block">
+        <h2>8. International Transfers</h2>
+        <p>IPnite operates from the United States, and our providers may process data in the United States or other countries. When the law requires it, we use appropriate safeguards such as standard contractual clauses (GDPR), the mechanisms of Chapter V of the LGPD (Brazil), and the transfer rules of Mexican and Argentine law.</p>
+      </section>
+
+      <section class="privacy-block">
+        <h2>9. Retention</h2>
+        <ul>
+          <li>Account data: while your account is active and up to 7 years after closure when legal or tax obligations require it.</li>
+          <li>Invention materials: while your project is active; archived projects are kept for 3 months, with notices about 30, 7, and 1 day before permanent deletion.</li>
+          <li>Billing records: as required by law, typically 7 years.</li>
+          <li>Analytics data: up to 14 months in Google Analytics, and in aggregate form afterward.</li>
+          <li>Support messages: up to 3 years after the last interaction.</li>
         </ul>
       </section>
 
       <section class="privacy-block">
-        <h2>9. Data Sharing — We Do Not Sell Your Information</h2>
-        <p>We do not sell personal information. We do not share personal information with third parties for cross-context behavioral advertising.</p>
-        <p>We may disclose information only in the following circumstances:</p>
-        <ul>
-          <li>To service providers and data processors as described in Section 8.</li>
-          <li>To comply with applicable law, valid legal process, or enforceable governmental requests.</li>
-          <li>To protect the rights, property, or safety of IPnite, our users, or others.</li>
-          <li>In connection with a merger, acquisition, or sale of substantially all of our assets, subject to appropriate confidentiality obligations.</li>
-          <li>With your consent for any purpose not described in this Policy.</li>
-        </ul>
+        <h2>10. Security</h2>
+        <p>We use technical and organizational measures such as TLS encryption in transit, encryption at rest for invention materials, access controls, authentication, audit logs, and incident response. No system is completely secure; if you suspect a problem, write to info@ipnite.com.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>10. Data Retention</h2>
-        <p>We retain information for the following periods:</p>
-        <ul>
-          <li><strong>Account data:</strong> for the duration of your account and up to 7 years after closure, as required by legal and tax obligations.</li>
-          <li><strong>Invention materials and patent content:</strong> subject to the workflow-specific retention period disclosed in the product and applicable agreement. After deletion, materials may be irretrievable.</li>
-          <li><strong>Archived projects:</strong> retained for 3 months from the date of archiving. Before permanent deletion, we notify the project owner approximately 30, 7, and 1 day in advance.</li>
-          <li><strong>Payment records:</strong> as required by applicable law, typically 7 years.</li>
-          <li><strong>Usage and analytics data:</strong> up to 24 months in aggregate, anonymized form.</li>
-          <li><strong>Support and communications:</strong> up to 3 years after the last interaction.</li>
-        </ul>
-        <p>When retention periods expire, we delete or anonymize data using commercially reasonable methods.</p>
+        <h2>11. Your Rights</h2>
+        <p>Depending on where you live, you can request access, correction, deletion, portability, restriction, or objection, and withdraw consent at any time. Write to info@ipnite.com with the subject "Privacy request." We will verify your identity and respond within 30 days or the period set by law, and we will not discriminate against you for exercising your rights.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>11. Security</h2>
-        <p>We implement technical and organizational measures designed to protect your information, including encryption in transit (TLS), encryption at rest for sensitive content including invention materials, access controls, authentication requirements, audit logging, and incident detection and response procedures.</p>
-        <p>No method of electronic transmission or storage is 100% secure. While we use commercially reasonable safeguards, we cannot guarantee absolute security. If you believe your information has been compromised, contact us at <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
+        <h2>12. California (CCPA/CPRA)</h2>
+        <p>We collect identifiers, commercial information, internet activity, and professional information as described above, for the purposes in Section 3. We do not sell or share personal information for cross-context behavioral advertising. You may know, delete, and correct your information and limit the use of sensitive information. Requests: info@ipnite.com with the subject "California privacy request"; we respond within 45 days, extendable once by 45 days.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>12. International Data Transfers</h2>
-        <p>IPnite is operated from the United States. If you are located in the EEA, United Kingdom, Brazil, or another jurisdiction with data protection laws, your information may be transferred to and processed in the United States or other countries.</p>
-        <p><strong>For EEA/UK residents:</strong> such transfers are governed by Standard Contractual Clauses (SCCs) adopted by the European Commission or other GDPR-approved mechanisms.</p>
-        <p><strong>For Brazil residents:</strong> such transfers are governed by mechanisms compliant with LGPD Chapter V, including contractual clauses and specific consent where required.</p>
+        <h2>13. European Economic Area and United Kingdom (GDPR)</h2>
+        <p>You also have the right to object to processing based on legitimate interests and to lodge a complaint with your data protection authority (edpb.europa.eu; in the UK, ico.org.uk). We do not make decisions based solely on automated processing that produce legal or similarly significant effects.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>13. Your Privacy Rights</h2>
-        <p>Depending on your jurisdiction, you may have the following rights regarding your personal information:</p>
-        <ul>
-          <li><strong>Access:</strong> request a copy of the personal information we hold about you.</li>
-          <li><strong>Correction:</strong> request that we correct inaccurate or incomplete information.</li>
-          <li><strong>Deletion:</strong> request deletion of your personal information, subject to legal retention obligations.</li>
-          <li><strong>Portability:</strong> request your information in a structured, machine-readable format.</li>
-          <li><strong>Objection:</strong> object to certain processing activities.</li>
-          <li><strong>Restriction:</strong> request that we limit how we process your information.</li>
-          <li><strong>Withdraw consent:</strong> where processing is based on consent, withdraw it at any time.</li>
-        </ul>
-        <p>To exercise any right, contact us at <a href="mailto:info@ipnite.com">info@ipnite.com</a> with the subject "Privacy Rights Request." We will verify your identity before processing requests. We aim to respond within 30 days, or as required by applicable law. We will not discriminate against you for exercising privacy rights.</p>
+        <h2>14. Brazil (LGPD)</h2>
+        <p>You have the rights in Article 18 of the LGPD, including confirmation, access, correction, anonymization, portability, deletion, information about sharing, and revocation of consent. Data Protection Officer (Encarregado): info@ipnite.com. You may file a complaint with the ANPD (gov.br/anpd).</p>
       </section>
 
       <section class="privacy-block">
-        <h2>14. California Residents — CCPA/CPRA</h2>
-        <p>California residents have specific rights under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA).</p>
-        <p><strong>Categories of personal information we collect:</strong> Identifiers (name, email, account ID, IP address); commercial information (subscription, add-on and transaction history); internet or network activity (usage logs, session data); professional information (if voluntarily provided); and inferences derived from the above.</p>
-        <p><strong>Sensitive personal information:</strong> Invention disclosures and patent materials are treated as sensitive content. We use this information only to provide the Services and do not use it to infer characteristics about you beyond what is necessary for service delivery.</p>
-        <p><strong>Your CCPA/CPRA rights:</strong></p>
-        <ul>
-          <li>Right to know categories and specific pieces of personal information collected about you.</li>
-          <li>Right to delete personal information we have collected, subject to exceptions.</li>
-          <li>Right to correct inaccurate personal information.</li>
-          <li>Right to opt-out of sale or sharing for cross-context behavioral advertising — we do not sell or share personal information for these purposes.</li>
-          <li>Right to limit use of sensitive personal information to what is necessary to provide the Services.</li>
-          <li>Right to non-discrimination for exercising any of the above rights.</li>
-        </ul>
-        <p>To submit a California Privacy Request: email <a href="mailto:info@ipnite.com">info@ipnite.com</a> with the subject "California Privacy Request." We respond within 45 days, with a possible 45-day extension when reasonably necessary. Authorized agents may submit requests with written authorization from the California resident.</p>
+        <h2>15. Mexico</h2>
+        <p>You may exercise your rights of access, rectification, cancellation, and opposition (ARCO rights) and revoke your consent by writing to info@ipnite.com. If you believe your rights have been violated, you may go to the competent data protection authority (currently the Ministry of Anti-Corruption and Good Governance).</p>
       </section>
 
       <section class="privacy-block">
-        <h2>15. EEA and UK Residents — GDPR</h2>
-        <p>If you are in the European Economic Area (EEA) or United Kingdom, in addition to the rights in Section 13, you have the right to:</p>
-        <ul>
-          <li>Object to processing based on our legitimate interests.</li>
-          <li>Lodge a complaint with your national data protection supervisory authority. EU residents may find their national authority at edpb.europa.eu. UK residents may contact the ICO at ico.org.uk.</li>
-          <li>Not be subject to solely automated decision-making with legal or similarly significant effects, unless you have given explicit consent or it is necessary for a contract.</li>
-        </ul>
-        <p>We do not engage in profiling that produces legal or similarly significant effects based solely on automated processing of your personal data.</p>
+        <h2>16. Argentina</h2>
+        <p>You may exercise your rights of access, rectification, updating, and deletion under Law 25,326 by writing to info@ipnite.com. The Agency for Access to Public Information (AAIP), as the enforcement authority of Law 25,326, handles complaints about breaches of personal data protection rules.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>16. Brazil Residents — LGPD</h2>
-        <p>If you are located in Brazil, you have rights under Lei Geral de Proteção de Dados (LGPD), including:</p>
-        <ul>
-          <li>Confirmation and access to your personal data.</li>
-          <li>Correction of incomplete, inaccurate, or outdated data.</li>
-          <li>Anonymization, blocking, or deletion of unnecessary or excessive data.</li>
-          <li>Portability of your data in an interoperable format.</li>
-          <li>Deletion of personal data processed with consent, upon request.</li>
-          <li>Information about public and private entities with which we have shared your data.</li>
-          <li>Revocation of consent at any time for consent-based processing.</li>
-          <li>Right to object to processing that does not comply with LGPD.</li>
-        </ul>
-        <p>Our Data Protection Officer (Encarregado) for LGPD purposes is reachable at <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
-        <p>Legal bases we rely on under LGPD: contract performance (Art. 7, II), legal obligation (Art. 7, II), consent (Art. 7, I), and legitimate interests (Art. 7, IX) balanced against data subject rights.</p>
-        <p>You may also lodge a complaint with Brazil's Autoridade Nacional de Proteção de Dados (ANPD) at <strong>www.gov.br/anpd</strong>.</p>
-      </section>
-
-      <section class="privacy-block">
-        <h2>17. Children's Privacy</h2>
-        <p>The Services are not directed to children under 16 years of age (or under 13 under applicable US federal law). We do not knowingly collect personal information from children. If we learn that we have inadvertently collected personal information from a child under the applicable age threshold, we will delete it promptly. If you believe we have collected information from a child, contact us at <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
+        <h2>17. Minors</h2>
+        <p>The Services are intended for people aged 18 or older. We do not knowingly collect information from minors, and we will delete it if we learn that we have.</p>
       </section>
 
       <section class="privacy-block">
         <h2>18. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. When we make material changes, we will post an updated policy on our website and, where appropriate, send a notice to your registered email address. The "Last updated" date at the top of this page will reflect the date of the most recent revision. Continued use of the Services after the effective date of changes constitutes acceptance of the updated Policy.</p>
+        <p>We may update this Policy. We will publish the new version with its date and, for material changes, notify registered users by email before they take effect.</p>
       </section>
 
       <section class="privacy-block">
-        <h2>19. Contact Us</h2>
-        <p>For privacy questions, to exercise your rights, or to reach our privacy team, contact us at <a href="mailto:info@ipnite.com">info@ipnite.com</a> with the subject line "Privacy Request." We aim to respond within 30 days.</p>
-        <p>For GDPR purposes, we serve as the data controller and our EU/UK privacy contact is reachable at info@ipnite.com.</p>
-        <p>For LGPD purposes, our Data Protection Officer (Encarregado) is reachable at info@ipnite.com.</p>
+        <h2>19. Contact</h2>
+        <p>Ik-Holcan LLC, operator of IPnite. Privacy, rights requests, and Data Protection Officer: <a href="mailto:info@ipnite.com">info@ipnite.com</a>.</p>
       </section>
 
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
@@ -229,7 +155,7 @@ import PageHeroImage from "@components/PageHeroImage.astro";
   .privacy-header{text-align:center;border-bottom:1px solid #ece7e5;padding-bottom:24px}
   .privacy-header h1{margin:0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(42px,6vw,68px);font-weight:800;line-height:1}
   .subtitle{max-width:860px;margin:16px auto 0;color:#505050;font-family:"Roboto",sans-serif;font-size:16px;font-weight:500;line-height:1.65}
-  .privacy-meta{margin:14px auto 0;color:#938d8e;font-family:"Roboto Slab",serif;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+  .privacy-meta{margin:14px auto 0;color:#938d8e;font-family:"Roboto Slab",serif;font-size: 13px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
   .privacy-body{margin-top:24px}
   .privacy-block{border-bottom:1px solid #ece7e5;padding:18px 0}
   .privacy-block h2{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px;color:#4c0815;font-family:"Roboto Slab",serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}

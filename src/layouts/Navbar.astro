@@ -5,58 +5,42 @@ interface Props {
 }
 
 import CountrySelector from "../components/CountrySelector.astro";
+import { routeFor } from "../data/routes";
 
 const { lang = "en" } = Astro.props;
 const isEs = lang === "es";
 const isPt = lang === "pt";
-const home = isEs ? "/es" : isPt ? "/pt-br" : "/";
-const prefix = isEs ? "/es" : isPt ? "/pt-br" : "";
-const navLinks = isEs
-  ? [
-      { label: "Producto", href: `${prefix}/ai-patent-drafting/` },
-      { label: "Anterioridades", href: `${prefix}/prior-art-search/` },
-      { label: "Soluciones", href: `${prefix}/for-startups/` },
-      { label: "Seguridad", href: `${prefix}/patent-ai-security/` },
-      { label: "Aprende", href: `${prefix}/learn/` },
-    ]
-  : isPt
-  ? [
-      { label: "Produto", href: `${prefix}/ai-patent-drafting/` },
-      { label: "Anterioridade", href: `${prefix}/prior-art-search/` },
-      { label: "Soluções", href: `${prefix}/for-startups/` },
-      { label: "Segurança", href: `${prefix}/patent-ai-security/` },
-      { label: "Aprenda", href: `${prefix}/learn/` },
-    ]
-  : [
-      { label: "Product", href: "/ai-patent-drafting/" },
-      { label: "Prior Art", href: "/prior-art-search/" },
-      { label: "Solutions", href: "/for-startups/" },
-      { label: "Security", href: "/patent-ai-security/" },
-      { label: "Learn", href: "/learn/" },
-    ];
+const home = routeFor("home", lang);
+const navLinks = [
+  { label: isEs ? "Producto" : isPt ? "Produto" : "Product", href: routeFor("ai-drafting", lang) },
+  { label: isEs ? "Antecedentes" : isPt ? "Anterioridade" : "Prior Art", href: routeFor("prior-art", lang) },
+  { label: isEs ? "Soluciones" : isPt ? "Soluções" : "Solutions", href: `${home}#who-we-do-it-for` },
+  { label: isEs ? "Seguridad" : isPt ? "Segurança" : "Security", href: routeFor("security", lang) },
+  { label: isEs ? "Aprende" : isPt ? "Aprenda" : "Learn", href: routeFor("learn", lang) },
+];
 
 ---
 
 <header class="site-nav" data-site-nav>
   <div class="site-nav__inner">
     <a href={home} aria-label="IPnite — Home" class="site-nav__logo">
-      <img src="/images/cerebro.png" alt="IPnite" loading="eager" />
+      <img src="/images/cerebro.png" width="543" height="481" alt="IPnite" loading="eager" />
     </a>
 
-    <button class="site-nav__toggle" type="button" aria-label={isEs ? "Abrir menu" : isPt ? "Abrir menu" : "Open menu"} aria-expanded="false" data-nav-toggle>
+    <button class="site-nav__toggle" type="button" aria-label={isEs ? "Abrir menú" : isPt ? "Abrir menu" : "Open menu"} aria-controls="site-nav-menu" aria-expanded="false" data-nav-toggle>
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <div class="site-nav__menu" data-nav-menu>
-      <nav aria-label={isEs ? "Navegacion principal" : isPt ? "Navegação principal" : "Primary navigation"} class="site-nav__links">
+    <div class="site-nav__menu" id="site-nav-menu" data-nav-menu>
+      <nav aria-label={isEs ? "Navegación principal" : isPt ? "Navegação principal" : "Primary navigation"} class="site-nav__links">
         {navLinks.map((link) => (
           <a href={link.href}>{link.label}</a>
         ))}
       </nav>
 
-      <a href={`${prefix}/#contact`} class="site-nav__contact">{isEs ? "Contacto" : isPt ? "Contato" : "Contact"}</a>
+      <a href={`${home}#contact`} class="site-nav__contact">{isEs ? "Contacto" : isPt ? "Contato" : "Contact"}</a>
 
       <CountrySelector lang={lang} />
     </div>
@@ -76,11 +60,22 @@ const navLinks = isEs
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+    const close = () => {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    };
+
+    menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) {
+        close();
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (nav.classList.contains("is-open") && !nav.contains(event.target)) close();
     });
 
   });
@@ -184,6 +179,19 @@ const navLinks = isEs
     margin: 4px auto;
     border-radius: 999px;
     background: #4c0815;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .site-nav.is-open .site-nav__toggle span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .site-nav.is-open .site-nav__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-nav.is-open .site-nav__toggle span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .site-nav__spacer {

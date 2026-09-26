@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import LearnLanding from "@components/LearnLanding.astro";
+import LearnContentHub from "@components/LearnContentHub.astro";
+import { alternatesFor } from "../../data/routes";
+
+const learnStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.ipnite.com/es/aprende/#webpage",
+  "url": "https://www.ipnite.com/es/aprende/",
+  "name": "Aprende sobre patentes con IPnite",
+  "inLanguage": "es",
+  "description": "Guías de patentes de IPnite: patentes, solicitudes provisionales, búsqueda de antecedentes, reivindicaciones, patentabilidad y flujos de redacción.",
+  "isPartOf": { "@id": "https://www.ipnite.com/#website" },
+  "about": { "@id": "https://www.ipnite.com/#organization" },
+};
+---
+
+<BaseLayout
+  lang="es"
+  title="Aprende sobre patentes: guías claras | IPnite"
+  description="Guías claras sobre patentes: cómo patentar una idea, solicitudes provisionales, antecedentes, reivindicaciones y patentabilidad, con fuentes oficiales."
+  canonicalPath="/es/aprende/"
+  alternatePaths={alternatesFor("learn")}
+  structuredData={learnStructuredData}
+>
+  <LearnLanding lang="es" />
+  <LearnContentHub lang="es" />
+</BaseLayout>

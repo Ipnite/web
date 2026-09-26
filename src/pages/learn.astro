@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import LearnLanding from "@components/LearnLanding.astro";
 import LearnContentHub from "@components/LearnContentHub.astro";
+import { alternatesFor } from "../data/routes";
 
 const learnStructuredData = {
   "@context": "https://schema.org",
@@ -17,10 +18,10 @@ const learnStructuredData = {
 ---
 
 <BaseLayout
-  title="Learn Patent Basics — IPnite"
-  description="Learn patent basics in plain English: patents, provisional applications, claims, patent pending status, and how IPnite helps structure invention drafts."
+  title="Learn Patent Basics: Clear Guides | IPnite"
+  description="Clear patent guides: how to patent an idea, provisional applications, prior art, claims, patentability, and the PCT, with official sources."
   canonicalPath="/learn/"
-  alternatePath="/es/learn/"
+  alternatePaths={alternatesFor("learn")}
   keywords="learn patents, patent basics, provisional patent application, patent claims, patent pending, invention disclosure, IPnite learning"
   structuredData={learnStructuredData}
 >

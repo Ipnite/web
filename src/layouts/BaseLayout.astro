@@ -16,20 +16,26 @@ interface Props {
   robots?: string;
   alternatePaths?: Partial<Record<"en" | "es" | "pt-BR" | "x-default", string>>;
   ogType?: "website" | "article";
+  /** Overrides the html lang attribute, e.g. "es-AR" for Argentine Spanish pages. */
+  htmlLang?: string;
+  /** Language-neutral page identifier (the English path) used by analytics. */
+  pageKey?: string;
 }
 
 const {
-  title = "IPnite — Patent Drafting for Everyone",
-  description = "AI-powered provisional patent drafting. Protect your ideas with a serious, guided workflow built for inventors.",
+  title = "IPnite — AI Patent Drafting and IP Management",
+  description = "Draft patent applications with AI, search prior art, create patent drawings, and manage your patent portfolio in one platform.",
   canonicalPath = Astro.url.pathname,
   structuredData = [],
   lang = "en",
   alternatePath,
   includeLanguageAlternates = true,
-  ogImage = "/logo.png",
+  ogImage = "/og-image.png",
   robots = "index, follow, max-image-preview:large",
   alternatePaths,
   ogType = "website",
+  htmlLang,
+  pageKey,
 } = Astro.props;
 
 const siteUrl = "https://www.ipnite.com";
@@ -59,62 +65,65 @@ const baseStructuredData = [
     "@type": "Organization",
     "@id": `${siteUrl}/#organization`,
     name: "IPnite",
-    legalName: "IPnite",
+    legalName: "Ik-Holcan LLC",
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
+    image: `${siteUrl}/og-image.png`,
     email: "info@ipnite.com",
     founder: { "@id": `${siteUrl}/#rafael-betanzos-san-juan` },
-    foundingLocation: [
-      { "@type": "Place", name: "United States" },
-      { "@type": "Place", name: "Argentina" },
-      { "@type": "Place", name: "Mexico" },
-    ],
     areaServed: [
       { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "Mexico" },
+      { "@type": "Country", name: "Argentina" },
+      { "@type": "Country", name: "Brazil" },
       { "@type": "Place", name: "Latin America" },
-      { "@type": "Place", name: "European Patent Office jurisdictions" },
     ],
     contactPoint: {
       "@type": "ContactPoint",
       email: "info@ipnite.com",
       contactType: "customer support",
-      areaServed: ["US", "MX", "AR", "LATAM", "EPO"],
+      areaServed: ["US", "MX", "AR", "BR", "419"],
       availableLanguage: ["English", "Spanish", "Portuguese"],
     },
     sameAs: [
       "https://www.linkedin.com/company/ipnite/",
       "https://www.instagram.com/ip_nite",
-      "https://x.com/ip_nite",
+      "https://x.com/ipnite",
       "https://www.tiktok.com/@ipnite",
+      "https://www.facebook.com/ipnite",
     ],
     description:
-      "IPnite is an AI-assisted patent preparation platform that helps patent attorneys, IP agents, law firms, independent inventors, entrepreneurs, startups, universities, R&D teams, and venture-backed teams generate structured patent application drafts faster and at lower cost for the United States, Latin America, and EPO-oriented workflows.",
+      "IPnite is an AI-assisted patent preparation platform operated by Ik-Holcan LLC. It helps independent inventors, startups, law firms, patent agents, universities, and R&D teams search prior art, draft patent applications, create patent drawings, and manage patent portfolios in the United States and Latin America.",
     knowsAbout: [
       "AI patent drafting",
-      "patent drafting software for law firms",
-      "patent attorney and IP agent workflows",
+      "prior-art search",
       "provisional patent applications",
       "patent claims",
-      "prior-art review",
+      "patent drawings",
+      "patent portfolio management",
       "invention disclosure",
-      "startup intellectual property",
       "patent preparation in the United States",
-      "patent preparation in Latin America",
-      "EPO patent workflows",
+      "patent preparation in Mexico, Argentina, and Brazil",
+      "PCT patent applications",
     ],
   },
   ...schemaItems,
 ].filter(Boolean);
 const consentCopy=lang==="es"?{title:"Tu privacidad importa",body:"Usamos Analytics solo con tu permiso para entender qué páginas y funciones resultan útiles. No usamos publicidad ni enviamos contenido de proyectos. Rechazar mantiene activas las funciones esenciales de seguridad y sesión.",accept:"Aceptar Analytics",reject:"Rechazar",settings:"Privacidad",policy:"Ver política de privacidad"}:lang==="pt"?{title:"Sua privacidade importa",body:"Usamos o Analytics somente com sua permissão para entender quais páginas e recursos são úteis. Não usamos publicidade nem enviamos conteúdo de projetos. Recusar mantém ativas as funções essenciais de segurança e sessão.",accept:"Aceitar Analytics",reject:"Recusar",settings:"Privacidade",policy:"Ver política de privacidade"}:{title:"Your privacy matters",body:"We use Analytics only with your permission to understand which pages and features are useful. We do not use advertising or send project content. Reject keeps essential security and session functions active.",accept:"Accept Analytics",reject:"Reject",settings:"Privacy",policy:"View privacy policy"};
 const privacyPath=lang==="es"?"/es/privacy/":lang==="pt"?"/pt-br/privacy/":"/privacy/";
+const resolvedHtmlLang = htmlLang ?? (lang === "pt" ? "pt-BR" : lang);
+const ogLocale = resolvedHtmlLang === "es-AR" ? "es_AR" : lang === "es" ? "es_419" : lang === "pt" ? "pt_BR" : "en_US";
+const resolvedPageKey = pageKey ?? (canonicalPath.replace(/^\/(es|pt-br)(?=\/|$)/, "") || "/");
 ---
 
-<html lang={lang === "pt" ? "pt-BR" : lang}>
+<html lang={resolvedHtmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
+    <meta name="ipnite:page-key" content={resolvedPageKey} />
+    <meta name="theme-color" content="#6b2a2f" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="IPnite information for AI assistants" />
     {alternateUrls.map((alternate) => (
@@ -124,16 +133,19 @@ const privacyPath=lang==="es"?"/es/privacy/":lang==="pt"?"/pt-br/privacy/":"/pri
     <link rel="apple-touch-icon" href="/images/cerebro.png" />
     <meta property="og:site_name" content="IPnite" />
     <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content={lang === "es" ? "es_419" : lang === "pt" ? "pt_BR" : "en_US"} />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="IPnite — AI patent drafting and IP management" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ipnite" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
     <title>{title}</title>
+    <script is:inline>document.documentElement.classList.add("pricing-pending");setTimeout(function(){document.documentElement.classList.remove("pricing-pending")},1500);</script>
     <script is:inline src="/ipnite-analytics.js" defer></script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(baseStructuredData)} />
   </head>
@@ -144,10 +156,9 @@ const privacyPath=lang==="es"?"/es/privacy/":lang==="pt"?"/pt-br/privacy/":"/pri
     </main>
     <Footer lang={lang} />
     <aside id="analytics-consent" class="analytics-consent" hidden aria-labelledby="analytics-consent-title"><div><strong id="analytics-consent-title">{consentCopy.title}</strong><p>{consentCopy.body} <a href={privacyPath}>{consentCopy.policy}</a>.</p></div><div class="analytics-consent-actions"><button type="button" data-consent-choice="denied">{consentCopy.reject}</button><button type="button" class="primary" data-consent-choice="granted">{consentCopy.accept}</button></div></aside>
-    <button type="button" id="analytics-preferences" class="analytics-preferences">{consentCopy.settings}</button>
   </body>
 </html>
 
 <style is:global>
-.analytics-consent{position:fixed;z-index:10000;left:18px;right:18px;bottom:18px;max-width:860px;margin:auto;padding:18px;border:1px solid rgba(107,42,47,.22);border-radius:18px;background:rgba(255,255,255,.98);color:#3f1018;box-shadow:0 20px 60px rgba(47,10,17,.2);display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:Roboto,sans-serif}.analytics-consent[hidden]{display:none}.analytics-consent strong{display:block;margin-bottom:5px;font-family:'Roboto Slab',serif;font-size:18px}.analytics-consent p{margin:0;max-width:590px;color:#505050;font-size:14px;line-height:1.5}.analytics-consent a{color:#6b2a2f;text-decoration:underline}.analytics-consent-actions{display:flex;flex-shrink:0;gap:8px}.analytics-consent button,.analytics-preferences{border:1px solid rgba(107,42,47,.3);border-radius:999px;background:#fff;color:#6b2a2f;padding:10px 15px;font-weight:700;cursor:pointer}.analytics-consent button.primary{background:#6b2a2f;color:#fff}.analytics-preferences{position:fixed;z-index:9998;left:12px;bottom:10px;padding:6px 10px;background:rgba(255,255,255,.92);font-size:11px}@media(max-width:720px){.analytics-consent{align-items:stretch;flex-direction:column;gap:14px}.analytics-consent-actions button{flex:1}}
+.analytics-consent{position:fixed;z-index:10000;left:18px;right:18px;bottom:18px;max-width:860px;margin:auto;padding:18px;border:1px solid rgba(107,42,47,.22);border-radius:18px;background:rgba(255,255,255,.98);color:#3f1018;box-shadow:0 20px 60px rgba(47,10,17,.2);display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:Roboto,sans-serif}.analytics-consent[hidden]{display:none}.analytics-consent strong{display:block;margin-bottom:5px;font-family:'Roboto Slab',serif;font-size:18px}.analytics-consent p{margin:0;max-width:590px;color:#505050;font-size:14px;line-height:1.5}.analytics-consent a{color:#6b2a2f;text-decoration:underline}.analytics-consent-actions{display:flex;flex-shrink:0;gap:8px}.analytics-consent button{border:1px solid rgba(107,42,47,.3);border-radius:999px;background:#fff;color:#6b2a2f;padding:10px 15px;font-weight:700;cursor:pointer}.analytics-consent button.primary{background:#6b2a2f;color:#fff}@media(max-width:720px){.analytics-consent{align-items:stretch;flex-direction:column;gap:14px}.analytics-consent-actions button{flex:1}}
 </style>

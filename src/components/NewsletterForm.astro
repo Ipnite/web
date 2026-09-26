@@ -10,17 +10,26 @@ const copy = lang === "es"
       label: "Suscríbete a nuestro boletín",
       placeholder: "Ingresa tu correo electrónico",
       button: "Suscribirse",
+      consent: "Al suscribirte aceptas recibir correos de IPnite. Puedes darte de baja cuando quieras.",
+      privacy: "Política de privacidad",
+      privacyHref: "/es/privacy/",
     }
   : lang === "pt"
   ? {
       label: "Assine nossa newsletter",
       placeholder: "Digite seu e-mail",
       button: "Assinar",
+      consent: "Ao assinar, você aceita receber e-mails da IPnite. Você pode cancelar quando quiser.",
+      privacy: "Política de privacidade",
+      privacyHref: "/pt-br/privacy/",
     }
   : {
       label: "Subscribe to our newsletter",
       placeholder: "Enter your email address",
       button: "Subscribe",
+      consent: "By subscribing you agree to receive emails from IPnite. You can unsubscribe anytime.",
+      privacy: "Privacy Policy",
+      privacyHref: "/privacy/",
     };
 
 // Mailchimp classic embed action + audience/list IDs.
@@ -56,4 +65,7 @@ const MC_HONEYPOT_NAME = "b_07b8982a9cdceb65fd713ee49_ef2681748d";
       {copy.button}
     </button>
   </form>
+  <p class="mt-2 max-w-[420px] [font-family:'Roboto',sans-serif] text-[13px] leading-[1.45] text-white/85">
+    {copy.consent} <a href={copy.privacyHref} class="underline">{copy.privacy}</a>.
+  </p>
 </div>

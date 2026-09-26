@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { alternatesFor } from "../../data/routes";
 
 const faqs = [
   {
@@ -8,7 +9,7 @@ const faqs = [
   },
   {
     question: "A IPnite substitui um advogado ou agente de propriedade industrial?",
-    answer: "Não. A IPnite funciona como copiloto de redação e gestão. Ela acelera o trabalho técnico inicial, mas não presta assessoria jurídica nem substitui a revisão profissional.",
+    answer: "Não. A IPnite é uma ferramenta de redação e gestão: acelera o trabalho técnico, mas não presta assessoria jurídica. Você decide se deposita por conta própria ou se envia o rascunho para revisão profissional.",
   },
   {
     question: "Posso preparar um pedido para o INPI?",
@@ -20,7 +21,7 @@ const faqs = [
   },
   {
     question: "Em quais formatos posso exportar o projeto?",
-    answer: "Os projetos podem ser exportados em formatos como DOCX, JSON e pacotes ZIP, conforme os recursos e permissões do plano contratado.",
+    answer: "Todos os planos exportam em DOCX. Os planos Startup e Institucional também exportam o projeto em JSON e ZIP.",
   },
 ];
 
@@ -33,7 +34,7 @@ const structuredData = [
     name: "Redação de patentes para o Brasil com IA | IPnite",
     description: "Prepare rascunhos de pedidos de patente para o Brasil com IA, fluxos estruturados, busca de anterioridade, desenhos e exportação em DOCX.",
     inLanguage: "pt-BR",
-    about: { "@id": "https://www.ipnite.com/#the-drafter" },
+    about: { "@id": "https://www.ipnite.com/#software" },
     audience: [
       { "@type": "Audience", audienceType: "Advogados e agentes de propriedade industrial no Brasil" },
       { "@type": "Audience", audienceType: "Inventores, startups, universidades e equipes de P&D no Brasil" },
@@ -63,20 +64,19 @@ const structuredData = [
   lang="pt"
   title="Redação de patentes para o Brasil com IA | IPnite"
   description="Prepare rascunhos de pedidos de patente para o Brasil com IA. Estruture reivindicações, anterioridades, desenhos e documentos editáveis."
-  keywords="redação de patentes Brasil, software de patentes INPI, inteligência artificial patentes, busca de anterioridade Brasil, software para agentes de propriedade industrial, PCT Brasil"
   canonicalPath="/pt-br/patentes-brasil/"
-  alternatePath="/"
-  alternatePaths={{ en: "/patentes-brasil/", es: "/es/patentes-brasil/", "pt-BR": "/pt-br/patentes-brasil/", "x-default": "/patentes-brasil/" }}
+  alternatePaths={alternatesFor("jurisdiction-br")}
+  pageKey="/patents-brazil/"
   structuredData={structuredData}
 >
-  <main class="mx-page">
+  <div class="mx-page">
     <section class="mx-hero" aria-labelledby="mx-hero-heading">
       <div class="mx-hero__inner">
         <div class="mx-hero__copy">
           <a class="breadcrumb" href="/pt-br/">IPnite <span aria-hidden="true">/</span> Brasil</a>
           <p class="eyebrow">BRASIL · INPI · PCT</p>
           <h1 id="mx-hero-heading">Redação de patentes para o <strong>Brasil com IA</strong></h1>
-          <p class="mx-hero__lead">Prepare rascunhos estruturados de pedidos de patente, desde a divulgação técnica até as reivindicações, desenhos e documentos prontos para revisão profissional.</p>
+          <p class="mx-hero__lead">Prepare seu pedido de patente com um fluxo guiado: da divulgação técnica às reivindicações, aos desenhos e a um documento pronto para depósito no INPI.</p>
           <div class="mx-hero__actions">
             <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Começar a redigir</a>
             <a class="button button--secondary" href="#fluxo-brasil">Ver o fluxo</a>
@@ -91,8 +91,8 @@ const structuredData = [
         <div class="mx-hero__visual" aria-label="Visão da plataforma IPnite">
           <div class="visual-orbit visual-orbit--one" aria-hidden="true"></div>
           <div class="visual-orbit visual-orbit--two" aria-hidden="true"></div>
-          <img class="visual-brain" src="/images/cerebro.png" alt="" aria-hidden="true" />
-          <img class="visual-laptop" src="/images/notebook-2.png" alt="Aplicativo da IPnite para redação de patentes" loading="eager" />
+          <img class="visual-brain" src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" />
+          <img class="visual-laptop" src="/images/notebook-2.png" width="560" height="339" alt="Aplicativo da IPnite para redação de patentes" loading="eager" />
           <div class="visual-chip visual-chip--top"><span>BR</span><strong>Divulgação técnica</strong></div>
           <div class="visual-chip visual-chip--bottom"><span>PCT</span><strong>Projeção internacional</strong></div>
         </div>
@@ -128,7 +128,7 @@ const structuredData = [
           </article>
         </div>
 
-        <p class="legal-note"><strong>Importante:</strong> A IPnite ajuda a preparar e estruturar documentos; não deposita pedidos automaticamente nem substitui o critério de um advogado ou agente de propriedade industrial.</p>
+        <p class="legal-note"><strong>Importante:</strong> a IPnite ajuda a preparar e estruturar seu pedido; não deposita automaticamente nem substitui o critério de um advogado ou agente da propriedade industrial. A revisão fica sob sua responsabilidade.</p>
       </div>
     </section>
 
@@ -136,14 +136,14 @@ const structuredData = [
       <div class="section-inner workflow__inner">
         <div class="workflow__visual">
           <div class="workflow__screen">
-            <img src="/images/notebook-1.png" alt="Espaço de trabalho da IPnite" loading="lazy" />
+            <img src="/images/notebook-1.png" width="750" height="457" alt="Espaço de trabalho da IPnite" loading="lazy" />
           </div>
           <div class="workflow__badge"><span>✓</span> Documento exportável</div>
         </div>
 
         <div class="workflow__copy">
           <p class="eyebrow">FLUXO GUIADO</p>
-          <h2 id="workflow-heading">Da invenção a um <strong>rascunho revisável</strong></h2>
+          <h2 id="workflow-heading">Da invenção a um <strong>pedido pronto para depósito</strong></h2>
           <ol>
             <li><span>1</span><div><h3>Descreva a invenção</h3><p>Registre o problema, a solução, seus componentes, variantes e vantagens técnicas.</p></div></li>
             <li><span>2</span><div><h3>Pesquise anterioridades</h3><p>Organize referências relevantes para avaliar o estado da técnica e orientar o escopo.</p></div></li>
@@ -161,10 +161,10 @@ const structuredData = [
           <h2 id="capabilities-heading">Um espaço de trabalho para <strong>todo o projeto</strong></h2>
         </div>
         <div class="capability-grid">
-          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Anterioridades e FTO</h3><p>Centralize buscas de estado da técnica e, conforme o plano, análises de FTO.</p></article>
+          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Anterioridades e FTO</h3><p>Centralize suas buscas e, conforme o plano, análises de FTO revisadas por você ou pelo seu profissional de confiança.</p></article>
           <article><img src="/icons/lapiz.svg" alt="" aria-hidden="true" /><h3>Redação assistida</h3><p>Gere e revise seções conectadas às informações técnicas do projeto.</p></article>
           <article><img src="/icons/engranaje.svg" alt="" aria-hidden="true" /><h3>Trabalho colaborativo</h3><p>Convide colaboradores e mantenha o contexto do processo em um único lugar.</p></article>
-          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Portfólio e exportação</h3><p>Acompanhe seus projetos e exporte documentos em DOCX, JSON e ZIP conforme o plano.</p></article>
+          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Portfólio e exportação</h3><p>Acompanhe seus projetos e exporte em DOCX (todos os planos) ou em JSON e ZIP (Startup e Institucional).</p></article>
         </div>
       </div>
     </section>
@@ -176,9 +176,9 @@ const structuredData = [
           <h2 id="audiences-heading">Feito para quem <strong>protege tecnologia no Brasil</strong></h2>
         </div>
         <div class="audience-grid">
-          <article><img src="/images/lawyer-card.webp" alt="Advogado de patentes" loading="lazy" /><div><h3>Escritórios, advogados e agentes</h3><p>Aumente a capacidade de redação inicial, organize a colaboração e entregue rascunhos editáveis para o refinamento jurídico.</p></div></article>
-          <article><img src="/images/startups-card.webp" alt="Equipe de uma startup" loading="lazy" /><div><h3>Startups e inventores</h3><p>Transforme o conhecimento técnico em um documento estruturado antes de revisá-lo com seu assessor jurídico.</p></div></article>
-          <article><img src="/images/academic-card.webp" alt="Pesquisadores universitários" loading="lazy" /><div><h3>Universidades e centros de P&D</h3><p>Organize divulgações de invenção, avalie anterioridades e acompanhe o portfólio institucional.</p></div></article>
+          <article><img src="/images/inventor-card.webp" width="800" height="800" alt="Inventor independente trabalhando sobre desenhos técnicos" loading="lazy" /><div><h3>Inventores independentes</h3><p>Transforme sua ideia em um pedido estruturado, pronto para revisar e depositar.</p></div></article>
+          <article><img src="/images/startups-card.webp" width="800" height="800" alt="Fundadora de uma startup de tecnologia" loading="lazy" /><div><h3>Startups e fundadores</h3><p>Proteja sua tecnologia antes de apresentá-la a investidores e gerencie seu portfólio com sua equipe.</p></div></article>
+          <article><img src="/images/academic-card.webp" width="800" height="800" alt="Pesquisadora trabalhando em um laboratório universitário" loading="lazy" /><div><h3>Escritórios, universidades e centros de P&amp;D</h3><p>Amplie a capacidade de redação, gerencie divulgações de invenção e acompanhe o portfólio institucional.</p></div></article>
         </div>
       </div>
     </section>
@@ -203,16 +203,16 @@ const structuredData = [
 
     <section class="mx-cta" aria-labelledby="mx-cta-heading">
       <div class="mx-cta__inner">
-        <img src="/images/cerebro.png" alt="" aria-hidden="true" />
+        <img src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" />
         <div>
           <p class="eyebrow">SEU PRÓXIMO RASCUNHO COMEÇA AQUI</p>
-          <h2 id="mx-cta-heading">Transforme sua inovação em um <strong>projeto de patente estruturado</strong></h2>
-          <p>Comece com um fluxo guiado e mantenha todo o trabalho pronto para revisão, colaboração e acompanhamento.</p>
+          <h2 id="mx-cta-heading">Transforme sua inovação em um <strong>pedido pronto para depósito</strong></h2>
+          <p>Comece com o teste grátis: explore sua invenção com o Agente de descoberta e faça sua primeira busca de anterioridade.</p>
           <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Começar na IPnite</a>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
@@ -349,12 +349,12 @@ const structuredData = [
     .mx-hero__actions { display: grid; }
     .button { width: 100%; }
     .mx-hero__signals { gap: 7px; }
-    .mx-hero__signals li { font-size: 11px; }
+    .mx-hero__signals li { font-size: 13px; }
     .mx-hero__visual { min-height: 300px; margin-top: -4px; }
     .visual-orbit--one { width: 290px; height: 290px; }
     .visual-orbit--two { width: 220px; height: 220px; }
     .visual-laptop { width: 115%; }
-    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 10px; }
+    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 13px; }
     .visual-chip span { width: 34px; height: 34px; border-radius: 10px; }
     .visual-chip strong { max-width: 92px; }
     .visual-chip--top { top: 18px; right: -3px; }
@@ -363,7 +363,7 @@ const structuredData = [
     .pathway-card { padding: 28px 24px; border-radius: 24px; }
     .pathway-card__number { font-size: 58px; }
     .workflow__visual { min-height: 280px; border-radius: 28px; }
-    .workflow__badge { right: 12px; bottom: 24px; font-size: 11px; }
+    .workflow__badge { right: 12px; bottom: 24px; font-size: 13px; }
     .workflow li { grid-template-columns: 40px 1fr; gap: 12px; }
     .workflow li > span { width: 38px; height: 38px; }
     .capability-grid { grid-template-columns: 1fr; }

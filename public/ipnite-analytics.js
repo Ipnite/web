@@ -55,7 +55,12 @@
     return lang.indexOf('es') === 0 ? 'es' : lang.indexOf('pt') === 0 ? 'pt-BR' : 'en';
   }
   function pageLanguage() { return siteLanguage() === 'es' ? 'Spanish' : siteLanguage() === 'pt-BR' ? 'Portuguese' : 'English'; }
-  function localizedPath() { return safePath(location.pathname).replace(/^\/(es|pt-br)(?=\/|$)/, '') || '/'; }
+  function localizedPath() {
+    // Localized URLs differ per language; each page declares its language-neutral key (the English path).
+    var key = document.querySelector('meta[name="ipnite:page-key"]');
+    if (key && key.content) return key.content;
+    return safePath(location.pathname).replace(/^\/(es|pt-br)(?=\/|$)/, '') || '/';
+  }
   function pageName() {
     var path = localizedPath();
     var names = {'/':'Home','/faqs/':'FAQs','/learn/':'Learning Center','/about-us/':'About IPnite','/privacy/':'Privacy Policy','/termsandconditions/':'Terms and Conditions'};
@@ -68,7 +73,7 @@
     if (/^\/for-/.test(path)) return 'solution';
     if (path === '/patent-ai-security/') return 'security';
     if (/best-ai-|\/ipnite-vs-/.test(path)) return 'comparison';
-    if (/patents-united-states|patentes-(mexico|argentina|brasil)|pct-patent-process/.test(path)) return 'jurisdiction';
+    if (/patents-(united-states|mexico|argentina|brazil)|pct-patent-process/.test(path)) return 'jurisdiction';
     if (/ai-patent-drafting|prior-art-search|patent-drawings|patent-portfolio-management|provisional-patent-application|patent-search/.test(path)) return 'product';
     if (/privacy|termsandconditions/.test(path)) return 'legal';
     return 'other';

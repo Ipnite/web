@@ -1,6 +1,6 @@
 ---
-// Fuente: index.tsx — sección "Who We Do It For" (antes "Why We Do It", Figma 4:206)
-// Las tarjetas tienen flip: frente blanco con título, dorso rojo con texto
+// Fuente: index.tsx — sección "Who We Do It For" (Figma 4:206)
+// Tarjetas en el mismo orden que los planes: Inventor, Startup, Institutional
 interface Props {
   lang?: "en" | "es" | "pt";
 }
@@ -10,33 +10,33 @@ const { lang = "en" } = Astro.props;
 const copy = lang === "es"
   ? {
       heading: "Soluciones de Redacción de Patentes para Cada Perfil",
-      intro: "IPnite ofrece flujos de redacción y gestión de patentes para profesionales de PI, inventores, startups, universidades y centros de I+D.",
+      intro: "IPnite ofrece flujos de redacción y gestión de patentes para inventores independientes, startups e instituciones: despachos, universidades y centros de I+D.",
       emphasis: "Si estás construyendo algo que vale la pena proteger, IPnite es para ti.",
       cards: [
-        { title: ["Para Abogados y Agentes", "de Patentes (IP Law Firms)"], image: "/images/lawyer-card.webp", alt: "Abogados y agentes de patentes", back: "Aumenta la capacidad de tu firma. Automatiza la redacción del borrador técnico inicial, la estructuración de reivindicaciones dependientes y la búsqueda de arte previo antes de la revisión jurídica formal." },
-        { title: ["Para Startups", "e Inventores"], image: "/images/startups-card.webp", alt: "Startups e inventores", back: "Prepara borradores estructurados y profesionalizados para proteger tu tecnología antes de presentarla o revisarla con tu consejero legal." },
-        { title: ["Para Universidades y", "Centros de I+D (TTOs)"], image: "/images/academic-card.webp", alt: "Universidades y centros de investigación y desarrollo", back: "Gestiona divulgaciones de invención y acelera la evaluación de patentes corporativas." },
+        { title: ["Para Inventores", "Independientes"], image: "/images/inventor-card.webp", alt: "Inventor independiente trabajando sobre planos técnicos", back: "Convierte tu idea en un borrador de patente estructurado y listo para revisión. Busca antecedentes, organiza tu invención y exporta tu solicitud en DOCX." },
+        { title: ["Para Startups", "y Fundadores"], image: "/images/startups-card.webp", alt: "Fundadora de una startup tecnológica", back: "Protege tu tecnología antes de presentarla a inversionistas o lanzarla al mercado. Construye y gestiona tu cartera de PI con tu equipo y tus asesores." },
+        { title: ["Para Instituciones", "y Equipos de PI"], image: "/images/academic-card.webp", alt: "Investigadora trabajando en un laboratorio universitario", back: "Amplía la capacidad de redacción de despachos, agentes de patentes, universidades y centros de I+D. Gestiona divulgaciones, equipos y carteras en un solo lugar." },
       ],
     }
   : lang === "pt"
   ? {
       heading: "Soluções de Redação de Patentes para Cada Perfil",
-      intro: "A IPnite oferece fluxos de redação e gestão de patentes para profissionais de PI, inventores, startups, universidades e centros de P&D.",
+      intro: "A IPnite oferece fluxos de redação e gestão de patentes para inventores independentes, startups e instituições: escritórios, universidades e centros de P&D.",
       emphasis: "Se você está construindo algo que vale a pena proteger, a IPnite é para você.",
       cards: [
-        { title: ["Para Advogados e Agentes", "de Patentes (IP Law Firms)"], image: "/images/lawyer-card.webp", alt: "Advogados e agentes de patentes", back: "Aumente a capacidade da sua firma. Automatize a redação do rascunho técnico inicial, a estruturação de reivindicações dependentes e a pesquisa de anterioridade antes da revisão jurídica formal." },
-        { title: ["Para Startups", "e Inventores"], image: "/images/startups-card.webp", alt: "Startups e inventores", back: "Prepare rascunhos estruturados e profissionalizados para proteger sua tecnologia antes de apresentá-la ou revisá-la com seu assessor jurídico." },
-        { title: ["Para Universidades e", "Centros de P&D (TTOs)"], image: "/images/academic-card.webp", alt: "Universidades e centros de pesquisa e desenvolvimento", back: "Gerencie divulgações de invenção e acelere a avaliação de patentes corporativas." },
+        { title: ["Para Inventores", "Independentes"], image: "/images/inventor-card.webp", alt: "Inventor independente trabalhando sobre desenhos técnicos", back: "Transforme sua ideia em um rascunho de patente estruturado e pronto para revisão. Busque anterioridades, organize sua invenção e exporte seu pedido em DOCX." },
+        { title: ["Para Startups", "e Fundadores"], image: "/images/startups-card.webp", alt: "Fundadora de uma startup de tecnologia", back: "Proteja sua tecnologia antes de apresentá-la a investidores ou lançá-la no mercado. Construa e gerencie seu portfólio de PI com sua equipe e seus assessores." },
+        { title: ["Para Instituições", "e Equipes de PI"], image: "/images/academic-card.webp", alt: "Pesquisadora trabalhando em um laboratório universitário", back: "Amplie a capacidade de redação de escritórios, agentes de patentes, universidades e centros de P&D. Gerencie divulgações, equipes e portfólios em um só lugar." },
       ],
     }
   : {
       heading: "Patent Drafting Solutions for Every Profile",
-      intro: "IPnite provides patent drafting and management workflows for IP professionals, inventors, startups, universities, and R&D centers.",
+      intro: "IPnite provides patent drafting and management workflows for independent inventors, startups, and institutions: law firms, universities, and R&D centers.",
       emphasis: "If you're building something worth protecting, IPnite is for you.",
       cards: [
-        { title: ["For Patent Attorneys", "& IP Agents (Law Firms)"], image: "/images/lawyer-card.webp", alt: "Patent attorneys and IP agents", back: "Increase your firm capacity. Automate the initial technical draft, dependent-claim structuring, and prior-art search before formal legal review." },
-        { title: ["For Startups", "& Inventors"], image: "/images/startups-card.webp", alt: "Startups and inventors", back: "Prepare structured, professionalized drafts to protect your technology before presenting it or reviewing it with legal counsel." },
-        { title: ["For Universities &", "R&D Centers (TTOs)"], image: "/images/academic-card.webp", alt: "Universities and research and development centers", back: "Manage invention disclosures and accelerate corporate patent evaluation." },
+        { title: ["For Independent", "Inventors"], image: "/images/inventor-card.webp", alt: "Independent inventor working on technical drawings", back: "Turn your idea into a structured, review-ready patent draft. Search prior art, organize your invention, and export your application as DOCX." },
+        { title: ["For Startups", "& Founders"], image: "/images/startups-card.webp", alt: "Founder of a technology startup", back: "Protect your technology before pitching investors or launching. Build and manage your IP portfolio with your team and your counsel." },
+        { title: ["For Institutions", "& IP Teams"], image: "/images/academic-card.webp", alt: "Researcher working in a university laboratory", back: "Scale drafting capacity for law firms, patent agents, universities, and R&D centers. Manage invention disclosures, teams, and portfolios in one workspace." },
       ],
     };
 ---

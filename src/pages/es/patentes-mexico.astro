@@ -1,26 +1,27 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { alternatesFor } from "../../data/routes";
 
 const faqs = [
   {
     question: "¿IPnite permite preparar solicitudes provisionales para México?",
-    answer: "Sí. IPnite permite organizar la divulgación técnica y generar un borrador estructurado para una solicitud provisional. La estrategia, los requisitos aplicables y la presentación deben revisarse con un profesional de propiedad industrial.",
+    answer: "Sí. Desde el 6 de abril de 2026, la reforma a la Ley Federal de Protección a la Propiedad Industrial permite presentar solicitudes provisionales ante el IMPI. A partir de la presentación tienes 12 meses improrrogables para presentar la solicitud completa; la provisional no se publica ni se examina. IPnite te ayuda a documentar la invención y dejar el borrador listo para presentar.",
   },
   {
     question: "¿IPnite reemplaza a un abogado o agente de patentes?",
-    answer: "No. IPnite funciona como un copiloto de redacción y gestión. Acelera el trabajo técnico inicial, pero no brinda asesoramiento legal ni sustituye la revisión profesional.",
+    answer: "No. IPnite es una herramienta de redacción y gestión: acelera el trabajo técnico, pero no brinda asesoría legal. Tú decides si presentas por tu cuenta o si envías el borrador a revisión profesional.",
   },
   {
     question: "¿Puedo preparar una solicitud para el IMPI?",
-    answer: "IPnite ayuda a estructurar la descripción, las reivindicaciones, el resumen y los dibujos de referencia que forman parte del trabajo de preparación de una solicitud de patente. Antes de presentar, el documento debe revisarse conforme a los requisitos vigentes del IMPI.",
+    answer: "Sí. IPnite te ayuda a estructurar la descripción, las reivindicaciones, el resumen y los dibujos de tu solicitud. Antes de presentarla, revísala conforme a los requisitos vigentes del IMPI o envíala a revisión profesional.",
   },
   {
     question: "¿IPnite también ayuda con una estrategia internacional?",
-    answer: "Sí. México es un Estado contratante del PCT e IPnite puede apoyar la preparación y organización del proyecto para continuar una estrategia internacional. La elección de países, los plazos y la vía de presentación requieren asesoría profesional.",
+    answer: "Sí. México es Estado contratante del PCT, e IPnite te ayuda a mantener el proyecto ordenado para una solicitud internacional. Ten en cuenta que una solicitud provisional mexicana no puede reclamar la prioridad de una solicitud anterior. La elección de países, plazos y vías conviene revisarla con un profesional.",
   },
   {
     question: "¿En qué formatos puedo exportar el proyecto?",
-    answer: "Los proyectos pueden exportarse en formatos como DOCX, JSON y paquetes ZIP, según las funciones y permisos del plan contratado.",
+    answer: "Todos los planes exportan en DOCX. Los planes Startup e Institucional también exportan el proyecto en JSON y ZIP.",
   },
 ];
 
@@ -31,9 +32,9 @@ const structuredData = [
     "@id": "https://www.ipnite.com/es/patentes-mexico/#webpage",
     url: "https://www.ipnite.com/es/patentes-mexico/",
     name: "Redacción de patentes para México con IA | IPnite",
-    description: "Prepara solicitudes provisionales y borradores de patente para México con IA, flujos estructurados, búsqueda de antecedentes, dibujos y exportación en DOCX.",
+    description: "Prepara solicitudes provisionales y de patente para el IMPI con IA: búsqueda de antecedentes, reivindicaciones, dibujos y exportación en DOCX.",
     inLanguage: "es-MX",
-    about: { "@id": "https://www.ipnite.com/#the-drafter" },
+    about: { "@id": "https://www.ipnite.com/#software" },
     audience: [
       { "@type": "Audience", audienceType: "Abogados y agentes de patentes en México" },
       { "@type": "Audience", audienceType: "Inventores, startups, universidades y equipos de I+D en México" },
@@ -62,21 +63,20 @@ const structuredData = [
 <BaseLayout
   lang="es"
   title="Redacción de patentes para México con IA | IPnite"
-  description="Prepara solicitudes provisionales y borradores de patente para México con IA. Estructura reivindicaciones, antecedentes, dibujos y documentos editables."
-  keywords="redacción de patentes México, solicitud provisional México, software patentes IMPI, inteligencia artificial patentes, búsqueda estado de la técnica México, software agentes de patentes"
+  description="Prepara solicitudes provisionales y de patente para el IMPI con IA: antecedentes, reivindicaciones, dibujos y exportación en DOCX, listas para presentar."
   canonicalPath="/es/patentes-mexico/"
-  alternatePath="/"
-  alternatePaths={{ en: "/patentes-mexico/", es: "/es/patentes-mexico/", "pt-BR": "/pt-br/patentes-mexico/", "x-default": "/patentes-mexico/" }}
+  alternatePaths={alternatesFor("jurisdiction-mx")}
+  pageKey="/patents-mexico/"
   structuredData={structuredData}
 >
-  <main class="mx-page">
+  <div class="mx-page">
     <section class="mx-hero" aria-labelledby="mx-hero-heading">
       <div class="mx-hero__inner">
         <div class="mx-hero__copy">
           <a class="breadcrumb" href="/es/">IPnite <span aria-hidden="true">/</span> México</a>
           <p class="eyebrow">MÉXICO · IMPI · PCT</p>
           <h1 id="mx-hero-heading">Redacción de patentes para <strong>México con IA</strong></h1>
-          <p class="mx-hero__lead">Prepara solicitudes provisionales y borradores de patente estructurados, desde la divulgación técnica hasta las reivindicaciones, dibujos y documentos listos para revisión profesional.</p>
+          <p class="mx-hero__lead">Prepara solicitudes provisionales y de patente con un flujo guiado: de la divulgación técnica a las reivindicaciones, los dibujos y un documento listo para presentar ante el IMPI.</p>
           <div class="mx-hero__actions">
             <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Comenzar a redactar</a>
             <a class="button button--secondary" href="#flujo-mexico">Ver el flujo</a>
@@ -91,8 +91,8 @@ const structuredData = [
         <div class="mx-hero__visual" aria-label="Vista de la plataforma IPnite">
           <div class="visual-orbit visual-orbit--one" aria-hidden="true"></div>
           <div class="visual-orbit visual-orbit--two" aria-hidden="true"></div>
-          <img class="visual-brain" src="/images/cerebro.png" alt="" aria-hidden="true" />
-          <img class="visual-laptop" src="/images/notebook-2.png" alt="Aplicación de IPnite para redactar patentes" loading="eager" />
+          <img class="visual-brain" src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" />
+          <img class="visual-laptop" src="/images/notebook-2.png" width="560" height="339" alt="Aplicación de IPnite para redactar patentes" loading="eager" />
           <div class="visual-chip visual-chip--top"><span>MX</span><strong>Solicitud provisional</strong></div>
           <div class="visual-chip visual-chip--bottom"><span>PCT</span><strong>Proyección internacional</strong></div>
         </div>
@@ -104,7 +104,7 @@ const structuredData = [
         <div class="section-heading">
           <p class="eyebrow">UNA ESTRATEGIA QUE PUEDE CRECER</p>
           <h2 id="pathways-heading">Comienza en México. <strong>Prepárate para avanzar.</strong></h2>
-          <p>IPnite reúne el trabajo técnico en un solo proyecto para que el borrador pueda evolucionar con una estrategia definida y revisión profesional.</p>
+          <p>IPnite reúne todo el trabajo técnico en un solo proyecto para que tu borrador evolucione con una estrategia clara.</p>
         </div>
 
         <div class="pathway-grid">
@@ -112,23 +112,23 @@ const structuredData = [
             <div class="pathway-card__number">01</div>
             <img src="/icons/lapiz.svg" alt="" aria-hidden="true" />
             <h3>Solicitud provisional</h3>
-            <p>Documenta la invención con rapidez, organiza variantes y construye un borrador técnico que preserve la información necesaria para la siguiente etapa.</p>
+            <p>Documenta la invención con rapidez y presenta una solicitud provisional para asegurar tu fecha de presentación. Tienes 12 meses para presentar la solicitud completa.</p>
           </article>
           <article class="pathway-card">
             <div class="pathway-card__number">02</div>
             <img src="/icons/engranaje.svg" alt="" aria-hidden="true" />
             <h3>Solicitud ante el IMPI</h3>
-            <p>Estructura descripción, reivindicaciones, resumen y dibujos de referencia para preparar la revisión previa a una presentación nacional.</p>
+            <p>Estructura descripción, reivindicaciones, resumen y dibujos para dejar lista tu solicitud nacional.</p>
           </article>
           <article class="pathway-card">
             <div class="pathway-card__number">03</div>
             <img src="/icons/lupa.svg" alt="" aria-hidden="true" />
             <h3>Estrategia PCT</h3>
-            <p>Mantén ordenados antecedentes, versiones y documentos cuando el proyecto requiera evaluar una ruta de protección internacional.</p>
+            <p>Mantén ordenados los antecedentes, las versiones y los documentos cuando tu proyecto requiera una ruta de protección internacional.</p>
           </article>
         </div>
 
-        <p class="legal-note"><strong>Importante:</strong> IPnite ayuda a preparar y estructurar documentos; no presenta solicitudes automáticamente ni reemplaza el criterio de un abogado o agente de patentes.</p>
+        <p class="legal-note"><strong>Importante:</strong> IPnite te ayuda a preparar y estructurar tu solicitud; no la presenta automáticamente ni reemplaza el criterio de un abogado o agente de patentes. La revisión queda bajo tu responsabilidad.</p>
       </div>
     </section>
 
@@ -136,19 +136,19 @@ const structuredData = [
       <div class="section-inner workflow__inner">
         <div class="workflow__visual">
           <div class="workflow__screen">
-            <img src="/images/notebook-1.png" alt="Espacio de trabajo de IPnite" loading="lazy" />
+            <img src="/images/notebook-1.png" width="750" height="457" alt="Espacio de trabajo de IPnite" loading="lazy" />
           </div>
-          <div class="workflow__badge"><span>✓</span> Documento exportable</div>
+          <div class="workflow__badge"><span>✓</span> Exportación en DOCX</div>
         </div>
 
         <div class="workflow__copy">
           <p class="eyebrow">FLUJO GUIADO</p>
-          <h2 id="workflow-heading">De la invención a un <strong>borrador revisable</strong></h2>
+          <h2 id="workflow-heading">De la invención a una <strong>solicitud lista para presentar</strong></h2>
           <ol>
             <li><span>1</span><div><h3>Describe la invención</h3><p>Captura el problema, la solución, sus componentes, variantes y ventajas técnicas.</p></div></li>
-            <li><span>2</span><div><h3>Investiga antecedentes</h3><p>Organiza referencias relevantes para evaluar el estado de la técnica y orientar el alcance.</p></div></li>
+            <li><span>2</span><div><h3>Busca antecedentes</h3><p>Organiza referencias relevantes para evaluar el estado de la técnica y definir el alcance.</p></div></li>
             <li><span>3</span><div><h3>Genera y afina</h3><p>Trabaja reivindicaciones, descripción, resumen y dibujos con agentes especializados.</p></div></li>
-            <li><span>4</span><div><h3>Revisa y exporta</h3><p>Descarga el borrador en DOCX y conserva el proyecto para seguimiento y colaboración.</p></div></li>
+            <li><span>4</span><div><h3>Revisa y exporta</h3><p>Descarga la solicitud en DOCX y conserva el proyecto para seguimiento y colaboración.</p></div></li>
           </ol>
         </div>
       </div>
@@ -161,10 +161,10 @@ const structuredData = [
           <h2 id="capabilities-heading">Un espacio de trabajo para <strong>todo el proyecto</strong></h2>
         </div>
         <div class="capability-grid">
-          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Antecedentes y FTO</h3><p>Centraliza búsquedas de estado de la técnica y, según el plan, análisis FTO.</p></article>
+          <article><img src="/icons/lupa.svg" alt="" aria-hidden="true" /><h3>Antecedentes y FTO</h3><p>Centraliza tus búsquedas y, según el plan, análisis FTO que revisas tú o tu profesional de confianza.</p></article>
           <article><img src="/icons/lapiz.svg" alt="" aria-hidden="true" /><h3>Redacción asistida</h3><p>Genera y revisa secciones conectadas con la información técnica del proyecto.</p></article>
           <article><img src="/icons/engranaje.svg" alt="" aria-hidden="true" /><h3>Trabajo colaborativo</h3><p>Invita colaboradores y conserva el contexto del expediente en un mismo lugar.</p></article>
-          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Portafolio y exportación</h3><p>Da seguimiento a tus proyectos y exporta documentos en DOCX, JSON y ZIP según el plan.</p></article>
+          <article><img src="/icons/candado.svg" alt="" aria-hidden="true" /><h3>Cartera y exportación</h3><p>Da seguimiento a tus proyectos y exporta en DOCX (todos los planes) o en JSON y ZIP (Startup e Institucional).</p></article>
         </div>
       </div>
     </section>
@@ -176,9 +176,9 @@ const structuredData = [
           <h2 id="audiences-heading">Hecho para quienes <strong>protegen tecnología en México</strong></h2>
         </div>
         <div class="audience-grid">
-          <article><img src="/images/lawyer-card.webp" alt="Abogado de patentes" loading="lazy" /><div><h3>Firmas, abogados y agentes</h3><p>Aumenta la capacidad de redacción inicial, organiza la colaboración y entrega borradores editables para la afinación jurídica.</p></div></article>
-          <article><img src="/images/startups-card.webp" alt="Equipo de una startup" loading="lazy" /><div><h3>Startups e inventores</h3><p>Convierte el conocimiento técnico en un documento estructurado antes de revisarlo con tu consejero legal.</p></div></article>
-          <article><img src="/images/academic-card.webp" alt="Investigadores universitarios" loading="lazy" /><div><h3>Universidades y centros de I+D</h3><p>Organiza divulgaciones de invención, evalúa antecedentes y conserva seguimiento del portafolio institucional.</p></div></article>
+          <article><img src="/images/inventor-card.webp" width="800" height="800" alt="Inventor independiente trabajando sobre planos técnicos" loading="lazy" /><div><h3>Inventores independientes</h3><p>Convierte tu idea en una solicitud estructurada, lista para revisar y presentar.</p></div></article>
+          <article><img src="/images/startups-card.webp" width="800" height="800" alt="Fundadora de una startup tecnológica" loading="lazy" /><div><h3>Startups y fundadores</h3><p>Protege tu tecnología antes de presentarla a inversionistas y gestiona tu cartera con tu equipo.</p></div></article>
+          <article><img src="/images/academic-card.webp" width="800" height="800" alt="Investigadora trabajando en un laboratorio universitario" loading="lazy" /><div><h3>Despachos, universidades y centros de I+D</h3><p>Amplía la capacidad de redacción, gestiona divulgaciones de invención y da seguimiento a la cartera institucional.</p></div></article>
         </div>
       </div>
     </section>
@@ -203,16 +203,16 @@ const structuredData = [
 
     <section class="mx-cta" aria-labelledby="mx-cta-heading">
       <div class="mx-cta__inner">
-        <img src="/images/cerebro.png" alt="" aria-hidden="true" />
+        <img src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" />
         <div>
           <p class="eyebrow">TU PRÓXIMO BORRADOR EMPIEZA AQUÍ</p>
-          <h2 id="mx-cta-heading">Convierte tu innovación en un <strong>proyecto de patente estructurado</strong></h2>
-          <p>Comienza con un flujo guiado y conserva todo el trabajo listo para revisión, colaboración y seguimiento.</p>
-          <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Comenzar en IPnite</a>
+          <h2 id="mx-cta-heading">Convierte tu innovación en una <strong>solicitud lista para presentar</strong></h2>
+          <p>Empieza con la prueba gratis: explora tu invención con el Agente de descubrimiento y haz tu primera búsqueda de antecedentes.</p>
+          <a class="button button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer">Prueba IPnite gratis</a>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
@@ -349,12 +349,12 @@ const structuredData = [
     .mx-hero__actions { display: grid; }
     .button { width: 100%; }
     .mx-hero__signals { gap: 7px; }
-    .mx-hero__signals li { font-size: 11px; }
+    .mx-hero__signals li { font-size: 13px; }
     .mx-hero__visual { min-height: 300px; margin-top: -4px; }
     .visual-orbit--one { width: 290px; height: 290px; }
     .visual-orbit--two { width: 220px; height: 220px; }
     .visual-laptop { width: 115%; }
-    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 10px; }
+    .visual-chip { gap: 7px; padding: 7px 10px 7px 7px; font-size: 13px; }
     .visual-chip span { width: 34px; height: 34px; border-radius: 10px; }
     .visual-chip strong { max-width: 92px; }
     .visual-chip--top { top: 18px; right: -3px; }
@@ -363,7 +363,7 @@ const structuredData = [
     .pathway-card { padding: 28px 24px; border-radius: 24px; }
     .pathway-card__number { font-size: 58px; }
     .workflow__visual { min-height: 280px; border-radius: 28px; }
-    .workflow__badge { right: 12px; bottom: 24px; font-size: 11px; }
+    .workflow__badge { right: 12px; bottom: 24px; font-size: 13px; }
     .workflow li { grid-template-columns: 40px 1fr; gap: 12px; }
     .workflow li > span { width: 38px; height: 38px; }
     .capability-grid { grid-template-columns: 1fr; }

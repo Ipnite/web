@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageHeroImage from "@components/PageHeroImage.astro";
+import { routeFor } from "../data/routes";
 
 interface FaqItem {
   question: string;
@@ -115,7 +116,7 @@ const faqStructuredData = {
       <div class="faq-actions">
         <a href="https://app.ipnite.com/" target="_blank" rel="noopener" class="faq-button faq-button-primary">{primaryActionLabel}</a>
         <a href="#faq-list" class="faq-button faq-button-secondary">{listActionLabel}</a>
-        <a href="/#how-it-works" class="faq-button faq-button-secondary">{howItWorksLabel}</a>
+        <a href={`${routeFor("home", lang ?? "en")}#how-it-works`} class="faq-button faq-button-secondary">{howItWorksLabel}</a>
       </div>
       <div class="faq-note">
         <span aria-hidden="true">!</span>
@@ -440,7 +441,7 @@ const faqStructuredData = {
     margin-top: 8px;
     color: #938d8e;
     font-family: "Roboto Slab", serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
   }
@@ -648,7 +649,7 @@ const faqStructuredData = {
       width: 92px;
       height: 62px;
       border-radius: 20px;
-      font-size: 11px;
+      font-size: 13px;
     }
 
     .faq-line {

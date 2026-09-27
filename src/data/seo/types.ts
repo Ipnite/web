@@ -46,7 +46,7 @@ export interface SeoPage {
 }
 
 export const commonCta = {
-  en: ["Get your application ready to file", "Start with a free 7-day trial: explore your invention with the Discovery Agent and run your first prior-art search. No credit card."],
-  es: ["Deja tu solicitud lista para presentar", "Empieza con la prueba gratis de 7 días: explora tu invención con el Agente de descubrimiento y haz tu primera búsqueda de antecedentes. Sin tarjeta."],
-  pt: ["Deixe seu pedido pronto para depósito", "Comece com o teste grátis de 7 dias: explore sua invenção com o Agente de descoberta e faça sua primeira busca de anterioridade. Sem cartão."],
+  en: ["Get your application ready to file", "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges."],
+  es: ["Deja tu solicitud lista para presentar", "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos."],
+  pt: ["Deixe seu pedido pronto para depósito", "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas."],
 } as const;

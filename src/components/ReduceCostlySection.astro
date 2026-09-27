@@ -15,7 +15,6 @@ const copy = lang === "es"
         { risk: "Alcance débil", help: "Sugiere variantes más amplias" },
         { risk: "Conflictos con antecedentes", help: "Detecta invenciones similares" },
         { risk: "Borradores incompletos", help: "Guía una estructura correcta" },
-        { risk: "Divulgación prematura", help: "Te ayuda a presentar antes" },
       ],
     }
   : lang === "pt"
@@ -28,7 +27,6 @@ const copy = lang === "es"
         { risk: "Escopo fraco", help: "Sugere variantes mais amplas" },
         { risk: "Conflitos com anterioridades", help: "Detecta invenções semelhantes" },
         { risk: "Rascunhos incompletos", help: "Guia uma estrutura correta" },
-        { risk: "Divulgação prematura", help: "Incentiva o depósito cedo" },
       ],
     }
   : {
@@ -40,7 +38,6 @@ const copy = lang === "es"
         { risk: "Weak scope", help: "Suggests broader variants" },
         { risk: "Conflicts with prior art", help: "Detects similar inventions" },
         { risk: "Incomplete drafts", help: "Guides a proper structure" },
-        { risk: "Premature disclosure", help: "Encourages early filing" },
       ],
     };
 
@@ -48,7 +45,6 @@ const cards = [
   { icon: "/icons/lupa.svg", iconClass: "icon-search" },
   { icon: "/images/cerebro.png", iconClass: "icon-brain" },
   { icon: "/icons/lapiz.svg", iconClass: "icon-pencil" },
-  { icon: "/icons/candado.svg", iconClass: "icon-lock" },
 ];
 ---
 
@@ -83,7 +79,7 @@ const cards = [
     position: relative;
     overflow: hidden;
     background: #fff;
-    padding: 64px clamp(18px, 5.5vw, 80px);
+    padding: 40px clamp(18px, 5.5vw, 80px) 64px;
   }
 
   .reduce__inner {
@@ -118,7 +114,7 @@ const cards = [
 
   .reduce__cards {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(20px, 2vw, 28px);
     margin-top: clamp(42px, 4.6vw, 60px);
   }
@@ -247,7 +243,7 @@ const cards = [
 
   @media (max-width: 640px) {
     .reduce {
-      padding: 56px 18px;
+      padding: 36px 18px 56px;
     }
 
     .reduce h2 {

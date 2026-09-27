@@ -20,6 +20,9 @@ function pricingLines() {
     .map((market) => `${market.countryLabel.en} ${formatPrice(market.additionalUser.monthly, market.currency, "en")}/month`)
     .join("; ");
   lines.push(`- Additional Institutional users: ${addUsers}.`);
+  for (const market of Object.values(marketPricing)) {
+    lines.push(`- ${market.countryLabel.en} (${market.currency}): Single Draft ${formatPrice(market.singleDraft, market.currency, "en")} one-time; Inventor full-draft add-on ${formatPrice(market.draftAddon, market.currency, "en")}; Startup FTO add-on ${formatPrice(market.ftoAddon, market.currency, "en")} per jurisdiction.`);
+  }
   return lines.join("\n");
 }
 
@@ -53,7 +56,7 @@ export const GET: APIRoute = () => {
 - The Drafter: drafts independent and dependent claims, a detailed description with embodiments, background, summary, and abstract.
 - Drawing Agent: generates reference drawings with consistent reference numerals.
 - Specialized and QA agents: review field-specific language and formatting.
-- Export: DOCX on every plan; JSON and ZIP project export on Startup and Institutional.
+- Export: DOCX for purchased drafts; JSON and ZIP project export on Startup and Institutional.
 - Patentability and freedom-to-operate (FTO) analyses, delivered as AI-assisted deliverables that the user reads or has professionally reviewed.
 - Portfolio management: filings, calendar, deadline alerts, collaborators, and team permissions.
 
@@ -69,11 +72,12 @@ Prices depend on the user's country or region and are shown on the home page pri
 
 ${pricingLines()}
 
-- Inventor: 1 active project, 2 prior-art searches per month, patentability search, AI-assisted drafting, drawings and QA, DOCX export, filing management and calendar, 1 external collaborator, 1 GB storage, FTO as an add-on.
-- Startup: up to 10 active projects, 10 prior-art searches per month, patentability search, drafting, drawings and QA, DOCX, JSON and ZIP export, portfolio and filing management, up to 3 collaborators per project, 15 GB storage, FTO as an add-on.
+- Inventor: 1 active project, 2 prior-art searches per month, workspace, portfolio, documents, dates and alerts, 1 external collaborator and 1 GB storage. Full patent drafts are discounted add-ons, not included in the base subscription.
+- Startup: up to 10 active projects, 10 prior-art searches per month, patentability search, drafting, drawings and QA within plan limits, DOCX, JSON and ZIP export, portfolio and filing management, up to 3 collaborators per project, 15 GB storage, FTO as an add-on priced per jurisdiction.
 - Institutional: 3 users included, unlimited active projects subject to reasonable use, 50 prior-art searches per month, all modules, FTO included, DOCX, JSON and ZIP export, team permissions, invention disclosure management, 50 GB storage.
 - IPnite for Research: eligible universities, research centers, and technology transfer offices receive 50% off the Institutional plan and additional users.
-- Free trial: 7 days with one prior-art search using the Discovery Agent. No credit card and no automatic charge; drafting with The Drafter requires a paid plan.
+- Free trial: Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.
+- Single Draft: 1 complete prior-art search, 1 complete refined draft with claims, specification and abstract, drawings where supported, QA and export. One-time payment, no subscription required. The purchase may be credited toward an eligible subscription upgrade.
 - Renewal: paid plans renew automatically each month or year until cancelled; users cancel anytime from their account and keep access until the end of the paid period.
 - Payments: Stripe today; local methods such as Mercado Pago (Argentina) and Pix (Brazil) are being added.
 

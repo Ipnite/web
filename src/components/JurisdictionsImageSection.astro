@@ -9,19 +9,19 @@ const { lang = "en" } = Astro.props;
 const copy = lang === "es"
   ? {
       eyebrow: "JURISDICCIONES",
-      title: "Donde IPnite puede usarse hoy",
-      body: "6 jurisdicciones activas hoy, y seguimos creciendo. Próximamente: presentación directa ante el INPI Argentina desde la plataforma.",
+      title: "Dónde puede usarse IPnite hoy",
+      body: "6 jurisdicciones activas hoy, y seguimos creciendo.",
     }
   : lang === "pt"
   ? {
       eyebrow: "JURISDIÇÕES",
       title: "Onde a IPnite pode ser usada hoje",
-      body: "6 jurisdições ativas hoje, e seguimos crescendo. Em breve: depósito direto no INPI Argentina pela plataforma.",
+      body: "6 jurisdições ativas hoje, e seguimos crescendo.",
     }
   : {
       eyebrow: "JURISDICTIONS",
       title: "Where IPnite can be used today",
-      body: "6 active jurisdictions today, and growing. Coming soon: direct filing with INPI Argentina from the platform.",
+      body: "6 active jurisdictions today, and growing.",
     };
 
 const jurisdictions: Array<{ code: string; office: string; route?: RouteKey; label: string }> = [

@@ -103,7 +103,7 @@ export const patentDraftingSoftware: ClusterPage = {
         { q: "Should a firm replace its Word add-ins with an AI platform?", a: "Not necessarily. Proofreading add-ins and generative platforms solve different problems. Many teams draft in a platform, export to DOCX, and still run their usual checks in Word." },
         { q: "How much does patent drafting software cost?", a: "Pricing varies widely. Some vendors publish monthly plans, some charge per application, and many enterprise tools only quote on request. Compare what each plan includes, such as users, projects, and searches, not just the headline price." },
       ],
-      cta: { heading: "Pilot IPnite on a real disclosure", body: "Start a 7-day free trial, run a prior-art search, and see how far a draft gets before your team takes over. No credit card." },
+      cta: { heading: "Pilot IPnite on a real disclosure", body: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges." },
     },
     es: {
       title: "Software para redactar patentes: cómo elegirlo | IPnite",
@@ -134,7 +134,7 @@ export const patentDraftingSoftware: ClusterPage = {
             ["Limpiar borradores y detectar errores antes de presentar", "Revisión en Word, verificación de antecedentes y números de referencia", "Redacción generativa"],
             ["Escribir primeros borradores a partir de divulgaciones", "Captura de la divulgación, generación de reivindicaciones, descripción y exportación en DOCX editable", "Grandes tableros de analítica"],
             ["Decidir si vale la pena presentar", "Búsqueda de antecedentes conectada al borrador e informes de patentabilidad", "Herramientas para oficios del examinador"],
-            ["Organizar muchas invenciones y plazos", "Registros de cartera, plazos, permisos y colaboradores", "Generación avanzada de texto"],
+            ["Organizar muchas invenciones y plazos", "Registros de portafolio, plazos, permisos y colaboradores", "Generación avanzada de texto"],
             ["Responder objeciones del examinador", "Análisis de oficios y redacción de respuestas", "Captura de la divulgación"],
           ],
         },
@@ -172,7 +172,7 @@ export const patentDraftingSoftware: ClusterPage = {
           type: "prose",
           heading: "Dónde encaja IPnite",
           paragraphs: [
-            "IPnite es una plataforma de flujo completo. Un mismo proyecto reúne la divulgación de la invención, la búsqueda de antecedentes, las reivindicaciones y la descripción que redacta The Drafter, los dibujos, el control de calidad, la exportación en DOCX y los registros de cartera. Admite la preparación para la USPTO, el IMPI de México, el INPI de Argentina, el INPI de Brasil y solicitudes PCT, en español, inglés y portugués.",
+            "IPnite es una plataforma de flujo completo. Un mismo proyecto reúne la divulgación de la invención, la búsqueda de antecedentes, las reivindicaciones y la descripción que redacta el Redactor, los dibujos, el control de calidad, la exportación en DOCX y los registros de portafolio. Admite la preparación para la USPTO, el IMPI de México, el INPI de Argentina, el INPI de Brasil y solicitudes PCT, en español, inglés y portugués.",
             "Encaja muy bien cuando el cuello de botella son los primeros borradores, las respuestas al examinador y el ir y venir entre herramientas separadas, y está pensada para la práctica latinoamericana, con precios locales para México, Argentina, Brasil y el resto de la región. A los equipos que solo necesitan revisar en Word borradores que ya escriben ellos mismos quizá les sirva más un complemento.",
           ],
           bullets: [
@@ -192,12 +192,12 @@ export const patentDraftingSoftware: ClusterPage = {
         },
       ],
       faqs: [
-        { q: "¿Qué es un software para redactar patentes?", a: "Es software que ayuda a preparar solicitudes de patente. Va desde complementos de Word que revisan y automatizan formularios hasta herramientas de IA que generan reivindicaciones y descripciones, y plataformas que conectan la redacción con la búsqueda de antecedentes, los dibujos y la cartera." },
+        { q: "¿Qué es un software para redactar patentes?", a: "Es software que ayuda a preparar solicitudes de patente. Va desde complementos de Word que revisan y automatizan formularios hasta herramientas de IA que generan reivindicaciones y descripciones, y plataformas que conectan la redacción con la búsqueda de antecedentes, los dibujos y el portafolio." },
         { q: "¿La redacción de patentes con IA es suficientemente precisa para presentar?", a: "Puede producir primeros borradores útiles, pero la precisión depende de la calidad de la divulgación y de la revisión. Antes de presentar hay que verificar el alcance de las reivindicaciones, el soporte en la descripción y la coherencia del documento." },
         { q: "¿Un despacho debería reemplazar sus complementos de Word por una plataforma de IA?", a: "No necesariamente. Resuelven problemas distintos. Muchos equipos redactan en una plataforma, exportan en DOCX y siguen haciendo sus revisiones habituales en Word." },
         { q: "¿Cuánto cuesta un software de redacción de patentes?", a: "Varía mucho. Algunos proveedores publican planes mensuales, otros cobran por solicitud y muchas herramientas empresariales solo cotizan bajo pedido. Compara lo que incluye cada plan (usuarios, proyectos y búsquedas), no solo el precio." },
       ],
-      cta: { heading: "Prueba IPnite con una divulgación real", body: "Empieza la prueba gratis de 7 días, haz una búsqueda de antecedentes y comprueba hasta dónde llega el borrador antes de que tu equipo tome el control. Sin tarjeta." },
+      cta: { heading: "Prueba IPnite con una divulgación real", body: "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos." },
     },
     pt: {
       title: "Software para redigir patentes: como escolher | IPnite",
@@ -291,7 +291,7 @@ export const patentDraftingSoftware: ClusterPage = {
         { q: "Um escritório deve trocar seus suplementos do Word por uma plataforma de IA?", a: "Não necessariamente. Eles resolvem problemas diferentes. Muitas equipes redigem em uma plataforma, exportam em DOCX e continuam fazendo suas revisões habituais no Word." },
         { q: "Quanto custa um software de redação de patentes?", a: "Varia muito. Alguns fornecedores publicam planos mensais, outros cobram por pedido e muitas ferramentas corporativas só informam preço sob consulta. Compare o que cada plano inclui (usuários, projetos e buscas), não só o preço." },
       ],
-      cta: { heading: "Teste a IPnite com uma divulgação real", body: "Comece o teste grátis de 7 dias, faça uma busca de anterioridade e veja até onde o rascunho chega antes que sua equipe assuma. Sem cartão." },
+      cta: { heading: "Teste a IPnite com uma divulgação real", body: "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas." },
     },
   },
 };

@@ -64,35 +64,60 @@ export function ipniteUsPrices(locale: Locale) {
 }
 
 /**
- * IPnite's regional prices for the Spanish and Portuguese pages (the LATAM strategy), read from the pricing config.
- * English pages keep US prices; Spanish pages show Latin America, Mexico, and Argentina; Portuguese pages show Brazil.
+ * IPnite's regional prices for the comparison pages (the LATAM strategy), read from the pricing config.
+ * Commercial path: Try (free trial) → Draft (one-time Single Draft) → Manage (Inventor) → Grow (Startup / Institutional).
+ * Spanish pages lead with Latin America, Mexico, and Argentina; Portuguese pages with Brazil; English pages show Latin America and the US.
  */
 export function ipniteRegionalPricing(locale: Locale) {
   // Currency codes (USD, MXN, ARS) avoid ambiguity where several "$" currencies appear together.
-  const f = (code: keyof typeof marketPricing, plan: "inventor" | "startup" | "institutional") => locale === "es"
-    ? new Intl.NumberFormat("es-MX", { style: "currency", currency: marketPricing[code].currency, currencyDisplay: "code", maximumFractionDigits: 0 }).format(marketPricing[code].prices[plan].monthly).replace(/\u00a0/g, " ")
-    : formatPrice(marketPricing[code].prices[plan].monthly, marketPricing[code].currency, locale);
-  const inventor = { latam: f("LATAM", "inventor"), mx: f("MX", "inventor"), ar: f("AR", "inventor"), br: f("BR", "inventor"), us: f("US", "inventor") };
+  const money = (code: keyof typeof marketPricing, amount: number) => locale === "pt" && code === "BR"
+    ? formatPrice(amount, marketPricing[code].currency, locale)
+    : new Intl.NumberFormat(locale === "pt" ? "pt-BR" : locale === "es" ? "es-MX" : "en-US", { style: "currency", currency: marketPricing[code].currency, currencyDisplay: "code", maximumFractionDigits: 0 }).format(amount).replace(/\u00a0/g, " ");
+  const plan = (code: keyof typeof marketPricing, p: "inventor" | "startup" | "institutional") => money(code, marketPricing[code].prices[p].monthly);
+  const draft = (code: keyof typeof marketPricing) => money(code, marketPricing[code].singleDraft);
+  const addon = (code: keyof typeof marketPricing) => money(code, marketPricing[code].draftAddon);
+  const inventor = { latam: plan("LATAM", "inventor"), mx: plan("MX", "inventor"), ar: plan("AR", "inventor"), br: plan("BR", "inventor"), us: plan("US", "inventor") };
   if (locale === "es") {
     return {
       inventor,
-      inventorSummary: `Inventor desde ${inventor.latam}/mes en Latinoamérica (${inventor.mx} en México, ${inventor.ar} en Argentina)`,
-      oneProvisional: `Un mes del plan Inventor: ${inventor.latam} en Latinoamérica, ${inventor.mx} en México, ${inventor.ar} en Argentina, ${inventor.us} en EE. UU.`,
-      plans: `Inventor ${f("LATAM", "inventor")}, Startup ${f("LATAM", "startup")}, Institucional ${f("LATAM", "institutional")} al mes en Latinoamérica; precios locales en México y Argentina`,
+      singleDraft: `${draft("MX")} en México, ${draft("AR")} en Argentina y ${draft("LATAM")} en el resto de Latinoamérica`,
+      singleDraftLatam: `${draft("MX")} en México, ${draft("AR")} en Argentina y ${draft("LATAM")} en el resto de Latinoamérica`,
+      singleDraftSummary: `Borrador con el Redactor, pago único: ${draft("MX")} en México, ${draft("AR")} en Argentina o ${draft("LATAM")} en el resto de Latinoamérica`,
+      draftAddon: `${addon("MX")} en México, ${addon("AR")} en Argentina y ${addon("LATAM")} en el resto de Latinoamérica`,
+      inventorSummary: `Inventor: ${inventor.mx}/mes en México, ${inventor.ar}/mes en Argentina o ${inventor.latam}/mes en el resto de Latinoamérica`,
+      plans: `México: borrador ${draft("MX")}; Inventor ${plan("MX", "inventor")}, Startup ${plan("MX", "startup")}, Institucional ${plan("MX", "institutional")} al mes. Argentina: borrador ${draft("AR")}; Inventor ${plan("AR", "inventor")}, Startup ${plan("AR", "startup")}, Institucional ${plan("AR", "institutional")} al mes. Resto de Latinoamérica: borrador ${draft("LATAM")}; Inventor ${plan("LATAM", "inventor")}, Startup ${plan("LATAM", "startup")}, Institucional ${plan("LATAM", "institutional")} al mes`,
+      currency: "En moneda local: pesos mexicanos (MXN) en México, pesos argentinos (ARS) en Argentina y reales (BRL) en Brasil; USD en el resto de Latinoamérica",
+      usdOnly: "Solo en dólares estadounidenses (USD)",
+      path: "Prueba gratis → borrador de pago único con el Redactor → plan Inventor para gestionar tu PI → Startup o Institucional para crecer",
+      upgrade: "Si pasas al plan Inventor anual, se descuenta el 100% del borrador en el primer año; si pasas a Startup, se descuenta del primer mes",
     };
   }
   if (locale === "pt") {
     return {
       inventor,
-      inventorSummary: `Inventor ${inventor.br}/mês no Brasil`,
-      oneProvisional: `Um mês do plano Inventor: ${inventor.br} no Brasil, ${inventor.latam} no restante da América Latina, ${inventor.us} nos EUA`,
-      plans: `Inventor ${f("BR", "inventor")}, Startup ${f("BR", "startup")}, Institucional ${f("BR", "institutional")} por mês no Brasil`,
+      singleDraft: `${draft("BR")} no Brasil e ${draft("LATAM")} no restante da América Latina`,
+      singleDraftLatam: `${draft("BR")} no Brasil e ${draft("LATAM")} no restante da América Latina`,
+      singleDraftSummary: `Minuta avulsa, pagamento único: ${draft("BR")} no Brasil ou ${draft("LATAM")} no restante da América Latina`,
+      draftAddon: `${addon("BR")} no Brasil e ${addon("LATAM")} no restante da América Latina`,
+      inventorSummary: `Inventor: ${inventor.br}/mês no Brasil`,
+      plans: `Brasil: minuta avulsa ${draft("BR")}; Inventor ${plan("BR", "inventor")}, Startup ${plan("BR", "startup")}, Institucional ${plan("BR", "institutional")} por mês`,
+      currency: "Em moeda local: reais (BRL) no Brasil, pesos mexicanos (MXN) no México e pesos argentinos (ARS) na Argentina; USD no restante da América Latina",
+      usdOnly: "Apenas em dólares americanos (USD)",
+      path: "Teste grátis → minuta avulsa com pagamento único → plano Inventor para gerenciar sua PI → Startup ou Institucional para crescer",
+      upgrade: "Ao migrar para o plano Inventor anual, 100% da minuta é descontado no primeiro ano; ao migrar para o Startup, é descontado do primeiro mês",
     };
   }
   return {
     inventor,
-    inventorSummary: `Inventor from ${inventor.latam}/month in Latin America (${inventor.us} in the US)`,
-    oneProvisional: `One month of the Inventor plan: ${inventor.latam} in Latin America, ${inventor.us} in the US`,
-    plans: `Inventor ${f("US", "inventor")}, Startup ${f("US", "startup")}, Institutional ${f("US", "institutional")} per month in the US; lower regional prices in Latin America`,
+    singleDraft: `${draft("MX")} in Mexico, ${draft("AR")} in Argentina, ${draft("BR")} in Brazil, ${draft("LATAM")} in the rest of Latin America, and ${draft("US")} in the US`,
+    singleDraftLatam: `${draft("MX")} in Mexico, ${draft("AR")} in Argentina, ${draft("BR")} in Brazil, and ${draft("LATAM")} in the rest of Latin America`,
+    singleDraftSummary: `Single Draft with The Drafter, one-time: ${draft("MX")} in Mexico, ${draft("AR")} in Argentina, ${draft("BR")} in Brazil, ${draft("LATAM")} in the rest of Latin America, ${draft("US")} in the US`,
+    draftAddon: `${addon("MX")} in Mexico, ${addon("AR")} in Argentina, ${addon("BR")} in Brazil, ${addon("LATAM")} in the rest of Latin America, and ${addon("US")} in the US`,
+    inventorSummary: `Inventor from ${inventor.mx}/month in Mexico, ${inventor.ar} in Argentina, ${inventor.br} in Brazil, ${inventor.latam} in the rest of Latin America (${inventor.us} in the US)`,
+    plans: `Single Draft ${draft("US")} (one-time); Inventor ${plan("US", "inventor")}, Startup ${plan("US", "startup")}, Institutional ${plan("US", "institutional")} per month in the US; lower prices in local currency across Latin America`,
+    currency: "Local currency: Mexican pesos (MXN) in Mexico, Argentine pesos (ARS) in Argentina, and reais (BRL) in Brazil; USD in the US and the rest of Latin America",
+    usdOnly: "US dollars (USD) only",
+    path: "Free trial → one-time Single Draft with The Drafter → Inventor plan to manage your IP → Startup or Institutional to grow",
+    upgrade: "Upgrade to an annual Inventor plan and 100% of the Single Draft is credited to the first year; upgrade to Startup and it is credited to the first month",
   };
 }

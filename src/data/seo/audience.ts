@@ -37,7 +37,7 @@ const startups: SeoPage = {
         {
           heading: "Plans that grow with the company",
           paragraphs: [
-            "The Startup plan includes up to 10 active projects, 10 prior-art searches per month, up to 3 collaborators per project, and DOCX, JSON, and ZIP export. You can start with a free 7-day trial that includes one prior-art search.",
+            "The Startup plan includes up to 10 active projects, 10 prior-art searches per month, up to 3 collaborators per project, and DOCX, JSON, and ZIP export. Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
           ],
         },
         {
@@ -56,7 +56,7 @@ const startups: SeoPage = {
     },
     es: {
       title: "Software de patentes para startups y fundadores | IPnite",
-      description: "Protege tu tecnología antes de presentarla o lanzarla. Busca antecedentes, redacta una solicitud lista para presentar y gestiona tu cartera de PI con tu equipo.",
+      description: "Protege tu tecnología antes de presentarla o lanzarla. Busca antecedentes, redacta una solicitud lista para presentar y gestiona tu portafolio de PI con tu equipo.",
       h1: "Herramientas de patentes para startups",
       eyebrow: "CONSTRUYE PI CON RECURSOS LIMITADOS",
       lead: "Los equipos en etapa temprana necesitan proteger su ventaja técnica antes de presentarla, publicarla o lanzarla, sin gastar su capital en un primer borrador. IPnite da a los fundadores un camino guiado de la invención a la solicitud lista para presentar.",
@@ -77,13 +77,13 @@ const startups: SeoPage = {
             "El conocimiento técnico convertido en una divulgación completa",
             "Reivindicaciones, descripción y dibujos en un solo proyecto",
             "Exportación en DOCX para presentar o revisar",
-            "Versiones, colaboradores y plazos en una sola cartera",
+            "Versiones, colaboradores y plazos en un solo portafolio",
           ],
         },
         {
           heading: "Planes que crecen con tu empresa",
           paragraphs: [
-            "El plan Startup incluye hasta 10 proyectos activos, 10 búsquedas de antecedentes al mes, hasta 3 colaboradores por proyecto y exportación en DOCX, JSON y ZIP. Puedes empezar con la prueba gratis de 7 días, que incluye una búsqueda de antecedentes.",
+            "El plan Startup incluye hasta 10 proyectos activos, 10 búsquedas de antecedentes al mes, hasta 3 colaboradores por proyecto y exportación en DOCX, JSON y ZIP. Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos.",
           ],
         },
         {
@@ -129,7 +129,7 @@ const startups: SeoPage = {
         {
           heading: "Planos que crescem com a empresa",
           paragraphs: [
-            "O plano Startup inclui até 10 projetos ativos, 10 buscas de anterioridade por mês, até 3 colaboradores por projeto e exportação em DOCX, JSON e ZIP. Você pode começar com o teste grátis de 7 dias, que inclui uma busca de anterioridade.",
+            "O plano Startup inclui até 10 projetos ativos, 10 buscas de anterioridade por mês, até 3 colaboradores por projeto e exportação em DOCX, JSON e ZIP. Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas.",
           ],
         },
         {
@@ -196,7 +196,7 @@ const attorneys: SeoPage = {
         },
       ],
       cta: "Try IPnite with your next matter",
-      ctaBody: "Start a free 7-day trial with one prior-art search, or talk to us about the Institutional plan.",
+      ctaBody: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
     },
     es: {
       title: "Redacción de patentes con IA para abogados y agentes | IPnite",
@@ -239,7 +239,7 @@ const attorneys: SeoPage = {
         },
       ],
       cta: "Prueba IPnite con tu próximo asunto",
-      ctaBody: "Empieza la prueba gratis de 7 días con una búsqueda de antecedentes, o escríbenos para conocer el plan Institucional.",
+      ctaBody: "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos.",
     },
     pt: {
       title: "Redação de patentes com IA para advogados e agentes | IPnite",
@@ -282,7 +282,7 @@ const attorneys: SeoPage = {
         },
       ],
       cta: "Experimente a IPnite no seu próximo caso",
-      ctaBody: "Comece o teste grátis de 7 dias com uma busca de anterioridade ou fale conosco sobre o plano Institucional.",
+      ctaBody: "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas.",
     },
   }),
 };
@@ -331,10 +331,10 @@ const universities: SeoPage = {
     },
     es: {
       title: "Software de patentes para universidades y OTT | IPnite",
-      description: "Recibe divulgaciones de investigadores, busca antecedentes, prepara solicitudes y sigue la cartera institucional. 50% de descuento para instituciones elegibles.",
+      description: "Recibe divulgaciones de investigadores, busca antecedentes, prepara solicitudes y sigue el portafolio institucional. 50% de descuento para instituciones elegibles.",
       h1: "Gestión de patentes para universidades e instituciones de investigación",
       eyebrow: "CONECTA INVESTIGACIÓN Y PATENTES",
-      lead: "Las oficinas de transferencia de tecnología reciben más divulgaciones de las que pueden redactar. IPnite da a investigadores y personal de transferencia una sola estructura para capturar información técnica, buscar antecedentes, preparar solicitudes y mantener visible la cartera institucional.",
+      lead: "Las oficinas de transferencia de tecnología reciben más divulgaciones de las que pueden redactar. IPnite da a investigadores y personal de transferencia una sola estructura para capturar información técnica, buscar antecedentes, preparar solicitudes y mantener visible el portafolio institucional.",
       sections: [
         {
           heading: "De la divulgación del investigador a la decisión de presentar",
@@ -346,7 +346,7 @@ const universities: SeoPage = {
             "Búsqueda de antecedentes conectada con cada divulgación",
             "Redacción, dibujos y control de calidad en un solo proyecto",
             "Gestión de equipos y permisos",
-            "Vista de cartera por departamento y proyecto",
+            "Vista de portafolio por departamento y proyecto",
           ],
         },
         {

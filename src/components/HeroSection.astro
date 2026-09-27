@@ -13,29 +13,26 @@ const copy = lang === "es"
   ? {
       title: ["La protección no debería", "ser un privilegio"],
       seoTitle: "Redacción de Patentes para Inventores, Startups y Profesionales de PI",
-      body: "Busca antecedentes, estructura tu invención, redacta solicitudes, crea dibujos y gestiona tu cartera en una plataforma integral para Latinoamérica.",
-      primary: "Empezar ahora",
+      body: "Con <strong>el Redactor</strong> conviertes tu invención en una solicitud de patente estructurada, lista para revisión. Pago único, sin suscripción.",
+      primary: "Redactar mi patente",
       secondary: "Cómo funciona",
-      faqs: "FAQs",
       laptopAlt: "Plataforma IPnite para redactar patentes en una laptop",
     }
   : lang === "pt"
   ? {
       title: ["A proteção não deveria", "ser um privilégio"],
       seoTitle: "Redação de Patentes para Inventores, Startups e Profissionais de PI",
-      body: "Busque anterioridades, estruture sua invenção, redija pedidos, crie desenhos e gerencie seu portfólio em uma plataforma integrada para a América Latina.",
-      primary: "Começar agora",
+      body: "Com o <strong>The Drafter</strong> você transforma sua invenção em um pedido de patente estruturado, pronto para revisão. Pagamento único, sem assinatura.",
+      primary: "Redigir minha patente",
       secondary: "Como funciona",
-      faqs: "FAQs",
       laptopAlt: "Plataforma IPnite para redigir patentes em um laptop",
     }
   : {
       title: ["Protection Shouldn't", "Be a Privilege"],
       seoTitle: "Patent Drafting for Inventors, Startups and IP Professionals",
-      body: "Search prior art, structure your invention, draft patent applications, create patent drawings, and manage your portfolio in one platform.",
-      primary: "Get Started Now",
-      secondary: "How It Works",
-      faqs: "FAQs",
+      body: "With <strong>The Drafter</strong>, turn your invention into a structured patent application ready for review. One-time payment, no subscription.",
+      primary: "Draft my patent",
+      secondary: "How it works",
       laptopAlt: "IPnite patent drafting platform on a laptop",
     };
 ---
@@ -58,7 +55,7 @@ const copy = lang === "es"
 
       <h1 id="hero-heading">{copy.seoTitle}</h1>
 
-      <p class="hero__lead">{copy.body}</p>
+      <p class="hero__lead" set:html={copy.body} />
 
       <div class="hero__actions">
         <a class="hero__cta hero__cta--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="start_drafting" data-analytics-event="start_drafting_clicked">
@@ -66,9 +63,6 @@ const copy = lang === "es"
         </a>
         <a class="hero__cta" href={`${home}#how-it-works`}>
           {copy.secondary}
-        </a>
-        <a class="hero__cta" href={routeFor("faqs", lang)}>
-          {copy.faqs}
         </a>
       </div>
     </div>
@@ -168,6 +162,10 @@ const copy = lang === "es"
 
   .hero h1{max-width:760px;margin:16px auto 0;color:#4c0815;font-family:"Roboto Slab",serif;font-size:clamp(22px,2.2vw,30px);font-weight:800;line-height:1.2;text-wrap:balance}
 
+  .hero__lead :global(strong) {
+    color: #6b2a2f;
+  }
+
   .hero__lead {
     max-width: 650px;
     margin: clamp(16px, 1.7vw, 22px) auto 0;
@@ -215,7 +213,15 @@ const copy = lang === "es"
 
   .hero__cta--primary {
     min-width: 176px;
+    background: #6b2a2f;
+    color: #fff;
   }
+
+  .hero__cta--primary:hover {
+    background: #4c0815;
+  }
+
+
 
   .hero__brain,
   .hero__capture,
@@ -388,7 +394,11 @@ const copy = lang === "es"
       line-height: 1.2;
     }
 
-    .hero__lead {
+    .hero__lead :global(strong) {
+    color: #6b2a2f;
+  }
+
+  .hero__lead {
       font-size: 15px;
       line-height: 1.42;
     }
@@ -426,7 +436,11 @@ const copy = lang === "es"
       min-height: 0;
     }
 
-    .hero__lead {
+    .hero__lead :global(strong) {
+    color: #6b2a2f;
+  }
+
+  .hero__lead {
       max-width: 320px;
     }
 

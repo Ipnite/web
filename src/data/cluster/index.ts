@@ -57,7 +57,7 @@ const routeLabels: Partial<Record<RouteKey, Record<Locale, string>>> = {
   security: { en: "IPnite security and privacy", es: "Seguridad y privacidad en IPnite", pt: "Segurança e privacidade na IPnite" },
   startups: { en: "Patent software for startups", es: "Software de patentes para startups", pt: "Software de patentes para startups" },
   attorneys: { en: "For patent attorneys and agents", es: "Para abogados y agentes de patentes", pt: "Para advogados e agentes de patentes" },
-  portfolio: { en: "Patent portfolio management", es: "Gestión de cartera de patentes", pt: "Gestão de portfólio de patentes" },
+  portfolio: { en: "Patent portfolio management", es: "Gestión de portafolio de patentes", pt: "Gestão de portfólio de patentes" },
   "jurisdiction-pct": { en: "The PCT process", es: "El proceso PCT", pt: "O processo PCT" },
   learn: { en: "Learning center", es: "Centro de aprendizaje", pt: "Central de aprendizado" },
 };

@@ -12,23 +12,26 @@ type T = Record<Locale, string>;
 const t = (en: string, es: string, pt: string): T => ({ en, es, pt });
 
 const NO_LATAM = t("No stated Latin America focus", "Sin enfoque declarado en Latinoamérica", "Sem foco declarado na América Latina");
+const NOT_FOR_LATAM = t("Not built for Latin America", "No está hecha para Latinoamérica", "Não é feita para a América Latina");
 const NOT_PUB = t("Not published", "No publicado", "Não publicado");
 
-interface Row { tool: string; bestFor: T; offers: T; region: T; latam: T; pricing: T }
+interface Row { tool: string; scope: T; bestFor: T; offers: T; region: T; latam: T; pricing: T }
 
 function rows(locale: Locale): Row[] {
-  const price = ipniteRegionalPricing(locale).inventorSummary;
+  const r = ipniteRegionalPricing(locale);
   return [
     {
       tool: "IPnite",
+      scope: t("Built especially for Latin America", "Hecha especialmente para Latinoamérica", "Feita especialmente para a América Latina"),
       bestFor: t("Latin American inventors, startups, firms, and universities", "Inventores, startups, despachos y universidades de Latinoamérica", "Inventores, startups, escritórios e universidades da América Latina"),
-      offers: t("Drafting, claims, prior-art search, drawings, office notifications and examiner responses by email, direct filing with INPI Argentina, portfolio and deadlines, patentability and FTO, collaboration", "Redacción, reivindicaciones, búsqueda de antecedentes, dibujos, notificaciones de la oficina y respuestas al examinador por correo, presentación directa ante el INPI de Argentina, cartera y plazos, patentabilidad y FTO, colaboración", "Redação, reivindicações, busca de anterioridade, desenhos, notificações do escritório e respostas ao examinador por e-mail, depósito direto no INPI da Argentina, portfólio e prazos, patenteabilidade e FTO, colaboração"),
+      offers: t("Drafting, claims, prior-art search, drawings, office notifications and examiner responses by email, direct filing with INPI Argentina, portfolio and deadlines, patentability and FTO, collaboration", "Redacción, reivindicaciones, búsqueda de antecedentes, dibujos, notificaciones de la oficina y respuestas al examinador por correo, presentación directa ante el INPI de Argentina, portafolio y plazos, patentabilidad y FTO, colaboración", "Redação, reivindicações, busca de anterioridade, desenhos, notificações do escritório e respostas ao examinador por e-mail, depósito direto no INPI da Argentina, portfólio e prazos, patenteabilidade e FTO, colaboração"),
       region: t("IMPI (Mexico), INPI Argentina, INPI Brazil, plus USPTO and PCT", "IMPI (México), INPI Argentina, INPI Brasil, además de USPTO y PCT", "INPI Brasil, IMPI (México), INPI Argentina, além de USPTO e PCT"),
-      latam: t("Yes: Spanish and Portuguese, Latin American office workflows, direct filing with INPI Argentina, local-currency pricing", "Sí: español y portugués, flujos para oficinas latinoamericanas, presentación directa ante el INPI de Argentina, precios en moneda local", "Sim: português e espanhol, fluxos para escritórios latino-americanos, depósito direto no INPI da Argentina, preços em moeda local"),
-      pricing: t(`${price}; monthly or annual; 7-day free trial`, `${price}; mensual o anual; prueba gratis de 7 días`, `${price}; mensal ou anual; teste grátis de 7 dias`),
+      latam: t("Yes, it is its primary market: Spanish and Portuguese, Latin American office workflows, direct filing with INPI Argentina, local-currency pricing", "Sí, es su mercado principal: español y portugués, flujos para oficinas latinoamericanas, presentación directa ante el INPI de Argentina, precios en moneda local", "Sim, é seu mercado principal: português e espanhol, fluxos para escritórios latino-americanos, depósito direto no INPI da Argentina, preços em moeda local"),
+      pricing: t(`${r.singleDraftSummary}; ${r.inventorSummary} to manage your IP; 7-day free trial`, `${r.singleDraftSummary}; ${r.inventorSummary} para gestionar tu PI; prueba gratis de 7 días`, `${r.singleDraftSummary}; ${r.inventorSummary} para gerenciar sua PI; teste grátis de 7 dias`),
     },
     {
       tool: "ClaimMaster",
+      scope: NOT_FOR_LATAM,
       bestFor: t("Practitioners who draft in Microsoft Word", "Profesionales que redactan en Microsoft Word", "Profissionais que redigem no Microsoft Word"),
       offers: t("Word proofreading, GPT-assisted drafting, USPTO forms and correspondence, patent downloads and family trees", "Revisión en Word, redacción asistida con GPT, formularios y correspondencia USPTO, descarga de patentes y familias", "Revisão no Word, redação assistida por GPT, formulários e correspondência do USPTO, download de patentes e famílias"),
       region: t("USPTO", "USPTO", "USPTO"),
@@ -37,6 +40,7 @@ function rows(locale: Locale): Row[] {
     },
     {
       tool: "DeepIP",
+      scope: NOT_FOR_LATAM,
       bestFor: t("Law firms and in-house teams working in Word", "Despachos y equipos internos que trabajan en Word", "Escritórios e equipes internas que trabalham no Word"),
       offers: t("Drafting, claims, prior-art search, drawings, office-action responses, FTO and invalidity; Word add-in", "Redacción, reivindicaciones, búsqueda de antecedentes, dibujos, respuestas a oficios, FTO e invalidez; complemento de Word", "Redação, reivindicações, busca de anterioridade, desenhos, respostas a exigências, FTO e invalidade; suplemento do Word"),
       region: t("USPTO, EPO, CIPO, CNIPA, DPMA, INPI, IPO, JPO, KIPO, UKIPO", "USPTO, EPO, CIPO, CNIPA, DPMA, INPI, IPO, JPO, KIPO, UKIPO", "USPTO, EPO, CIPO, CNIPA, DPMA, INPI, IPO, JPO, KIPO, UKIPO"),
@@ -45,14 +49,16 @@ function rows(locale: Locale): Row[] {
     },
     {
       tool: "Idea2PatentAI",
+      scope: NOT_FOR_LATAM,
       bestFor: t("US inventors who need a single provisional", "Inventores en EE. UU. que necesitan una sola provisional", "Inventores nos EUA que precisam de um único provisório"),
       offers: t("Guided US provisional drafting with claims; Word and PDF export; attorney referral network", "Redacción guiada de provisionales de EE. UU. con reivindicaciones; exportación en Word y PDF; red de referencia de abogados", "Redação guiada de provisórios dos EUA com reivindicações; exportação em Word e PDF; rede de indicação de advogados"),
       region: t("United States (USPTO provisional applications)", "Estados Unidos (provisionales ante la USPTO)", "Estados Unidos (provisórios no USPTO)"),
       latam: NO_LATAM,
-      pricing: t("US$79 per provisional or US$199 for three (one-time)", "US$79 por provisional o US$199 por tres (pago único)", "US$ 79 por provisório ou US$ 199 por três (pagamento único)"),
+      pricing: t("US$79 per provisional or US$299 for three (one-time, plus sales tax); USD only", "US$79 por provisional o US$299 por tres (pago único, más impuestos); solo en USD", "US$ 79 por provisório ou US$ 299 por três (pagamento único, mais impostos); apenas em USD"),
     },
     {
       tool: "IP Author",
+      scope: NOT_FOR_LATAM,
       bestFor: t("Corporate patent groups and law firms", "Grupos corporativos de patentes y despachos", "Grupos corporativos de patentes e escritórios"),
       offers: t("Drafting with flowcharts and block diagrams, office-action responses, prior-art search, invention disclosure intake", "Redacción con diagramas de flujo y de bloques, respuestas a oficios, búsqueda de antecedentes, captura de divulgaciones", "Redação com fluxogramas e diagramas de blocos, respostas a exigências, busca de anterioridade, coleta de divulgações"),
       region: t("Prior-art search across 100+ jurisdictions", "Búsqueda de antecedentes en más de 100 jurisdicciones", "Busca de anterioridade em mais de 100 jurisdições"),
@@ -61,6 +67,7 @@ function rows(locale: Locale): Row[] {
     },
     {
       tool: "Patent Bots",
+      scope: NOT_FOR_LATAM,
       bestFor: t("US patent attorneys and firms", "Abogados de patentes y despachos en EE. UU.", "Advogados de patentes e escritórios nos EUA"),
       offers: t("Proofreading, drafting tools, office-action shells, IDS and USPTO forms, examiner statistics", "Revisión, herramientas de redacción, plantillas de respuesta a oficios, IDS y formularios USPTO, estadísticas de examinadores", "Revisão, ferramentas de redação, modelos de resposta a exigências, IDS e formulários do USPTO, estatísticas de examinadores"),
       region: t("USPTO", "USPTO", "USPTO"),
@@ -69,24 +76,27 @@ function rows(locale: Locale): Row[] {
     },
     {
       tool: "PatentAssist",
+      scope: NOT_FOR_LATAM,
       bestFor: t("Patent agents and attorneys drafting for India and the US", "Agentes y abogados que redactan para India y EE. UU.", "Agentes e advogados que redigem para a Índia e os EUA"),
       offers: t("Disclosure, provisional and complete drafts, claims, patent search (IPO, USPTO, EPO), drawings and patentability reports in beta", "Divulgación, borradores provisionales y completos, reivindicaciones, búsqueda (IPO, USPTO, EPO), dibujos e informes de patentabilidad en beta", "Divulgação, rascunhos provisórios e completos, reivindicações, busca (IPO, USPTO, EPO), desenhos e relatórios de patenteabilidade em beta"),
       region: t("India (IPO) and USPTO formats", "Formatos de India (IPO) y USPTO", "Formatos da Índia (IPO) e do USPTO"),
       latam: NO_LATAM,
-      pricing: t("Lite US$29/month, Pro US$90/month, Enterprise by quote; 7-day trial", "Lite US$29/mes, Pro US$90/mes, Enterprise a cotización; prueba de 7 días", "Lite US$ 29/mês, Pro US$ 90/mês, Enterprise sob consulta; teste de 7 dias"),
+      pricing: t("Lite US$29/month, Pro US$90/month, Enterprise by quote; 7-day trial; USD only", "Lite US$29/mes, Pro US$90/mes, Enterprise a cotización; prueba de 7 días; solo en USD", "Lite US$ 29/mês, Pro US$ 90/mês, Enterprise sob consulta; teste de 7 dias; apenas em USD"),
     },
     {
       tool: "Patsnap",
+      scope: NOT_FOR_LATAM,
       bestFor: t("Large organizations that need patent data and analytics", "Organizaciones grandes que necesitan datos y analítica de patentes", "Grandes organizações que precisam de dados e análise de patentes"),
-      offers: t("Patent search and analytics, drafting agents, novelty and FTO search, office-action responses, portfolio analysis", "Búsqueda y analítica de patentes, agentes de redacción, búsqueda de novedad y FTO, respuestas a oficios, análisis de cartera", "Busca e análise de patentes, agentes de redação, busca de novidade e FTO, respostas a exigências, análise de portfólio"),
+      offers: t("Patent search and analytics, drafting agents, novelty and FTO search, office-action responses, portfolio analysis", "Búsqueda y analítica de patentes, agentes de redacción, búsqueda de novedad y FTO, respuestas a oficios, análisis de portafolio", "Busca e análise de patentes, agentes de redação, busca de novidade e FTO, respostas a exigências, análise de portfólio"),
       region: t("Patent data from 174 jurisdictions", "Datos de patentes de 174 jurisdicciones", "Dados de patentes de 174 jurisdições"),
       latam: NO_LATAM,
       pricing: t("Not published; 14-day free trial", "No publicado; prueba gratis de 14 días", "Não publicado; teste grátis de 14 dias"),
     },
     {
       tool: "Solve Intelligence",
+      scope: NOT_FOR_LATAM,
       bestFor: t("Large firms and in-house IP teams", "Despachos grandes y equipos internos de PI", "Grandes escritórios e equipes internas de PI"),
-      offers: t("Drafting including Markush claims, patentability, figures, office actions, portfolio, FTO, infringement", "Redacción con reivindicaciones Markush, patentabilidad, figuras, oficios, cartera, FTO, infracción", "Redação com reivindicações Markush, patenteabilidade, figuras, exigências, portfólio, FTO, infração"),
+      offers: t("Drafting including Markush claims, patentability, figures, office actions, portfolio, FTO, infringement", "Redacción con reivindicaciones Markush, patentabilidad, figuras, oficios, portafolio, FTO, infracción", "Redação com reivindicações Markush, patenteabilidade, figuras, exigências, portfólio, FTO, infração"),
       region: t("Multi-jurisdiction research", "Investigación en varias jurisdicciones", "Pesquisa em várias jurisdições"),
       latam: NO_LATAM,
       pricing: NOT_PUB,
@@ -95,13 +105,13 @@ function rows(locale: Locale): Row[] {
 }
 
 const headers = {
-  en: ["Tool", "Best for", "What it offers (per its website)", "Offices / region", "Latin America", "Public pricing"],
-  es: ["Herramienta", "Ideal para", "Qué ofrece (según su sitio)", "Oficinas / región", "Latinoamérica", "Precio público"],
-  pt: ["Ferramenta", "Ideal para", "O que oferece (segundo o site)", "Escritórios / região", "América Latina", "Preço público"],
+  en: ["Tool", "Scope", "Best for", "What it offers (per its website)", "Offices / region", "Latin America", "Public pricing"],
+  es: ["Herramienta", "Alcance", "Ideal para", "Qué ofrece (según su sitio)", "Oficinas / región", "Latinoamérica", "Precio público"],
+  pt: ["Ferramenta", "Alcance", "Ideal para", "O que oferece (segundo o site)", "Escritórios / região", "América Latina", "Preço público"],
 } as const;
 
 function table(locale: Locale) {
-  return { columns: [...headers[locale]], rows: rows(locale).map((x) => [x.tool, x.bestFor[locale], x.offers[locale], x.region[locale], x.latam[locale], x.pricing[locale]]) };
+  return { columns: [...headers[locale]], rows: rows(locale).map((x) => [x.tool, x.scope[locale], x.bestFor[locale], x.offers[locale], x.region[locale], x.latam[locale], x.pricing[locale]]) };
 }
 
 const { patentpal: _omitted, ...comparedVendors } = vendorSources;
@@ -132,7 +142,7 @@ function en(): ClusterLocaleCopy {
         items: [
           { title: "Latin American patent offices", body: "Drafting workflows for Mexico's IMPI, INPI Argentina, and INPI Brazil, plus the USPTO and PCT for international protection." },
           { title: "Spanish and Portuguese", body: "The platform and its drafts work in Spanish and Portuguese, not only English." },
-          { title: "Local prices", body: `Plans in local currencies for Mexico, Argentina, Brazil, and the rest of Latin America. ${ipniteRegionalPricing("en").inventorSummary}.` },
+          { title: "Local prices", body: `Prices in local currencies for Mexico, Argentina, Brazil, and the rest of Latin America. ${ipniteRegionalPricing("en").singleDraftSummary}; ${ipniteRegionalPricing("en").inventorSummary} to manage your IP.` },
           { title: "The whole workflow in one place", body: "Prior-art search, claims, the full application, drawings, and portfolio deadlines in one project." },
           { title: "Office notifications and filing", body: "IPnite gives you a dedicated email address to register with the patent office, so its notifications reach your project and you can answer the examiner from IPnite. In some offices, such as INPI Argentina, you can submit the application directly from IPnite." },
         ],
@@ -172,7 +182,7 @@ function en(): ClusterLocaleCopy {
       { q: "Why is IPnite on a list that IPnite publishes?", a: "Because readers comparing tools should see it next to the alternatives. We disclose that we publish the page and rely only on vendors' public websites for other tools." },
     ],
     sources: allSources("en"),
-    cta: { heading: "Try the tool built for Latin America", body: "Prior-art search, claims, drawings, and DOCX export with a 7-day free trial. No credit card." },
+    cta: { heading: "Try the tool built for Latin America", body: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges." },
   };
 }
 
@@ -201,8 +211,8 @@ function es(): ClusterLocaleCopy {
         items: [
           { title: "Oficinas de patentes latinoamericanas", body: "Flujos de redacción para el IMPI de México, el INPI de Argentina y el INPI de Brasil, además de la USPTO y el PCT para protección internacional." },
           { title: "Español y portugués", body: "La plataforma y los borradores funcionan en español y portugués, no solo en inglés." },
-          { title: "Precios locales", body: `Planes en moneda local para México, Argentina, Brasil y el resto de Latinoamérica. ${ipniteRegionalPricing("es").inventorSummary}.` },
-          { title: "Todo el flujo en un solo lugar", body: "Búsqueda de antecedentes, reivindicaciones, la solicitud completa, dibujos y plazos de cartera en un mismo proyecto." },
+          { title: "Precios locales", body: `Precios en moneda local para México, Argentina, Brasil y el resto de Latinoamérica. ${ipniteRegionalPricing("es").singleDraftSummary}; ${ipniteRegionalPricing("es").inventorSummary} para gestionar tu PI.` },
+          { title: "Todo el flujo en un solo lugar", body: "Búsqueda de antecedentes, reivindicaciones, la solicitud completa, dibujos y plazos de portafolio en un mismo proyecto." },
           { title: "Notificaciones y presentación ante la oficina", body: "IPnite te da un correo dedicado que puedes registrar ante la oficina de patentes para recibir sus notificaciones en tu proyecto y responder al examinador desde IPnite. En algunas oficinas, como el INPI de Argentina, puedes presentar la solicitud directamente desde IPnite." },
         ],
       },
@@ -211,7 +221,7 @@ function es(): ClusterLocaleCopy {
         heading: "Qué herramienta conviene a cada usuario",
         items: [
           { title: "Inventores y startups en Latinoamérica", body: "IPnite: divulgación guiada, búsqueda de antecedentes y un borrador completo para el IMPI, el INPI de Argentina, el INPI de Brasil o la USPTO, con precios locales." },
-          { title: "Despachos y agentes en Latinoamérica", body: "IPnite para redactar, responder al examinador y llevar la cartera de clientes en español y portugués, con colaboradores y permisos de equipo." },
+          { title: "Despachos y agentes en Latinoamérica", body: "IPnite para redactar, responder al examinador y llevar el portafolio de clientes en español y portugués, con colaboradores y permisos de equipo." },
           { title: "Inventores en EE. UU. con una sola provisional", body: "IPnite o Idea2PatentAI. Idea2PatentAI cobra por provisional; un mes del plan Inventor de IPnite cuesta menos e incluye además búsqueda de antecedentes y dibujos." },
           { title: "Grandes despachos de EE. UU., Europa o Asia", body: "Solve Intelligence, DeepIP, Patsnap e IP Author se posicionan para equipos empresariales; herramientas en Word como ClaimMaster y Patent Bots convienen a quienes redactan en Word." },
         ],
@@ -241,7 +251,7 @@ function es(): ClusterLocaleCopy {
       { q: "¿Por qué IPnite aparece en una lista que publica IPnite?", a: "Porque quien compara herramientas debe verla junto a las alternativas. Aclaramos que publicamos la página y usamos solo los sitios públicos de los demás proveedores." },
     ],
     sources: allSources("es"),
-    cta: { heading: "Prueba la herramienta pensada para Latinoamérica", body: "Búsqueda de antecedentes, reivindicaciones, dibujos y exportación en DOCX con la prueba gratis de 7 días. Sin tarjeta." },
+    cta: { heading: "Prueba la herramienta pensada para Latinoamérica", body: "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos." },
   };
 }
 
@@ -270,7 +280,7 @@ function pt(): ClusterLocaleCopy {
         items: [
           { title: "Escritórios de patentes latino-americanos", body: "Fluxos de redação para o INPI do Brasil, o IMPI do México e o INPI da Argentina, além do USPTO e do PCT para proteção internacional." },
           { title: "Português e espanhol", body: "A plataforma e os rascunhos funcionam em português e espanhol, não só em inglês." },
-          { title: "Preços locais", body: `Planos em moeda local para Brasil, México, Argentina e o restante da América Latina. ${ipniteRegionalPricing("pt").inventorSummary}.` },
+          { title: "Preços locais", body: `Preços em moeda local para Brasil, México, Argentina e o restante da América Latina. ${ipniteRegionalPricing("pt").singleDraftSummary}; ${ipniteRegionalPricing("pt").inventorSummary} para gerenciar sua PI.` },
           { title: "Todo o fluxo em um só lugar", body: "Busca de anterioridade, reivindicações, o pedido completo, desenhos e prazos do portfólio em um mesmo projeto." },
           { title: "Notificações e depósito no escritório", body: "A IPnite oferece um e-mail dedicado para cadastrar no escritório de patentes, assim as notificações chegam ao seu projeto e você responde ao examinador pela IPnite. Em alguns escritórios, como o INPI da Argentina, você pode depositar o pedido diretamente pela IPnite." },
         ],
@@ -310,7 +320,7 @@ function pt(): ClusterLocaleCopy {
       { q: "Por que a IPnite aparece em uma lista publicada pela IPnite?", a: "Porque quem compara ferramentas deve vê-la ao lado das alternativas. Deixamos claro que publicamos a página e usamos apenas os sites públicos dos outros fornecedores." },
     ],
     sources: allSources("pt"),
-    cta: { heading: "Teste a ferramenta pensada para a América Latina", body: "Busca de anterioridade, reivindicações, desenhos e exportação em DOCX com o teste grátis de 7 dias. Sem cartão." },
+    cta: { heading: "Teste a ferramenta pensada para a América Latina", body: "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas." },
   };
 }
 

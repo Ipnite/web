@@ -5,13 +5,13 @@ interface Props {
   lang?: "en" | "es" | "pt";
 }
 
+import { routeFor } from "../data/routes";
 const { lang = "en" } = Astro.props;
 
 const copy = lang === "es"
   ? {
       badge: "POR QUÉ CONFIAR EN IPNITE",
       headingTop: "Estándar profesional",
-      headingBottom: "Hecho para inventores y profesionales de PI",
       confidential: "Confidencial por diseño",
       privacy: "IPnite no usa tus datos para entrenar modelos ni para ningún otro fin,\ny tú conservas la propiedad de tus ideas",
       workflow: "Flujo de patentes estructurado",
@@ -22,7 +22,6 @@ const copy = lang === "es"
   ? {
       badge: "POR QUE CONFIAR NA IPNITE",
       headingTop: "Padrão profissional",
-      headingBottom: "Feito para inventores e profissionais de PI",
       confidential: "Confidencial por design",
       privacy: "A IPnite não usa seus dados para treinar modelos nem para nenhum outro fim,\ne você mantém a propriedade de suas ideias",
       workflow: "Fluxo de patente estruturado",
@@ -32,7 +31,6 @@ const copy = lang === "es"
   : {
       badge: "WHY TRUST IPNITE",
       headingTop: "Professional Standard",
-      headingBottom: "Built for Inventors and IP Professionals",
       confidential: "Confidential by design",
       privacy: "IPnite never uses your data to train models or for any other purpose,\nand you keep ownership of your ideas",
       workflow: "Structured patent workflow",
@@ -49,7 +47,7 @@ const copy = lang === "es"
 >
   <div class="absolute inset-0 flex flex-col" style="width:1440px;margin:auto;left:0;right:0;">
     <!-- Heading -->
-    <div class="trust-heading"><h2 id="trust-heading"><span>{copy.headingTop}</span><strong>{copy.headingBottom}</strong></h2></div>
+    <div class="trust-heading"><h2 id="trust-heading"><span>{copy.headingTop}</span></h2></div>
 
     <div class="relative mt-[32px] h-[166px] w-[760px] self-center">
       <div class="absolute left-[66px] top-0 h-[78px] w-[628px] rounded-[78px] bg-[#ededed]"></div>
@@ -84,7 +82,7 @@ const copy = lang === "es"
 
     <!-- Disclaimer -->
     <p class="mt-12 h-[25px] w-[860px] self-center text-center [font-family:'Roboto',sans-serif] text-xl font-normal leading-[30px] tracking-[-0.38px] text-[#505050] whitespace-nowrap">
-      {copy.disclaimer}
+      {copy.disclaimer} <a href={routeFor("security", lang)} class="underline">{lang === "es" ? "Seguridad y privacidad" : lang === "pt" ? "Segurança e privacidade" : "Security and privacy"}</a>
     </p>
   </div>
 </section>

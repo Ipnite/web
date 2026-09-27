@@ -43,14 +43,14 @@ export const clusterTopics: ClusterTopic[] = [
     paths: { en: "/patent-claims-generator/", es: "/es/generador-de-reivindicaciones-de-patente/", pt: "/pt-br/gerador-de-reivindicacoes-de-patente/" },
     week: 2,
     recommendedDate: "2026-10-05",
-    released: false,
+    released: true,
   },
   {
     id: "ai-patent-confidentiality",
     paths: { en: "/ai-patent-confidentiality/", es: "/es/confidencialidad-de-patentes-con-ia/", pt: "/pt-br/confidencialidade-de-patentes-com-ia/" },
     week: 2,
     recommendedDate: "2026-10-05",
-    released: false,
+    released: true,
   },
   {
     id: "best-ai-patent-drafting-tools",

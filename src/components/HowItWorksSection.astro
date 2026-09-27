@@ -3,22 +3,26 @@ interface Props { lang?: "en" | "es" | "pt"; }
 const { lang = "en" } = Astro.props;
 import { routeFor, type RouteKey } from "../data/routes";
 const copy = lang === "es" ? {
-  eyebrow: "UNA PLATAFORMA INTEGRAL DE PATENTES", title: "Del descubrimiento a la cartera de propiedad intelectual",
-  lead: "IPnite conecta las tareas esenciales del trabajo de patentes para que inventores, startups y profesionales de PI pasen de la idea a una solicitud lista para presentar, con contexto y control.",
-  cards: [["Búsqueda de antecedentes","Investiga referencias relevantes y organiza los hallazgos antes de redactar.","prior-art"],["Redacción con IA","Convierte la divulgación técnica en reivindicaciones y un borrador estructurado.","ai-drafting"],["Presentación asistida","Recibe asistencia para preparar la presentación de tu solicitud de patente.","filing","Disponible en jurisdicciones seleccionadas"],["Gestión de cartera","Mantén solicitudes, documentos, fechas y alertas en un solo espacio.","portfolio"]],
+  title: "Cómo funciona el Redactor",
+  lead: "De tu invención a una solicitud estructurada para revisión.",
+  cards: [["Describe tu invención", "Explica el problema técnico, la solución y sus variantes.", "invention-disclosure"], ["Reivindicaciones", "Define las características que quieres proteger.", "ai-drafting"], ["Descripción", "Desarrolla la explicación técnica y el resumen.", "patent-specification"], ["Dibujos", "Acompaña el texto con figuras de referencia.", "drawings"], ["Revisión de calidad", "Revisa la coherencia y el formato del borrador.", "patent-quality-review"], ["Exportación", "Obtén el documento para revisión y presentación.", "patent-export"]],
 } : lang === "pt" ? {
-  eyebrow: "UMA PLATAFORMA INTEGRADA DE PATENTES", title: "Da descoberta ao portfólio de propriedade intelectual",
-  lead: "A IPnite conecta as tarefas essenciais do trabalho de patentes para que inventores, startups e profissionais de PI passem da ideia a um pedido pronto para depósito, com contexto e controle.",
-  cards: [["Busca de anterioridade","Pesquise referências relevantes e organize os resultados antes de redigir.","prior-art"],["Redação com IA","Transforme a divulgação técnica em reivindicações e um rascunho estruturado.","ai-drafting"],["Depósito assistido","Receba assistência para preparar o depósito do seu pedido de patente.","filing","Disponível em jurisdições selecionadas"],["Gestão de portfólio","Mantenha pedidos, documentos, prazos e alertas em um só espaço.","portfolio"]],
+  title: "Como funciona o The Drafter",
+  lead: "Da sua invenção a um pedido estruturado para revisão.",
+  cards: [["Descreva sua invenção", "Explique o problema técnico, a solução e suas variantes.", "invention-disclosure"], ["Reivindicações", "Defina as características que deseja proteger.", "ai-drafting"], ["Relatório descritivo", "Desenvolva a explicação técnica e o resumo.", "patent-specification"], ["Desenhos", "Complemente o texto com figuras de referência.", "drawings"], ["QA", "Revise a coerência e a formatação do rascunho.", "patent-quality-review"], ["Exportação", "Obtenha o documento para revisão e depósito.", "patent-export"]],
 } : {
-  eyebrow: "A COMPLETE PATENT WORKFLOW", title: "From discovery to intellectual property portfolio",
-  lead: "IPnite connects the essential parts of patent work so inventors, startups, and IP professionals can move from idea to filing-ready application with context and control.",
-  cards: [["Prior-art search","Investigate relevant references and organize findings before drafting.","prior-art"],["AI-assisted drafting","Turn a technical disclosure into claims and a structured application draft.","ai-drafting"],["Assisted filing","Get assistance preparing to file your patent application.","filing","For selected jurisdictions"],["Portfolio management","Keep applications, documents, deadlines, and alerts in one workspace.","portfolio"]],
+  title: "How The Drafter works",
+  lead: "From your invention to a structured application ready for review.",
+  cards: [["Describe your invention", "Explain the technical problem, solution, and alternatives.", "invention-disclosure"], ["Claims", "Define the features you want to protect.", "ai-drafting"], ["Specification", "Develop the technical description and abstract.", "patent-specification"], ["Drawings", "Support the text with reference figures.", "drawings"], ["QA", "Review the consistency and formatting of the draft.", "patent-quality-review"], ["Export", "Get the document for review and filing.", "patent-export"]],
 };
 const productEvents: Record<string, { cta: string; event?: string }> = {
   "prior-art": { cta: "prior_art_search", event: "prior_art_search_clicked" },
   "ai-drafting": { cta: "ai_patent_drafting", event: "start_drafting_clicked" },
-  filing: { cta: "assisted_filing" },
+  drawings: { cta: "patent_drawings", event: "patent_drawing_clicked" },
+  "invention-disclosure": { cta: "invention_disclosure", event: "start_drafting_clicked" },
+  "patent-specification": { cta: "patent_specification", event: "start_drafting_clicked" },
+  "patent-quality-review": { cta: "patent_quality_review", event: "start_drafting_clicked" },
+  "patent-export": { cta: "patent_export", event: "start_drafting_clicked" },
   portfolio: { cta: "patent_portfolio_management", event: "portfolio_management_clicked" },
 };
 
@@ -31,15 +35,14 @@ const imageAlt = lang === "es" ? "Ilustración del flujo de trabajo de patentes"
     <p class="hiw-lead">{copy.lead}</p>
     <img class="object-contain" alt={imageAlt} src="/images/how-it-works.png" width="522" height="480" loading="lazy" />
     <div class="hiw-steps">
-      {copy.cards.map(([title, body, key, note], index) => (
+      {copy.cards.map(([title, body, key], index) => (
         <article aria-labelledby={`hiw-step-${index + 1}`}>
           <p>
             <strong id={`hiw-step-${index + 1}`} class="hiw-step__title">{title}</strong>
             <span>{body}</span>
-            {note && <small class="hiw-step__note">({note})</small>}
-            <a class="hiw-step__link" href={key === "filing" ? "https://app.ipnite.com" : routeFor(key as RouteKey, lang)} data-analytics-cta={productEvents[key].cta} data-analytics-event={productEvents[key].event}>
+            {key && <a class="hiw-step__link" href={routeFor(key as RouteKey, lang)} data-analytics-cta={productEvents[key].cta} data-analytics-event={productEvents[key].event}>
               {lang === "es" ? "Conocer la herramienta" : lang === "pt" ? "Conhecer a ferramenta" : "Explore the tool"} →
-            </a>
+            </a>}
           </p>
           <div class="hiw-step__icon rounded-full flex items-center justify-center" aria-hidden="true"><span>{index + 1}</span></div>
         </article>

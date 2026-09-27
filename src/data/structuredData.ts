@@ -15,28 +15,28 @@ const planNames = {
 const copy = {
   en: {
     description: "IPnite is an AI-assisted patent preparation platform. Its agents help users search prior art, structure an invention disclosure, draft claims and a full patent application with The Drafter, generate patent drawings, run QA, export to DOCX, and manage a patent portfolio.",
-    trial: "7-day free trial with one prior-art search using the Discovery Agent. No credit card required and no automatic charge.",
+    trial: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
     monthly: "Monthly",
     annual: "Annual",
   },
   es: {
-    description: "IPnite es una plataforma de preparación de patentes asistida por IA. Sus agentes ayudan a buscar antecedentes, estructurar la divulgación de la invención, redactar reivindicaciones y la solicitud completa con The Drafter, generar dibujos, revisar la calidad, exportar en DOCX y gestionar una cartera de patentes.",
-    trial: "Prueba gratis de 7 días con una búsqueda de antecedentes usando el Agente de descubrimiento. Sin tarjeta y sin cobros automáticos.",
+    description: "IPnite es una plataforma de preparación de patentes asistida por IA. Sus agentes ayudan a buscar antecedentes, estructurar la divulgación de la invención, redactar reivindicaciones y la solicitud completa con The Drafter, generar dibujos, revisar la calidad, exportar en DOCX y gestionar un portafolio de patentes.",
+    trial: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
     monthly: "Mensual",
     annual: "Anual",
   },
   pt: {
     description: "A IPnite é uma plataforma de preparação de patentes assistida por IA. Seus agentes ajudam a buscar anterioridades, estruturar a divulgação da invenção, redigir reivindicações e o pedido completo com The Drafter, gerar desenhos, revisar a qualidade, exportar em DOCX e gerenciar um portfólio de patentes.",
-    trial: "Teste grátis de 7 dias com uma busca de anterioridade usando o Agente de descoberta. Sem cartão e sem cobranças automáticas.",
+    trial: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
     monthly: "Mensal",
     annual: "Anual",
   },
 } as const;
 
 const featureList = {
-  en: ["Prior-art search (Discovery Agent)", "Invention disclosure workflow", "Claim and patent application drafting (The Drafter)", "Patent drawing generation", "Field-specific language review", "QA and formatting checks", "DOCX export on every plan; JSON and ZIP export on Startup and Institutional", "Patentability and freedom-to-operate (FTO) analyses delivered for user review", "Patent portfolio, filing, and deadline management", "Team collaboration and permissions"],
-  es: ["Búsqueda de antecedentes (Agente de descubrimiento)", "Flujo de divulgación de la invención", "Redacción de reivindicaciones y de la solicitud completa (The Drafter)", "Generación de dibujos de patente", "Revisión del lenguaje técnico del campo", "Control de calidad y formato", "Exportación en DOCX en todos los planes; JSON y ZIP en Startup e Institucional", "Análisis de patentabilidad y de libertad de operación (FTO) entregados para revisión del usuario", "Gestión de cartera, presentaciones y plazos", "Colaboración en equipo y permisos"],
-  pt: ["Busca de anterioridade (Agente de descoberta)", "Fluxo de divulgação da invenção", "Redação de reivindicações e do pedido completo (The Drafter)", "Geração de desenhos de patente", "Revisão da linguagem técnica do campo", "Controle de qualidade e formatação", "Exportação em DOCX em todos os planos; JSON e ZIP em Startup e Institucional", "Análises de patenteabilidade e de liberdade de operação (FTO) entregues para revisão do usuário", "Gestão de portfólio, depósitos e prazos", "Colaboração em equipe e permissões"],
+  en: ["Prior-art search (Discovery Agent)", "Invention disclosure workflow", "Claim and patent application drafting (The Drafter)", "Patent drawing generation", "Field-specific language review", "QA and formatting checks", "DOCX export for purchased drafts; JSON and ZIP export on Startup and Institutional", "Patentability and freedom-to-operate (FTO) analyses delivered for user review", "Patent portfolio, filing, and deadline management", "Team collaboration and permissions"],
+  es: ["Búsqueda de antecedentes (Agente de descubrimiento)", "Flujo de divulgación de la invención", "Redacción de reivindicaciones y de la solicitud completa (El Redactor)", "Generación de dibujos de patente", "Revisión del lenguaje técnico del campo", "Control de calidad y formato", "Exportación en DOCX de drafts adquiridos; JSON y ZIP en Startup e Institucional", "Análisis de patentabilidad y de libertad de operación (FTO) entregados para revisión del usuario", "Gestión de portafolio, presentaciones y plazos", "Colaboración en equipo y permisos"],
+  pt: ["Busca de anterioridade (Agente de descoberta)", "Fluxo de divulgação da invenção", "Redação de reivindicações e do pedido completo (The Drafter)", "Geração de desenhos de patente", "Revisão da linguagem técnica do campo", "Controle de qualidade e formatação", "Exportação em DOCX de minutas adquiridas; JSON e ZIP em Startup e Institucional", "Análises de patenteabilidade e de liberdade de operação (FTO) entregues para revisão do usuário", "Gestão de portfólio, depósitos e prazos", "Colaboração em equipe e permissões"],
 } as const;
 
 /** SoftwareApplication entity for the IPnite platform, with every regional plan as an Offer. */

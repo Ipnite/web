@@ -3,58 +3,66 @@
 // height Figma: 600px, top: 2080
 interface Props {
   lang?: "en" | "es" | "pt";
+  continuity?: boolean;
 }
 
-const { lang = "en" } = Astro.props;
+import { routeFor } from "../data/routes";
+const { lang = "en", continuity = false } = Astro.props;
+
+const bridge = lang === "es"
+  ? "Después del borrador, tu innovación continúa: organiza documentos y fechas, analiza el FTO y decide dónde invertir."
+  : lang === "pt"
+  ? "Depois do rascunho, sua inovação continua: organize documentos e datas, analise o FTO e decida onde investir."
+  : "After the draft, your innovation continues: organize documents and dates, analyze FTO, and decide where to invest.";
 
 const copy = lang === "es"
   ? {
-      heading: ["Tu equipo de PI en", "una sola interfaz"],
+      heading: "Tu invención merece avanzar.",
       discoveryTitle: "Agente de descubrimiento",
-      discoveryBody: "Te ayuda a estructurar ideas e identificar tecnologías similares",
+      discoveryBenefit: "Descubre qué hace diferente a tu idea",
       draftingTitle: "Agente de redacción",
-      draftingBody: "Genera un borrador de solicitud de patente estructurado",
+      draftingBenefit: "Tu primer borrador, con menos costo y espera",
       ftoTitle: "Agente FTO",
-      ftoBody: "Ayuda a analizar la libertad de operación para revisión profesional",
+      ftoBenefit: "Un primer análisis de libertad de operación (FTO) a tu alcance",
       drawingTitle: "Agente de dibujos",
-      drawingBody: "Genera diagramas y dibujos de referencia",
+      drawingBenefit: "Dibujos sin tener que ser diseñador",
       strategyTitle: "Agente de estrategia",
-      strategyBody: "Te ayuda a planificar los próximos pasos para proteger tu innovación",
-      portfolioTitle: "Agente de gestión de cartera",
-      portfolioBody: "Organiza tus invenciones, documentos y fechas importantes",
+      strategyBenefit: "Claridad para decidir dónde invertir",
+      portfolioTitle: "Agente de gestión de portafolio",
+      portfolioBenefit: "El control de tu PI, sin hojas de cálculo",
       laptopAlt: "Espacio de trabajo de IPnite en una laptop",
     }
   : lang === "pt"
   ? {
-      heading: ["Seu time de PI em", "uma única interface"],
+      heading: "Sua invenção merece avançar.",
       discoveryTitle: "Agente de descoberta",
-      discoveryBody: "Ajuda a estruturar ideias e identificar tecnologias semelhantes",
+      discoveryBenefit: "Descubra o que diferencia sua ideia",
       draftingTitle: "Agente de redação",
-      draftingBody: "Gera um rascunho estruturado de pedido de patente",
+      draftingBenefit: "Seu primeiro rascunho, com menos custo e espera",
       ftoTitle: "Agente FTO",
-      ftoBody: "Ajuda a analisar a liberdade de operação para revisão profissional",
+      ftoBenefit: "Uma análise inicial de FTO ao seu alcance",
       drawingTitle: "Agente de desenhos",
-      drawingBody: "Gera diagramas e desenhos de referência",
+      drawingBenefit: "Desenhos sem precisar ser designer",
       strategyTitle: "Agente de estratégia",
-      strategyBody: "Ajuda a planejar os próximos passos para proteger sua inovação",
+      strategyBenefit: "Clareza para decidir onde investir",
       portfolioTitle: "Agente de gestão de portfólio",
-      portfolioBody: "Organiza suas invenções, documentos e datas importantes",
+      portfolioBenefit: "Controle da sua PI, sem planilhas",
       laptopAlt: "Espaço de trabalho da IPnite em um laptop",
     }
   : {
-      heading: ["Your IP Team in", "One Interface"],
+      heading: "Your invention deserves to move forward.",
       discoveryTitle: "Discovery Agent",
-      discoveryBody: "Helps you structure ideas and identify similar technologies",
+      discoveryBenefit: "Discover what makes your idea different",
       draftingTitle: "Drafter Agent",
-      draftingBody: "Generates a structured patent application draft",
+      draftingBenefit: "Your first draft, with less cost and waiting",
       ftoTitle: "FTO Agent",
-      ftoBody: "Helps analyze freedom to operate for professional review",
+      ftoBenefit: "An initial FTO analysis within reach",
       drawingTitle: "Drawing Agent",
-      drawingBody: "Generates diagrams and reference drawings",
+      drawingBenefit: "Drawings without being a designer",
       strategyTitle: "Strategy Agent",
-      strategyBody: "Helps plan the next steps to protect your innovation",
+      strategyBenefit: "Clarity on where to invest",
       portfolioTitle: "Portfolio Manager Agent",
-      portfolioBody: "Organizes your inventions, documents, and important dates",
+      portfolioBenefit: "Your IP under control, without spreadsheets",
       laptopAlt: "IPnite workspace on a laptop",
     };
 ---
@@ -85,40 +93,41 @@ const copy = lang === "es"
 
     <!-- Textos derecha -->
     <div class="absolute top-[141px] left-[544px] w-[786px]">
-      <h2 id="ipteam-heading" class="[font-family:'Roboto_Slab',serif] font-normal text-[#6b2a2f] text-5xl text-center tracking-[0] leading-[72px] whitespace-nowrap" style="margin-left:27px">{copy.heading[0]} <strong class="font-bold">{copy.heading[1]}</strong></h2>
+      <h2 id="ipteam-heading" class="[font-family:'Roboto_Slab',serif] font-normal text-[#6b2a2f] text-5xl text-center tracking-[0] leading-[72px] whitespace-nowrap" style="margin-left:27px"><strong class="font-bold">{copy.heading}</strong></h2>
+      {continuity && <p class="ip-team__bridge">{bridge}</p>}
 
       <!-- Top row agentes -->
       <div class="relative mt-6 flex gap-0" style="height:96px">
-        <!-- Discovery Agent -->
+        <!-- Drafter Agent -->
         <p class="absolute top-0 left-0 w-[301px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.discoveryTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.discoveryBody}</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.draftingBenefit}</strong>
+          <small class="agent-label">{copy.draftingTitle}</small>
+        </p>
+        <!-- Discovery Agent -->
+        <p class="absolute top-0 left-[290px] w-[242px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
+          <strong class="font-black text-[#6b2a2f]">{copy.discoveryBenefit}</strong>
+          <small class="agent-label">{copy.discoveryTitle}</small>
         </p>
         <!-- FTO Agent -->
-        <p class="absolute top-0 left-[290px] w-[242px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.ftoTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.ftoBody}</span>
-        </p>
-        <!-- Drafter Agent -->
         <p class="absolute top-0 left-[521px] w-[265px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.draftingTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.draftingBody}</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.ftoBenefit}</strong>
+          <small class="agent-label">{copy.ftoTitle}</small>
         </p>
       </div>
 
       <!-- Bottom row agentes -->
       <div class="relative mt-6 ml-[134px] flex gap-2.5" style="height:96px">
         <p class="w-[237px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.portfolioTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.portfolioBody}</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.portfolioBenefit}</strong>
+          <small class="agent-label"><a href={routeFor("portfolio", lang)} data-analytics-cta="patent_portfolio_management" data-analytics-event="portfolio_management_clicked">{copy.portfolioTitle} →</a></small>
         </p>
         <p class="w-[237px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.drawingTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.drawingBody}</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.drawingBenefit}</strong>
+          <small class="agent-label">{copy.drawingTitle}</small>
         </p>
         <p class="w-[306px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.strategyTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.strategyBody}</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.strategyBenefit}</strong>
+          <small class="agent-label">{copy.strategyTitle}</small>
         </p>
       </div>
     </div>
@@ -126,6 +135,21 @@ const copy = lang === "es"
 </section>
 
 <style>
+  .ip-team__bridge {
+    margin: 12px 0 8px;
+    color: #505050;
+    text-align: center;
+    font: 500 19px/1.5 Roboto, sans-serif;
+  }
+
+  .agent-label {
+    display: block;
+    margin-top: 12px;
+    color: #505050;
+    font-size: 0.85em;
+    line-height: 1.3;
+  }
+
   #ip-team {
     height: auto !important;
     padding: 64px clamp(18px, 5vw, 80px);
@@ -137,7 +161,7 @@ const copy = lang === "es"
     inset: auto !important;
     width: min(100%, 1280px) !important;
     display: grid;
-    grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1.38fr);
+    grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
     gap: clamp(24px, 3vw, 48px);
     align-items: center;
     border-radius: 50px;
@@ -226,7 +250,7 @@ const copy = lang === "es"
     }
 
     #ip-team > div > div:nth-child(2) {
-      max-width: 520px;
+      max-width: 600px;
       margin: 0 auto;
     }
   }
@@ -266,7 +290,7 @@ const copy = lang === "es"
 
     #ip-team > div > div:nth-child(2) {
       order: 2;
-      max-width: 330px;
+      max-width: 380px;
       margin: 0 auto;
     }
 

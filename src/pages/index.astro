@@ -2,15 +2,14 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HeroSection          from "@components/HeroSection.astro";
 import WhyWeDoItSection     from "@components/WhyWeDoItSection.astro";
-import IpnitePromiseSection from "@components/IpnitePromiseSection.astro";
-import JurisdictionsSection  from "@components/JurisdictionsImageSection.astro";
+import JurisdictionsImageSection from "@components/JurisdictionsImageSection.astro";
 import YourIPTeamSection    from "@components/YourIPTeamSection.astro";
-import ReduceCostlySection  from "@components/ReduceCostlySection.astro";
 import HowItWorksSection    from "@components/HowItWorksSection.astro";
 import TrustSection         from "@components/TrustSection.astro";
 import PricingSection       from "@components/PricingSection.astro";
 import ContactSection       from "@components/ContactSection.astro";
 import CTAFinalSection      from "@components/CTAFinalSection.astro";
+import ReduceCostlySection  from "@components/ReduceCostlySection.astro";
 import TrustedByMarquee from "@components/TrustedByMarquee.astro";
 import { softwareSchema } from "../data/structuredData";
 
@@ -37,14 +36,14 @@ const homeStructuredData = [
 >
   <HeroSection />
   <TrustedByMarquee />
-  <WhyWeDoItSection />
-  <ReduceCostlySection />
-  <YourIPTeamSection />
-  <TrustSection />
   <HowItWorksSection />
-  <JurisdictionsSection />
-  <IpnitePromiseSection />
-  <PricingSection />
+  <ReduceCostlySection />
+  <PricingSection mode="entry" />
+  <TrustSection />
+  <JurisdictionsImageSection />
+  <YourIPTeamSection continuity />
+  <PricingSection mode="subscriptions" />
+  <WhyWeDoItSection />
   <ContactSection />
   <CTAFinalSection />
 </BaseLayout>

@@ -93,8 +93,8 @@ export const aiPatentToolForInventors: ClusterPage = {
           type: "prose",
           heading: "What it costs",
           paragraphs: [
-            `The Inventor plan costs ${inventorPrice.en} per month in the United States, with regional prices for Mexico, Argentina, Brazil, and the rest of Latin America. It includes one active project, two prior-art searches per month, one external collaborator such as your attorney, and DOCX export. Every paid plan includes a patentability search.`,
-            "You can start with a 7-day free trial that includes a prior-art search with the Discovery Agent. No credit card is required and nothing is charged automatically. Patent office fees are separate and paid to the office.",
+            `The Inventor plan costs ${inventorPrice.en} per month in the United States, with regional prices for Mexico, Argentina, Brazil, and the rest of Latin America. It includes one active project, two prior-art searches per month, one external collaborator such as your attorney, and DOCX export of purchased drafts. Full patent drafts are discounted add-ons. Every paid plan includes a patentability search.`,
+            "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges. Patent office fees are separate and paid to the office.",
           ],
         },
       ],
@@ -104,7 +104,7 @@ export const aiPatentToolForInventors: ClusterPage = {
         { q: "Will my invention be kept confidential?", a: "IPnite does not use your inventions, prompts, documents, or drafts to train AI models, and invention materials are encrypted in transit and at rest. The security page explains how the AI processing works." },
         { q: "Is an AI draft enough for a provisional application?", a: "A provisional application must still describe the invention fully enough to support the claims you file later. A detailed, reviewed draft is far more useful than a short summary. See the provisional application page for details." },
       ],
-      cta: { heading: "Turn your idea into a structured draft", body: "Start the 7-day free trial, describe your invention to the Discovery Agent, and run your first prior-art search. No credit card." },
+      cta: { heading: "Turn your idea into a structured draft", body: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges." },
     },
     es: {
       title: "Herramienta de patentes con IA para inventores | IPnite",
@@ -128,7 +128,7 @@ export const aiPatentToolForInventors: ClusterPage = {
           steps: [
             { title: "Describe la invención con tus palabras", body: "El Agente de descubrimiento te pregunta por el problema, cómo funciona tu solución, sus partes, alternativas y ventajas, y organiza tus respuestas en una divulgación de la invención." },
             { title: "Revisa lo que ya existe", body: "Haz una búsqueda de antecedentes por concepto técnico. Guarda las referencias más cercanas en el proyecto para que orienten el borrador." },
-            { title: "Genera reivindicaciones y descripción", body: "The Drafter prepara reivindicaciones independientes y dependientes, además de la descripción detallada, los antecedentes, el resumen y el resumen técnico, a partir de la misma divulgación." },
+            { title: "Genera reivindicaciones y descripción", body: "El Redactor prepara reivindicaciones independientes y dependientes, además de la descripción detallada, los antecedentes, el resumen y el resumen técnico, a partir de la misma divulgación." },
             { title: "Crea dibujos de referencia", body: "Genera figuras cuyos números de referencia coinciden con el texto y ajústalas." },
             { title: "Revisa, exporta y decide cómo presentar", body: "Pasa los controles de calidad, exporta la solicitud en DOCX y preséntala tú mismo o envíala a un abogado o agente de patentes para revisión. En algunas oficinas, como el INPI de Argentina, puedes presentar la solicitud directamente desde IPnite." },
             { title: "Da seguimiento a la oficina desde IPnite", body: "IPnite te da un correo dedicado que puedes registrar ante la oficina de patentes para recibir sus notificaciones en tu proyecto y responder al examinador desde IPnite." },
@@ -183,8 +183,8 @@ export const aiPatentToolForInventors: ClusterPage = {
           type: "prose",
           heading: "Cuánto cuesta",
           paragraphs: [
-            `Precio del plan: ${ipniteRegionalPricing("es").inventorSummary}. Incluye un proyecto activo, dos búsquedas de antecedentes al mes, un colaborador externo (por ejemplo, tu abogado) y exportación en DOCX. Todos los planes de pago incluyen una búsqueda de patentabilidad.`,
-            "Puedes empezar con la prueba gratis de 7 días, que incluye una búsqueda de antecedentes con el Agente de descubrimiento. No necesitas tarjeta y no hay cobros automáticos. Las tarifas de la oficina de patentes son aparte y se pagan a la oficina.",
+            `Precio del plan: ${ipniteRegionalPricing("es").inventorSummary}. Incluye un proyecto activo, dos búsquedas de antecedentes al mes, un colaborador externo (por ejemplo, tu abogado) y exportación en DOCX de drafts adquiridos. Los drafts completos son complementos con descuento. Todos los planes de pago incluyen una búsqueda de patentabilidad.`,
+            "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos. Las tarifas de la oficina de patentes son aparte y se pagan a la oficina.",
           ],
         },
       ],
@@ -194,7 +194,7 @@ export const aiPatentToolForInventors: ClusterPage = {
         { q: "¿Mi invención se mantendrá confidencial?", a: "IPnite no usa tus invenciones, instrucciones, documentos ni borradores para entrenar modelos de IA, y los materiales de invención se cifran en tránsito y en reposo. La página de seguridad explica cómo funciona el procesamiento con IA." },
         { q: "¿Un borrador de IA basta para una solicitud provisional?", a: "Una solicitud provisional también debe describir la invención con suficiente detalle para respaldar las reivindicaciones que presentes después. Un borrador detallado y revisado es mucho más útil que un resumen breve. Consulta la página de solicitudes provisionales." },
       ],
-      cta: { heading: "Convierte tu idea en un borrador estructurado", body: "Empieza la prueba gratis de 7 días, describe tu invención al Agente de descubrimiento y haz tu primera búsqueda de antecedentes. Sin tarjeta." },
+      cta: { heading: "Convierte tu idea en un borrador estructurado", body: "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos." },
     },
     pt: {
       title: "Ferramenta de patentes com IA para inventores | IPnite",
@@ -273,8 +273,8 @@ export const aiPatentToolForInventors: ClusterPage = {
           type: "prose",
           heading: "Quanto custa",
           paragraphs: [
-            `No Brasil, o plano Inventor custa ${inventorPrice.pt} por mês; também há preços locais para México, Argentina, Estados Unidos e o restante da América Latina. Ele inclui um projeto ativo, duas buscas de anterioridade por mês, um colaborador externo (por exemplo, seu advogado) e exportação em DOCX. Todos os planos pagos incluem uma busca de patenteabilidade.`,
-            "Você pode começar com o teste grátis de 7 dias, que inclui uma busca de anterioridade com o Agente de descoberta. Não precisa de cartão e não há cobrança automática. As taxas do escritório de patentes são à parte e pagas ao escritório.",
+            `No Brasil, o plano Inventor custa ${inventorPrice.pt} por mês; também há preços locais para México, Argentina, Estados Unidos e o restante da América Latina. Ele inclui um projeto ativo, duas buscas de anterioridade por mês, um colaborador externo (por exemplo, seu advogado) e exportação em DOCX de minutas adquiridas. Minutas completas são adicionais com desconto. Todos os planos pagos incluem uma busca de patenteabilidade.`,
+            "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas. As taxas do escritório de patentes são à parte e pagas ao escritório.",
           ],
         },
       ],
@@ -284,7 +284,7 @@ export const aiPatentToolForInventors: ClusterPage = {
         { q: "Minha invenção será mantida confidencial?", a: "A IPnite não usa suas invenções, instruções, documentos ou rascunhos para treinar modelos de IA, e os materiais de invenção são criptografados em trânsito e em repouso. A página de segurança explica como funciona o processamento com IA." },
         { q: "Um rascunho de IA basta para um pedido provisório?", a: "Um pedido provisório também precisa descrever a invenção com detalhe suficiente para sustentar as reivindicações que você depositar depois. Um rascunho detalhado e revisado é muito mais útil do que um resumo curto. Veja a página de pedidos provisórios." },
       ],
-      cta: { heading: "Transforme sua ideia em um rascunho estruturado", body: "Comece o teste grátis de 7 dias, descreva sua invenção ao Agente de descoberta e faça sua primeira busca de anterioridade. Sem cartão." },
+      cta: { heading: "Transforme sua ideia em um rascunho estruturado", body: "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas." },
     },
   },
 };

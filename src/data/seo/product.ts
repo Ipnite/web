@@ -1,6 +1,7 @@
 import type { SeoPage } from "./types";
 import { commonCta } from "./types";
 import { routed } from "./helpers";
+import { drafterStepPages } from "./drafterSteps";
 
 const drafting: SeoPage = {
   id: "ai-drafting",
@@ -63,14 +64,14 @@ const drafting: SeoPage = {
       title: "Software de redacción de patentes con IA | IPnite",
       description: "Convierte la divulgación de tu invención en reivindicaciones, descripción, dibujos y una solicitud en DOCX lista para presentar. Para inventores y despachos.",
       h1: "Software de redacción de patentes con IA",
-      eyebrow: "THE DRAFTER DE IPNITE",
+      eyebrow: "EL REDACTOR DE IPNITE",
       lead: "IPnite convierte una divulgación técnica en una solicitud de patente estructurada (reivindicaciones, descripción, resumen y dibujos) que puedes revisar, exportar en DOCX y presentar.",
       sections: [
         {
           heading: "De la divulgación a una solicitud lista para presentar",
           paragraphs: [
             "La redacción empieza por la invención, no por una hoja en blanco. Describes el problema técnico, la solución, sus componentes, alternativas y ventajas. Los agentes de IPnite mantienen esa información conectada mientras construyen cada parte de la solicitud.",
-            "The Drafter genera reivindicaciones independientes y dependientes, una descripción detallada con modalidades y variantes, los antecedentes, el resumen de la invención y el resumen técnico. Los dibujos y sus números de referencia coinciden con el texto porque salen del mismo proyecto.",
+            "El Redactor genera reivindicaciones independientes y dependientes, una descripción detallada con modalidades y variantes, los antecedentes, el resumen de la invención y el resumen técnico. Los dibujos y sus números de referencia coinciden con el texto porque salen del mismo proyecto.",
           ],
           bullets: [
             "Divulgación guiada con el Agente de descubrimiento",
@@ -211,12 +212,12 @@ const priorArt: SeoPage = {
         },
       ],
       faqs: [
-        { q: "Can I try a prior-art search for free?", a: "Yes. The 7-day free trial includes one prior-art search with the Discovery Agent. No credit card is required and there is no automatic charge." },
+        { q: "Can I try a prior-art search for free?", a: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges." },
         { q: "How many searches do the plans include?", a: "Inventor includes 2 prior-art searches per month, Startup 10, and Institutional 50." },
         { q: "Is a prior-art search the same as a legal opinion?", a: "No. A search identifies and organizes relevant references. A formal patentability or FTO opinion requires a professional's legal analysis." },
       ],
-      cta: "Run your first prior-art search free",
-      ctaBody: "Explore your invention with the Discovery Agent during a 7-day free trial. One search, no credit card.",
+      cta: "Preview your search strategy free",
+      ctaBody: "Preview a search strategy or try the drafting workflow during a 7-day free trial. No complete search or final export. No credit card.",
     },
     es: {
       title: "Búsqueda de antecedentes de patentes con IA | IPnite",
@@ -248,7 +249,7 @@ const priorArt: SeoPage = {
         {
           heading: "De los resultados a mejores reivindicaciones",
           paragraphs: [
-            "Las referencias guardadas quedan unidas a la invención. Cuando The Drafter construye las reivindicaciones, puede destacar las características que distinguen tu invención de los documentos más cercanos y preparar reivindicaciones dependientes que te den posiciones de respaldo.",
+            "Las referencias guardadas quedan unidas a la invención. Cuando el Redactor construye las reivindicaciones, puede destacar las características que distinguen tu invención de los documentos más cercanos y preparar reivindicaciones dependientes que te den posiciones de respaldo.",
           ],
         },
         {
@@ -259,12 +260,12 @@ const priorArt: SeoPage = {
         },
       ],
       faqs: [
-        { q: "¿Puedo probar una búsqueda de antecedentes gratis?", a: "Sí. La prueba gratis de 7 días incluye una búsqueda de antecedentes con el Agente de descubrimiento. No pide tarjeta y no hace cobros automáticos." },
+        { q: "¿Puedo probar una búsqueda de antecedentes gratis?", a: "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos." },
         { q: "¿Cuántas búsquedas incluyen los planes?", a: "Inventor incluye 2 búsquedas de antecedentes al mes, Startup 10 e Institucional 50." },
         { q: "¿Una búsqueda de antecedentes equivale a una opinión legal?", a: "No. La búsqueda identifica y organiza referencias relevantes. Una opinión formal de patentabilidad o FTO requiere el análisis jurídico de un profesional." },
       ],
-      cta: "Haz gratis tu primera búsqueda de antecedentes",
-      ctaBody: "Explora tu invención con el Agente de descubrimiento durante la prueba gratis de 7 días. Una búsqueda, sin tarjeta.",
+      cta: "Prueba gratis tu estrategia de búsqueda",
+      ctaBody: "Prueba una estrategia de búsqueda o el flujo de redacción durante 7 días. Sin búsqueda completa ni exportación final. Sin tarjeta.",
     },
     pt: {
       title: "Busca de anterioridade de patentes com IA | IPnite",
@@ -307,12 +308,12 @@ const priorArt: SeoPage = {
         },
       ],
       faqs: [
-        { q: "Posso testar uma busca de anterioridade grátis?", a: "Sim. O teste grátis de 7 dias inclui uma busca de anterioridade com o Agente de descoberta. Não pede cartão e não faz cobranças automáticas." },
+        { q: "Posso testar uma busca de anterioridade grátis?", a: "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas." },
         { q: "Quantas buscas os planos incluem?", a: "O Inventor inclui 2 buscas de anterioridade por mês, o Startup 10 e o Institucional 50." },
         { q: "Uma busca de anterioridade equivale a um parecer jurídico?", a: "Não. A busca identifica e organiza referências relevantes. Um parecer formal de patenteabilidade ou FTO exige a análise jurídica de um profissional." },
       ],
-      cta: "Faça grátis sua primeira busca de anterioridade",
-      ctaBody: "Explore sua invenção com o Agente de descoberta durante o teste grátis de 7 dias. Uma busca, sem cartão.",
+      cta: "Teste grátis sua estratégia de busca",
+      ctaBody: "Experimente uma estratégia de busca ou o fluxo de redação durante 7 dias. Sem busca completa nem exportação final. Sem cartão.",
     },
   }),
 };
@@ -340,6 +341,7 @@ const drawings: SeoPage = {
             "Consistent reference numerals across figures and text",
             "Brief description of the drawings generated with the application",
             "Figures exported with the DOCX application",
+            "Download figures as PNG, JPG, or SVG",
           ],
         },
         {
@@ -383,6 +385,7 @@ const drawings: SeoPage = {
             "Números de referencia coherentes entre figuras y texto",
             "Breve descripción de los dibujos generada con la solicitud",
             "Figuras exportadas junto con la solicitud en DOCX",
+            "Descarga las figuras en PNG, JPG o SVG",
           ],
         },
         {
@@ -426,6 +429,7 @@ const drawings: SeoPage = {
             "Sinais de referência coerentes entre figuras e texto",
             "Breve descrição dos desenhos gerada com o pedido",
             "Figuras exportadas com o pedido em DOCX",
+            "Baixe as figuras em PNG, JPG ou SVG",
           ],
         },
         {
@@ -502,9 +506,9 @@ const portfolio: SeoPage = {
       ctaBody: "Bring applications, documents, alerts, and drafting work into one workspace. Start with a free 7-day trial.",
     },
     es: {
-      title: "Software de gestión de cartera de patentes | IPnite",
+      title: "Software de gestión de portafolio de patentes | IPnite",
       description: "Reúne solicitudes, documentos, plazos y alertas en un solo espacio, conectados con los borradores y antecedentes de cada invención.",
-      h1: "Gestiona tu cartera de patentes en un solo lugar",
+      h1: "Gestiona tu portafolio de patentes en un solo lugar",
       eyebrow: "DE LOS DOCUMENTOS A LA VISIBILIDAD",
       lead: "IPnite evita que tus proyectos de patente terminen en carpetas desconectadas. Carga solicitudes existentes, extrae su información clave y ve qué está activo, qué está pendiente y qué requiere atención.",
       sections: [
@@ -517,7 +521,7 @@ const portfolio: SeoPage = {
             "Carga de solicitudes y documentos existentes",
             "Extracción de datos clave con asistencia de IA",
             "Gestión de presentaciones, calendario y alertas de plazos",
-            "Archivo de proyectos sin perder el contexto de la cartera",
+            "Archivo de proyectos sin perder el contexto del portafolio",
             "Gestión de equipos y permisos en el plan Institucional",
           ],
         },
@@ -536,9 +540,9 @@ const portfolio: SeoPage = {
       ],
       faqs: [
         { q: "¿Qué pasa con los proyectos archivados?", a: "No cuentan para tu límite de proyectos activos y se conservan durante tres meses. IPnite avisa al titular aproximadamente 30, 7 y 1 día antes de eliminarlos definitivamente." },
-        { q: "¿Puedo exportar mi cartera?", a: "Todos los planes exportan las solicitudes en DOCX. Startup e Institucional también exportan proyectos completos en JSON y ZIP." },
+        { q: "¿Puedo exportar mi portafolio?", a: "Todos los planes exportan las solicitudes en DOCX. Startup e Institucional también exportan proyectos completos en JSON y ZIP." },
       ],
-      cta: "Organiza tu cartera de patentes",
+      cta: "Organiza tu portafolio de patentes",
       ctaBody: "Reúne solicitudes, documentos, alertas y redacción en un solo espacio. Empieza con la prueba gratis de 7 días.",
     },
     pt: {
@@ -664,7 +668,7 @@ const provisional: SeoPage = {
         {
           heading: "Cómo la prepara IPnite",
           paragraphs: [
-            "El Agente de descubrimiento estructura tu divulgación y hace una búsqueda de antecedentes. The Drafter la convierte en una descripción detallada con modalidades, reivindicaciones opcionales y dibujos de referencia. Exportas un DOCX listo para revisar y presentar, y el mismo proyecto sirve de base para la solicitud completa.",
+            "El Agente de descubrimiento estructura tu divulgación y hace una búsqueda de antecedentes. El Redactor la convierte en una descripción detallada con modalidades, reivindicaciones opcionales y dibujos de referencia. Exportas un DOCX listo para revisar y presentar, y el mismo proyecto sirve de base para la solicitud completa.",
           ],
         },
       ],
@@ -1013,4 +1017,4 @@ const security: SeoPage = {
   }),
 };
 
-export const productPages: SeoPage[] = [drafting, priorArt, drawings, portfolio, provisional, search, security];
+export const productPages: SeoPage[] = [drafting, ...drafterStepPages, priorArt, drawings, portfolio, provisional, search, security];

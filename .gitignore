@@ -8,3 +8,6 @@ node_modules/
 
 # Brand kit and design source files: kept locally, never deployed or committed
 design-assets/
+
+# SEO planning document kept locally
+docs/seo-cluster-2026.md

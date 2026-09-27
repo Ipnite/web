@@ -1,0 +1,9 @@
+---
+import ClusterPage from "../../components/cluster/ClusterPage.astro";
+import { clusterStaticPaths } from "../../data/cluster";
+export function getStaticPaths() {
+  return clusterStaticPaths("es");
+}
+const { page } = Astro.props;
+---
+<ClusterPage page={page} locale="es" />

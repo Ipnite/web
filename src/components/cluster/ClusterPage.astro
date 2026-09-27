@@ -1,0 +1,234 @@
+---
+/**
+ * Renderer for the SEO content cluster (src/data/cluster). Visual language mirrors SeoPage.astro;
+ * styles are scoped so existing pages are unaffected. Analytics comes from BaseLayout, unchanged.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { ClusterPage } from "../../data/cluster/types";
+import { clusterPath, resolveLink, linkLabel } from "../../data/cluster";
+import { clusterTopics } from "../../data/cluster/manifest";
+import { routeFor, type Locale } from "../../data/routes";
+import { SITE_URL, ORGANIZATION_ID, SOFTWARE_ID } from "../../data/structuredData";
+
+interface Props { page: ClusterPage; locale: Locale; }
+const { page, locale } = Astro.props;
+const copy = page.locales[locale];
+const canonicalPath = clusterPath(page.id, locale);
+const alternates = { en: clusterPath(page.id, "en"), es: clusterPath(page.id, "es"), "pt-BR": clusterPath(page.id, "pt"), "x-default": clusterPath(page.id, "en") };
+const inLanguage = locale === "pt" ? "pt-BR" : locale;
+const topic = clusterTopics.find((entry) => entry.id === page.id)!;
+const published = topic.recommendedDate;
+const modified = page.lastVerified ?? topic.recommendedDate;
+
+const labels = locale === "es"
+  ? { home: "Inicio", start: "Probar IPnite gratis", read: "Leer la guía", related: "Sigue explorando", faq: "Preguntas frecuentes", sources: "Fuentes", verified: "Datos verificados el", note: "Contenido informativo. IPnite no presta asesoría legal ni garantiza la patentabilidad o el otorgamiento de una patente." }
+  : locale === "pt"
+  ? { home: "Início", start: "Experimentar a IPnite grátis", read: "Ler o guia", related: "Continue explorando", faq: "Perguntas frequentes", sources: "Fontes", verified: "Dados verificados em", note: "Conteúdo informativo. A IPnite não presta aconselhamento jurídico nem garante a patenteabilidade ou a concessão de uma patente." }
+  : { home: "Home", start: "Try IPnite free", read: "Read the guide", related: "Keep exploring", faq: "Frequently asked questions", sources: "Sources", verified: "Facts verified on", note: "Informational content. IPnite does not provide legal advice or guarantee patentability or grant." };
+
+const dateLocale = locale === "es" ? "es-MX" : locale === "pt" ? "pt-BR" : "en-US";
+const verifiedText = page.lastVerified ? new Date(`${page.lastVerified}T12:00:00Z`).toLocaleDateString(dateLocale, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }) : undefined;
+
+const home = routeFor("home", locale);
+const related = page.related
+  .map((ref) => ({ href: resolveLink(ref, locale), name: linkLabel(ref, locale) }))
+  .filter((link): link is { href: string; name: string } => Boolean(link.href) && link.href !== canonicalPath);
+const blocks = copy.blocks.map((block) => block.type === "links"
+  ? { ...block, items: block.items.map((item) => ({ ...item, href: resolveLink(item.ref, locale) })).filter((item) => item.href) }
+  : block);
+
+const pageUrl = `${SITE_URL}${canonicalPath}`;
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": page.schema === "article" ? "Article" : "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    ...(page.schema === "article" ? { headline: copy.h1 } : { name: copy.title }),
+    description: copy.description,
+    inLanguage,
+    image: `${SITE_URL}/og-image.png`,
+    publisher: { "@id": ORGANIZATION_ID },
+    ...(page.aboutSoftware ? { about: { "@id": SOFTWARE_ID } } : {}),
+    ...(page.schema === "article" ? { author: { "@id": ORGANIZATION_ID }, datePublished: published, dateModified: modified, mainEntityOfPage: pageUrl } : {}),
+    ...(copy.sources?.length ? { citation: copy.sources.map((source) => source.url) } : {}),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: labels.home, item: `${SITE_URL}${home}` },
+      { "@type": "ListItem", position: 2, name: copy.shortName, item: pageUrl },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: copy.faqs.map((faq) => ({ "@type": "Question", name: faq.q, acceptedAnswer: { "@type": "Answer", text: faq.a } })),
+  },
+];
+---
+
+<BaseLayout lang={locale} title={copy.title} description={copy.description} canonicalPath={canonicalPath} alternatePaths={alternates} structuredData={structuredData} ogType={page.schema === "article" ? "article" : "website"} pageKey={alternates.en}>
+  <article class="cl-page">
+    <header class="cl-hero">
+      <div class="cl-hero__copy">
+        <nav aria-label="Breadcrumb"><a href={home}>{labels.home}</a><span aria-hidden="true">/</span><span aria-current="page">{copy.shortName}</span></nav>
+        <p class="cl-eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.h1}</h1>
+        <p class="cl-lead">{copy.lead}</p>
+        <div class="cl-actions" data-analytics-location="seo_hero"><a class="primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta={page.primaryAction.name} data-analytics-event={page.primaryAction.event}>{labels.start}</a><a href="#content">{labels.read}</a></div>
+        {verifiedText && <p class="cl-verified">{labels.verified} {verifiedText}</p>}
+      </div>
+      <div class="cl-hero__visual" aria-hidden="true"><img class="brain" src="/images/cerebro.png" width="543" height="481" alt="" /><img class="laptop" src="/images/notebook-2.png" alt="" width="560" height="339" loading="eager" decoding="async" /></div>
+    </header>
+
+    <div id="content" class="cl-content">
+      {blocks.map((block) => (
+        <section class={`cl-block cl-block--${block.type}${block.type === "callout" ? ` cl-callout--${block.tone}` : ""}`}>
+          <h2>{block.heading}</h2>
+          {"intro" in block && block.intro && <p class="cl-intro">{block.intro}</p>}
+
+          {block.type === "prose" && <>
+            {block.paragraphs.map((text) => <p>{text}</p>)}
+            {block.bullets && <ul class="cl-ticks">{block.bullets.map((item) => <li>{item}</li>)}</ul>}
+          </>}
+
+          {block.type === "callout" && block.paragraphs.map((text) => <p>{text}</p>)}
+
+          {block.type === "steps" && (
+            <ol class="cl-steps">{block.steps.map((step) => <li><h3>{step.title}</h3><p>{step.body}</p></li>)}</ol>
+          )}
+
+          {block.type === "cards" && (
+            <div class="cl-cards">{block.items.map((item) => <div class="cl-card"><h3>{item.title}</h3><p>{item.body}</p></div>)}</div>
+          )}
+
+          {block.type === "checklist" && (
+            <ul class="cl-ticks cl-ticks--single">{block.items.map((item) => <li>{item}</li>)}</ul>
+          )}
+
+          {block.type === "split" && (
+            <div class="cl-split">
+              <div><h3>{block.left.title}</h3><ul class="cl-ticks cl-ticks--single">{block.left.items.map((item) => <li>{item}</li>)}</ul></div>
+              <div><h3>{block.right.title}</h3><ul class="cl-ticks cl-ticks--single cl-ticks--alt">{block.right.items.map((item) => <li>{item}</li>)}</ul></div>
+            </div>
+          )}
+
+          {block.type === "table" && <>
+            <div class="cl-table" role="region" aria-label={block.caption} tabindex="0">
+              <table>
+                <caption class="sr-only">{block.caption}</caption>
+                <thead><tr>{block.columns.map((column) => <th scope="col">{column}</th>)}</tr></thead>
+                <tbody>{block.rows.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+            {block.note && <p class="cl-table-note">{block.note}</p>}
+          </>}
+
+          {block.type === "links" && (
+            <div class="cl-cards">{block.items.map((item) => <a class="cl-card cl-card--link" href={item.href}><h3>{item.label}</h3>{item.body && <p>{item.body}</p>}</a>)}</div>
+          )}
+        </section>
+      ))}
+
+      <section class="cl-block cl-faq" aria-labelledby="cl-faq-title">
+        <h2 id="cl-faq-title">{labels.faq}</h2>
+        {copy.faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </section>
+
+      {copy.sources && copy.sources.length > 0 && (
+        <aside class="cl-sources" aria-labelledby="cl-sources-title">
+          <h2 id="cl-sources-title">{labels.sources}</h2>
+          <ul>{copy.sources.map((source) => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}</ul>
+        </aside>
+      )}
+
+      <aside class="cl-note"><img src="/icons/candado.svg" alt="" aria-hidden="true" width="28" height="28" /><p>{labels.note}</p></aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="cl-related" aria-labelledby="cl-related-title"><h2 id="cl-related-title">{labels.related}</h2><div>{related.map(({ name, href }) => <a href={href}>{name}<span aria-hidden="true">→</span></a>)}</div></section>
+    )}
+    <section class="cl-cta" data-analytics-location="seo_final_cta"><img src="/images/cerebro.png" width="543" height="481" alt="" aria-hidden="true" /><div><h2>{copy.cta.heading}</h2><p>{copy.cta.body}</p><a href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta={page.primaryAction.name} data-analytics-event={page.primaryAction.event}>{labels.start}</a></div></section>
+  </article>
+</BaseLayout>
+
+<style>
+.cl-page{overflow:hidden;background:#fff;color:#505050}
+.cl-hero{width:min(calc(100% - 36px),1280px);min-height:560px;margin:28px auto 56px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;border-radius:50px;background:radial-gradient(circle at 82% 28%,rgba(107,42,47,.16),transparent 35%),rgba(217,217,217,.18);padding:clamp(34px,5vw,72px);box-shadow:inset 0 1px rgba(255,255,255,.7),inset 0 -1px rgba(0,0,0,.1)}
+.cl-hero nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;color:#7d7476;font:700 13px Roboto,sans-serif}
+.cl-hero nav a{color:#6b2a2f}
+.cl-eyebrow{margin:0 0 15px;color:#6b2a2f;font:900 13px/1.3 Roboto,sans-serif;letter-spacing:.13em}
+.cl-hero h1{margin:0;color:#4c0815;font:800 clamp(34px,4.3vw,60px)/1.08 "Roboto Slab",serif;letter-spacing:-.025em;text-wrap:balance}
+.cl-lead{max-width:680px;margin:24px 0 0;font:500 clamp(17px,1.5vw,20px)/1.6 Roboto,sans-serif}
+.cl-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.cl-actions a,.cl-cta a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #6b2a2f;border-radius:999px;padding:10px 23px;color:#4c0815;background:#ededed;font:800 17px "Roboto Slab",serif;text-decoration:none}
+.cl-actions .primary{background:#6b2a2f;color:#fff}
+.cl-verified{margin:22px 0 0;color:#6b6264;font:700 13px Roboto,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.cl-hero__visual{position:relative;min-height:380px;display:grid;place-items:center}
+.cl-hero__visual .brain{position:absolute;width:88%;height:auto;opacity:.14}
+.cl-hero__visual .laptop{position:relative;z-index:1;width:112%;height:auto;filter:drop-shadow(0 24px 35px rgba(76,8,21,.17))}
+.cl-content{width:min(calc(100% - 36px),1040px);margin:auto}
+.cl-block{padding:46px 0;border-bottom:1px solid rgba(107,42,47,.14)}
+.cl-content h2,.cl-sources h2{margin:0;color:#6b2a2f;font:800 clamp(28px,3vw,40px)/1.18 "Roboto Slab",serif}
+.cl-block p{margin:18px 0 0;font:500 18px/1.75 Roboto,sans-serif}
+.cl-block .cl-intro{color:#5d5758}
+.cl-content h3{margin:0;color:#4c0815;font:800 19px/1.35 "Roboto Slab",serif}
+.cl-content a{color:#6b2a2f}
+.cl-ticks{margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;list-style:none}
+.cl-ticks--single{grid-template-columns:1fr}
+.cl-ticks li{position:relative;border:1px solid rgba(107,42,47,.13);border-radius:18px;background:rgba(107,42,47,.035);padding:15px 18px 15px 42px;font:600 15.5px/1.55 Roboto,sans-serif}
+.cl-ticks li:before{content:"✓";position:absolute;left:17px;color:#6b2a2f;font-weight:900}
+.cl-ticks--alt li{background:#fff}
+.cl-ticks--alt li:before{content:"–"}
+.cl-steps{margin:26px 0 0;padding:0;list-style:none;counter-reset:step;display:grid;gap:14px}
+.cl-steps li{counter-increment:step;position:relative;border:1px solid rgba(107,42,47,.14);border-radius:22px;background:#fff;padding:20px 22px 20px 78px}
+.cl-steps li:before{content:counter(step,decimal-leading-zero);position:absolute;left:22px;top:18px;color:rgba(107,42,47,.35);font:900 28px "Roboto Slab",serif}
+.cl-steps li p{margin:8px 0 0;font-size:16.5px;line-height:1.65}
+.cl-cards{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.cl-card{border:1px solid rgba(107,42,47,.14);border-radius:24px;background:rgba(217,217,217,.14);padding:22px}
+.cl-card p{margin:10px 0 0;font-size:16px;line-height:1.65}
+.cl-card--link{display:block;text-decoration:none;background:#fff}
+.cl-split{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cl-split .cl-ticks{margin-top:14px}
+.cl-callout--note,.cl-callout--limit{margin:40px 0;border:1px solid rgba(107,42,47,.18);border-radius:28px;padding:30px}
+.cl-callout--note{background:#f7f3f3}
+.cl-callout--limit{background:#fff;border-left:6px solid #6b2a2f}
+.cl-callout--note h2,.cl-callout--limit h2{font-size:clamp(22px,2.2vw,28px)}
+.cl-callout--note p,.cl-callout--limit p{font-size:16.5px}
+.cl-table{margin-top:24px;max-width:100%;overflow-x:auto;border:1px solid rgba(107,42,47,.16);border-radius:20px;-webkit-overflow-scrolling:touch}
+.cl-table:focus-visible{outline:3px solid #6b2a2f;outline-offset:2px}
+.cl-table table{width:100%;min-width:640px;border-collapse:collapse;font:500 14.5px/1.5 Roboto,sans-serif}
+.cl-table th,.cl-table td{padding:13px 15px;border-bottom:1px solid rgba(107,42,47,.1);text-align:left;vertical-align:top}
+.cl-table thead th{background:#6b2a2f;color:#fff;font:800 14px "Roboto Slab",serif;white-space:nowrap}
+.cl-table tbody th{color:#4c0815;font-weight:800;white-space:nowrap}
+.cl-table tbody tr:nth-child(even){background:rgba(107,42,47,.035)}
+.cl-table tbody tr:last-child th,.cl-table tbody tr:last-child td{border-bottom:0}
+.cl-block .cl-table-note{margin-top:12px;color:#6b6264;font-size:14px}
+.cl-faq details{margin-top:14px;border:1px solid rgba(107,42,47,.14);border-radius:18px;background:#fff;padding:16px 20px}
+.cl-faq summary{cursor:pointer;color:#4c0815;font:800 18px/1.4 "Roboto Slab",serif}
+.cl-faq details p{margin:12px 0 0;font-size:17px}
+.cl-sources{margin-top:46px;border-radius:30px;background:#f7f3f3;padding:30px}
+.cl-sources h2{font-size:26px}
+.cl-sources ul{margin:16px 0 0;padding-left:20px;display:grid;gap:8px;font:500 15px/1.5 Roboto,sans-serif}
+.cl-note{display:flex;gap:16px;align-items:center;margin:40px 0;border:1px solid rgba(107,42,47,.16);border-radius:22px;padding:20px}
+.cl-note img{width:28px;height:28px}
+.cl-note p{margin:0;font:700 14px/1.6 Roboto,sans-serif}
+.cl-related{padding:76px 18px;background:radial-gradient(circle,rgba(107,42,47,.09),transparent 65%);text-align:center}
+.cl-related h2{margin:0;color:#4c0815;font:800 clamp(32px,4vw,50px) "Roboto Slab",serif}
+.cl-related>div{width:min(100%,1100px);margin:30px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.cl-related a{display:flex;justify-content:space-between;gap:10px;border:1px solid rgba(107,42,47,.15);border-radius:24px;background:#fff;padding:22px;color:#6b2a2f;font:800 16px/1.3 "Roboto Slab",serif;text-decoration:none;text-align:left}
+.cl-cta{width:min(calc(100% - 36px),1280px);margin:0 auto 80px;display:flex;align-items:center;justify-content:center;gap:30px;border-radius:42px;background:#6b2a2f;padding:46px;color:#fff;text-align:center}
+.cl-cta>img{width:90px;height:auto;filter:brightness(0) invert(1);opacity:.8}
+.cl-cta h2{margin:0;font:800 clamp(32px,4vw,50px)/1.1 "Roboto Slab",serif}
+.cl-cta p{max-width:680px;margin:15px auto 22px;font:500 18px/1.5 Roboto,sans-serif}
+.cl-cta a{background:#fff;color:#4c0815}
+@media(max-width:850px){.cl-hero{grid-template-columns:1fr;padding:34px 24px}.cl-hero__visual{min-height:260px}.cl-cards,.cl-split{grid-template-columns:1fr}.cl-related>div{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cl-hero{width:calc(100% - 24px);border-radius:30px}.cl-ticks,.cl-related>div{grid-template-columns:1fr}.cl-steps li{padding:18px 18px 18px 64px}.cl-steps li:before{left:16px;font-size:24px}.cl-callout--note,.cl-callout--limit{padding:22px}.cl-cta{flex-direction:column;padding:34px 22px}}
+</style>

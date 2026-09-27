@@ -1,111 +1,76 @@
 ---
-// Fuente: ProcessOverviewSection.tsx (Figma 4:348)
-// top: 3232, height: 648
-interface Props {
-  lang?: "en" | "es" | "pt";
-}
-
+interface Props { lang?: "en" | "es" | "pt"; }
 const { lang = "en" } = Astro.props;
+import { routeFor, type RouteKey } from "../data/routes";
+const copy = lang === "es" ? {
+  eyebrow: "UNA PLATAFORMA INTEGRAL DE PATENTES", title: "Del descubrimiento a la cartera de propiedad intelectual",
+  lead: "IPnite conecta las tareas esenciales del trabajo de patentes para que inventores, startups y profesionales de PI pasen de la idea a una solicitud lista para presentar, con contexto y control.",
+  cards: [["Búsqueda de antecedentes","Investiga referencias relevantes y organiza los hallazgos antes de redactar.","prior-art"],["Redacción con IA","Convierte la divulgación técnica en reivindicaciones y un borrador estructurado.","ai-drafting"],["Presentación asistida","Recibe asistencia para preparar la presentación de tu solicitud de patente.","filing","Disponible en jurisdicciones seleccionadas"],["Gestión de cartera","Mantén solicitudes, documentos, fechas y alertas en un solo espacio.","portfolio"]],
+} : lang === "pt" ? {
+  eyebrow: "UMA PLATAFORMA INTEGRADA DE PATENTES", title: "Da descoberta ao portfólio de propriedade intelectual",
+  lead: "A IPnite conecta as tarefas essenciais do trabalho de patentes para que inventores, startups e profissionais de PI passem da ideia a um pedido pronto para depósito, com contexto e controle.",
+  cards: [["Busca de anterioridade","Pesquise referências relevantes e organize os resultados antes de redigir.","prior-art"],["Redação com IA","Transforme a divulgação técnica em reivindicações e um rascunho estruturado.","ai-drafting"],["Depósito assistido","Receba assistência para preparar o depósito do seu pedido de patente.","filing","Disponível em jurisdições selecionadas"],["Gestão de portfólio","Mantenha pedidos, documentos, prazos e alertas em um só espaço.","portfolio"]],
+} : {
+  eyebrow: "A COMPLETE PATENT WORKFLOW", title: "From discovery to intellectual property portfolio",
+  lead: "IPnite connects the essential parts of patent work so inventors, startups, and IP professionals can move from idea to filing-ready application with context and control.",
+  cards: [["Prior-art search","Investigate relevant references and organize findings before drafting.","prior-art"],["AI-assisted drafting","Turn a technical disclosure into claims and a structured application draft.","ai-drafting"],["Assisted filing","Get assistance preparing to file your patent application.","filing","For selected jurisdictions"],["Portfolio management","Keep applications, documents, deadlines, and alerts in one workspace.","portfolio"]],
+};
+const productEvents: Record<string, { cta: string; event?: string }> = {
+  "prior-art": { cta: "prior_art_search", event: "prior_art_search_clicked" },
+  "ai-drafting": { cta: "ai_patent_drafting", event: "start_drafting_clicked" },
+  filing: { cta: "assisted_filing" },
+  portfolio: { cta: "patent_portfolio_management", event: "portfolio_management_clicked" },
+};
 
-const copy = lang === "es"
-  ? {
-      title: ["Cómo funciona", "IPnite"],
-      subtitle: "Flujo en cuatro pasos",
-      alt: "Ilustración del flujo de redacción de patentes",
-      step1: "Describe tu invención",
-      step2: "Los agentes analizan la estructura y las referencias",
-      step3: "Se genera el borrador de patente",
-      step4: "Revisa, exporta en DOCX y presenta tu solicitud",
-    }
-  : lang === "pt"
-  ? {
-      title: ["Como funciona", "a IPnite"],
-      subtitle: "Fluxo em quatro passos",
-      alt: "Ilustração do fluxo de redação de patentes",
-      step1: "Descreva sua invenção",
-      step2: "Os agentes analisam a estrutura e as referências",
-      step3: "O rascunho da patente é gerado",
-      step4: "Revise, exporte em DOCX e deposite seu pedido",
-    }
-  : {
-      title: ["How It Works", ""],
-      subtitle: "Four-Step Workflow",
-      alt: "Illustration of the patent drafting workflow",
-      step1: "Describe your invention",
-      step2: "Agents analyze the structure and references",
-      step3: "The patent draft is generated",
-      step4: "Review, export as DOCX, and file your application",
-    };
+const imageAlt = lang === "es" ? "Ilustración del flujo de trabajo de patentes" : lang === "pt" ? "Ilustração do fluxo de trabalho de patentes" : "Illustration of the patent workflow";
 ---
 
-<section
-  id="how-it-works"
-  aria-labelledby="hiw-heading"
-  class="relative w-full overflow-hidden bg-white"
-  style="height: 590px;"
->
+<section id="how-it-works" aria-labelledby="hiw-heading" class="relative w-full overflow-hidden bg-white" data-analytics-location="platform_overview">
   <div class="absolute inset-0" style="width:1440px;margin:auto;left:0;right:0;">
-    <h2 id="hiw-heading" class="absolute top-[11px] left-1/2 w-[960px] -translate-x-1/2 text-center [font-family:'Roboto_Slab',serif] text-[64px] leading-[76px] whitespace-nowrap"><span class="font-normal text-[#6b2a2f]">{copy.title.filter(Boolean).join(" ")}</span></h2>
-    <p class="absolute top-[92px] left-1/2 w-[760px] -translate-x-1/2 [font-family:'Roboto_Slab',serif] font-bold text-[#505050] text-[56px] text-center leading-[68px] whitespace-nowrap">{copy.subtitle}</p>
-
-    <!-- Ilustración izquierda -->
-    <img
-      class="absolute top-[93px] left-[120px] w-[522px] h-[480px] object-contain"
-      alt={copy.alt}
-      src="/images/how-it-works.png" width="522" height="480"
-      loading="lazy"
-    />
-
-    <!-- Pasos (grid 2x2) -->
-    <div class="absolute top-[215px] left-[636px] w-[614px] h-[294px]">
-      <!-- Paso 1: Describe -->
-      <article class="absolute top-0 left-0 w-[304px] h-[140px]" aria-label="Step 1">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
-        <span class="absolute top-[84px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px] whitespace-nowrap">
-          {copy.step1}
-        </span>
-        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
-          <span>1</span>
-        </div>
-      </article>
-
-      <!-- Paso 2: Analyze -->
-      <article class="absolute top-0 left-[312px] w-[304px] h-[140px]" aria-label="Step 2">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
-        <p class="absolute top-[72px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px]">
-          <span class="font-normal">{copy.step2}</span>
-        </p>
-        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
-          <span>2</span>
-        </div>
-      </article>
-
-      <!-- Paso 3: Generated -->
-      <article class="absolute top-[154px] left-0 w-[304px] h-[140px]" aria-label="Step 3">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
-        <p class="absolute top-[74px] left-[31px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px]">
-          <span class="font-normal">{copy.step3}</span>
-        </p>
-        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
-          <span>3</span>
-        </div>
-      </article>
-
-      <!-- Paso 4: Review & Export -->
-      <article class="absolute top-[154px] left-[312px] w-[304px] h-[140px]" aria-label="Step 4">
-        <div class="absolute top-[39px] left-0 w-[302px] h-[101px] bg-white rounded-[31px] border border-[#f0ebe9] shadow-[0_5px_12px_rgba(107,42,47,0.18)]"></div>
-        <p class="absolute top-[62px] left-[30px] w-[242px] [font-family:'Roboto',sans-serif] font-normal text-[#3f3f46] text-[18px] text-center tracking-[-0.38px] leading-[24px]">
-          <span class="font-normal">{copy.step4}</span>
-        </p>
-        <div class="hiw-step__icon absolute top-0 left-[121px] w-[62px] h-[62px] rounded-full flex items-center justify-center" aria-hidden="true">
-          <span>4</span>
-        </div>
-      </article>
+    <h2 id="hiw-heading" class="text-center [font-family:'Roboto_Slab',serif] text-[#6b2a2f]">{copy.title}</h2>
+    <p class="hiw-lead">{copy.lead}</p>
+    <img class="object-contain" alt={imageAlt} src="/images/how-it-works.png" width="522" height="480" loading="lazy" />
+    <div class="hiw-steps">
+      {copy.cards.map(([title, body, key, note], index) => (
+        <article aria-labelledby={`hiw-step-${index + 1}`}>
+          <p>
+            <strong id={`hiw-step-${index + 1}`} class="hiw-step__title">{title}</strong>
+            <span>{body}</span>
+            {note && <small class="hiw-step__note">({note})</small>}
+            <a class="hiw-step__link" href={key === "filing" ? "https://app.ipnite.com" : routeFor(key as RouteKey, lang)} data-analytics-cta={productEvents[key].cta} data-analytics-event={productEvents[key].event}>
+              {lang === "es" ? "Conocer la herramienta" : lang === "pt" ? "Conhecer a ferramenta" : "Explore the tool"} →
+            </a>
+          </p>
+          <div class="hiw-step__icon rounded-full flex items-center justify-center" aria-hidden="true"><span>{index + 1}</span></div>
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
+
+  .hiw-step__title { display: block; margin-bottom: 8px; color: #6b2a2f; }
+  .hiw-step__note { display: block; margin-top: 6px; }
+  .hiw-step__link { display: block; margin-top: 12px; color: #4c0815; font-weight: 700; }
+  #how-it-works > div > p.hiw-lead { font: 500 19px/1.6 Roboto, sans-serif !important; color: #505050; }
+
+  @media (min-width: 1280px) {
+    #how-it-works { padding: 48px 16px 58px; }
+    #how-it-works > div {
+      position: relative; width: min(100%, 1200px) !important;
+      display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+      gap: 28px 40px; align-items: center;
+    }
+    #hiw-heading { grid-column: 1 / -1; margin: 0 auto; max-width: 960px; font-size: 56px; line-height: 1.16; text-wrap: balance; }
+    .hiw-lead { grid-column: 1 / -1; max-width: 830px; margin: 0 auto; text-align: center; }
+    #how-it-works img { width: 100%; height: auto; }
+    .hiw-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 14px; }
+    #how-it-works article { position: relative; margin-top: 31px; padding: 46px 20px 22px; border-radius: 31px; border: 1px solid #f0ebe9; background: #fff; box-shadow: 0 5px 12px rgba(107,42,47,.18); }
+    #how-it-works article p { margin: 0; text-align: center; color: #3f3f46; font: 400 16px/1.4 Roboto, sans-serif; }
+    #how-it-works .hiw-step__icon { position: absolute; top: -31px; left: calc(50% - 31px); width: 62px; height: 62px; }
+  }
+
   .hiw-step__icon {
     background: #6b2a2f;
     border: 2px solid #6b2a2f;

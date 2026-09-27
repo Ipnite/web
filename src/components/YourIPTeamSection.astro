@@ -14,12 +14,14 @@ const copy = lang === "es"
       discoveryBody: "Te ayuda a estructurar ideas e identificar tecnologías similares",
       draftingTitle: "Agente de redacción",
       draftingBody: "Genera un borrador de solicitud de patente estructurado",
-      specializedTitle: "Agente especializado",
-      specializedBody: "Revisa el lenguaje específico del campo de la invención",
+      ftoTitle: "Agente FTO",
+      ftoBody: "Ayuda a analizar la libertad de operación para revisión profesional",
       drawingTitle: "Agente de dibujos",
       drawingBody: "Genera diagramas y dibujos de referencia",
-      qaTitle: "Agente QA",
-      qaBody: "Verifica el formato y prepara el documento para descargarlo en DOCX",
+      strategyTitle: "Agente de estrategia",
+      strategyBody: "Te ayuda a planificar los próximos pasos para proteger tu innovación",
+      portfolioTitle: "Agente de gestión de cartera",
+      portfolioBody: "Organiza tus invenciones, documentos y fechas importantes",
       laptopAlt: "Espacio de trabajo de IPnite en una laptop",
     }
   : lang === "pt"
@@ -29,26 +31,30 @@ const copy = lang === "es"
       discoveryBody: "Ajuda a estruturar ideias e identificar tecnologias semelhantes",
       draftingTitle: "Agente de redação",
       draftingBody: "Gera um rascunho estruturado de pedido de patente",
-      specializedTitle: "Agente especializado",
-      specializedBody: "Revisa a linguagem específica do campo da invenção",
+      ftoTitle: "Agente FTO",
+      ftoBody: "Ajuda a analisar a liberdade de operação para revisão profissional",
       drawingTitle: "Agente de desenhos",
       drawingBody: "Gera diagramas e desenhos de referência",
-      qaTitle: "Agente QA",
-      qaBody: "Confere a formatação e prepara o documento para download em DOCX",
+      strategyTitle: "Agente de estratégia",
+      strategyBody: "Ajuda a planejar os próximos passos para proteger sua inovação",
+      portfolioTitle: "Agente de gestão de portfólio",
+      portfolioBody: "Organiza suas invenções, documentos e datas importantes",
       laptopAlt: "Espaço de trabalho da IPnite em um laptop",
     }
   : {
       heading: ["Your IP Team in", "One Interface"],
       discoveryTitle: "Discovery Agent",
       discoveryBody: "Helps you structure ideas and identify similar technologies",
-      draftingTitle: "Drafting Agent",
+      draftingTitle: "Drafter Agent",
       draftingBody: "Generates a structured patent application draft",
-      specializedTitle: "Specialized Agent",
-      specializedBody: "Reviews the language specific to the field of the invention",
+      ftoTitle: "FTO Agent",
+      ftoBody: "Helps analyze freedom to operate for professional review",
       drawingTitle: "Drawing Agent",
       drawingBody: "Generates diagrams and reference drawings",
-      qaTitle: "QA Agent",
-      qaBody: "Checks formatting and prepares the document for DOCX download",
+      strategyTitle: "Strategy Agent",
+      strategyBody: "Helps plan the next steps to protect your innovation",
+      portfolioTitle: "Portfolio Manager Agent",
+      portfolioBody: "Organizes your inventions, documents, and important dates",
       laptopAlt: "IPnite workspace on a laptop",
     };
 ---
@@ -88,27 +94,31 @@ const copy = lang === "es"
           <strong class="font-black text-[#6b2a2f]">{copy.discoveryTitle} </strong>
           <span class="font-medium text-[#505050]">{copy.discoveryBody}</span>
         </p>
-        <!-- Drafting Agent -->
+        <!-- FTO Agent -->
         <p class="absolute top-0 left-[290px] w-[242px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
+          <strong class="font-black text-[#6b2a2f]">{copy.ftoTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.ftoBody}</span>
+        </p>
+        <!-- Drafter Agent -->
+        <p class="absolute top-0 left-[521px] w-[265px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
           <strong class="font-black text-[#6b2a2f]">{copy.draftingTitle} </strong>
           <span class="font-medium text-[#505050]">{copy.draftingBody}</span>
-        </p>
-        <!-- Specialized Agent -->
-        <p class="absolute top-0 left-[521px] w-[265px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.specializedTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.specializedBody}</span>
         </p>
       </div>
 
       <!-- Bottom row agentes -->
       <div class="relative mt-6 ml-[134px] flex gap-2.5" style="height:96px">
         <p class="w-[237px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
+          <strong class="font-black text-[#6b2a2f]">{copy.portfolioTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.portfolioBody}</span>
+        </p>
+        <p class="w-[237px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
           <strong class="font-black text-[#6b2a2f]">{copy.drawingTitle} </strong>
           <span class="font-medium text-[#505050]">{copy.drawingBody}</span>
         </p>
         <p class="w-[306px] [font-family:'Roboto',sans-serif] text-xl text-center tracking-[-0.38px] leading-[30px]">
-          <strong class="font-black text-[#6b2a2f]">{copy.qaTitle} </strong>
-          <span class="font-medium text-[#505050]">{copy.qaBody}</span>
+          <strong class="font-black text-[#6b2a2f]">{copy.strategyTitle} </strong>
+          <span class="font-medium text-[#505050]">{copy.strategyBody}</span>
         </p>
       </div>
     </div>
@@ -177,9 +187,8 @@ const copy = lang === "es"
   }
 
   #ip-team > div > div:nth-child(3) > div:last-child {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 74%;
-    justify-self: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
   }
 
   #ip-team p {

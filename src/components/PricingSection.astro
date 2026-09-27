@@ -8,7 +8,7 @@ const check = "✓";
 const defaultMarket = defaultMarketForLocale[lang];
 const defaultPricing = marketPricing[defaultMarket];
 const price = (plan: PlanCode, period: "monthly" | "annual") => formatPrice(defaultPricing.prices[plan][period], defaultPricing.currency, lang);
-const priceData = Object.fromEntries(Object.entries(marketPricing).map(([market, config]) => [market, { currency: config.currency, locale: config.locale, prices: config.prices, additionalUser: config.additionalUser }]));
+const priceData = Object.fromEntries(Object.entries(marketPricing).map(([market, config]) => [market, { currency: config.currency, locale: config.locale, prices: config.prices, additionalUser: config.additionalUser, singleDraft: config.singleDraft }]));
 const unit = lang === "es" ? "/mes" : lang === "pt" ? "/mês" : "/mo";
 const annualText = (plan: PlanCode) => lang === "es" ? `o ${price(plan,"annual")}/año · ahorra 2 meses` : lang === "pt" ? `ou ${price(plan,"annual")}/ano · economize 2 meses` : `or ${price(plan,"annual")}/yr · save 2 months`;
 const copy = lang === "es"
@@ -67,8 +67,6 @@ const copy = lang === "es"
       trialTitle: "Prueba IPnite gratis",
       trialBody: "Explora tu invención con el Agente de descubrimiento y haz tu primera búsqueda de antecedentes. 7 días, 1 búsqueda, sin tarjeta y sin cobros automáticos.",
       trialCta: "Comenzar prueba gratis",
-      researchTitle: "IPnite para Investigación",
-      researchBody: "Universidades, centros de investigación y TTOs elegibles reciben 50% de descuento en el plan Institucional y en usuarios adicionales.",
       fairUse: "*Sujeto a una política de uso razonable.",
       reviewNote: "†Los análisis de patentabilidad y FTO son entregables asistidos por IA. Tú eres responsable de revisarlos o de enviarlos a revisión profesional; IPnite no garantiza sus conclusiones.",
       regionalNote: "Selecciona tu país o región para ver precios locales. Los planes se renuevan automáticamente cada mes o cada año hasta que canceles; puedes cancelar en cualquier momento desde tu cuenta y conservas el acceso hasta el final del periodo pagado. Impuestos, comisiones y total final se confirman al pagar.",
@@ -129,8 +127,6 @@ const copy = lang === "es"
       trialTitle: "Experimente a IPnite grátis",
       trialBody: "Explore sua invenção com o Agente de descoberta e faça sua primeira busca de anterioridade. 7 dias, 1 busca, sem cartão e sem cobranças automáticas.",
       trialCta: "Começar teste grátis",
-      researchTitle: "IPnite para Pesquisa",
-      researchBody: "Universidades, centros de pesquisa e NITs elegíveis recebem 50% de desconto no plano Institucional e em usuários adicionais.",
       fairUse: "*Sujeito a uma política de uso razoável.",
       reviewNote: "†As análises de patenteabilidade e FTO são entregáveis assistidos por IA. Você é responsável por revisá-las ou enviá-las para revisão profissional; a IPnite não garante suas conclusões.",
       regionalNote: "Selecione seu país ou região para ver preços locais. Os planos são renovados automaticamente a cada mês ou ano até que você cancele; você pode cancelar a qualquer momento pela sua conta e mantém o acesso até o fim do período pago. Impostos, tarifas e total final são confirmados no pagamento.",
@@ -190,11 +186,32 @@ const copy = lang === "es"
       trialTitle: "Try IPnite free",
       trialBody: "Explore your invention with the Discovery Agent and run your first prior-art search. 7 days, 1 search, no credit card and no automatic charges.",
       trialCta: "Start your free trial",
-      researchTitle: "IPnite for Research",
-      researchBody: "Eligible universities, research centers and TTOs receive 50% off the Institutional plan and additional users.",
       fairUse: "*Subject to a reasonable-use policy.",
       reviewNote: "†Patentability and FTO analyses are AI-assisted deliverables. You are responsible for reviewing them or having them professionally reviewed; IPnite does not guarantee their conclusions.",
       regionalNote: "Select your country or region to see local pricing. Plans renew automatically every month or year until you cancel; you can cancel anytime from your account and keep access until the end of the paid period. Taxes, fees and the final total are confirmed at checkout.",
+    };
+const singleDraftCopy = lang === "es"
+  ? {
+      heading: "¿Solo necesitas redactar una patente?",
+      body: "¿Aún no quieres una suscripción? Crea un borrador completo de patente para una sola invención con un pago único.",
+      payment: "Pago único. Sin suscripción.",
+      cta: "Crear un borrador de patente",
+      ongoing: "Para seguir trabajando en tus invenciones y gestionar tu propiedad intelectual a lo largo del tiempo, elige una suscripción.",
+    }
+  : lang === "pt"
+  ? {
+      heading: "Precisa redigir apenas uma patente?",
+      body: "Ainda não quer uma assinatura? Crie uma minuta completa de patente para uma única invenção com um pagamento único.",
+      payment: "Pagamento único. Sem assinatura.",
+      cta: "Criar uma minuta de patente",
+      ongoing: "Para continuar trabalhando nas suas invenções e gerenciar sua propriedade intelectual ao longo do tempo, escolha uma assinatura.",
+    }
+  : {
+      heading: "Need just one draft?",
+      body: "Not ready for a subscription? Create one complete patent draft for a single invention with a one-time payment.",
+      payment: "One-time payment. No subscription required.",
+      cta: "Create a single draft",
+      ongoing: "Choose a subscription to keep working on your inventions and managing your intellectual property over time.",
     };
 const plans: Array<{ code: PlanCode; content: typeof copy.inventor; featured?: boolean; sales?: boolean }> = [
   { code: "inventor", content: copy.inventor },
@@ -207,6 +224,13 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
 <section id="plans" aria-labelledby="pricing-heading" class="pricing" data-analytics-location="pricing">
   <div class="pricing__inner">
     <h2 id="pricing-heading"><span>{copy.heading[0]}</span><strong>{copy.heading[1]}</strong></h2>
+    <div class="pricing__trial">
+      <strong>{copy.trialTitle}</strong>
+      <p>{copy.trialBody}</p>
+      <a class="pricing__trial-cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="try_ipnite_free" data-analytics-event="pricing_cta_clicked" data-analytics-plan="free_trial">
+        {copy.trialCta}
+      </a>
+    </div>
     <div class="pricing__cards">
       {plans.map(({ code, content, featured, sales }) => (
         <article class:list={["plan-card", { "plan-card--featured": featured }]}>
@@ -234,16 +258,15 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
         </article>
       ))}
     </div>
-    <div class="pricing__trial">
-      <strong>{copy.trialTitle}</strong>
-      <p>{copy.trialBody}</p>
-      <a class="pricing__trial-cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="try_ipnite_free" data-analytics-event="pricing_cta_clicked" data-analytics-plan="free_trial">
-        {copy.trialCta}
+    <div class="pricing__research pricing__single-draft">
+      <strong>{singleDraftCopy.heading}</strong>
+      <p>{singleDraftCopy.body}</p>
+      <p><b>Single Draft · <span data-single-draft-price>{formatPrice(defaultPricing.singleDraft, defaultPricing.currency, lang)}</span></b></p>
+      <p>{singleDraftCopy.payment}</p>
+      <a class="plan-card__cta" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="single_draft" data-analytics-event="pricing_cta_clicked" data-analytics-plan="single_draft">
+        {singleDraftCopy.cta}
       </a>
-    </div>
-    <div class="pricing__research">
-      <strong>{copy.researchTitle}</strong>
-      <p>{copy.researchBody}</p>
+      <p>{singleDraftCopy.ongoing}</p>
     </div>
     <p class="pricing__fair-use">{copy.fairUse}</p>
     <p class="pricing__fair-use pricing__review-note">{copy.reviewNote}</p>
@@ -275,6 +298,9 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
         const label = lang === "es" ? "Usuarios adicionales" : lang === "pt" ? "Usuários adicionais" : "Additional users";
         const year = lang === "es" ? "año" : lang === "pt" ? "ano" : "yr";
         node.textContent = `${label}: ${monthly}${unit} · ${annual}/${year}`;
+      });
+      document.querySelectorAll("[data-single-draft-price]").forEach((node) => {
+        node.textContent = format(config.singleDraft, config.currency);
       });
       document.documentElement.classList.remove("pricing-pending");
     }
@@ -582,6 +608,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
   .pricing__regional-note { margin-top: 12px; }
   .pricing__review-note { margin-top: 8px; }
 
+  :global(html.pricing-pending) [data-single-draft-price],
   :global(html.pricing-pending) [data-price-plan],
   :global(html.pricing-pending) [data-annual-plan],
   :global(html.pricing-pending) [data-additional-user] { visibility: hidden; }

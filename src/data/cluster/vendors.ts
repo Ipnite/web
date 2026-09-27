@@ -72,20 +72,27 @@ export function ipniteRegionalPricing(locale: Locale) {
   const f = (code: keyof typeof marketPricing, plan: "inventor" | "startup" | "institutional") => locale === "es"
     ? new Intl.NumberFormat("es-MX", { style: "currency", currency: marketPricing[code].currency, currencyDisplay: "code", maximumFractionDigits: 0 }).format(marketPricing[code].prices[plan].monthly).replace(/\u00a0/g, " ")
     : formatPrice(marketPricing[code].prices[plan].monthly, marketPricing[code].currency, locale);
+  const inventor = { latam: f("LATAM", "inventor"), mx: f("MX", "inventor"), ar: f("AR", "inventor"), br: f("BR", "inventor"), us: f("US", "inventor") };
   if (locale === "es") {
     return {
-      inventorSummary: `Inventor desde ${f("LATAM", "inventor")}/mes en Latinoamérica (${f("MX", "inventor")} en México, ${f("AR", "inventor")} en Argentina)`,
+      inventor,
+      inventorSummary: `Inventor desde ${inventor.latam}/mes en Latinoamérica (${inventor.mx} en México, ${inventor.ar} en Argentina)`,
+      oneProvisional: `Un mes del plan Inventor: ${inventor.latam} en Latinoamérica, ${inventor.mx} en México, ${inventor.ar} en Argentina, ${inventor.us} en EE. UU.`,
       plans: `Inventor ${f("LATAM", "inventor")}, Startup ${f("LATAM", "startup")}, Institucional ${f("LATAM", "institutional")} al mes en Latinoamérica; precios locales en México y Argentina`,
     };
   }
   if (locale === "pt") {
     return {
-      inventorSummary: `Inventor ${f("BR", "inventor")}/mês no Brasil`,
+      inventor,
+      inventorSummary: `Inventor ${inventor.br}/mês no Brasil`,
+      oneProvisional: `Um mês do plano Inventor: ${inventor.br} no Brasil, ${inventor.latam} no restante da América Latina, ${inventor.us} nos EUA`,
       plans: `Inventor ${f("BR", "inventor")}, Startup ${f("BR", "startup")}, Institucional ${f("BR", "institutional")} por mês no Brasil`,
     };
   }
   return {
-    inventorSummary: `Inventor ${f("US", "inventor")}/month in the US; regional prices in Latin America`,
-    plans: `Inventor ${f("US", "inventor")}, Startup ${f("US", "startup")}, Institutional ${f("US", "institutional")} per month in the US; regional prices`,
+    inventor,
+    inventorSummary: `Inventor from ${inventor.latam}/month in Latin America (${inventor.us} in the US)`,
+    oneProvisional: `One month of the Inventor plan: ${inventor.latam} in Latin America, ${inventor.us} in the US`,
+    plans: `Inventor ${f("US", "inventor")}, Startup ${f("US", "startup")}, Institutional ${f("US", "institutional")} per month in the US; lower regional prices in Latin America`,
   };
 }

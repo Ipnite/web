@@ -40,7 +40,8 @@ export const aiPatentToolForInventors: ClusterPage = {
             { title: "Check what already exists", body: "Run a prior-art search by technical concept. Save the closest references to the project so they inform the draft." },
             { title: "Generate claims and the description", body: "The Drafter prepares independent and dependent claims plus a detailed description, background, summary, and abstract from the same disclosure." },
             { title: "Create reference drawings", body: "Generate figures whose reference numerals match the text, then refine them." },
-            { title: "Review, export, and decide how to file", body: "Run the QA checks, export the application as DOCX, and either file it yourself or send it to a patent attorney or agent for review." },
+            { title: "Review, export, and decide how to file", body: "Run the QA checks, export the application as DOCX, and either file it yourself or send it to a patent attorney or agent for review. In some offices, such as INPI Argentina, you can submit the application directly from IPnite." },
+            { title: "Follow the office from IPnite", body: "IPnite gives you a dedicated email address to register with the patent office, so its notifications reach your project and you can answer the examiner from IPnite." },
           ],
         },
         {
@@ -129,7 +130,8 @@ export const aiPatentToolForInventors: ClusterPage = {
             { title: "Revisa lo que ya existe", body: "Haz una búsqueda de antecedentes por concepto técnico. Guarda las referencias más cercanas en el proyecto para que orienten el borrador." },
             { title: "Genera reivindicaciones y descripción", body: "The Drafter prepara reivindicaciones independientes y dependientes, además de la descripción detallada, los antecedentes, el resumen y el resumen técnico, a partir de la misma divulgación." },
             { title: "Crea dibujos de referencia", body: "Genera figuras cuyos números de referencia coinciden con el texto y ajústalas." },
-            { title: "Revisa, exporta y decide cómo presentar", body: "Pasa los controles de calidad, exporta la solicitud en DOCX y preséntala tú mismo o envíala a un abogado o agente de patentes para revisión." },
+            { title: "Revisa, exporta y decide cómo presentar", body: "Pasa los controles de calidad, exporta la solicitud en DOCX y preséntala tú mismo o envíala a un abogado o agente de patentes para revisión. En algunas oficinas, como el INPI de Argentina, puedes presentar la solicitud directamente desde IPnite." },
+            { title: "Da seguimiento a la oficina desde IPnite", body: "IPnite te da un correo dedicado que puedes registrar ante la oficina de patentes para recibir sus notificaciones en tu proyecto y responder al examinador desde IPnite." },
           ],
         },
         {
@@ -218,7 +220,8 @@ export const aiPatentToolForInventors: ClusterPage = {
             { title: "Veja o que já existe", body: "Faça uma busca de anterioridade por conceito técnico. Salve as referências mais próximas no projeto para orientar o rascunho." },
             { title: "Gere reivindicações e relatório", body: "O The Drafter prepara reivindicações independentes e dependentes, além do relatório descritivo, do estado da técnica, do sumário e do resumo, a partir da mesma divulgação." },
             { title: "Crie desenhos de referência", body: "Gere figuras cujos sinais de referência coincidem com o texto e ajuste-as." },
-            { title: "Revise, exporte e decida como depositar", body: "Passe pelos controles de qualidade, exporte o pedido em DOCX e deposite você mesmo ou envie a um advogado ou agente da propriedade industrial para revisão." },
+            { title: "Revise, exporte e decida como depositar", body: "Passe pelos controles de qualidade, exporte o pedido em DOCX e deposite você mesmo ou envie a um advogado ou agente da propriedade industrial para revisão. Em alguns escritórios, como o INPI da Argentina, você pode depositar o pedido diretamente pela IPnite." },
+            { title: "Acompanhe o escritório pela IPnite", body: "A IPnite oferece um e-mail dedicado para cadastrar no escritório de patentes, assim as notificações chegam ao seu projeto e você responde ao examinador pela IPnite." },
           ],
         },
         {

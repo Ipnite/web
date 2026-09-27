@@ -79,12 +79,14 @@ export const patentDraftingSoftware: ClusterPage = {
           heading: "Where IPnite fits",
           paragraphs: [
             "IPnite is an end-to-end workflow platform. One project holds the invention disclosure, prior-art search, claims and specification drafted by The Drafter, patent drawings, QA checks, DOCX export, and portfolio records. It supports preparation for the USPTO, Mexico's IMPI, INPI Argentina, INPI Brazil, and PCT applications, in English, Spanish, and Portuguese.",
-            "It is a good fit when first drafts and context-switching between separate tools are the bottleneck. It is not an office-action tool, and teams that only need Word proofreading of drafts they already write themselves may be better served by an add-in.",
+            "It is a strong fit when first drafts, examiner responses, and switching between separate tools are the bottleneck, and it is built for Latin American practice, with local prices for Mexico, Argentina, Brazil, and the rest of the region. Teams that only need Word proofreading of drafts they already write themselves may be better served by an add-in.",
           ],
           bullets: [
             "Public pricing and a 7-day free trial without a credit card",
             "Editable DOCX export on every plan",
             "Collaborators and team permissions for firms and institutions",
+            "A dedicated email to receive patent office notifications and answer the examiner from IPnite",
+            "Direct filing from the app in some offices, such as INPI Argentina",
             "Customer content is not used to train AI models",
           ],
         },
@@ -171,12 +173,14 @@ export const patentDraftingSoftware: ClusterPage = {
           heading: "Dónde encaja IPnite",
           paragraphs: [
             "IPnite es una plataforma de flujo completo. Un mismo proyecto reúne la divulgación de la invención, la búsqueda de antecedentes, las reivindicaciones y la descripción que redacta The Drafter, los dibujos, el control de calidad, la exportación en DOCX y los registros de cartera. Admite la preparación para la USPTO, el IMPI de México, el INPI de Argentina, el INPI de Brasil y solicitudes PCT, en español, inglés y portugués.",
-            "Encaja bien cuando el cuello de botella son los primeros borradores y el ir y venir entre herramientas separadas. No es una herramienta para responder oficios, y a los equipos que solo necesitan revisar en Word borradores que ya escriben ellos mismos quizá les sirva más un complemento.",
+            "Encaja muy bien cuando el cuello de botella son los primeros borradores, las respuestas al examinador y el ir y venir entre herramientas separadas, y está pensada para la práctica latinoamericana, con precios locales para México, Argentina, Brasil y el resto de la región. A los equipos que solo necesitan revisar en Word borradores que ya escriben ellos mismos quizá les sirva más un complemento.",
           ],
           bullets: [
             "Precios públicos y prueba gratis de 7 días sin tarjeta",
             "Exportación en DOCX editable en todos los planes",
             "Colaboradores y permisos de equipo para despachos e instituciones",
+            "Correo dedicado para recibir notificaciones de la oficina y responder al examinador desde IPnite",
+            "Presentación directa desde la app en algunas oficinas, como el INPI de Argentina",
             "El contenido de los clientes no se usa para entrenar modelos de IA",
           ],
         },
@@ -263,12 +267,14 @@ export const patentDraftingSoftware: ClusterPage = {
           heading: "Onde a IPnite se encaixa",
           paragraphs: [
             "A IPnite é uma plataforma de fluxo completo. Um mesmo projeto reúne a divulgação da invenção, a busca de anterioridade, as reivindicações e o relatório redigidos pelo The Drafter, os desenhos, o controle de qualidade, a exportação em DOCX e os registros de portfólio. Ela suporta a preparação para o USPTO, o IMPI do México, o INPI da Argentina, o INPI do Brasil e pedidos PCT, em português, inglês e espanhol.",
-            "Ela funciona bem quando o gargalo são os primeiros rascunhos e a troca constante entre ferramentas separadas. Não é uma ferramenta para responder exigências, e equipes que só precisam revisar no Word rascunhos que já escrevem talvez se beneficiem mais de um suplemento.",
+            "Ela funciona muito bem quando o gargalo são os primeiros rascunhos, as respostas ao examinador e a troca constante entre ferramentas separadas, e foi pensada para a prática latino-americana, com preços locais para Brasil, México, Argentina e o restante da região. Equipes que só precisam revisar no Word rascunhos que já escrevem talvez se beneficiem mais de um suplemento.",
           ],
           bullets: [
             "Preços públicos e teste grátis de 7 dias sem cartão",
             "Exportação em DOCX editável em todos os planos",
             "Colaboradores e permissões de equipe para escritórios e instituições",
+            "E-mail dedicado para receber notificações do escritório e responder ao examinador pela IPnite",
+            "Depósito direto pelo app em alguns escritórios, como o INPI da Argentina",
             "O conteúdo dos clientes não é usado para treinar modelos de IA",
           ],
         },

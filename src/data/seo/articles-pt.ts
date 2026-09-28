@@ -12,6 +12,47 @@ const ESPACENET = { label: "EPO — Espacenet", url: "https://worldwide.espacene
 const PATENTSCOPE = { label: "OMPI — PATENTSCOPE", url: "https://patentscope.wipo.int/" };
 
 export const articlesPt: Record<string, ArticleCopy> = {
+  "how-to-write-a-patent-application": {
+    title: "Como redigir um pedido de patente passo a passo | IPnite",
+    description: "As partes de um pedido de patente, a ordem que funciona para redigi-las e os erros que o enfraquecem. Guia prático com fontes oficiais.",
+    h1: "Como redijo um pedido de patente?",
+    lead: "Comece pela invenção, não pelo formulário. Descreva o problema e como sua solução funciona, defina nas reivindicações o que quer proteger e sustente tudo com desenhos. Este guia explica a ordem que funciona e o que os escritórios de patentes esperam.",
+    sections: [
+      {
+        heading: "O que um pedido de patente contém?",
+        paragraphs: ["Quase todos os escritórios pedem as mesmas partes: um título, um relatório descritivo, uma ou mais reivindicações, um resumo e, quando ajudam a entender a invenção, desenhos. O Regulamento do PCT define a ordem usual da descrição: campo técnico, estado da técnica, a divulgação do problema e da solução, uma breve descrição dos desenhos, a melhor forma de executar a invenção e sua aplicação industrial."],
+        bullets: ["Relatório descritivo: explica a invenção para que um técnico no assunto possa reproduzi-la", "Reivindicações: definem o escopo legal da proteção", "Resumo: uma síntese técnica curta usada nas buscas", "Desenhos: figuras com sinais de referência que coincidem com o texto"],
+      },
+      {
+        heading: "Em que ordem devo redigir?",
+        paragraphs: ["Redigir as partes na ordem em que aparecem no papel quase nunca é o melhor caminho. Esta sequência mantém o pedido coerente:"],
+        bullets: ["1. Anote o problema, como sua solução funciona, seus componentes e todas as alternativas que imaginar", "2. Busque anterioridades e anote o que torna sua invenção diferente", "3. Redija as reivindicações: primeiro a independente, com as características essenciais, depois as dependentes, como posições de fallback", "4. Escreva o relatório descritivo de modo que sustente cada elemento de cada reivindicação, com concretizações e variantes", "5. Prepare os desenhos e use os mesmos sinais de referência no texto", "6. Acrescente o campo técnico, o estado da técnica e o sumário", "7. Deixe o resumo para o final; no PCT, de preferência entre 50 e 150 palavras", "8. Revise terminologia, numeração e suporte do início ao fim"],
+      },
+      {
+        heading: "Quão detalhado precisa ser o relatório?",
+        paragraphs: ["O suficiente para que um técnico no assunto consiga fabricar e usar a invenção. Nos Estados Unidos, o 35 U.S.C. 112(a) exige uma descrição escrita da invenção e da forma de fabricá-la e usá-la, além do melhor modo concebido pelo inventor. O que faltar na data de depósito é difícil ou impossível de acrescentar depois sem perder essa data, então descreva variantes, materiais, faixas e exemplos, não só o protótipo."],
+      },
+      {
+        heading: "Como redijo as reivindicações?",
+        paragraphs: ["As reivindicações devem apontar de forma particular e distinta o que você considera sua invenção (35 U.S.C. 112(b)). Cada reivindicação independente lista as características essenciais que, juntas, resolvem o problema; as dependentes acrescentam características mais específicas que podem salvar o pedido se a reivindicação ampla esbarrar em uma anterioridade. Use um único termo por elemento e mantenha-o idêntico nas reivindicações, no relatório e nos desenhos."],
+      },
+      {
+        heading: "Quais erros enfraquecem um pedido?",
+        paragraphs: [],
+        bullets: ["Descrever só o protótipo em vez da solução geral e suas variantes", "Mudar o nome de um elemento entre seções", "Reivindicar características que o relatório nunca explica", "Sinais de referência nos desenhos que não aparecem no texto", "Explicar as vantagens, mas não como a invenção as alcança", "Tornar a invenção pública antes do depósito"],
+      },
+      {
+        heading: "Cada escritório pede algo diferente?",
+        paragraphs: ["As partes centrais são as mesmas, mas o idioma e as regras formais mudam. O USPTO trabalha em inglês, o IMPI e o INPI da Argentina em espanhol, e o INPI do Brasil em português. Desenhos, margens, formato de página e taxas também seguem as regras de cada escritório, como a Regra 11 do PCT para pedidos internacionais, então confira os requisitos do escritório onde vai depositar."],
+      },
+      {
+        heading: "Posso redigir sozinho ou preciso de um profissional?",
+        paragraphs: ["Você pode preparar sozinho um pedido completo e estruturado, e muitos escritórios aceitam o depósito feito diretamente pelo inventor, embora alguns exijam um procurador local para depositantes estrangeiros. Onde um advogado ou agente da propriedade industrial mais agrega é no escopo das reivindicações e na estratégia, então um caminho prático é chegar com um rascunho bem organizado e pagar pelo critério dele, não pelo básico. Na IPnite, o Agente de descoberta estrutura sua divulgação e faz a busca de anterioridade, e o The Drafter prepara as reivindicações, o relatório, os desenhos e a revisão de qualidade e exporta um DOCX para sua revisão. Ele não substitui aconselhamento jurídico."],
+      },
+    ],
+    sources: [{ label: "Código dos EUA (govinfo.gov) — 35 U.S.C. 112, relatório (em inglês)", url: "https://www.govinfo.gov/content/pkg/USCODE-2023-title35/html/USCODE-2023-title35-partII-chap11-sec112.htm" }, { label: "OMPI — Regra 5 do PCT, a descrição (em inglês)", url: "https://www.wipo.int/pct/en/texts/rules/r5.html" }, { label: "OMPI — Regra 8 do PCT, o resumo (em inglês)", url: "https://www.wipo.int/pct/en/texts/rules/r8.html" }, { label: "OMPI — Regra 11 do PCT, requisitos materiais (em inglês)", url: "https://www.wipo.int/pct/en/texts/rules/r11.html" }, { label: "INPI — Instituto Nacional da Propriedade Industrial", url: "https://www.gov.br/inpi/pt-br" }],
+  },
+
   "how-to-patent-an-idea": {
     title: "Como patentear uma ideia: guia passo a passo | IPnite",
     description: "Uma ideia se torna patenteável quando é uma solução técnica concreta. Os passos: documentar, buscar anterioridades, redigir, depositar e proteger fora.",
@@ -32,13 +73,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "3. Avalie a patenteabilidade",
+        heading: "3. Minha invenção pode ser patenteada?",
         paragraphs: [
           "A maioria dos sistemas exige novidade, atividade inventiva e aplicação industrial. Algumas matérias, como métodos abstratos, descobertas ou certos métodos médicos, são excluídas ou restritas conforme o país.",
         ],
       },
       {
-        heading: "4. Escolha onde e como depositar",
+        heading: "4. Onde e como devo depositar?",
         paragraphs: [
           "Defina quais mercados importam. No Brasil você deposita diretamente o pedido completo no INPI; não existe pedido provisório. Nos Estados Unidos e, desde abril de 2026, no México, um provisório garante uma data antecipada por 12 meses. Em até 12 meses do primeiro depósito você pode estender a proteção ao exterior com a prioridade da Convenção de Paris ou com um único pedido PCT.",
         ],
@@ -76,13 +117,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "É um depósito antecipado e simplificado que garante uma data para sua invenção e dá 12 meses para depositar o pedido completo.",
     sections: [
       {
-        heading: "Como funciona",
+        heading: "Como funciona um pedido provisório?",
         paragraphs: [
           "O provisório é depositado com a descrição da invenção e, normalmente, desenhos. Não é examinado e nunca se torna patente sozinho. Em até 12 meses é preciso depositar o pedido completo que reivindica seu benefício. A partir daí, a data do provisório vale para tudo o que o provisório realmente descreve.",
         ],
       },
       {
-        heading: "Onde existe",
+        heading: "Onde posso depositar um pedido provisório?",
         paragraphs: [
           "Os Estados Unidos usam pedidos provisórios desde 1995. O México os criou com a reforma da sua Lei Federal de Proteção à Propriedade Industrial, em vigor desde 6 de abril de 2026: o provisório mexicano não é publicado nem examinado, o prazo de 12 meses é improrrogável e ele não pode reivindicar prioridade de um pedido anterior. O Brasil e a Argentina não têm figura equivalente: no Brasil, a data vem do próprio pedido depositado no INPI.",
         ],
@@ -98,7 +139,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "O principal risco: uma divulgação fraca",
+        heading: "Qual é o principal risco de um provisório?",
         paragraphs: [
           "O pedido posterior só pode se apoiar na data do provisório para aquilo que o provisório descreve. Se ele for um resumo curto ou uma apresentação, suas reivindicações finais podem ficar sem suporte e perder essa data. Trate o provisório como uma divulgação técnica completa: cada componente essencial, alternativas, exemplos e figuras.",
         ],
@@ -118,7 +159,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "A taxa oficial costuma ser a menor parte do custo. O que você realmente paga é uma divulgação sólida o bastante para sustentar suas reivindicações futuras.",
     sections: [
       {
-        heading: "Os componentes do custo",
+        heading: "Pelo que estou pagando de verdade?",
         paragraphs: [],
         bullets: [
           "Taxa oficial de depósito; nos Estados Unidos depende do porte da entidade (grande, pequena ou micro)",
@@ -129,13 +170,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Taxas oficiais",
+        heading: "Quanto custam as taxas oficiais?",
         paragraphs: [
           "As taxas do USPTO mudam periodicamente e têm descontos para pequenas e microentidades. Consulte a tabela vigente antes do depósito. No México, o IMPI publica suas próprias tarifas para o novo pedido provisório. No Brasil não há provisório: o custo inicial é o do pedido de patente no INPI.",
         ],
       },
       {
-        heading: "Por que o provisório mais barato pode sair mais caro",
+        heading: "Por que o provisório mais barato pode sair mais caro?",
         paragraphs: [
           "Um provisório só protege o que descreve. Um depósito apressado e enxuto pode custar pouco hoje, mas deixar o pedido completo sem suporte para suas reivindicações e obrigar você a depender de uma data posterior. Vale investir em uma descrição completa com variantes e figuras.",
         ],
@@ -157,13 +198,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "Sim: a IA pode produzir um rascunho completo e estruturado. Ela não pode ser a inventora, e o resultado precisa de revisão cuidadosa antes do depósito.",
     sections: [
       {
-        heading: "O que a IA faz bem",
+        heading: "O que a IA faz bem em um pedido de patente?",
         paragraphs: [
           "A redação de patentes tem muita estrutura: árvores de reivindicações, concretizações, terminologia coerente, sinais de referência e seções padrão. Uma IA preparada para esse fluxo transforma uma boa divulgação técnica em um rascunho completo muito mais rápido do que começar do zero e pode propor variantes que você não tinha escrito.",
         ],
       },
       {
-        heading: "O que a IA não pode fazer",
+        heading: "O que a IA não pode fazer?",
         paragraphs: [
           "A IA não é inventora. Escritórios de patentes e tribunais de vários países, inclusive nos casos DABUS, entenderam que inventores devem ser pessoas físicas. A contribuição técnica precisa vir de pessoas. A IA também não conhece dados que você não forneceu e pode errar ou inventar referências.",
         ],
@@ -175,7 +216,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Como usar IA com segurança",
+        heading: "Como uso IA com segurança com minha invenção?",
         paragraphs: [],
         bullets: [
           "Forneça uma divulgação técnica completa e precisa",
@@ -199,7 +240,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "Uma boa busca combina várias bases de dados e técnicas: conceitos e sinônimos, classificações, citações e famílias de patentes.",
     sections: [
       {
-        heading: "Bases gratuitas que vale conhecer",
+        heading: "Onde posso buscar patentes de graça?",
         paragraphs: [],
         bullets: [
           "Google Patents: busca rápida de texto completo com tradução automática",
@@ -210,13 +251,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Busque por conceito, não só por palavra",
+        heading: "Por que uma busca por palavras não encontra tudo?",
         paragraphs: [
           "Documentos diferentes descrevem a mesma coisa com palavras diferentes. Liste as características essenciais da sua invenção e vários sinônimos de cada uma. Combine-os nas consultas e leia os resultados mais relevantes para descobrir mais terminologia.",
         ],
       },
       {
-        heading: "Use as classificações",
+        heading: "Como uso as classificações de patentes?",
         paragraphs: [
           "A Classificação Internacional de Patentes (IPC) e a Classificação Cooperativa de Patentes (CPC) agrupam documentos por tecnologia. Quando encontrar um documento relevante, veja seus códigos e busque dentro deles: surgirão documentos com linguagem totalmente diferente.",
         ],
@@ -250,19 +291,19 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "O que importa é a data",
+        heading: "Qual data importa para a anterioridade?",
         paragraphs: [
           "A anterioridade é medida contra sua data de depósito, ou contra sua data de prioridade se você a reivindicar. Por isso depositar cedo importa: a cada dia antes do depósito podem surgir novas divulgações, inclusive as suas. O período de graça brasileiro de 12 meses (art. 12 da LPI) cobre divulgações feitas pelo próprio inventor, mas não é reconhecido em todos os países.",
         ],
       },
       {
-        heading: "Como é usada",
+        heading: "Como o examinador usa a anterioridade?",
         paragraphs: [
           "Os examinadores usam a anterioridade para decidir a novidade (se um único documento já mostra todas as características de uma reivindicação) e a atividade inventiva (se a solução seria óbvia para um técnico no assunto diante de um ou mais documentos).",
         ],
       },
       {
-        heading: "Por que buscar antes de redigir",
+        heading: "Por que buscar antes de redigir?",
         paragraphs: [
           "Conhecer as anterioridades mais próximas permite reivindicar o que é realmente novo, explicar suas vantagens de forma convincente e evitar gastar com um pedido que não pode prosperar.",
         ],
@@ -300,13 +341,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Passo 4: compare característica por característica",
+        heading: "Passo 4: Como comparo um documento com minha invenção?",
         paragraphs: [
           "Monte uma tabela com suas características nas linhas e os documentos mais relevantes nas colunas. Marque quais características cada documento divulga. Um documento que divulga todas é um problema de novidade; vários que juntos as cobrem levantam uma questão de atividade inventiva.",
         ],
       },
       {
-        heading: "Passo 5: documente e decida",
+        heading: "Passo 5: O que faço com os resultados?",
         paragraphs: [
           "Registre as bases, as consultas, as datas e suas conclusões. Use-as para decidir se vale depositar, quais características destacar nas reivindicações e como explicar as vantagens da invenção.",
         ],
@@ -325,13 +366,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "Os desenhos devem mostrar cada característica necessária para entender a invenção e seguir as regras formais do escritório onde você deposita.",
     sections: [
       {
-        heading: "Quando os desenhos são exigidos",
+        heading: "Quando preciso de desenhos?",
         paragraphs: [
           "A maioria dos escritórios os exige sempre que forem necessários para entender a invenção, o que abrange quase toda invenção mecânica, elétrica ou de dispositivos e muitos processos, geralmente mostrados como fluxogramas.",
         ],
       },
       {
-        heading: "Regras formais comuns",
+        heading: "Que regras os desenhos de patente seguem?",
         paragraphs: [
           "Os Estados Unidos definem os padrões no 37 CFR 1.84, os pedidos internacionais seguem a Regra 11 do PCT e o INPI tem suas próprias normas de apresentação. Os detalhes variam, mas os princípios são parecidos.",
         ],
@@ -344,7 +385,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Coerência com o texto",
+        heading: "Os desenhos precisam coincidir com o texto?",
         paragraphs: [
           "Cada sinal de referência de uma figura deve ser explicado no relatório, e cada característica das reivindicações deve aparecer em pelo menos uma figura quando houver desenhos. Incoerências geram exigências e podem ser difíceis de corrigir sem acrescentar matéria nova.",
         ],
@@ -360,7 +401,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "As reivindicações são o limite jurídico de uma patente. O relatório explica a invenção; as reivindicações definem o que outros não podem fazer sem sua autorização.",
     sections: [
       {
-        heading: "Anatomia de uma reivindicação",
+        heading: "Como é uma reivindicação de patente?",
         paragraphs: [
           "Uma reivindicação é uma única frase com três partes: um preâmbulo que nomeia a invenção (\"Dispositivo para…\"), uma expressão de transição e o corpo, que lista os elementos e como se relacionam. Cada elemento limita a reivindicação: quanto mais elementos, mais estreita a proteção.",
         ],
@@ -372,7 +413,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Reivindicações independentes e dependentes",
+        heading: "Qual a diferença entre reivindicações independentes e dependentes?",
         paragraphs: [
           "Uma reivindicação independente se sustenta sozinha e define a versão mais ampla da invenção que você consegue justificar diante das anterioridades. As dependentes remetem a uma anterior e acrescentam características. Se a independente for rejeitada ou anulada, as dependentes são suas posições de fallback.",
         ],
@@ -384,7 +425,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Quantidade de reivindicações e taxas",
+        heading: "A quantidade de reivindicações muda as taxas?",
         paragraphs: [
           "Muitos escritórios cobram a mais acima de certo número de reivindicações. Nos Estados Unidos há taxas extras acima de três independentes e vinte no total, e o INPI também cobra por reivindicação excedente. Vale um quadro reivindicatório pensado, não longo.",
         ],
@@ -400,25 +441,25 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "\"Patente pendente\" (em inglês, patent pending) informa ao mercado que você depositou um pedido de patente. Não significa que a patente foi concedida.",
     sections: [
       {
-        heading: "Para que serve",
+        heading: "Para que me serve “patente pendente”?",
         paragraphs: [
           "Indicar que um produto tem patente pendente avisa que a proteção pode vir, o que desestimula cópias e dá credibilidade diante de investidores e parceiros. Nos Estados Unidos você pode usar \"patent pending\" assim que deposita um pedido provisório ou definitivo que cubra o produto.",
         ],
       },
       {
-        heading: "O que não faz",
+        heading: "“Patente pendente” já me protege?",
         paragraphs: [
           "Em regra, a ação por infração depende da concessão da patente. No Brasil, a LPI permite ao titular obter indenização pela exploração indevida ocorrida desde a publicação do pedido, depois que a patente for concedida. Nos Estados Unidos, um pedido publicado pode gerar direitos provisórios se as reivindicações concedidas forem substancialmente idênticas às publicadas e o infrator tiver conhecimento efetivo.",
         ],
       },
       {
-        heading: "Use com honestidade",
+        heading: "Quando posso usar “patente pendente”?",
         paragraphs: [
           "Indicar \"patente pendente\" quando nenhum pedido cobre o produto é marcação falsa, punida pela lei americana, e afirmações enganosas podem ser sancionadas pelas normas de defesa do consumidor, inclusive no Brasil. Pare de usar a expressão se o pedido for abandonado ou arquivado.",
         ],
       },
     ],
-    sources: [LPI, { label: "Código dos EUA — 35 U.S.C. 292, marcação falsa (em inglês)", url: "https://www.law.cornell.edu/uscode/text/35/292" }],
+    sources: [LPI, { label: "Código dos EUA — 35 U.S.C. 292, marcação falsa (em inglês)", url: "https://www.govinfo.gov/content/pkg/USCODE-2023-title35/html/USCODE-2023-title35-partIII-chap29-sec292.htm" }],
   },
 
   "when-should-a-startup-file-a-patent": {
@@ -428,19 +469,19 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "Como regra geral, antes que a invenção se torne pública. O momento também depende da maturidade técnica, do orçamento e dos mercados que você quer alcançar.",
     sections: [
       {
-        heading: "Antes de qualquer divulgação pública",
+        heading: "Devemos depositar antes de tornar público?",
         paragraphs: [
           "Lançamentos, demonstrações, artigos, eventos de pitch e até uma vaga muito detalhada podem divulgar uma invenção. A maioria dos países concede a patente a quem deposita primeiro, e muitos não reconhecem período de graça. O brasileiro, de 12 meses, não protege você no exterior. Depositar primeiro preserva suas opções em todo lugar.",
         ],
       },
       {
-        heading: "Quando a invenção é concreta o suficiente",
+        heading: "Quão concreta a invenção precisa estar?",
         paragraphs: [
           "Você não precisa de um produto pronto, mas precisa descrever como a invenção funciona com detalhe suficiente para que um técnico no assunto a reproduza. Se partes-chave ainda são desconhecidas, deposite o que está sólido e considere novos pedidos para as melhorias.",
         ],
       },
       {
-        heading: "Use o PCT para administrar o custo",
+        heading: "Como administramos o custo do depósito?",
         paragraphs: [
           "Depois do primeiro depósito no INPI, você tem 12 meses para depositar no exterior com prioridade. Um pedido PCT nesse prazo adia os custos das fases nacionais para cerca de 30 meses do primeiro depósito, dando tempo para captar recursos e validar mercados.",
         ],
@@ -467,13 +508,13 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "É possível, mas há riscos. A ordem mais segura é depositar primeiro e depois fazer o pitch com a invenção protegida.",
     sections: [
       {
-        heading: "Por que um pitch pode ser uma divulgação",
+        heading: "Um pitch pode contar como divulgação pública?",
         paragraphs: [
           "Uma conversa privada com acordo de confidencialidade normalmente não é divulgação pública. Um demo day, uma apresentação pública, um webinar gravado ou um pitch para muitas pessoas sem sigilo podem ser. Uma vez pública, a invenção pode perder a novidade em países sem período de graça.",
         ],
       },
       {
-        heading: "Investidores e acordos de confidencialidade",
+        heading: "Os investidores assinam acordos de confidencialidade?",
         paragraphs: [
           "Muitos fundos de venture capital não assinam NDA porque veem muitas empresas parecidas. Não conte com um. Controle o que você compartilha.",
         ],
@@ -499,7 +540,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "Patenteabilidade é o conjunto de condições legais que uma invenção precisa cumprir para receber uma patente. Os requisitos centrais são parecidos na maioria dos países.",
     sections: [
       {
-        heading: "Os requisitos centrais",
+        heading: "O que torna uma invenção patenteável?",
         paragraphs: [],
         bullets: [
           "Matéria patenteável: a invenção não está em uma categoria excluída (arts. 10 e 18 da LPI)",
@@ -510,7 +551,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Matéria excluída",
+        heading: "O que não pode ser patenteado?",
         paragraphs: [
           "Descobertas, teorias científicas, métodos matemáticos e ideias abstratas em geral são excluídos. No Brasil, a LPI também exclui, entre outros, programas de computador em si, métodos terapêuticos e cirúrgicos e o todo ou parte de seres vivos naturais. Cada escritório trata software e métodos de negócio de forma diferente.",
         ],
@@ -522,7 +563,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Buscas e análises de patenteabilidade",
+        heading: "Uma busca de patenteabilidade equivale a um parecer?",
         paragraphs: [
           "Uma busca de patenteabilidade compara sua invenção com as anterioridades mais próximas. A IPnite inclui uma análise de patenteabilidade assistida por IA em todos os planos pagos; como todo entregável de IA, cabe a você lê-la ou enviá-la para revisão profissional.",
         ],
@@ -538,7 +579,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "São dois testes diferentes. Uma invenção pode ser nova e ainda assim ser indeferida por ser óbvia para um técnico no assunto.",
     sections: [
       {
-        heading: "Novidade: um documento, todas as características",
+        heading: "Quando uma invenção é nova?",
         paragraphs: [
           "Falta novidade quando uma única anterioridade mostra todas as características da reivindicação, dispostas como reivindicadas. Se faltar pelo menos uma característica nesse documento, a reivindicação é nova diante dele.",
         ],
@@ -556,7 +597,7 @@ export const articlesPt: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "O que isso significa para a redação",
+        heading: "O que isso significa ao redigir minhas reivindicações?",
         paragraphs: [
           "Descreva o problema técnico, as vantagens e qualquer resultado inesperado da solução. São esses fatos que você vai usar para defender a atividade inventiva no exame.",
         ],
@@ -572,19 +613,19 @@ export const articlesPt: Record<string, ArticleCopy> = {
     lead: "As duas usam as mesmas bases de dados, mas respondem a perguntas diferentes. Escolher a certa economiza tempo e dinheiro.",
     sections: [
       {
-        heading: "Busca de patentes: exploração ampla",
+        heading: "Quando preciso de uma busca ampla de patentes?",
         paragraphs: [
           "Uma busca geral de patentes explora um campo tecnológico, um concorrente ou um inventor. Ajuda a entender o cenário, identificar tendências e encontrar oportunidades de licenciamento ou colaboração.",
         ],
       },
       {
-        heading: "Busca de anterioridade: uma invenção, uma pergunta",
+        heading: "Quando preciso de uma busca de anterioridade?",
         paragraphs: [
           "A busca de anterioridade (também chamada de patenteabilidade ou novidade) compara uma invenção concreta com tudo o que foi tornado público antes de uma data. O resultado é uma lista curta das referências mais próximas e de como cada uma se relaciona com suas características.",
         ],
       },
       {
-        heading: "Outros tipos de busca",
+        heading: "Que outras buscas de patentes existem?",
         paragraphs: [],
         bullets: [
           "Liberdade de operação (FTO): posso vender este produto sem infringir patentes vigentes de terceiros em um país?",

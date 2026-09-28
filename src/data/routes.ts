@@ -33,6 +33,9 @@ export const routes = {
   "jurisdiction-br": { en: "/patents-brazil/", es: "/es/patentes-brasil/", pt: "/pt-br/patentes-brasil/", legacy: { en: ["/patentes-brasil/"] } },
   "jurisdiction-pct": { en: "/pct-patent-process/", es: "/es/proceso-pct/", pt: "/pt-br/processo-pct/", legacy: { es: ["/es/pct-patent-process/"], pt: ["/pt-br/pct-patent-process/"] } },
 
+  "journey-idea": { en: "/how-to-patent-an-idea/", es: "/es/como-patentar-una-idea/", pt: "/pt-br/como-patentear-uma-ideia/" },
+  "journey-filed": { en: "/after-filing-a-patent-application/", es: "/es/despues-de-solicitar-una-patente/", pt: "/pt-br/depois-de-depositar-uma-patente/" },
+
   learn: { en: "/learn/", es: "/es/aprende/", pt: "/pt-br/aprenda/", legacy: { es: ["/es/learn/"], pt: ["/pt-br/learn/"] } },
   home: { en: "/", es: "/es/", pt: "/pt-br/" },
   faqs: { en: "/faqs/", es: "/es/faqs/", pt: "/pt-br/faqs/" },

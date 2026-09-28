@@ -12,6 +12,47 @@ const PATENTSCOPE = { label: "WIPO — PATENTSCOPE", url: "https://patentscope.w
 const PPUBS = { label: "USPTO — Patent Public Search", url: "https://ppubs.uspto.gov/pubwebapp/" };
 
 export const articlesEn: Record<string, ArticleCopy> = {
+  "how-to-write-a-patent-application": {
+    title: "How to Write a Patent Application, Step by Step | IPnite",
+    description: "The parts of a patent application, the order that works for writing them, and the mistakes that weaken it. A practical guide with official sources.",
+    h1: "How Do I Write a Patent Application?",
+    lead: "Start with the invention, not the form. Describe the problem and how your solution works, define what you want to protect in the claims, and support both with drawings. This guide covers the order that works and what patent offices expect.",
+    sections: [
+      {
+        heading: "What goes into a patent application?",
+        paragraphs: ["Almost every office asks for the same core parts: a title, a description, one or more claims, an abstract and, when they help explain the invention, drawings. The PCT Regulations set the usual order of the description: technical field, background art, the disclosure of the problem and its solution, a brief description of the drawings, the best way to carry out the invention, and its industrial application."],
+        bullets: ["Description: explains the invention so a skilled person can reproduce it", "Claims: define the legal scope of protection", "Abstract: a short technical summary used for searching", "Drawings: figures with reference numerals that match the text"],
+      },
+      {
+        heading: "In what order should I write it?",
+        paragraphs: ["Writing the parts in the order they appear on paper is rarely the best route. This sequence keeps the application consistent:"],
+        bullets: ["1. Write down the problem, how your solution works, its components and every alternative you can think of", "2. Search the prior art and note what makes your invention different", "3. Draft the claims: first the independent claim with the essential features, then dependent claims with fallback positions", "4. Write the detailed description so it supports every element of every claim, with embodiments and variants", "5. Prepare the drawings and use the same reference numerals in the text", "6. Add the technical field, background and summary", "7. Write the abstract last; under the PCT it should preferably be 50 to 150 words", "8. Review terminology, numbering and support from start to finish"],
+      },
+      {
+        heading: "How detailed does the description have to be?",
+        paragraphs: ["Detailed enough that a person skilled in the field could make and use the invention. In the United States, 35 U.S.C. 112(a) requires a written description and the manner of making and using the invention, and the best mode the inventor contemplates. Whatever is missing on the filing date is hard or impossible to add later without losing that date, so describe variants, materials, ranges and examples, not just your prototype."],
+      },
+      {
+        heading: "How do I write the claims?",
+        paragraphs: ["The claims must particularly point out and distinctly claim what you regard as your invention (35 U.S.C. 112(b)). Each independent claim lists the essential features that, together, solve the problem; dependent claims add narrower features that can save the application if the broad claim meets prior art. Use one term per element and keep it identical in the claims, description and drawings."],
+      },
+      {
+        heading: "Which mistakes weaken an application?",
+        paragraphs: [],
+        bullets: ["Describing only the prototype instead of the general solution and its variants", "Changing the name of an element between sections", "Claiming features the description never explains", "Reference numerals in the drawings that do not appear in the text", "Explaining the advantages but not how the invention achieves them", "Making the invention public before filing"],
+      },
+      {
+        heading: "Does each patent office ask for something different?",
+        paragraphs: ["The core parts are the same, but language and formal rules change. The USPTO works in English, IMPI and INPI Argentina in Spanish, and INPI Brazil in Portuguese. Drawings, margins, page layout and fees also follow each office's rules, such as PCT Rule 11 for international applications, so check the requirements of the office where you will file before submitting."],
+      },
+      {
+        heading: "Can I write it myself, or do I need a professional?",
+        paragraphs: ["You can prepare a complete, structured application yourself, and many offices accept filings made directly by the inventor, although some require a local representative for foreign applicants. Claim scope and filing strategy are where a patent attorney or agent adds the most value, so a practical route is to arrive with a well-organized draft and pay for their judgment rather than for the basics. In IPnite, the Discovery Agent structures your disclosure and runs the prior-art search, and The Drafter prepares the claims, description, drawings and quality review and exports a DOCX for your review. It does not replace legal advice."],
+      },
+    ],
+    sources: [{ label: "U.S. Code (govinfo.gov) — 35 U.S.C. 112, specification", url: "https://www.govinfo.gov/content/pkg/USCODE-2023-title35/html/USCODE-2023-title35-partII-chap11-sec112.htm" }, { label: "WIPO — PCT Rule 5, the description", url: "https://www.wipo.int/pct/en/texts/rules/r5.html" }, { label: "WIPO — PCT Rule 8, the abstract", url: "https://www.wipo.int/pct/en/texts/rules/r8.html" }, { label: "WIPO — PCT Rule 11, physical requirements", url: "https://www.wipo.int/pct/en/texts/rules/r11.html" }],
+  },
+
   "how-to-patent-an-idea": {
     title: "How to Patent an Idea: A Step-by-Step Guide | IPnite",
     description: "An idea becomes patentable once it is a concrete technical solution. The steps: document, search prior art, draft, file, and plan protection abroad.",
@@ -32,13 +73,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "3. Check patentability",
+        heading: "3. Can my invention be patented?",
         paragraphs: [
           "Most systems require novelty, inventive step (non-obviousness in the United States), and industrial application or utility. Some subject matter, such as abstract methods, discoveries, or certain medical methods, is excluded or restricted depending on the country.",
         ],
       },
       {
-        heading: "4. Choose where and how to file",
+        heading: "4. Where and how should I file?",
         paragraphs: [
           "Decide which markets matter. In the United States and, since April 2026, in Mexico, a provisional application can secure an early date for 12 months. In Argentina and Brazil you file the complete national application directly. Within 12 months of your first filing you can extend protection abroad using Paris Convention priority or a single PCT application.",
         ],
@@ -76,13 +117,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "A provisional application is an early, simplified filing that secures a date for your invention and gives you 12 months to file the complete application.",
     sections: [
       {
-        heading: "How a provisional works",
+        heading: "How does a provisional application work?",
         paragraphs: [
           "A provisional is filed with a description of the invention and, usually, drawings. It is not examined and never becomes a patent on its own. Within 12 months you must file the complete application—a U.S. nonprovisional or a PCT application—that claims the provisional's benefit. The provisional's date then counts for everything the provisional actually disclosed.",
         ],
       },
       {
-        heading: "Where it exists",
+        heading: "Where can I file a provisional application?",
         paragraphs: [
           "The United States has used provisional applications since 1995. Mexico introduced them with the reform to its Federal Law for the Protection of Industrial Property, in force since April 6, 2026: the Mexican provisional is not published or examined, the 12-month period cannot be extended, and the provisional cannot itself claim priority from an earlier application. Argentina and Brazil do not offer an equivalent filing.",
         ],
@@ -98,7 +139,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "The main risk: a thin disclosure",
+        heading: "What is the main risk of a provisional?",
         paragraphs: [
           "The later application can only rely on the provisional date for what the provisional describes. If the provisional is a short summary or a slide deck, your final claims may lack support and lose that date. Treat the provisional as a complete technical disclosure: every essential component, alternatives, examples, and figures.",
         ],
@@ -118,7 +159,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "The official filing fee is usually the smallest part of the cost. What you really pay for is a disclosure strong enough to support your future claims.",
     sections: [
       {
-        heading: "The components of the cost",
+        heading: "What am I actually paying for?",
         paragraphs: [],
         bullets: [
           "Official filing fee, which in the United States depends on entity size (large, small, or micro entity)",
@@ -129,13 +170,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Official fees",
+        heading: "How much are the official fees?",
         paragraphs: [
           "USPTO fees change periodically and are reduced for small and micro entities. Check the current fee schedule before filing. In Mexico, IMPI publishes its own fees for the new provisional application.",
         ],
       },
       {
-        heading: "Why the cheapest provisional can be the most expensive",
+        heading: "Why can the cheapest provisional end up costing more?",
         paragraphs: [
           "A provisional only protects what it describes. A rushed, thin filing may cost little today but leave the complete application without support for its claims, forcing you to rely on a later date. The money is best spent on a complete description with variants and figures.",
         ],
@@ -160,13 +201,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "Yes—AI can produce a structured, complete draft. It cannot be the inventor, and its output still needs careful review before filing.",
     sections: [
       {
-        heading: "What AI does well",
+        heading: "What can AI do well in a patent application?",
         paragraphs: [
           "Patent drafting has a lot of structure: claim trees, embodiments, consistent terminology, reference numerals, and standard sections. AI trained for that workflow can turn a good technical disclosure into a complete draft far faster than starting from a blank page, and can propose variants you had not written down.",
         ],
       },
       {
-        heading: "What AI cannot do",
+        heading: "What can't AI do?",
         paragraphs: [
           "AI is not an inventor. Patent offices and courts in several countries, including in the DABUS cases, have held that inventors must be natural persons. The technical contribution must come from people. AI also cannot know facts you did not give it, and it can produce errors or invented references.",
         ],
@@ -178,7 +219,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "How to use AI safely",
+        heading: "How do I use AI safely with my invention?",
         paragraphs: [],
         bullets: [
           "Provide a complete, accurate technical disclosure",
@@ -196,13 +237,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
   },
 
   "how-to-search-existing-patents": {
-    title: "How to Search for Existing Patents: Free Databases | IPnite",
+    title: "How Do I Search for Existing Patents? Free Databases | IPnite",
     description: "Search existing patents with Google Patents, Espacenet, PATENTSCOPE, and USPTO tools. Keywords, classifications, citations, and families explained.",
-    h1: "How to Search for Existing Patents",
+    h1: "How Do I Search for Existing Patents?",
     lead: "A good patent search combines several databases and techniques: concepts and synonyms, classifications, citations, and patent families.",
     sections: [
       {
-        heading: "Free databases worth knowing",
+        heading: "Where can I search patents for free?",
         paragraphs: [],
         bullets: [
           "Google Patents: fast full-text search with machine translation",
@@ -213,13 +254,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Search by concept, not just by word",
+        heading: "Why doesn't a keyword search find everything?",
         paragraphs: [
           "Different documents describe the same thing with different words. List the essential features of your invention and several synonyms for each. Combine them in queries, and read the most relevant results to discover more terminology.",
         ],
       },
       {
-        heading: "Use classifications",
+        heading: "How do I use patent classifications?",
         paragraphs: [
           "The International Patent Classification (IPC) and the Cooperative Patent Classification (CPC) group documents by technology. Once you find a relevant document, look at its codes and search within them—you will find documents that use completely different language.",
         ],
@@ -253,19 +294,19 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "The date is what matters",
+        heading: "Which date matters for prior art?",
         paragraphs: [
           "Prior art is measured against your effective filing date, or your priority date if you claim one. That is why filing early matters: every day before filing, new disclosures can appear, including your own. Grace periods, such as one year in the United States, Argentina, Brazil, and Mexico for the inventor's own disclosures, are limited and not recognized everywhere.",
         ],
       },
       {
-        heading: "How prior art is used",
+        heading: "How do examiners use prior art?",
         paragraphs: [
           "Examiners use prior art to decide novelty—whether a single document already discloses every feature of a claim—and inventive step, whether the claimed solution would have been obvious to a skilled person in light of one or more documents.",
         ],
       },
       {
-        heading: "Why search before drafting",
+        heading: "Why should I search before drafting?",
         paragraphs: [
           "Knowing the closest prior art lets you claim what is truly new, describe your advantages convincingly, and avoid spending on an application that cannot succeed.",
         ],
@@ -303,13 +344,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Step 4: Compare feature by feature",
+        heading: "Step 4: How do I compare a document with my invention?",
         paragraphs: [
           "Build a simple table with your features as rows and the most relevant documents as columns. Mark which features each document discloses. A document that discloses all of them is a novelty problem; several documents that together cover them raise an inventive-step question.",
         ],
       },
       {
-        heading: "Step 5: Document and decide",
+        heading: "Step 5: What do I do with the results?",
         paragraphs: [
           "Record the databases, queries, dates, and your conclusions. Use them to decide whether to file, which features to emphasize in the claims, and how to describe the advantages of your invention.",
         ],
@@ -322,19 +363,19 @@ export const articlesEn: Record<string, ArticleCopy> = {
   },
 
   "patent-drawing-requirements": {
-    title: "Patent Drawing Requirements: USPTO and PCT Rules | IPnite",
+    title: "What Are the Patent Drawing Requirements? | IPnite",
     description: "Black-and-white line drawings, reference numerals, views, and margins. The main patent drawing rules under 37 CFR 1.84 and PCT Rule 11.",
-    h1: "Patent Drawing Requirements",
+    h1: "What Are the Patent Drawing Requirements?",
     lead: "Drawings must show every feature needed to understand the invention and follow the formal rules of the office where you file.",
     sections: [
       {
-        heading: "When drawings are required",
+        heading: "When do I need drawings?",
         paragraphs: [
           "Most offices require drawings whenever they are necessary to understand the invention, which covers nearly every mechanical, electrical, or device invention and many processes, often shown as flowcharts.",
         ],
       },
       {
-        heading: "Common formal rules",
+        heading: "What rules do patent drawings follow?",
         paragraphs: [
           "The United States sets drawing standards in 37 CFR 1.84, and international applications follow PCT Rule 11. Details vary by office, but the principles are similar.",
         ],
@@ -347,7 +388,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Consistency with the text",
+        heading: "Do the drawings have to match the text?",
         paragraphs: [
           "Every reference numeral in a figure should be explained in the description, and every feature in the claims should be visible in at least one figure when drawings are needed. Inconsistencies trigger objections and can be hard to fix without adding new matter.",
         ],
@@ -363,7 +404,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "The claims are the legal boundary of a patent. The description explains the invention; the claims decide what others cannot do without your permission.",
     sections: [
       {
-        heading: "Anatomy of a claim",
+        heading: "What does a patent claim look like?",
         paragraphs: [
           "A claim is a single sentence with three parts: a preamble that names the invention (\"A device for…\"), a transitional phrase, and the body that lists the elements and how they relate. Every element in a claim limits it: the more elements, the narrower the protection.",
         ],
@@ -375,7 +416,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Independent and dependent claims",
+        heading: "What is the difference between independent and dependent claims?",
         paragraphs: [
           "An independent claim stands on its own and defines the broadest version of the invention you can justify over the prior art. Dependent claims refer to an earlier claim and add features. If the independent claim is rejected or invalidated, dependent claims provide fallback positions.",
         ],
@@ -387,7 +428,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Claim counts and fees",
+        heading: "Does the number of claims change the fees?",
         paragraphs: [
           "Many offices charge extra for claims above a threshold. In the United States, fees apply above three independent and twenty total claims, so a claim set should be deliberate rather than long.",
         ],
@@ -403,25 +444,25 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "\"Patent pending\" tells the market that you have filed a patent application. It does not mean a patent has been granted or that anyone is already infringing.",
     sections: [
       {
-        heading: "What it does",
+        heading: "What does “patent pending” do for me?",
         paragraphs: [
           "Marking a product \"patent pending\" signals that protection may be coming, which can discourage copying and add credibility with investors and partners. In the United States you can use it once a provisional or nonprovisional application covering the product is filed.",
         ],
       },
       {
-        heading: "What it does not do",
+        heading: "Does “patent pending” protect me yet?",
         paragraphs: [
           "You cannot sue for infringement until a patent is granted. In the United States, a published application can give rise to provisional rights—a reasonable royalty from publication—if the granted claims are substantially identical to the published ones and the infringer had actual notice.",
         ],
       },
       {
-        heading: "Use it honestly",
+        heading: "When can I use “patent pending”?",
         paragraphs: [
           "Using \"patent pending\" when no application covers the product is false marking, which U.S. law penalizes, and misleading claims can be sanctioned under consumer-protection rules in other countries. Stop using it if the application is abandoned.",
         ],
       },
     ],
-    sources: [{ label: "U.S. Code — 35 U.S.C. 292, false marking", url: "https://www.law.cornell.edu/uscode/text/35/292" }, { label: "U.S. Code — 35 U.S.C. 154(d), provisional rights", url: "https://www.law.cornell.edu/uscode/text/35/154" }],
+    sources: [{ label: "U.S. Code (govinfo.gov) — 35 U.S.C. 292, false marking", url: "https://www.govinfo.gov/content/pkg/USCODE-2023-title35/html/USCODE-2023-title35-partIII-chap29-sec292.htm" }, { label: "U.S. Code (govinfo.gov) — 35 U.S.C. 154(d), provisional rights", url: "https://www.govinfo.gov/content/pkg/USCODE-2023-title35/html/USCODE-2023-title35-partII-chap14-sec154.htm" }],
   },
 
   "when-should-a-startup-file-a-patent": {
@@ -431,19 +472,19 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "As a rule, before the invention becomes public. Timing also depends on technical maturity, budget, and the markets you plan to enter.",
     sections: [
       {
-        heading: "Before any public disclosure",
+        heading: "Should we file before going public?",
         paragraphs: [
           "Launches, demos, papers, pitch events, and even detailed job posts can disclose an invention. Most countries grant patents to the first to file, and many do not recognize any grace period. Filing first protects your options everywhere.",
         ],
       },
       {
-        heading: "When the invention is concrete enough",
+        heading: "How concrete does the invention need to be?",
         paragraphs: [
           "You do not need a finished product, but you do need to describe how the invention works in enough detail for a skilled person to reproduce it. If key parts are still unknown, file what is solid and consider later filings for improvements.",
         ],
       },
       {
-        heading: "Use provisionals and the PCT to manage cost",
+        heading: "How can we manage the cost of filing?",
         paragraphs: [
           "In the United States and Mexico a provisional secures a date for 12 months at lower cost. Before those 12 months end, a PCT application can delay national-phase costs until roughly 30 months from the first filing, giving you time to raise funds and validate markets.",
         ],
@@ -470,13 +511,13 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "You can, but it carries risk. The safest order is to file first—often a provisional—and then pitch with the invention protected.",
     sections: [
       {
-        heading: "Why pitching can be a disclosure",
+        heading: "Can a pitch count as a public disclosure?",
         paragraphs: [
           "A private conversation under a confidentiality agreement is usually not a public disclosure. A demo day, a public deck, a recorded webinar, or a pitch to many people without confidentiality may be. Once public, the invention may lose novelty in countries without a grace period.",
         ],
       },
       {
-        heading: "Investors and NDAs",
+        heading: "Will investors sign an NDA?",
         paragraphs: [
           "Many venture investors do not sign NDAs because they see many similar companies. Do not count on one. Instead, control what you share.",
         ],
@@ -502,7 +543,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "Patentability is the set of legal conditions an invention must meet to be granted a patent. The core requirements are similar across most countries.",
     sections: [
       {
-        heading: "The core requirements",
+        heading: "What makes an invention patentable?",
         paragraphs: [],
         bullets: [
           "Eligible subject matter: the invention is not in an excluded category",
@@ -513,7 +554,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Excluded subject matter",
+        heading: "What can't be patented?",
         paragraphs: [
           "Discoveries, scientific theories, mathematical methods, and abstract ideas are generally excluded. Software and business methods are treated differently by each office: the United States applies the Alice/Mayo eligibility test, while Latin American and European offices look for a technical character. Methods of medical treatment are excluded in many countries outside the United States.",
         ],
@@ -525,7 +566,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "Patentability searches and opinions",
+        heading: "Is a patentability search the same as an opinion?",
         paragraphs: [
           "A patentability search compares your invention with the closest prior art. IPnite includes an AI-assisted patentability analysis on every paid plan; like any AI deliverable, it is yours to read or to have reviewed by a professional.",
         ],
@@ -541,7 +582,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "They are two different tests. An invention can be new and still be refused because it would have been obvious to a skilled person.",
     sections: [
       {
-        heading: "Novelty: one document, every feature",
+        heading: "When is an invention new?",
         paragraphs: [
           "An invention lacks novelty when a single prior-art disclosure shows every feature of the claim, arranged as claimed. If even one feature is missing from that document, the claim is new over it.",
         ],
@@ -559,7 +600,7 @@ export const articlesEn: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: "What this means for drafting",
+        heading: "What does this mean when I draft my claims?",
         paragraphs: [
           "Describe the technical problem, the advantages, and any unexpected results of your solution. Those facts are what you will rely on to argue inventive step during examination.",
         ],
@@ -575,19 +616,19 @@ export const articlesEn: Record<string, ArticleCopy> = {
     lead: "Both use the same databases, but they answer different questions. Choosing the right one saves time and money.",
     sections: [
       {
-        heading: "Patent search: broad discovery",
+        heading: "When do I need a broad patent search?",
         paragraphs: [
           "A general patent search explores a technology field, a competitor, or an inventor. It helps you understand the landscape, spot trends, and find licensing or collaboration opportunities.",
         ],
       },
       {
-        heading: "Prior-art search: one invention, one question",
+        heading: "When do I need a prior-art search?",
         paragraphs: [
           "A prior-art search (also called a patentability or novelty search) compares a specific invention against everything made public before a date. Its output is a short list of the closest references and how each relates to your features.",
         ],
       },
       {
-        heading: "Other types of search",
+        heading: "What other patent searches are there?",
         paragraphs: [],
         bullets: [
           "Freedom to operate (FTO): can I sell this product without infringing someone's valid, in-force patents in a given country?",

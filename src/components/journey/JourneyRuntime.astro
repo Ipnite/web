@@ -1,0 +1,65 @@
+---
+/**
+ * Client behavior for the journey hubs:
+ * - Site region: shows the variant for the saved market (ipnite_market, set by the existing
+ *   country selector) and updates prices from src/config/pricing.ts. It never navigates.
+ * - Patent jurisdiction (Page B): a separate choice, remembered as ipnite_jurisdiction. It only
+ *   toggles the office panels; it never changes the language, currency, prices or URL.
+ * Both keys are functional preferences stored like ipnite_market; no IP address or country is read.
+ */
+import { marketPricing } from "../../config/pricing";
+
+interface Props { lang: "en" | "es" | "pt" }
+const { lang } = Astro.props;
+const priceData = Object.fromEntries(Object.entries(marketPricing).map(([market, config]) => [market, { currency: config.currency, locale: config.locale, prices: config.prices, singleDraft: config.singleDraft }]));
+---
+
+<script is:inline define:vars={{ priceData, lang }}>
+  (() => {
+    const root = document.querySelector("[data-journey]");
+    if (!root) return;
+    const defaultMarket = lang === "es" ? "LATAM" : lang === "pt" ? "BR" : "US";
+    const numberLocale = lang === "es" ? "es-MX" : lang === "pt" ? "pt-BR" : "en-US";
+    const officeForMarket = { US: "uspto", MX: "impi", AR: "inpi-ar", BR: "inpi-br", LATAM: "other" };
+    const read = (key) => { try { return localStorage.getItem(key); } catch (error) { return null; } };
+    const write = (key, value) => { try { localStorage.setItem(key, value); } catch (error) {} };
+    const marketFor = (market) => (priceData[market] && priceData[market].locale === lang ? market : defaultMarket);
+    const format = (amount, currency) => new Intl.NumberFormat(numberLocale, { style: "currency", currency, currencyDisplay: currency === "MXN" ? "code" : "symbol", maximumFractionDigits: 0 }).format(amount);
+
+    function showOffice(office) {
+      root.querySelectorAll("[data-office]").forEach((node) => { node.hidden = node.getAttribute("data-office") !== office; });
+      root.querySelectorAll("input[name='jy-office']").forEach((input) => { input.checked = input.value === office; });
+    }
+
+    function applyMarket(rawMarket) {
+      const market = marketFor(rawMarket);
+      const config = priceData[market];
+      root.querySelectorAll("[data-region]").forEach((node) => { node.hidden = !node.getAttribute("data-region").split(" ").includes(market); });
+      root.querySelectorAll("[data-jy-price]").forEach((node) => {
+        const key = node.getAttribute("data-jy-price");
+        const period = node.getAttribute("data-period") || "monthly";
+        const amount = key === "single" ? config.singleDraft : config.prices[key][period];
+        node.textContent = format(amount, config.currency);
+      });
+      if (!read("ipnite_jurisdiction")) showOffice(officeForMarket[market]);
+      document.documentElement.classList.remove("pricing-pending");
+    }
+
+    applyMarket(read("ipnite_market") || defaultMarket);
+    const savedOffice = read("ipnite_jurisdiction");
+    if (savedOffice && root.querySelector(`input[name='jy-office'][value='${savedOffice}']`)) showOffice(savedOffice);
+
+    root.addEventListener("change", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLInputElement && target.name === "jy-office") {
+        write("ipnite_jurisdiction", target.value);
+        showOffice(target.value);
+      }
+    });
+    // The shared country selector (header) changes the site region only.
+    document.addEventListener("change", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLSelectElement && target.matches("[data-country-selector]")) applyMarket(target.value);
+    });
+  })();
+</script>

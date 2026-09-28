@@ -1,0 +1,260 @@
+---
+import "../../styles/journey.css";
+import JourneyHero from "./JourneyHero.astro";
+import JourneyStrip from "./JourneyStrip.astro";
+import JourneyFinal from "./JourneyFinal.astro";
+import JourneySources from "./JourneySources.astro";
+import JourneyRuntime from "./JourneyRuntime.astro";
+import { routeFor, type Locale } from "../../data/routes";
+import { articlePath, articleIndex } from "../../data/seoContent";
+import { clusterTopics } from "../../data/cluster/manifest";
+import { marketPricing, defaultMarketForLocale, formatPrice, type PlanCode } from "../../config/pricing";
+import { filedPage, ui, planCopy, trialLine, timelines, pendingRights, officeLines, abroadSources, directoryLabel, officeNames, offices, officeFeeUrl, LAST_REVIEWED, WIPO_DIRECTORY, type Office } from "../../data/journeys";
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = filedPage[lang];
+const u = ui[lang];
+const home = routeFor("home", lang);
+const pricing = marketPricing[defaultMarketForLocale[lang]];
+const price = (amount: number) => formatPrice(amount, pricing.currency, lang);
+
+/** No-JavaScript default: the office of this page's default site region. The runtime refines it from the saved region or the saved choice. */
+const defaultOffice: Office = lang === "en" ? "uspto" : lang === "pt" ? "inpi-br" : "other";
+const officeAttr = (office: Office) => ({ "data-office": office, hidden: office !== defaultOffice ? true : undefined });
+const namedOffices = offices.filter((office): office is Exclude<Office, "other"> => office !== "other");
+
+const jurisdictionPage: Record<Exclude<Office, "other">, string> = {
+  uspto: routeFor("jurisdiction-us", lang),
+  impi: routeFor("jurisdiction-mx", lang),
+  "inpi-ar": routeFor("jurisdiction-ar", lang),
+  "inpi-br": routeFor("jurisdiction-br", lang),
+};
+
+const anchors = lang === "en"
+  ? ["what-happens-now", "how-much-time", "office-wrote-back", "missed-deadline", "where-to-keep-it", "other-countries", "can-i-sell", "cost"]
+  : lang === "pt"
+  ? ["o-que-acontece-agora", "quanto-tempo", "o-escritorio-respondeu", "perder-um-prazo", "onde-guardar", "outros-paises", "ja-posso-vender", "custo"]
+  : ["que-pasa-ahora", "cuanto-tiempo", "la-oficina-respondio", "perder-un-plazo", "donde-guardar", "otros-paises", "ya-puedo-vender", "costo"];
+const stripId = lang === "en" ? "questions" : lang === "pt" ? "perguntas" : "preguntas";
+const chips = t.strip.chips.map((text, index) => ({ text, href: `#${anchors[index]}` }));
+
+const pendingSlug = articleIndex.find((article) => article.id === "what-does-patent-pending-mean")!.slugs[lang];
+const pendingArticle = articlePath(lang, pendingSlug);
+const learn = (id: string) => articlePath(lang, articleIndex.find((article) => article.id === id)!.slugs[lang]);
+const inventorsTool = clusterTopics.find((topic) => topic.id === "ai-patent-tool-for-inventors" && topic.released)?.paths[lang];
+/** Each question links to the closest existing page. See docs/SEO-PROXIMA-SESION.md for dedicated pages still to create. */
+const questionIndex = ([
+  [{ en: "What happens after filing a patent application?", es: "¿Qué pasa después de presentar una solicitud de patente?", pt: "O que acontece depois de depositar um pedido de patente?" }, `${learn("how-to-patent-an-idea")}#guide`],
+  [{ en: "What does “patent pending” mean?", es: "¿Qué significa “patente en trámite”?", pt: "O que significa “patente pendente”?" }, pendingArticle],
+  [{ en: "How do I respond to an office action?", es: "¿Cómo respondo a la oficina de patentes?", pt: "Como respondo a uma exigência do escritório?" }, inventorsTool],
+  [{ en: "How long do I have to respond to an office action?", es: "¿Cuánto tiempo tengo para responder a la oficina?", pt: "Quanto tempo tenho para responder ao escritório?" }, routeFor("portfolio", lang)],
+  [{ en: "What happens if I miss a patent deadline?", es: "¿Qué pasa si se me pasa un plazo de patente?", pt: "O que acontece se eu perder um prazo de patente?" }, routeFor("provisional", lang)],
+  [{ en: "When do I have to file in other countries?", es: "¿Cuándo tengo que presentar en otros países?", pt: "Quando preciso depositar em outros países?" }, routeFor("jurisdiction-pct", lang)],
+  [{ en: "What are patent maintenance fees?", es: "¿Qué son las tasas de mantenimiento de una patente?", pt: "O que são as taxas de manutenção de uma patente?" }, routeFor("jurisdiction-us", lang)],
+  [{ en: "Can I sell my product while my patent is pending?", es: "¿Puedo vender mi producto mientras mi patente está en trámite?", pt: "Posso vender meu produto enquanto a patente está pendente?" }, routeFor("prior-art", lang)],
+] as const).flatMap(([q, href]) => (href ? [{ q: q[lang], href }] : []));
+
+const plans: { code: PlanCode; featured?: boolean }[] = [{ code: "inventor", featured: true }, { code: "startup" }, { code: "institutional" }];
+---
+
+<div class="jy" data-journey data-lang={lang}>
+  <JourneyHero
+    lang={lang}
+    crumbs={{ home: u.home, homeHref: home, current: t.breadcrumb }}
+    eyebrow={t.hero.eyebrow}
+    h1={t.hero.h1}
+    text={t.hero.text}
+    primary={t.hero.primary}
+    analytics={{ cta: "manage_patent_portfolio", event: "portfolio_management_clicked" }}
+    trial={trialLine[lang]}
+    secondary={t.hero.secondary}
+    secondaryHref={`#${stripId}`}
+    cards={t.hero.cards}
+    highlight={t.hero.highlight}
+  />
+
+  <div id={stripId}><JourneyStrip label={t.strip.label} chips={chips} /></div>
+
+  <!-- B3 -->
+  <section class="jy-section" aria-labelledby={anchors[0]}>
+    <div class="jy-inner">
+      <fieldset class="jy-jurisdiction">
+        <legend>{u.jurisdictionLabel}</legend>
+        <div>
+          {offices.map((office) => (
+            <label><input type="radio" name="jy-office" value={office} checked={office === defaultOffice} /><span>{officeNames[lang][office]}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <p class="jy-thought">{t.process.thought}</p>
+      <h2 id={anchors[0]}>{t.process.h2}</h2>
+      <p class="jy-answer">{t.process.answer}</p>
+      {namedOffices.map((office) => {
+        const panel = timelines[lang][office];
+        return (
+          <div {...officeAttr(office)}>
+            <ol class="jy-timeline jy-timeline--h">
+              {panel.stages.map((stage, index) => (
+                <li class={index <= panel.hereAfter ? "is-done" : undefined}>{stage}{index === panel.hereAfter && <><br /><span class="jy-here">{u.here}</span></>}</li>
+              ))}
+            </ol>
+            {panel.note && <p class="jy-legal">{panel.note}<JourneySources sources={panel.sources} lang={lang} /></p>}
+            {!panel.note && <p class="jy-legal"><JourneySources sources={panel.sources} lang={lang} /></p>}
+            <a class="jy-link" href={jurisdictionPage[office]}>{t.process.officeLink[office]}</a>
+          </div>
+        );
+      })}
+      <div {...officeAttr("other")}>
+        <p class="jy-legal">{t.process.otherText}</p>
+        <a class="jy-link" href={WIPO_DIRECTORY} target="_blank" rel="noopener noreferrer">{t.process.directoryLink}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- B4 -->
+  <section class="jy-section jy-section--burgundy" aria-labelledby={anchors[1]}>
+    <div class="jy-inner jy-split">
+      <div>
+        <p class="jy-thought">{t.time.thought}</p>
+        <h2 id={anchors[1]}>{t.time.h2}</h2>
+        <p class="jy-answer">{t.time.answer}</p>
+        <div class="jy-actions">
+          <a class="jy-button jy-button--light" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="manage_patent_portfolio" data-analytics-event="portfolio_management_clicked">{t.time.cta}</a>
+        </div>
+        <a class="jy-link" href={routeFor("portfolio", lang)}>{t.time.link}</a>
+      </div>
+      <div class="jy-alerts">
+        <span class="jy-label">{u.example}</span>
+        <h3>{t.time.cardTitle}</h3>
+        <ul>{t.time.card.map((item) => <li class={"hot" in item && item.hot ? "is-hot" : undefined}><span>{item.label}</span><span>{item.when}</span></li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- B5 -->
+  <section class="jy-section" aria-labelledby={anchors[2]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.office.thought}</p>
+      <h2 id={anchors[2]}>{t.office.h2}</h2>
+      <p class="jy-answer">{t.office.answer}</p>
+      <p class="jy-legal">{t.office.period}</p>
+    </div>
+  </section>
+
+  <!-- B6 -->
+  <section class="jy-section jy-section--cream" aria-labelledby={anchors[3]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.missed.thought}</p>
+      <h2 id={anchors[3]}>{t.missed.h2}</h2>
+      <p class="jy-legal">{t.missed.line}</p>
+      <p class="jy-closing">{t.missed.closing}</p>
+    </div>
+  </section>
+
+  <!-- B7 -->
+  <section class="jy-section" aria-labelledby={anchors[4]}>
+    <div class="jy-inner jy-split jy-split--flip">
+      <div>
+        <p class="jy-thought">{t.keep.thought}</p>
+        <h2 id={anchors[4]}>{t.keep.h2}</h2>
+        <p class="jy-answer">{t.keep.answer}</p>
+        <a class="jy-link" href={`${routeFor("portfolio", lang)}#guide`}>{t.keep.link}</a>
+      </div>
+      <figure class="jy-figure">
+        <img src="/images/notebook-2.png" width="560" height="339" alt={t.keep.alt} loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- B8 -->
+  <section class="jy-section jy-section--cream" aria-labelledby={anchors[5]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.abroad.thought}</p>
+      <h2 id={anchors[5]}>{t.abroad.h2}</h2>
+      <p class="jy-answer">{t.abroad.answer}</p>
+      <p class="jy-legal">{t.abroad.paris} {t.abroad.pct} {t.abroad.arNote}<JourneySources sources={abroadSources[lang]} lang={lang} /></p>
+      <a class="jy-link" href={routeFor("jurisdiction-pct", lang)}>{t.abroad.link}</a>
+    </div>
+  </section>
+
+  <!-- B9 -->
+  <section class="jy-section" aria-labelledby={anchors[6]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.selling.thought}</p>
+      <h2 id={anchors[6]}>{t.selling.h2}</h2>
+      <p class="jy-answer">{t.selling.answer} {t.selling.fto}</p>
+      {offices.map((office) => (
+        <p class="jy-legal" {...officeAttr(office)}>{pendingRights[lang][office].text}<JourneySources sources={pendingRights[lang][office].sources} lang={lang} /></p>
+      ))}
+      <a class="jy-link" href={pendingArticle}>{t.selling.pendingLink}</a>
+    </div>
+  </section>
+
+  <!-- B10 -->
+  <section class="jy-section jy-section--cream jy-section--compact" aria-labelledby="jy-attorney">
+    <div class="jy-inner">
+      <p class="jy-thought">{t.attorney.thought}</p>
+      <h2 id="jy-attorney">{t.attorney.h2}</h2>
+      <p class="jy-answer">{t.attorney.answer} {t.attorney.collab}</p>
+    </div>
+  </section>
+
+  <!-- B11 -->
+  <section class="jy-section jy-section--dark" aria-labelledby={anchors[7]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.cost.thought}</p>
+      <h2 id={anchors[7]}>{t.cost.h2}</h2>
+      <p class="jy-answer">{t.cost.answer} {trialLine[lang]}</p>
+      <div class="jy-cards">
+        {plans.map(({ code, featured }) => (
+          <article class:list={["jy-card", { "jy-card--featured": featured }]}>
+            {featured && <span class="jy-tag">{u.startHere}</span>}
+            <h3>{planCopy[lang][code].name}</h3>
+            <p class="jy-price"><span data-jy-price={code}>{price(pricing.prices[code].monthly)}</span><small>{u.perMonth}</small></p>
+            <p class="jy-price-alt">{u.or} <span data-jy-price={code} data-period="annual">{price(pricing.prices[code].annual)}</span>{u.perYear}</p>
+            <p>{t.cost.plans[code]}</p>
+            {featured && <a class="jy-button jy-button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta={`start_${code}`} data-analytics-event="pricing_cta_clicked" data-analytics-plan={code}>{t.cost.cta}</a>}
+          </article>
+        ))}
+      </div>
+      {namedOffices.map((office) => (
+        <p class="jy-note-line" {...officeAttr(office)}>{officeLines[lang].fees[office]} <a href={officeFeeUrl[office]} target="_blank" rel="noopener noreferrer">{officeLines[lang].feeLink[office]} →</a></p>
+      ))}
+      <p class="jy-note-line" {...officeAttr("other")}>{t.cost.feesOther} <a href={WIPO_DIRECTORY} target="_blank" rel="noopener noreferrer">{directoryLabel[lang]} →</a></p>
+      <a class="jy-link" href={`${home}#plans`}>{t.cost.link}</a>
+    </div>
+  </section>
+
+  <!-- B12 -->
+  <section class="jy-section jy-section--compact" aria-labelledby="jy-mine">
+    <div class="jy-inner">
+      <h2 id="jy-mine">{t.mine.h2}</h2>
+      {namedOffices.map((office) => (
+        <div {...officeAttr(office)}>
+          <p class="jy-answer">{officeLines[lang].mine[office]}</p>
+          <a class="jy-link" href={jurisdictionPage[office]}>{t.mine.guide[office]}</a>
+        </div>
+      ))}
+      <div {...officeAttr("other")}>
+        <p class="jy-answer">{officeLines[lang].mine.other}</p>
+        <a class="jy-link" href={WIPO_DIRECTORY} target="_blank" rel="noopener noreferrer">{t.mine.directory}</a>
+      </div>
+      <div class="jy-legal-note">
+        <p>{u.lastReviewed}: {LAST_REVIEWED[lang]}. {u.disclaimer}</p>
+      </div>
+    </div>
+  </section>
+
+  <JourneyFinal
+    h2={t.final.h2}
+    text={t.final.text}
+    primary={t.final.primary}
+    analytics={{ cta: "manage_patent_portfolio", event: "portfolio_management_clicked" }}
+    other={{ text: t.final.other, href: routeFor("journey-idea", lang) }}
+    indexLabel={t.final.indexLabel}
+    index={questionIndex}
+  />
+</div>
+
+<JourneyRuntime lang={lang} />

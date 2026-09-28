@@ -1,0 +1,33 @@
+---
+interface Props {
+  h2: string;
+  text: string;
+  primary: string;
+  analytics: { cta: string; event: string };
+  secondary?: string;
+  other: { text: string; href: string };
+  indexLabel: string;
+  index: readonly { q: string; href: string }[];
+}
+const { h2, text, primary, analytics, secondary, other, indexLabel, index } = Astro.props;
+---
+
+<section class="jy-section jy-section--burgundy" aria-labelledby="jy-final" data-analytics-location="final_cta">
+  <div class="jy-inner jy-final">
+    <div>
+      <h2 id="jy-final">{h2}</h2>
+      <p class="jy-final__text">{text}</p>
+      <div class="jy-actions">
+        <a class="jy-button jy-button--light" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta={analytics.cta} data-analytics-event={analytics.event}>{primary}</a>
+        {secondary && <a class="jy-button jy-button--ghost" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="search_prior_art" data-analytics-event="prior_art_search_clicked">{secondary}</a>}
+      </div>
+      <a class="jy-link" href={other.href}>{other.text}</a>
+    </div>
+    {index.length > 0 && (
+      <nav class="jy-index" aria-label={indexLabel}>
+        <p>{indexLabel}</p>
+        <ul>{index.map((item) => <li><a href={item.href}>{item.q}</a></li>)}</ul>
+      </nav>
+    )}
+  </div>
+</section>

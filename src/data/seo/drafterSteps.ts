@@ -7,7 +7,7 @@ import { routed } from "./helpers";
 const disclosure: SeoPage = {
   id: "invention-disclosure",
   kind: "product",
-  related: ["ai-drafting", "prior-art", "patent-specification", "security"],
+  related: ["ai-drafting", "prior-art", "patent-specification", "security", "journey-idea"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("invention-disclosure", {
     en: {

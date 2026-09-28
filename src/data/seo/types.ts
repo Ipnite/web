@@ -42,6 +42,8 @@ export interface SeoPage {
   handBuilt?: Partial<Record<Locale, true>>;
   related: RouteKey[];
   primaryAction: { name: string; event?: string };
+  /** Journey hub that continues this page, linked inside the content. */
+  journey?: "journey-idea" | "journey-filed";
   locales: Record<Locale, SeoLocaleContent>;
 }
 

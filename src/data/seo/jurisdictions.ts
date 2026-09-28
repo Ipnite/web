@@ -6,7 +6,7 @@ const us: SeoPage = {
   id: "jurisdiction-us",
   kind: "jurisdiction",
   handBuilt: { en: true },
-  related: ["provisional", "ai-drafting", "jurisdiction-pct", "prior-art"],
+  related: ["provisional", "ai-drafting", "jurisdiction-pct", "prior-art", "journey-filed"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("jurisdiction-us", {
     en: {
@@ -115,7 +115,7 @@ const mx: SeoPage = {
   id: "jurisdiction-mx",
   kind: "jurisdiction",
   handBuilt: { es: true },
-  related: ["provisional", "ai-drafting", "jurisdiction-pct", "prior-art"],
+  related: ["provisional", "ai-drafting", "jurisdiction-pct", "prior-art", "journey-filed"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("jurisdiction-mx", {
     en: {
@@ -213,7 +213,7 @@ const ar: SeoPage = {
   id: "jurisdiction-ar",
   kind: "jurisdiction",
   handBuilt: { es: true },
-  related: ["ai-drafting", "prior-art", "jurisdiction-pct", "portfolio"],
+  related: ["ai-drafting", "prior-art", "jurisdiction-pct", "portfolio", "journey-filed"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("jurisdiction-ar", {
     en: {
@@ -309,7 +309,7 @@ const br: SeoPage = {
   id: "jurisdiction-br",
   kind: "jurisdiction",
   handBuilt: { pt: true },
-  related: ["ai-drafting", "prior-art", "jurisdiction-pct", "portfolio"],
+  related: ["ai-drafting", "prior-art", "jurisdiction-pct", "portfolio", "journey-filed"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("jurisdiction-br", {
     en: {
@@ -394,7 +394,7 @@ const br: SeoPage = {
 const pct: SeoPage = {
   id: "jurisdiction-pct",
   kind: "jurisdiction",
-  related: ["jurisdiction-us", "jurisdiction-mx", "jurisdiction-br", "provisional"],
+  related: ["jurisdiction-us", "jurisdiction-mx", "jurisdiction-br", "provisional", "journey-filed"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("jurisdiction-pct", {
     en: {

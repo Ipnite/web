@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import JourneyFiled from "@components/journey/JourneyFiled.astro";
+import { alternatesFor, routeFor } from "../../data/routes";
+import { filedPage, ui } from "../../data/journeys";
+import { journeySchema } from "../../data/journeySchema";
+
+const lang = "pt";
+const t = filedPage[lang];
+const path = routeFor("journey-filed", lang);
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.title}
+  description={t.description}
+  canonicalPath={path}
+  alternatePaths={alternatesFor("journey-filed")}
+  pageKey={routeFor("journey-filed", "en")}
+  structuredData={journeySchema({ lang, path, title: t.title, description: t.description, crumb: t.breadcrumb, home: ui[lang].home })}
+>
+  <JourneyFiled lang={lang} />
+</BaseLayout>

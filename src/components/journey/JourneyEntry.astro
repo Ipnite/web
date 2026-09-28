@@ -1,0 +1,42 @@
+---
+// Generic entry URL for links where the visitor's region is unknown (ads, email, social).
+// GitHub Pages has no IP-country header and cannot send 302s, so the choice happens in the
+// browser: saved region (ipnite_market) first, then the browser language, then English.
+// Not indexable, not in the sitemap or hreflang, and never used as a canonical.
+import { routes, type RouteKey } from "../../data/routes";
+
+interface Props { route: Extract<RouteKey, "journey-idea" | "journey-filed"> }
+const { route } = Astro.props;
+const paths = { en: routes[route].en, es: routes[route].es, pt: routes[route].pt };
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, follow" />
+    <title>IPnite</title>
+    <noscript><meta http-equiv="refresh" content={`0; url=${paths.en}`} /></noscript>
+    <script is:inline define:vars={{ paths }}>
+      (() => {
+        let market = null;
+        try { market = localStorage.getItem("ipnite_market"); } catch (error) {}
+        let locale = market === "US" ? "en" : market === "BR" ? "pt" : ["MX", "AR", "LATAM"].includes(market) ? "es" : null;
+        if (!locale) {
+          const preferred = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+          const code = preferred.toLowerCase();
+          locale = code.startsWith("pt") ? "pt" : code.startsWith("es") ? "es" : "en";
+        }
+        location.replace(paths[locale] + location.search + location.hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href={paths.en} hreflang="en">English</a></li>
+      <li><a href={paths.es} hreflang="es">Español</a></li>
+      <li><a href={paths.pt} hreflang="pt-BR">Português (Brasil)</a></li>
+    </ul>
+  </body>
+</html>

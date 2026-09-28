@@ -1,0 +1,11 @@
+---
+import type { Source } from "../../data/journeys";
+import { ui } from "../../data/journeys";
+
+interface Props { sources: readonly Source[]; lang: "en" | "es" | "pt" }
+const { sources, lang } = Astro.props;
+---
+
+{sources.length > 0 && (
+  <span class="jy-source">{ui[lang].source}: {sources.map((source, index) => <>{index > 0 && " · "}<a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a></>)}</span>
+)}

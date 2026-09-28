@@ -6,14 +6,14 @@ import { drafterStepPages } from "./drafterSteps";
 const drafting: SeoPage = {
   id: "ai-drafting",
   kind: "product",
-  related: ["prior-art", "drawings", "portfolio", "provisional"],
+  related: ["prior-art", "drawings", "portfolio", "provisional", "journey-idea"],
   primaryAction: { name: "start_drafting", event: "start_drafting_clicked" },
   locales: routed("ai-drafting", {
     en: {
       title: "AI Patent Drafting Software | IPnite",
       description: "Turn an invention disclosure into claims, a full specification, drawings, and a DOCX patent application ready to file. Built for inventors and firms.",
       h1: "AI Patent Drafting Software",
-      eyebrow: "THE DRAFTER BY IPNITE",
+      eyebrow: "THE DRAFTER BY IPnite",
       lead: "IPnite turns a technical disclosure into a structured patent application—claims, specification, abstract, and drawings—that you can review, export as DOCX, and file.",
       sections: [
         {
@@ -64,7 +64,7 @@ const drafting: SeoPage = {
       title: "Software de redacción de patentes con IA | IPnite",
       description: "Convierte la divulgación de tu invención en reivindicaciones, descripción, dibujos y una solicitud en DOCX lista para presentar. Para inventores y despachos.",
       h1: "Software de redacción de patentes con IA",
-      eyebrow: "EL REDACTOR DE IPNITE",
+      eyebrow: "EL REDACTOR DE IPnite",
       lead: "IPnite convierte una divulgación técnica en una solicitud de patente estructurada (reivindicaciones, descripción, resumen y dibujos) que puedes revisar, exportar en DOCX y presentar.",
       sections: [
         {
@@ -115,7 +115,7 @@ const drafting: SeoPage = {
       title: "Software de redação de patentes com IA | IPnite",
       description: "Transforme a divulgação da sua invenção em reivindicações, relatório, desenhos e um pedido em DOCX pronto para depósito. Para inventores e escritórios.",
       h1: "Software de redação de patentes com IA",
-      eyebrow: "THE DRAFTER DA IPNITE",
+      eyebrow: "THE DRAFTER DA IPnite",
       lead: "A IPnite transforma uma divulgação técnica em um pedido de patente estruturado (reivindicações, relatório descritivo, resumo e desenhos) que você pode revisar, exportar em DOCX e depositar.",
       sections: [
         {
@@ -168,7 +168,7 @@ const drafting: SeoPage = {
 const priorArt: SeoPage = {
   id: "prior-art",
   kind: "product",
-  related: ["ai-drafting", "search", "drawings", "portfolio"],
+  related: ["ai-drafting", "search", "drawings", "portfolio", "journey-idea"],
   primaryAction: { name: "search_prior_art", event: "prior_art_search_clicked" },
   locales: routed("prior-art", {
     en: {
@@ -462,7 +462,7 @@ const drawings: SeoPage = {
 const portfolio: SeoPage = {
   id: "portfolio",
   kind: "product",
-  related: ["ai-drafting", "prior-art", "universities", "startups"],
+  related: ["ai-drafting", "prior-art", "universities", "startups", "journey-filed"],
   primaryAction: { name: "manage_patent_portfolio", event: "portfolio_management_clicked" },
   locales: routed("portfolio", {
     en: {
@@ -857,7 +857,7 @@ const googleSources = {
 const security: SeoPage = {
   id: "security",
   kind: "trust",
-  related: ["ai-drafting", "prior-art", "portfolio", "attorneys"],
+  related: ["ai-drafting", "prior-art", "portfolio", "attorneys", "journey-idea"],
   primaryAction: { name: "try_ipnite" },
   locales: routed("security", {
     en: {

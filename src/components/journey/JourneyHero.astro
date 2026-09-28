@@ -1,0 +1,43 @@
+---
+interface Props {
+  lang: "en" | "es" | "pt";
+  crumbs: { home: string; homeHref: string; current: string };
+  eyebrow: string;
+  h1: readonly string[];
+  text: string;
+  primary: string;
+  analytics: { cta: string; event: string };
+  secondary: string;
+  secondaryHref: string;
+  trial?: string;
+  cards: readonly string[];
+  highlight: string;
+}
+const { crumbs, eyebrow, h1, text, primary, analytics, secondary, secondaryHref, trial, cards, highlight, lang } = Astro.props;
+const crumbLabel = lang === "es" ? "Ruta de navegación" : lang === "pt" ? "Trilha de navegação" : "Breadcrumb";
+---
+
+<section class="jy-hero" aria-labelledby="jy-h1" data-analytics-location="hero">
+  <div class="jy-hero__panel">
+    <div>
+      <nav aria-label={crumbLabel}>
+        <ol class="jy-crumbs">
+          <li><a href={crumbs.homeHref}>{crumbs.home}</a></li>
+          <li aria-current="page">{crumbs.current}</li>
+        </ol>
+      </nav>
+      <p class="jy-eyebrow">{eyebrow}</p>
+      <h1 id="jy-h1">{h1.map((line) => <span>{line}</span>)}</h1>
+      <p class="jy-hero__text">{text}</p>
+      <div class="jy-actions">
+        <a class="jy-button jy-button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta={analytics.cta} data-analytics-event={analytics.event}>{primary}</a>
+        <a class="jy-button" href={secondaryHref}>{secondary}</a>
+      </div>
+      {trial && <p class="jy-trial">{trial}</p>}
+    </div>
+    <ul class="jy-notes" aria-label={lang === "es" ? "Lo que estoy pensando" : lang === "pt" ? "O que estou pensando" : "What I'm thinking"}>
+      {cards.map((card) => <li class="jy-note">{card}</li>)}
+      <li class="jy-note jy-note--key">{highlight}</li>
+    </ul>
+  </div>
+</section>

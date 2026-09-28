@@ -1,0 +1,262 @@
+---
+import "../../styles/journey.css";
+import JourneyHero from "./JourneyHero.astro";
+import JourneyStrip from "./JourneyStrip.astro";
+import JourneyFinal from "./JourneyFinal.astro";
+import JourneySources from "./JourneySources.astro";
+import JourneyRuntime from "./JourneyRuntime.astro";
+import { routeFor, type Locale } from "../../data/routes";
+import { articlePath, articleIndex } from "../../data/seoContent";
+import { clusterTopics } from "../../data/cluster/manifest";
+import { marketPricing, defaultMarketForLocale, formatPrice, type PlanCode } from "../../config/pricing";
+import { ideaPage, ui, planCopy, trialLine, disclosureLine, LAST_REVIEWED, WIPO_DIRECTORY, officeFeeUrl, type RegionVariant } from "../../data/journeys";
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = ideaPage[lang];
+const u = ui[lang];
+const home = routeFor("home", lang);
+const pricing = marketPricing[defaultMarketForLocale[lang]];
+const price = (amount: number) => formatPrice(amount, pricing.currency, lang);
+
+/** Site-region variants shown on this page; the first one is the no-JavaScript default. */
+const variants: RegionVariant[] = lang === "en" ? ["US"] : lang === "pt" ? ["BR"] : ["LATAM", "MX", "AR"];
+const defaultVariant = variants[0];
+
+const slug = (id: string) => articleIndex.find((article) => article.id === id)!.slugs[lang];
+const learn = (id: string) => articlePath(lang, slug(id));
+
+
+const jurisdictionPage: Partial<Record<RegionVariant, string>> = {
+  US: routeFor("jurisdiction-us", lang),
+  MX: routeFor("jurisdiction-mx", lang),
+  AR: routeFor("jurisdiction-ar", lang),
+  BR: routeFor("jurisdiction-br", lang),
+};
+const feeUrl: Record<RegionVariant, string> = { US: officeFeeUrl.uspto, MX: officeFeeUrl.impi, AR: officeFeeUrl["inpi-ar"], BR: officeFeeUrl["inpi-br"], LATAM: WIPO_DIRECTORY };
+
+const ids = ["ya-patentado", "resultados", "redactar", "ia", "abogado", "costo"];
+const anchors = lang === "en" ? ["already-patented", "results", "write", "ai", "attorney", "cost"] : lang === "pt" ? ["ja-patenteado", "resultados", "redigir", "ia", "advogado", "custo"] : ids;
+const stripId = lang === "en" ? "questions" : lang === "pt" ? "perguntas" : "preguntas";
+const chips = t.strip.chips.map((text, index) => ({ text, href: `#${anchors[index]}` }));
+
+const stepLinks = [routeFor("invention-disclosure", lang), clusterTopics.find((topic) => topic.id === "patent-claims-generator" && topic.released)?.paths[lang], routeFor("patent-specification", lang), routeFor("drawings", lang), routeFor("patent-quality-review", lang), routeFor("patent-export", lang)];
+
+const clusterPath = (id: string) => clusterTopics.find((topic) => topic.id === id && topic.released)?.paths[lang];
+/** Each question links to the closest existing page. See docs/SEO-PROXIMA-SESION.md for dedicated pages still to create. */
+const questionIndex = ([
+  [{ en: "How do I patent an idea?", es: "¿Cómo patento una idea?", pt: "Como patenteio uma ideia?" }, learn("how-to-patent-an-idea")],
+  [{ en: "Can I patent my idea?", es: "¿Puedo patentar mi idea?", pt: "Posso patentear minha ideia?" }, learn("what-is-patentability")],
+  [{ en: "How do I search patents?", es: "¿Cómo busco patentes?", pt: "Como busco patentes?" }, learn("how-to-search-existing-patents")],
+  [{ en: "Can I write a patent myself?", es: "¿Puedo redactar una patente yo mismo?", pt: "Posso redigir uma patente sozinho?" }, learn("how-to-write-a-patent-application")],
+  [{ en: "Do I need a patent attorney?", es: "¿Necesito un abogado de patentes?", pt: "Preciso de um advogado de patentes?" }, routeFor("faqs", lang)],
+  [{ en: "How much does a patent cost?", es: "¿Cuánto cuesta una patente?", pt: "Quanto custa uma patente?" }, learn("provisional-patent-application-cost")],
+  [{ en: "Is it safe to put my invention in ChatGPT?", es: "¿Es seguro poner mi invención en ChatGPT?", pt: "É seguro colocar minha invenção no ChatGPT?" }, clusterPath("ai-patent-confidentiality")],
+  [{ en: "Can ChatGPT write a patent?", es: "¿ChatGPT puede redactar una patente?", pt: "O ChatGPT consegue redigir uma patente?" }, learn("can-ai-write-a-patent-application")],
+] as const).flatMap(([q, href]) => (href ? [{ q: q[lang], href }] : []));
+
+const plans: PlanCode[] = ["inventor", "startup", "institutional"];
+const disclosure = disclosureLine[lang];
+const regionAttr = (variant: RegionVariant) => ({ "data-region": variant, hidden: variant !== defaultVariant ? true : undefined });
+---
+
+<div class="jy" data-journey data-lang={lang}>
+  <JourneyHero
+    lang={lang}
+    crumbs={{ home: u.home, homeHref: home, current: t.breadcrumb }}
+    eyebrow={t.hero.eyebrow}
+    h1={t.hero.h1}
+    text={t.hero.text}
+    primary={t.hero.primary}
+    analytics={{ cta: "start_drafting", event: "start_drafting_clicked" }}
+    secondary={t.hero.secondary}
+    secondaryHref={`#${stripId}`}
+    cards={t.hero.cards}
+    highlight={t.hero.highlight}
+  />
+
+  <div id={stripId}><JourneyStrip label={t.strip.label} chips={chips} /></div>
+
+  <!-- A3 -->
+  <section class="jy-section" aria-labelledby={anchors[0]}>
+    <div class="jy-inner jy-split">
+      <div>
+        <p class="jy-thought">{t.search.thought}</p>
+        <h2 id={anchors[0]}>{t.search.h2}</h2>
+        <p class="jy-answer">{t.search.answer}</p>
+        <div class="jy-actions">
+          <a class="jy-button jy-button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="search_prior_art" data-analytics-event="prior_art_search_clicked">{t.search.cta}</a>
+        </div>
+        <a class="jy-link" href={routeFor("prior-art", lang)}>{t.search.link}</a>
+      </div>
+      <figure class="jy-figure">
+        <img src="/images/notebook-1.png" width="750" height="457" alt={t.search.alt} loading="lazy" decoding="async" />
+        <figcaption>{t.search.caption}</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- A4 -->
+  <section class="jy-section jy-section--burgundy" aria-labelledby={anchors[1]}>
+    <div class="jy-inner">
+      <h2 id={anchors[1]}>{t.results.h2}</h2>
+      <p class="jy-answer">{t.results.answer}</p>
+      <div class="jy-compare">
+        <div class="jy-compare__col jy-compare__col--noise">
+          <span class="jy-label">{u.example}</span>
+          <h3>{t.results.leftTitle}</h3>
+          <ul>{t.results.leftLines.map((line) => <li>{line}</li>)}</ul>
+          <p>{t.results.leftMore}</p>
+        </div>
+        <div class="jy-compare__col jy-compare__col--clear">
+          <span class="jy-label">{u.example}</span>
+          <h3>{t.results.rightTitle}</h3>
+          {t.results.cards.map((card) => <article class="jy-result"><strong>{card.tag}</strong><p>{card.body}</p></article>)}
+        </div>
+      </div>
+      <p class="jy-closing">{t.results.closing}</p>
+      <a class="jy-link" href={`${routeFor("prior-art", lang)}#guide`}>{t.results.link}</a>
+    </div>
+  </section>
+
+  <!-- A5 -->
+  <section class="jy-section" aria-labelledby={anchors[2]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.write.thought}</p>
+      <h2 id={anchors[2]}>{t.write.h2}</h2>
+      <p class="jy-answer">{t.write.answer}</p>
+      <div class="jy-words">
+        <article><span class="jy-label">{u.example}</span><h3>{t.write.leftTitle}</h3><p>{t.write.left}</p></article>
+        <article><span class="jy-label">{u.example}</span><h3>{t.write.rightTitle}</h3><p>{t.write.right}</p></article>
+      </div>
+      <ol class="jy-steps">
+        {t.write.steps.map((step, index) => (
+          <li>{stepLinks[index] ? <a href={stepLinks[index]}>{step.title}</a> : <strong>{step.title}</strong>}<span>{step.body}</span></li>
+        ))}
+      </ol>
+      <a class="jy-link" href={routeFor("ai-drafting", lang)}>{t.write.link}</a>
+    </div>
+  </section>
+
+  <!-- A6 -->
+  <section class="jy-section jy-section--cream" aria-labelledby={anchors[3]}>
+    <div class="jy-inner">
+      <h2 id={anchors[3]}>{t.ai.h2}</h2>
+      <p class="jy-answer">{t.ai.answer}</p>
+      <div class="jy-table-wrap">
+        <table class="jy-table">
+          <caption>{t.ai.h2}</caption>
+          <thead><tr><td></td><th scope="col">{t.ai.colGeneral}</th><th scope="col">{t.ai.colIpnite}</th></tr></thead>
+          <tbody>
+            {t.ai.rows.map((row) => (
+              <tr><th scope="row">{row.q}</th><td data-col={t.ai.colGeneral}>{row.general}</td><td class="jy-ipnite" data-col={t.ai.colIpnite}>{row.ipnite}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {variants.map((variant) => disclosure[variant] && (
+        <p class="jy-legal" {...regionAttr(variant)}>{disclosure[variant]!.text}<JourneySources sources={disclosure[variant]!.sources} lang={lang} /></p>
+      ))}
+      <a class="jy-link" href={routeFor("security", lang)}>{t.ai.link}</a>
+    </div>
+  </section>
+
+  <!-- A7 -->
+  <section class="jy-section" aria-labelledby={anchors[4]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.attorney.thought}</p>
+      <h2 id={anchors[4]}>{t.attorney.h2}</h2>
+      <p class="jy-answer">{t.attorney.answer}</p>
+      <ol class="jy-chain">
+        {t.attorney.blocks.map((block, index) => (
+          <li class={index === 1 ? "is-key" : undefined}>
+            <img src={["/icons/lapiz.svg", "/icons/lupa.svg", "/icons/engranaje.svg"][index]} width="34" height="34" alt="" aria-hidden="true" loading="lazy" />
+            <span class="jy-label">{block.tag}</span>
+            <h3>{block.title}</h3>
+            <p>{block.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="jy-small">{t.attorney.note}</p>
+    </div>
+  </section>
+
+  <!-- A8 -->
+  <section class="jy-section jy-section--dark" aria-labelledby={anchors[5]}>
+    <div class="jy-inner">
+      <p class="jy-thought">{t.cost.thought}</p>
+      <h2 id={anchors[5]}>{t.cost.h2}</h2>
+      <p class="jy-answer">{t.cost.answer}</p>
+      <div class="jy-cards">
+        <article class="jy-card"><h3>{t.cost.own.title}</h3><p>{t.cost.own.body}</p></article>
+        <article class="jy-card jy-card--featured">
+          <span class="jy-tag">{u.startHere}</span>
+          <h3>{t.cost.drafter.title}</h3>
+          <p class="jy-price"><span data-jy-price="single">{price(pricing.singleDraft)}</span><small>{t.cost.drafter.unit}</small></p>
+          <p>{t.cost.drafter.payment}</p>
+          <ul>{t.cost.drafter.includes.map((item) => <li>{item}</li>)}</ul>
+          <a class="jy-button jy-button--primary" href="https://app.ipnite.com" target="_blank" rel="noopener noreferrer" data-analytics-cta="single_draft" data-analytics-event="pricing_cta_clicked" data-analytics-plan="single_draft">{t.cost.drafter.cta}</a>
+        </article>
+        <article class="jy-card"><h3>{t.cost.pro.title}</h3><p>{t.cost.pro.body}</p></article>
+      </div>
+      {variants.map((variant) => (
+        <p class="jy-note-line" {...regionAttr(variant)}>{variant === "LATAM" ? t.cost.feesLatam : t.cost.fees} <a href={feeUrl[variant]} target="_blank" rel="noopener noreferrer">{t.cost.feeLink[variant]} →</a></p>
+      ))}
+    </div>
+  </section>
+
+  <!-- A9 -->
+  <section class="jy-section" aria-labelledby="jy-more">
+    <div class="jy-inner">
+      <p class="jy-thought">{t.more.thought}</p>
+      <h2 id="jy-more">{t.more.h2}</h2>
+      <p class="jy-answer">{t.more.answer} {trialLine[lang]}</p>
+      <div class="jy-cards jy-mini">
+        {plans.map((plan) => (
+          <article class="jy-card">
+            <h3>{planCopy[lang][plan].name}</h3>
+            <p class="jy-price"><span data-jy-price={plan}>{price(pricing.prices[plan].monthly)}</span><small>{u.perMonth}</small></p>
+            <p>{planCopy[lang][plan].desc}</p>
+          </article>
+        ))}
+      </div>
+      <a class="jy-link" href={`${home}#plans`}>{t.more.link}</a>
+    </div>
+  </section>
+
+  <!-- A10 -->
+  <section class="jy-section jy-section--cream jy-section--compact" aria-labelledby="jy-file">
+    <div class="jy-inner">
+      <h2 id="jy-file">{t.file.h2}</h2>
+      {variants.map((variant) => (
+        <div {...regionAttr(variant)}>
+          <p class="jy-answer">{t.file.local[variant]}</p>
+          <div class="jy-links">
+            {jurisdictionPage[variant]
+              ? <a class="jy-link" href={jurisdictionPage[variant]}>{t.file.localLink[variant]}</a>
+              : <a class="jy-link" href={WIPO_DIRECTORY} target="_blank" rel="noopener noreferrer">{t.file.localLink[variant]}</a>}
+          </div>
+          {variant === "AR"
+            ? <p class="jy-answer">{t.file.abroadAr}</p>
+            : <><p class="jy-answer">{t.file.abroad}</p><a class="jy-link" href={routeFor("jurisdiction-pct", lang)}>{t.file.pctLink}</a></>}
+        </div>
+      ))}
+      <div class="jy-legal-note">
+        <p>{u.lastReviewed}: {LAST_REVIEWED[lang]}. {u.disclaimer}</p>
+      </div>
+    </div>
+  </section>
+
+  <JourneyFinal
+    h2={t.final.h2}
+    text={t.final.text}
+    primary={t.final.primary}
+    analytics={{ cta: "start_drafting", event: "start_drafting_clicked" }}
+    secondary={t.final.secondary}
+    other={{ text: t.final.other, href: routeFor("journey-filed", lang) }}
+    indexLabel={t.final.indexLabel}
+    index={questionIndex}
+  />
+</div>
+
+<JourneyRuntime lang={lang} />

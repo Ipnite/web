@@ -1,0 +1,11 @@
+---
+interface Props { label: string; chips: readonly { text: string; href: string }[] }
+const { label, chips } = Astro.props;
+---
+
+<nav class="jy-strip" aria-label={label}>
+  <div class="jy-inner">
+    <p>{label}</p>
+    <ul>{chips.map((chip) => <li><a href={chip.href}>{chip.text}</a></li>)}</ul>
+  </div>
+</nav>

@@ -8,6 +8,11 @@ const { lang = "en" } = Astro.props;
 import { routeFor } from "../data/routes";
 
 const home = routeFor("home", lang);
+const journeys = lang === "es"
+  ? ["Tengo una idea. ¿Y ahora qué?", "Ya presenté mi solicitud. ¿Y ahora qué?"]
+  : lang === "pt"
+  ? ["Tenho uma ideia. E agora?", "Já depositei meu pedido. E agora?"]
+  : ["I have an idea. Now what?", "I already filed. Now what?"];
 
 const copy = lang === "es"
   ? {
@@ -65,6 +70,11 @@ const copy = lang === "es"
           {copy.secondary}
         </a>
       </div>
+
+      <p class="hero__journeys">
+        <a href={routeFor("journey-idea", lang)}>{journeys[0]} <span aria-hidden="true">→</span></a>
+        <a href={routeFor("journey-filed", lang)}>{journeys[1]} <span aria-hidden="true">→</span></a>
+      </p>
     </div>
 
     <img
@@ -201,7 +211,7 @@ const copy = lang === "es"
     font-size: 18px;
     font-weight: 800;
     line-height: 1;
-    text-decoration: underline;
+    text-decoration: none;
     transition: background 180ms ease, color 180ms ease, transform 180ms ease;
   }
 
@@ -219,6 +229,24 @@ const copy = lang === "es"
 
   .hero__cta--primary:hover {
     background: #4c0815;
+  }
+
+  .hero__journeys {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 22px;
+    margin: 14px 0 0;
+  }
+
+  .hero__journeys a {
+    color: #6b2a2f;
+    font-family: "Roboto Slab", serif;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
 
@@ -290,8 +318,8 @@ const copy = lang === "es"
   .hero__laptop {
     z-index: 8;
     left: 50%;
-    /* Starts below the CTA buttons (they end around 370px on wide screens). */
-    top: 400px;
+    /* Starts below the CTA buttons and journey links (they end around 400px on wide screens). */
+    top: 420px;
     width: clamp(540px, 43.5vw, 610px);
     height: auto;
     transform: translateX(-50%);
@@ -300,7 +328,11 @@ const copy = lang === "es"
 
   @media (max-width: 1180px) {
     .hero__laptop {
-      top: 350px;
+      top: 370px;
+    }
+
+    .hero__icon--search {
+      top: 346px;
     }
   }
 
@@ -327,13 +359,13 @@ const copy = lang === "es"
 
     .hero__capture--disclosure {
       left: 24px;
-      top: 285px;
+      top: 345px;
       width: 168px;
     }
 
     .hero__capture--problem {
       left: 30px;
-      bottom: 136px;
+      bottom: 116px;
       width: 252px;
     }
 
@@ -345,7 +377,7 @@ const copy = lang === "es"
 
     .hero__icon--search {
       left: 156px;
-      top: 392px;
+      top: 432px;
     }
 
     .hero__icon--pencil {
@@ -359,7 +391,7 @@ const copy = lang === "es"
     }
 
     .hero__laptop {
-      top: 372px;
+      top: 392px;
       bottom: 34px;
       width: min(560px, 78vw);
       transform: translateX(-50%);

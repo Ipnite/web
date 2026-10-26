@@ -130,7 +130,7 @@
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ID);
     document.head.appendChild(script);
     window.gtag('js', new Date());
-    window.gtag('config', ID, {send_page_view:false,cookie_domain:'auto',allow_google_signals:false,allow_ad_personalization_signals:false,debug_mode:debugMode()});
+    window.gtag('config', ID, Object.assign({}, commonParams(), {send_page_view:false,cookie_domain:'auto',allow_google_signals:false,allow_ad_personalization_signals:false,debug_mode:debugMode()}));
     sendPageView(); initMeasurement();
   }
   function sectionData(element, index) {

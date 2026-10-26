@@ -94,7 +94,10 @@
     return pageType() === 'home' ? 'patent_workflow' : 'general';
   }
   function commonParams() {
-    return {surface_name:'IPnite Website',page_name:pageName(),page_language:pageLanguage(),page_path:safePath(location.pathname),site_language:siteLanguage(),page_type:pageType(),content_topic:contentTopic(),debug_mode:debugMode()};
+    var params = {surface_name:'IPnite Website',page_name:pageName(),page_language:pageLanguage(),page_path:safePath(location.pathname),site_language:siteLanguage(),page_type:pageType(),content_topic:contentTopic()};
+    // GA4 treats any debug_mode value, even false, as debug traffic; send it only when debugging.
+    if (debugMode()) params.debug_mode = true;
+    return params;
   }
   function safeParams(params) {
     var combined = Object.assign({}, commonParams(), params || {}), output = {};
@@ -130,7 +133,7 @@
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ID);
     document.head.appendChild(script);
     window.gtag('js', new Date());
-    window.gtag('config', ID, Object.assign({}, commonParams(), {send_page_view:false,cookie_domain:'auto',allow_google_signals:false,allow_ad_personalization_signals:false,debug_mode:debugMode()}));
+    window.gtag('config', ID, Object.assign({}, commonParams(), {send_page_view:false,cookie_domain:'auto',allow_google_signals:false,allow_ad_personalization_signals:false}));
     sendPageView(); initMeasurement();
   }
   function sectionData(element, index) {

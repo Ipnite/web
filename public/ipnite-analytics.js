@@ -69,13 +69,17 @@
   function pageType() {
     var path = localizedPath();
     if (path === '/') return 'home';
+    if (path === '/learn/') return 'hub';
     if (/^\/learn\//.test(path)) return 'article';
     if (/^\/for-/.test(path)) return 'solution';
-    if (path === '/patent-ai-security/') return 'security';
+    if (/^\/(patent-ai-security|ai-patent-confidentiality)\/$/.test(path)) return 'security';
     if (/best-ai-|\/ipnite-vs-/.test(path)) return 'comparison';
     if (/patents-(united-states|mexico|argentina|brazil)|pct-patent-process/.test(path)) return 'jurisdiction';
-    if (/ai-patent-drafting|prior-art-search|patent-drawings|patent-portfolio-management|provisional-patent-application|patent-search/.test(path)) return 'product';
+    if (/^\/(how-to-patent-an-idea|after-filing-a-patent-application)\/$/.test(path)) return 'journey';
+    if (/ai-patent-drafting|prior-art-search|patent-drawings|patent-portfolio-management|provisional-patent-application|patent-search|patent-specification|patent-quality-review|patent-application-export|invention-disclosure|patent-claims-generator|patent-drafting-software|ai-patent-tool-for-inventors/.test(path)) return 'product';
     if (/privacy|termsandconditions/.test(path)) return 'legal';
+    if (path === '/faqs/') return 'faq';
+    if (/^\/(about-us|rafael-betanzos-san-juan)\/$/.test(path)) return 'company';
     return 'other';
   }
   function contentTopic() {
@@ -85,12 +89,13 @@
     if (/portfolio-management/.test(path)) return 'portfolio_management';
     if (/provisional/.test(path)) return 'provisional_patents';
     if (/patent-search|existing-patents/.test(path)) return 'patent_search';
-    if (/ai-patent|patent-claims|patentability|patent-pending|patent-an-idea/.test(path)) return 'ai_patent_drafting';
+    if (/confidentiality/.test(path)) return 'privacy_security';
+    if (/ai-patent|patent-claims|patentability|patent-pending|patent-an-idea|write-a-patent|novelty-vs-inventive-step|patent-specification|patent-quality-review|patent-application-export|invention-disclosure|patent-drafting-software/.test(path)) return 'ai_patent_drafting';
     if (/for-startups|pitch-investors|startup/.test(path)) return 'startups';
     if (/for-patent-attorneys/.test(path)) return 'patent_professionals';
     if (/for-universities/.test(path)) return 'universities';
     if (/security|privacy/.test(path)) return 'privacy_security';
-    if (pageType() === 'jurisdiction') return 'patent_filing';
+    if (pageType() === 'jurisdiction' || pageType() === 'journey') return 'patent_filing';
     return pageType() === 'home' ? 'patent_workflow' : 'general';
   }
   function commonParams() {

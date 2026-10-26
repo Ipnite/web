@@ -33,7 +33,7 @@ The page view includes sanitized values for:
 - `page_title`
 - `page_referrer`, without query parameters
 - `site_language`: `en`, `es`, or `pt-BR`
-- `page_type`
+- `page_type`: `home`, `hub`, `article`, `solution`, `security`, `comparison`, `jurisdiction`, `journey`, `product`, `legal`, `faq`, `company`, or `other` (only `/coming-soon/`)
 - `content_topic`
 
 Only recognized campaign parameters are retained in `page_location`: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `utm_id`, `gclid`, `dclid`, `gbraid`, and `wbraid`. Hashes and unrelated query parameters are not sent.

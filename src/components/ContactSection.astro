@@ -20,9 +20,11 @@ const copy = lang === "es"
       messagePlaceholder: "Escribe tu mensaje...",
       button: "Enviar",
       alt: "Profesional con una laptop y un cuaderno, lista para contactar a IPnite",
-      note: "Al enviar se abrirá tu aplicación de correo con el mensaje listo. También puedes escribirnos directamente a",
+      note: "También puedes escribirnos directamente a",
+      sending: "Enviando…",
+      success: "¡Gracias! Recibimos tu mensaje y te responderemos pronto.",
+      error: "No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a",
       salesSubject: "Plan Institucional — solicitud de información",
-      bodyLabels: { name: "Nombre", email: "Correo" },
     }
   : lang === "pt"
   ? {
@@ -37,9 +39,11 @@ const copy = lang === "es"
       messagePlaceholder: "Digite sua mensagem...",
       button: "Enviar",
       alt: "Profissional com um laptop e um caderno, pronta para contatar a IPnite",
-      note: "Ao enviar, seu aplicativo de e-mail será aberto com a mensagem pronta. Você também pode nos escrever diretamente em",
+      note: "Você também pode nos escrever diretamente em",
+      sending: "Enviando…",
+      success: "Obrigado! Recebemos sua mensagem e responderemos em breve.",
+      error: "Não foi possível enviar sua mensagem. Tente novamente ou escreva para",
       salesSubject: "Plano Institucional — pedido de informações",
-      bodyLabels: { name: "Nome", email: "E-mail" },
     }
   : {
       heading: "Contact",
@@ -53,10 +57,15 @@ const copy = lang === "es"
       messagePlaceholder: "Enter your message...",
       button: "Send",
       alt: "Professional holding a laptop and notebook, ready to contact IPnite",
-      note: "Sending opens your email app with the message ready to go. You can also write to us directly at",
+      note: "You can also write to us directly at",
+      sending: "Sending…",
+      success: "Thank you! We received your message and will reply soon.",
+      error: "We couldn't send your message. Please try again or write to us at",
       salesSubject: "Institutional plan — information request",
-      bodyLabels: { name: "Name", email: "Email" },
     };
+
+// Web3Forms public access key; inline scripts can't read import.meta.env, so it travels in a hidden field.
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
 ---
 
 <section
@@ -72,14 +81,18 @@ const copy = lang === "es"
     <form
       class="absolute top-[123px] left-[190px] w-[425px]"
       method="post"
-      action="mailto:info@ipnite.com"
-      enctype="text/plain"
+      action="https://api.web3forms.com/submit"
       data-analytics-form="contact"
       data-contact-form
       data-sales-subject={copy.salesSubject}
-      data-label-name={copy.bodyLabels.name}
-      data-label-email={copy.bodyLabels.email}
+      data-sending={copy.sending}
+      data-success={copy.success}
+      data-error={copy.error}
     >
+      <input type="hidden" name="access_key" value={web3formsKey} />
+      <!-- Honeypot: real users leave this unchecked; do not remove. -->
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+
       <!-- Name -->
       <div class="absolute top-0 left-0 w-[409px]">
         <label for="contact-name" class="block [font-family:'Roboto',sans-serif] font-medium text-[#4c0815] text-[21px] leading-normal">{copy.name}</label>
@@ -122,11 +135,11 @@ const copy = lang === "es"
         type="submit"
         class="absolute top-[497px] left-[300px] w-[109px] h-[35px] rounded-[50px] border border-solid border-[#6b2a2f] bg-[#ededed]"
       >
-        <span class="flex items-center justify-center h-full [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
+        <span data-contact-button-label class="flex items-center justify-center h-full [font-family:'Roboto_Slab',serif] font-extrabold text-[#4c0815] text-2xl text-center tracking-[-0.46px] leading-9 whitespace-nowrap">
           {copy.button}
         </span>
       </button>
-      <p class="contact-note absolute top-[548px] left-0 w-[409px] [font-family:'Roboto',sans-serif] text-[14px] leading-[1.5] text-[#505050]">
+      <p data-contact-status role="status" aria-live="polite" class="contact-note absolute top-[548px] left-0 w-[409px] [font-family:'Roboto',sans-serif] text-[14px] leading-[1.5] text-[#505050]">
         {copy.note} <a href="mailto:info@ipnite.com" class="font-bold text-[#6b2a2f] underline">info@ipnite.com</a>.
       </p>
     </form>
@@ -143,18 +156,54 @@ const copy = lang === "es"
 
 <script is:inline>
   (() => {
+    const fallbackLink = '<a href="mailto:info@ipnite.com" class="font-bold text-[#6b2a2f] underline">info@ipnite.com</a>.';
     document.querySelectorAll("[data-contact-form]").forEach((form) => {
       const subject = form.querySelector("[name=subject]");
       if (subject && new URLSearchParams(window.location.search).get("plan") === "institutional" && !subject.value) {
         subject.value = form.dataset.salesSubject || "";
       }
-      form.addEventListener("submit", (event) => {
-        if (!form.checkValidity()) return;
+      const button = form.querySelector("button[type=submit]");
+      const label = form.querySelector("[data-contact-button-label]");
+      const status = form.querySelector("[data-contact-status]");
+      const buttonText = label ? label.textContent : "";
+      const showError = () => {
+        status.textContent = `${form.dataset.error} `;
+        status.insertAdjacentHTML("beforeend", fallbackLink);
+      };
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        if (!form.checkValidity() || button.disabled) return;
         const data = new FormData(form);
+        if (data.get("botcheck")) return;
         const value = (key) => String(data.get(key) || "").trim();
-        const body = `${value("message")}\n\n—\n${form.dataset.labelName}: ${value("name")}\n${form.dataset.labelEmail}: ${value("email")}`;
-        window.location.href = `mailto:info@ipnite.com?subject=${encodeURIComponent(value("subject"))}&body=${encodeURIComponent(body)}`;
+        button.disabled = true;
+        if (label) label.textContent = form.dataset.sending;
+        try {
+          if (!value("access_key")) throw new Error("Missing PUBLIC_WEB3FORMS_KEY");
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              access_key: value("access_key"),
+              name: value("name"),
+              email: value("email"),
+              subject: value("subject"),
+              message: value("message"),
+              botcheck: false,
+            }),
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || !result.success) throw new Error(result.message || `HTTP ${response.status}`);
+          form.reset();
+          status.textContent = form.dataset.success;
+          window.ipniteAnalytics?.track("generate_lead", { form_name: "contact" });
+        } catch (error) {
+          console.warn("[IPnite Contact]", error);
+          showError();
+        } finally {
+          button.disabled = false;
+          if (label) label.textContent = buttonText;
+        }
       });
     });
   })();

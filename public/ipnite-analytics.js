@@ -178,7 +178,7 @@
   document.addEventListener('click',function(event){
     var element=event.target.closest&&event.target.closest('[data-analytics-cta], a[href*="app.ipnite.com"]'); if(!element)return;
     var href=element.getAttribute('href')||'';
-    var ctaName=clean(element.dataset.analyticsCta||element.getAttribute('aria-label')||'open_ipnite_app',80).toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+    var ctaName=clean(element.dataset.analyticsCta||element.getAttribute('aria-label')||'open_ipnite_app',80).toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'')||'unnamed_cta';
     var params={cta_name:ctaName,cta_location:ctaLocation(element),destination_name:destinationName(href)};
     try{params.link_domain=new URL(href,location.href).hostname;}catch(error){}
     if(element.dataset.analyticsPlan){params.plan_name=element.dataset.analyticsPlan;params.market=currentMarket();}

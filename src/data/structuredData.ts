@@ -15,28 +15,28 @@ const planNames = {
 const copy = {
   en: {
     description: "IPnite is an AI-assisted patent preparation platform. Its agents help users search prior art, structure an invention disclosure, draft claims and a full patent application with The Drafter, generate patent drawings, run QA, export to DOCX, and manage a patent portfolio.",
-    trial: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
+    trial: "7 days without a card or automatic charges. One initial project, one claims generation and one drawing generation, without free regeneration. Search Strategy/Plan preparation is allowed; paid Search execution and results are not included. Full Draft requires a valid paid entitlement. Trial-only content is read-only for 30 days after expiry.",
     monthly: "Monthly",
     annual: "Annual",
   },
   es: {
     description: "IPnite es una plataforma de preparación de patentes asistida por IA. Sus agentes ayudan a buscar antecedentes, estructurar la divulgación de la invención, redactar reivindicaciones y la solicitud completa con The Drafter, generar dibujos, revisar la calidad, exportar en DOCX y gestionar un portafolio de patentes.",
-    trial: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
+    trial: "7 días sin tarjeta ni cobros automáticos. Un proyecto inicial, una generación de reivindicaciones y una de dibujos, sin regeneración gratuita. Puedes preparar la estrategia o plan de búsqueda; no incluye ejecución ni resultados de pago. Draft completo requiere un derecho de pago válido. El contenido exclusivo de prueba queda en modo lectura por 30 días después del vencimiento.",
     monthly: "Mensual",
     annual: "Anual",
   },
   pt: {
     description: "A IPnite é uma plataforma de preparação de patentes assistida por IA. Seus agentes ajudam a buscar anterioridades, estruturar a divulgação da invenção, redigir reivindicações e o pedido completo com The Drafter, gerar desenhos, revisar a qualidade, exportar em DOCX e gerenciar um portfólio de patentes.",
-    trial: "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.",
+    trial: "7 dias sem cartão nem cobranças automáticas. Um projeto inicial, uma geração de reivindicações e uma de desenhos, sem regeneração gratuita. Você pode preparar a estratégia ou plano de busca; não inclui execução nem resultados pagos. Draft completo exige um direito pago válido. Conteúdo exclusivo do teste fica somente para leitura por 30 dias após o término.",
     monthly: "Mensal",
     annual: "Anual",
   },
 } as const;
 
 const featureList = {
-  en: ["Prior-art search (Discovery Agent)", "Invention disclosure workflow", "Claim and patent application drafting (The Drafter)", "Patent drawing generation", "Field-specific language review", "QA and formatting checks", "DOCX export for purchased drafts; JSON and ZIP export on Startup and Institutional", "Patentability and freedom-to-operate (FTO) analyses delivered for user review", "Patent portfolio, filing, and deadline management", "Team collaboration and permissions"],
-  es: ["Búsqueda de antecedentes (Agente de descubrimiento)", "Flujo de divulgación de la invención", "Redacción de reivindicaciones y de la solicitud completa (El Redactor)", "Generación de dibujos de patente", "Revisión del lenguaje técnico del campo", "Control de calidad y formato", "Exportación en DOCX de drafts adquiridos; JSON y ZIP en Startup e Institucional", "Análisis de patentabilidad y de libertad de operación (FTO) entregados para revisión del usuario", "Gestión de portafolio, presentaciones y plazos", "Colaboración en equipo y permisos"],
-  pt: ["Busca de anterioridade (Agente de descoberta)", "Fluxo de divulgação da invenção", "Redação de reivindicações e do pedido completo (The Drafter)", "Geração de desenhos de patente", "Revisão da linguagem técnica do campo", "Controle de qualidade e formatação", "Exportação em DOCX de minutas adquiridas; JSON e ZIP em Startup e Institucional", "Análises de patenteabilidade e de liberdade de operação (FTO) entregues para revisão do usuário", "Gestão de portfólio, depósitos e prazos", "Colaboração em equipe e permissões"],
+  en: ["Prior-art search (Discovery Agent)", "Invention disclosure workflow", "Claim and patent application drafting (The Drafter)", "Patent drawing generation", "Field-specific language review", "QA and formatting checks", "DOCX export for purchased drafts; JSON and ZIP export on Startup and Institutional", "Patentability Search and FTO are separate from Prior-Art Search and are not currently available.", "Patent portfolio, filing, and deadline management", "Team collaboration and permissions"],
+  es: ["Búsqueda de antecedentes (Agente de descubrimiento)", "Flujo de divulgación de la invención", "Redacción de reivindicaciones y de la solicitud completa (El Redactor)", "Generación de dibujos de patente", "Revisión del lenguaje técnico del campo", "Control de calidad y formato", "Exportación en DOCX de drafts adquiridos; JSON y ZIP en Startup e Institucional", "La búsqueda de patentabilidad y FTO son productos distintos de la búsqueda de antecedentes y aún no están disponibles.", "Gestión de portafolio, presentaciones y plazos", "Colaboración en equipo y permisos"],
+  pt: ["Busca de anterioridade (Agente de descoberta)", "Fluxo de divulgação da invenção", "Redação de reivindicações e do pedido completo (The Drafter)", "Geração de desenhos de patente", "Revisão da linguagem técnica do campo", "Controle de qualidade e formatação", "Exportação em DOCX de minutas adquiridas; JSON e ZIP em Startup e Institucional", "Busca de patenteabilidade e FTO são produtos distintos da busca de anterioridade e ainda não estão disponíveis.", "Gestão de portfólio, depósitos e prazos", "Colaboração em equipe e permissões"],
 } as const;
 
 /** SoftwareApplication entity for the IPnite platform, with every regional plan as an Offer. */

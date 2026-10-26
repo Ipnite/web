@@ -195,7 +195,7 @@ const priorArt: SeoPage = {
             "Relevance ranking against the essential features of your invention",
             "Reference viewer with bibliographic data and key passages",
             "Saved references connected to the drafting project",
-            "Patentability analysis on every paid plan, delivered for your review",
+            "Patentability Search and FTO are distinct future products, not currently available",
           ],
         },
         {
@@ -207,7 +207,7 @@ const priorArt: SeoPage = {
         {
           heading: "Results you read with judgment",
           paragraphs: [
-            "No search can guarantee that every relevant document was found. Patentability and freedom-to-operate (FTO) analyses from IPnite are AI-assisted deliverables: you are responsible for reading them or having them reviewed by a qualified professional, and IPnite does not guarantee their conclusions.",
+            "No search guarantees that every relevant document has been found. Prior-Art Search provides references for review. Patentability Search and FTO are distinct products and are not currently available.",
           ],
         },
       ],
@@ -243,7 +243,7 @@ const priorArt: SeoPage = {
             "Resultados ordenados según las características esenciales de tu invención",
             "Visor de referencias con datos bibliográficos y pasajes clave",
             "Referencias guardadas y conectadas al proyecto de redacción",
-            "Análisis de patentabilidad en todos los planes de pago, entregado para tu revisión",
+            "Búsqueda de patentabilidad y FTO: productos futuros distintos, aún no disponibles",
           ],
         },
         {
@@ -255,7 +255,7 @@ const priorArt: SeoPage = {
         {
           heading: "Resultados que se leen con criterio",
           paragraphs: [
-            "Ninguna búsqueda garantiza haber encontrado todos los documentos relevantes. Los análisis de patentabilidad y de libertad de operación (FTO) de IPnite son entregables asistidos por IA: tú eres responsable de leerlos o de enviarlos a revisión con un profesional, e IPnite no garantiza sus conclusiones.",
+            "Ninguna búsqueda garantiza encontrar todos los documentos relevantes. La búsqueda de antecedentes aporta referencias para revisión. La búsqueda de patentabilidad y FTO son productos distintos, aún no disponibles.",
           ],
         },
       ],
@@ -291,7 +291,7 @@ const priorArt: SeoPage = {
             "Resultados ordenados pelas características essenciais da invenção",
             "Visualizador de referências com dados bibliográficos e trechos-chave",
             "Referências salvas e conectadas ao projeto de redação",
-            "Análise de patenteabilidade em todos os planos pagos, entregue para sua revisão",
+            "Busca de patenteabilidade e FTO: produtos futuros distintos, ainda indisponíveis",
           ],
         },
         {
@@ -303,7 +303,7 @@ const priorArt: SeoPage = {
         {
           heading: "Resultados lidos com critério",
           paragraphs: [
-            "Nenhuma busca garante ter encontrado todos os documentos relevantes. As análises de patenteabilidade e de liberdade de operação (FTO) da IPnite são entregáveis assistidos por IA: você é responsável por lê-las ou enviá-las para revisão profissional, e a IPnite não garante suas conclusões.",
+            "Nenhuma busca garante encontrar todos os documentos relevantes. A busca de anterioridade fornece referências para revisão. Busca de patenteabilidade e FTO são produtos distintos, ainda indisponíveis.",
           ],
         },
       ],
@@ -499,8 +499,8 @@ const portfolio: SeoPage = {
         },
       ],
       faqs: [
-        { q: "What happens to archived projects?", a: "Archived projects do not count toward your active-project limit and are kept for three months. IPnite notifies the owner about 30, 7, and 1 day before permanent deletion." },
-        { q: "Can I export my portfolio?", a: "Every plan exports applications as DOCX. Startup and Institutional also export full projects as JSON and ZIP." },
+        { q: "What happens to archived projects?", a: "Management limits depend on the plan. Archiving does not override purchase protection: purchased products and required content follow their applicable lifecycle and retention rules. Content is not automatically deleted when eligibility for cleanup is uncertain." },
+        { q: "Can I export my portfolio?", a: "DOCX requires a purchased or included Draft entitlement. Inventor requires a paid Draft add-on. Startup and Institutional also export full projects as JSON and ZIP." },
       ],
       cta: "Organize your patent portfolio",
       ctaBody: "Bring applications, documents, alerts, and drafting work into one workspace. Start with a free 7-day trial.",
@@ -539,8 +539,8 @@ const portfolio: SeoPage = {
         },
       ],
       faqs: [
-        { q: "¿Qué pasa con los proyectos archivados?", a: "No cuentan para tu límite de proyectos activos y se conservan durante tres meses. IPnite avisa al titular aproximadamente 30, 7 y 1 día antes de eliminarlos definitivamente." },
-        { q: "¿Puedo exportar mi portafolio?", a: "Todos los planes exportan las solicitudes en DOCX. Startup e Institucional también exportan proyectos completos en JSON y ZIP." },
+        { q: "¿Qué pasa con los proyectos archivados?", a: "Los límites de Gestión dependen del plan. Archivar no anula la protección de compras: los productos adquiridos y su contenido necesario siguen su ciclo de vida y las reglas de conservación aplicables. Si la elegibilidad para limpieza es incierta, no se elimina contenido automáticamente." },
+        { q: "¿Puedo exportar mi portafolio?", a: "DOCX requiere un derecho Draft comprado o incluido. Inventor requiere un complemento Draft de pago. Startup e Institucional también exportan proyectos completos en JSON y ZIP." },
       ],
       cta: "Organiza tu portafolio de patentes",
       ctaBody: "Reúne solicitudes, documentos, alertas y redacción en un solo espacio. Empieza con la prueba gratis de 7 días.",
@@ -579,8 +579,8 @@ const portfolio: SeoPage = {
         },
       ],
       faqs: [
-        { q: "O que acontece com projetos arquivados?", a: "Não contam para o limite de projetos ativos e ficam guardados por três meses. A IPnite avisa o titular cerca de 30, 7 e 1 dia antes da exclusão definitiva." },
-        { q: "Posso exportar meu portfólio?", a: "Todos os planos exportam os pedidos em DOCX. Startup e Institucional também exportam projetos completos em JSON e ZIP." },
+        { q: "O que acontece com projetos arquivados?", a: "Os limites de Gestão dependem do plano. Arquivar não anula a proteção de compras: produtos adquiridos e seu conteúdo necessário seguem seu ciclo de vida e as regras de retenção aplicáveis. Se a elegibilidade para limpeza for incerta, o conteúdo não será excluído automaticamente." },
+        { q: "Posso exportar meu portfólio?", a: "DOCX exige um direito Draft comprado ou incluído. Inventor exige adicional Draft pago. Startup e Institucional também exportam projetos completos em JSON e ZIP." },
       ],
       cta: "Organize seu portfólio de patentes",
       ctaBody: "Reúna pedidos, documentos, alertas e redação em um só espaço. Comece com o teste grátis de 7 dias.",

@@ -24,9 +24,9 @@ function rows(locale: Locale): Row[] {
       tool: "IPnite",
       scope: t("Built especially for Latin America", "Hecha especialmente para Latinoamérica", "Feita especialmente para a América Latina"),
       bestFor: t("Latin American inventors, startups, firms, and universities", "Inventores, startups, despachos y universidades de Latinoamérica", "Inventores, startups, escritórios e universidades da América Latina"),
-      offers: t("Drafting, claims, prior-art search, drawings, office notifications and examiner responses by email, direct filing with INPI Argentina, portfolio and deadlines, patentability and FTO, collaboration", "Redacción, reivindicaciones, búsqueda de antecedentes, dibujos, notificaciones de la oficina y respuestas al examinador por correo, presentación directa ante el INPI de Argentina, portafolio y plazos, patentabilidad y FTO, colaboración", "Redação, reivindicações, busca de anterioridade, desenhos, notificações do escritório e respostas ao examinador por e-mail, depósito direto no INPI da Argentina, portfólio e prazos, patenteabilidade e FTO, colaboração"),
+      offers: t("Drafting, claims, Prior-Art Search, drawings, portfolio and deadlines, collaboration. Direct filing, Patentability Search and FTO are not currently available", "Redacción, reivindicaciones, búsqueda de antecedentes, dibujos, portafolio y plazos, colaboración. Presentación directa, búsqueda de patentabilidad y FTO aún no disponibles", "Redação, reivindicações, busca de anterioridade, desenhos, portfólio e prazos, colaboração. Depósito direto, busca de patenteabilidade e FTO ainda indisponíveis"),
       region: t("IMPI (Mexico), INPI Argentina, INPI Brazil, plus USPTO and PCT", "IMPI (México), INPI Argentina, INPI Brasil, además de USPTO y PCT", "INPI Brasil, IMPI (México), INPI Argentina, além de USPTO e PCT"),
-      latam: t("Yes, it is its primary market: Spanish and Portuguese, Latin American office workflows, direct filing with INPI Argentina, local-currency pricing", "Sí, es su mercado principal: español y portugués, flujos para oficinas latinoamericanas, presentación directa ante el INPI de Argentina, precios en moneda local", "Sim, é seu mercado principal: português e espanhol, fluxos para escritórios latino-americanos, depósito direto no INPI da Argentina, preços em moeda local"),
+      latam: t("Yes, it is its primary market: Spanish and Portuguese, Latin American preparation workflows, local-currency pricing; direct filing coming soon", "Sí, es su mercado principal: español y portugués, flujos de preparación para oficinas latinoamericanas, precios en moneda local; presentación directa próximamente", "Sim, é seu mercado principal: português e espanhol, fluxos de preparação para escritórios latino-americanos, preços em moeda local; depósito direto em breve"),
       pricing: t(`${r.singleDraftSummary}; ${r.inventorSummary} to manage your IP; 7-day free trial`, `${r.singleDraftSummary}; ${r.inventorSummary} para gestionar tu PI; prueba gratis de 7 días`, `${r.singleDraftSummary}; ${r.inventorSummary} para gerenciar sua PI; teste grátis de 7 dias`),
     },
     {
@@ -144,7 +144,7 @@ function en(): ClusterLocaleCopy {
           { title: "Spanish and Portuguese", body: "The platform and its drafts work in Spanish and Portuguese, not only English." },
           { title: "Local prices", body: `Prices in local currencies for Mexico, Argentina, Brazil, and the rest of Latin America. ${ipniteRegionalPricing("en").singleDraftSummary}; ${ipniteRegionalPricing("en").inventorSummary} to manage your IP.` },
           { title: "The whole workflow in one place", body: "Prior-art search, claims, the full application, drawings, and portfolio deadlines in one project." },
-          { title: "Office notifications and filing", body: "IPnite gives you a dedicated email address to register with the patent office, so its notifications reach your project and you can answer the examiner from IPnite. In some offices, such as INPI Argentina, you can submit the application directly from IPnite." },
+          { title: "Office notifications and filing", body: "Use Management to track filings and deadlines. Receiving office notices and sending examiner responses directly from IPnite are not currently available. Direct filing from IPnite is not currently available; you or your representative submit the application to the patent office." },
         ],
       },
       {
@@ -152,8 +152,8 @@ function en(): ClusterLocaleCopy {
         heading: "Which type of tool fits which user",
         items: [
           { title: "Inventors and startups in Latin America", body: "IPnite: guided disclosure, prior-art search, and a complete draft for IMPI, INPI Argentina, INPI Brazil, or the USPTO, at local prices." },
-          { title: "Patent firms and agents in Latin America", body: "IPnite for drafting, examiner responses, and client portfolios in Spanish and Portuguese, with collaborators and team permissions." },
-          { title: "US inventors filing one provisional", body: "IPnite or Idea2PatentAI. Idea2PatentAI charges per provisional; one month of IPnite's Inventor plan costs less and also includes prior-art search and drawings." },
+          { title: "Patent firms and agents in Latin America", body: "IPnite for drafting and client portfolios in Spanish and Portuguese, with collaborators and team permissions." },
+          { title: "US inventors filing one provisional", body: "IPnite or Idea2PatentAI. Idea2PatentAI charges per provisional; IPnite offers a standalone Draft. Inventor requires a paid Draft add-on, and Search is a separate right." },
           { title: "Large US, European, or Asian practices", body: "Solve Intelligence, DeepIP, Patsnap, and IP Author position themselves for enterprise teams; Word-based tools such as ClaimMaster and Patent Bots suit practitioners who stay in Word." },
         ],
       },
@@ -213,7 +213,7 @@ function es(): ClusterLocaleCopy {
           { title: "Español y portugués", body: "La plataforma y los borradores funcionan en español y portugués, no solo en inglés." },
           { title: "Precios locales", body: `Precios en moneda local para México, Argentina, Brasil y el resto de Latinoamérica. ${ipniteRegionalPricing("es").singleDraftSummary}; ${ipniteRegionalPricing("es").inventorSummary} para gestionar tu PI.` },
           { title: "Todo el flujo en un solo lugar", body: "Búsqueda de antecedentes, reivindicaciones, la solicitud completa, dibujos y plazos de portafolio en un mismo proyecto." },
-          { title: "Notificaciones y presentación ante la oficina", body: "IPnite te da un correo dedicado que puedes registrar ante la oficina de patentes para recibir sus notificaciones en tu proyecto y responder al examinador desde IPnite. En algunas oficinas, como el INPI de Argentina, puedes presentar la solicitud directamente desde IPnite." },
+          { title: "Notificaciones y presentación ante la oficina", body: "Utiliza Gestión para dar seguimiento a presentaciones y plazos. Recibir notificaciones de la oficina y enviar respuestas al examinador directamente desde IPnite aún no está disponible. La presentación directa desde IPnite aún no está disponible; tú o tu representante presentan la solicitud ante la oficina." },
         ],
       },
       {
@@ -221,8 +221,8 @@ function es(): ClusterLocaleCopy {
         heading: "Qué herramienta conviene a cada usuario",
         items: [
           { title: "Inventores y startups en Latinoamérica", body: "IPnite: divulgación guiada, búsqueda de antecedentes y un borrador completo para el IMPI, el INPI de Argentina, el INPI de Brasil o la USPTO, con precios locales." },
-          { title: "Despachos y agentes en Latinoamérica", body: "IPnite para redactar, responder al examinador y llevar el portafolio de clientes en español y portugués, con colaboradores y permisos de equipo." },
-          { title: "Inventores en EE. UU. con una sola provisional", body: "IPnite o Idea2PatentAI. Idea2PatentAI cobra por provisional; un mes del plan Inventor de IPnite cuesta menos e incluye además búsqueda de antecedentes y dibujos." },
+          { title: "Despachos y agentes en Latinoamérica", body: "IPnite para redactar y llevar el portafolio de clientes en español y portugués, con colaboradores y permisos de equipo." },
+          { title: "Inventores en EE. UU. con una sola provisional", body: "IPnite o Idea2PatentAI. Idea2PatentAI cobra por provisional; IPnite ofrece Draft independiente. Inventor requiere un complemento Draft de pago y la búsqueda es un derecho separado." },
           { title: "Grandes despachos de EE. UU., Europa o Asia", body: "Solve Intelligence, DeepIP, Patsnap e IP Author se posicionan para equipos empresariales; herramientas en Word como ClaimMaster y Patent Bots convienen a quienes redactan en Word." },
         ],
       },
@@ -282,7 +282,7 @@ function pt(): ClusterLocaleCopy {
           { title: "Português e espanhol", body: "A plataforma e os rascunhos funcionam em português e espanhol, não só em inglês." },
           { title: "Preços locais", body: `Preços em moeda local para Brasil, México, Argentina e o restante da América Latina. ${ipniteRegionalPricing("pt").singleDraftSummary}; ${ipniteRegionalPricing("pt").inventorSummary} para gerenciar sua PI.` },
           { title: "Todo o fluxo em um só lugar", body: "Busca de anterioridade, reivindicações, o pedido completo, desenhos e prazos do portfólio em um mesmo projeto." },
-          { title: "Notificações e depósito no escritório", body: "A IPnite oferece um e-mail dedicado para cadastrar no escritório de patentes, assim as notificações chegam ao seu projeto e você responde ao examinador pela IPnite. Em alguns escritórios, como o INPI da Argentina, você pode depositar o pedido diretamente pela IPnite." },
+          { title: "Notificações e depósito no escritório", body: "Use Gestão para acompanhar depósitos e prazos. Receber notificações do escritório e enviar respostas ao examinador diretamente pela IPnite ainda não está disponível. O depósito direto pela IPnite ainda não está disponível; você ou seu procurador deposita o pedido no escritório." },
         ],
       },
       {
@@ -290,8 +290,8 @@ function pt(): ClusterLocaleCopy {
         heading: "Qual ferramenta serve para cada usuário",
         items: [
           { title: "Inventores e startups na América Latina", body: "IPnite: divulgação guiada, busca de anterioridade e um rascunho completo para o INPI do Brasil, o IMPI, o INPI da Argentina ou o USPTO, com preços locais." },
-          { title: "Escritórios e agentes na América Latina", body: "IPnite para redigir, responder ao examinador e cuidar do portfólio de clientes em português e espanhol, com colaboradores e permissões de equipe." },
-          { title: "Inventores nos EUA com um único provisório", body: "IPnite ou Idea2PatentAI. A Idea2PatentAI cobra por provisório; um mês do plano Inventor da IPnite custa menos e inclui também busca de anterioridade e desenhos." },
+          { title: "Escritórios e agentes na América Latina", body: "IPnite para redigir e cuidar do portfólio de clientes em português e espanhol, com colaboradores e permissões de equipe." },
+          { title: "Inventores nos EUA com um único provisório", body: "IPnite ou Idea2PatentAI. A Idea2PatentAI cobra por provisório; a IPnite oferece Draft avulso. Inventor exige adicional Draft pago, e busca é um direito separado." },
           { title: "Grandes escritórios dos EUA, da Europa ou da Ásia", body: "Solve Intelligence, DeepIP, Patsnap e IP Author se posicionam para equipes corporativas; ferramentas no Word como ClaimMaster e Patent Bots atendem quem redige no Word." },
         ],
       },

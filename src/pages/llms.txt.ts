@@ -19,9 +19,9 @@ function pricingLines() {
   const addUsers = Object.values(marketPricing)
     .map((market) => `${market.countryLabel.en} ${formatPrice(market.additionalUser.monthly, market.currency, "en")}/month`)
     .join("; ");
-  lines.push(`- Additional Institutional users: ${addUsers}.`);
+  lines.push(`- Additional Institutional users (planned; billing not available): ${addUsers}.`);
   for (const market of Object.values(marketPricing)) {
-    lines.push(`- ${market.countryLabel.en} (${market.currency}): Single Draft ${formatPrice(market.singleDraft, market.currency, "en")} one-time; Inventor full-draft add-on ${formatPrice(market.draftAddon, market.currency, "en")}; Startup FTO add-on ${formatPrice(market.ftoAddon, market.currency, "en")} per jurisdiction.`);
+    lines.push(`- ${market.countryLabel.en} (${market.currency}): Single Draft ${formatPrice(market.singleDraft, market.currency, "en")} one-time; Inventor full-draft add-on ${formatPrice(market.draftAddon, market.currency, "en")}; standalone Prior-Art Search ${formatPrice(market.priorArtSearch, market.currency, "en")} for one execution and its results.`);
   }
   return lines.join("\n");
 }
@@ -57,7 +57,7 @@ export const GET: APIRoute = () => {
 - Drawing Agent: generates reference drawings with consistent reference numerals.
 - Specialized and QA agents: review field-specific language and formatting.
 - Export: DOCX for purchased drafts; JSON and ZIP project export on Startup and Institutional.
-- Patentability and freedom-to-operate (FTO) analyses, delivered as AI-assisted deliverables that the user reads or has professionally reviewed.
+- Patentability Search and FTO are separate from Prior-Art Search and are not currently available.
 - Portfolio management: filings, calendar, deadline alerts, collaborators, and team permissions.
 
 ## What IPnite does not do
@@ -72,12 +72,11 @@ Prices depend on the user's country or region and are shown on the home page pri
 
 ${pricingLines()}
 
-- Inventor: 1 active project, 2 prior-art searches per month, workspace, portfolio, documents, dates and alerts, 1 external collaborator and 1 GB storage. Full patent drafts are discounted add-ons, not included in the base subscription.
-- Startup: up to 10 active projects, 10 prior-art searches per month, patentability search, drafting, drawings and QA within plan limits, DOCX, JSON and ZIP export, portfolio and filing management, up to 3 collaborators per project, 15 GB storage, FTO as an add-on priced per jurisdiction.
-- Institutional: 3 users included, unlimited active projects subject to reasonable use, 50 prior-art searches per month, all modules, FTO included, DOCX, JSON and ZIP export, team permissions, invention disclosure management, 50 GB storage.
+- Inventor: 9 managed projects, 1 selected drafting project, 2 Prior-Art Searches per month, 1 collaborator per project, 1 GB storage; Full Draft requires an eligible paid add-on. Independent purchased Drafts do not use the selected drafting slot. Startup: 10 active projects, 10 searches per month, 3 collaborators per project, 15 GB. Institutional: unlimited managed projects subject to fair use, 50 searches per month, 3 organization seats, 10 collaborators per project, 50 GB. Startup and Institutional include one Full Draft entitlement per managed project. Annual plans keep monthly Search quotas.
 - IPnite for Research: eligible universities, research centers, and technology transfer offices receive 50% off the Institutional plan and additional users.
-- Free trial: Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges.
-- Single Draft: 1 complete prior-art search, 1 complete refined draft with claims, specification and abstract, drawings where supported, QA and export. One-time payment, no subscription required. The purchase may be credited toward an eligible subscription upgrade.
+- Free trial: 7 days without a card or automatic charges. One initial project, one claims generation and one drawing generation, without free regeneration. Search Strategy/Plan preparation is allowed; paid Search execution and results are not included. Full Draft requires a valid paid entitlement. Trial-only content is read-only for 30 days after expiry.
+- Single Draft: standalone claims, specification, abstract, 10 total image generation/edit operations, one final Audit/QA at explicit Finalize and a saved final DOCX. Read-only after successful Finalize; repeat downloads use the same file. Search and Management are not included. Standalone Search does not include Draft or Management. One eligible Draft purchase may be credited toward an eligible annual subscription within 30 days of payment, without stacking; eligibility is confirmed by the server.
+- Retention: Cancellation does not delete your account. Subscription capabilities stop when paid access expires. Independent Draft/Search purchases and their required content remain accessible under their product lifecycle and retention rules. Unpurchased content is not promised indefinite retention; uncertain cleanup is not automatic deletion.
 - Renewal: paid plans renew automatically each month or year until cancelled; users cancel anytime from their account and keep access until the end of the paid period.
 - Payments: Stripe today; local methods such as Mercado Pago (Argentina) and Pix (Brazil) are being added.
 

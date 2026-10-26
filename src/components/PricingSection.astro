@@ -9,7 +9,7 @@ const check = "✓";
 const defaultMarket = defaultMarketForLocale[lang];
 const defaultPricing = marketPricing[defaultMarket];
 const price = (plan: PlanCode, period: "monthly" | "annual") => formatPrice(defaultPricing.prices[plan][period], defaultPricing.currency, lang);
-const priceData = Object.fromEntries(Object.entries(marketPricing).map(([market, config]) => [market, { currency: config.currency, locale: config.locale, prices: config.prices, additionalUser: config.additionalUser, singleDraft: config.singleDraft, draftAddon: config.draftAddon, ftoAddon: config.ftoAddon }]));
+const priceData = Object.fromEntries(Object.entries(marketPricing).map(([market, config]) => [market, { currency: config.currency, locale: config.locale, prices: config.prices, additionalUser: config.additionalUser, singleDraft: config.singleDraft, draftAddon: config.draftAddon, priorArtSearch: config.priorArtSearch }]));
 const unit = lang === "es" ? "/mes" : lang === "pt" ? "/mês" : "/mo";
 const annualText = (plan: PlanCode) => lang === "es" ? `o ${price(plan,"annual")}/año · ahorra 2 meses` : lang === "pt" ? `ou ${price(plan,"annual")}/ano · economize 2 meses` : `or ${price(plan,"annual")}/yr · save 2 months`;
 const copy = lang === "es"
@@ -19,11 +19,11 @@ const copy = lang === "es"
         title: "INVENTOR",
         copy: "Para inventores independientes que protegen y gestionan sus ideas.",
         features: [
-          "1 proyecto activo.",
+          "9 proyectos gestionados; 1 seleccionado para redacción.",
           "2 búsquedas de antecedentes por mes.",
           "Espacio de trabajo, portafolio, documentos, fechas y alertas.",
           "Borradores completos disponibles como complementos con descuento.",
-          "Búsqueda de patentabilidad.",
+          "Búsqueda de patentabilidad: próximamente.",
           "Exportación DOCX de los borradores adquiridos.",
           "1 colaborador externo.",
           "1 GB de almacenamiento seguro.",
@@ -36,10 +36,10 @@ const copy = lang === "es"
         features: [
           "Hasta 10 proyectos activos.",
           "10 búsquedas de antecedentes por mes.",
-          "Redacción, dibujos y revisión de calidad según los límites del plan.",
-          "FTO como complemento, por jurisdicción.",
+          "Derecho a un Draft completo por proyecto gestionado.",
+          "FTO: próximamente, no disponible.",
           "Gestión de portafolio y colaboración.",
-          "Búsqueda de patentabilidad.",
+          "Búsqueda de patentabilidad: próximamente.",
           "Exportación en DOCX, JSON y ZIP.",
           "Hasta 3 colaboradores por proyecto.",
           "15 GB de almacenamiento seguro.",
@@ -50,11 +50,11 @@ const copy = lang === "es"
         title: "INSTITUCIONAL",
         copy: "Para despachos, universidades, oficinas de transferencia tecnológica y equipos de propiedad intelectual. Incluye 3 usuarios.",
         features: [
-          "Gestión de proyectos de alto volumen.",
+          "Proyectos gestionados ilimitados, sujetos a uso razonable.",
           "50 búsquedas de antecedentes por mes.",
-          "Redacción de alto volumen y gestión de portafolio.",
-          "FTO incluido.",
-          "Todos los módulos de IPnite.",
+          "Derecho a un Draft completo por proyecto gestionado.",
+          "FTO: próximamente, no disponible.",
+          "10 colaboradores por proyecto.",
           "Exportación en DOCX, JSON y ZIP.",
           "Gestión de equipos y permisos.",
           "Gestión de divulgaciones de invención.",
@@ -62,10 +62,10 @@ const copy = lang === "es"
         ],
         cta: "Hablar con ventas",
       },
-      additionalUsers: "Usuarios adicionales",
+      additionalUsers: "Usuarios adicionales (próximamente)",
       showAll: "Ver todos los beneficios",
       trialTitle: "Prueba IPnite gratis",
-      trialBody: "7 días, sin tarjeta y sin cobros automáticos.",
+      trialBody: "7 días sin tarjeta: un proyecto, una generación de reivindicaciones y un dibujo, sin regeneraciones gratuitas. Preparación del plan de búsqueda; ejecución y resultados no incluidos. Draft completo requiere pago.",
       draftAddon: "Borrador completo para el plan Inventor",
       ftoAddon: "FTO para el plan Startup, por jurisdicción",
     }
@@ -76,11 +76,11 @@ const copy = lang === "es"
         title: "INVENTOR",
         copy: "Para inventores independentes que protegem e gerenciam suas ideias.",
         features: [
-          "1 projeto ativo.",
+          "9 projetos gerenciados; 1 selecionado para redação.",
           "2 buscas de anterioridade por mês.",
           "Workspace, portfólio, documentos, datas e alertas.",
           "Minutas completas disponíveis como adicionais com desconto.",
-          "Busca de patenteabilidade.",
+          "Busca de patenteabilidade: em breve.",
           "Exportação DOCX de minutas adquiridas.",
           "1 colaborador externo.",
           "1 GB de armazenamento seguro.",
@@ -93,10 +93,10 @@ const copy = lang === "es"
         features: [
           "Até 10 projetos ativos.",
           "10 buscas de anterioridade por mês.",
-          "Redação, desenhos e QA conforme os limites do plano.",
-          "FTO como adicional, por jurisdição.",
+          "Direito a um Draft completo por projeto gerenciado.",
+          "FTO: em breve, indisponível.",
           "Gestão de portfólio e colaboração.",
-          "Busca de patenteabilidade.",
+          "Busca de patenteabilidade: em breve.",
           "Exportação em DOCX, JSON e ZIP.",
           "Até 3 colaboradores por projeto.",
           "15 GB de armazenamento seguro.",
@@ -107,11 +107,11 @@ const copy = lang === "es"
         title: "INSTITUCIONAL",
         copy: "Para escritórios, universidades, NITs e equipes de propriedade intelectual. Inclui 3 usuários.",
         features: [
-          "Gestão de projetos de alto volume.",
+          "Projetos gerenciados ilimitados, sujeitos a uso razoável.",
           "50 buscas de anterioridade por mês.",
-          "Redação de alto volume e gestão de portfólio.",
-          "FTO incluído.",
-          "Todos os módulos da IPnite.",
+          "Direito a um Draft completo por projeto gerenciado.",
+          "FTO: em breve, indisponível.",
+          "10 colaboradores por projeto.",
           "Exportação em DOCX, JSON e ZIP.",
           "Gestão de equipes e permissões.",
           "Gestão de divulgações de invenção.",
@@ -119,10 +119,10 @@ const copy = lang === "es"
         ],
         cta: "Falar com vendas",
       },
-      additionalUsers: "Usuários adicionais",
+      additionalUsers: "Usuários adicionais (em breve)",
       showAll: "Ver todos os benefícios",
       trialTitle: "Experimente a IPnite grátis",
-      trialBody: "7 dias, sem cartão e sem cobranças automáticas.",
+      trialBody: "7 dias sem cartão: um projeto, uma geração de reivindicações e um desenho, sem regenerações gratuitas. Preparação do plano de busca; execução e resultados não incluídos. Draft completo exige pagamento.",
       draftAddon: "Minuta completa para Inventor",
       ftoAddon: "FTO para Startup, por jurisdição",
     }
@@ -132,11 +132,11 @@ const copy = lang === "es"
         title: "INVENTOR",
         copy: "For independent inventors protecting and managing their ideas.",
         features: [
-          "1 active project.",
+          "9 managed projects; 1 selected for drafting.",
           "2 prior-art searches per month.",
           "Workspace, portfolio, documents, dates and alerts.",
           "Full patent drafts available as discounted add-ons.",
-          "Patentability search.",
+          "Patentability Search: coming soon.",
           "DOCX export of purchased drafts.",
           "1 external collaborator.",
           "1 GB secure storage.",
@@ -149,10 +149,10 @@ const copy = lang === "es"
         features: [
           "Up to 10 active projects.",
           "10 prior-art searches per month.",
-          "Drafting, drawings and QA within plan limits.",
-          "FTO available as an add-on, per jurisdiction.",
+          "One Full Draft entitlement per managed project.",
+          "FTO: coming soon, not available.",
           "Portfolio management and collaboration.",
-          "Patentability search.",
+          "Patentability Search: coming soon.",
           "DOCX, JSON and ZIP export.",
           "Up to 3 collaborators per project.",
           "15 GB secure storage.",
@@ -163,11 +163,11 @@ const copy = lang === "es"
         title: "INSTITUTIONAL",
         copy: "For law firms, universities, TTOs and IP teams. Includes 3 users.",
         features: [
-          "High-volume project management.",
+          "Unlimited managed projects, subject to fair use.",
           "50 prior-art searches per month.",
-          "High-volume drafting and portfolio management.",
-          "FTO included.",
-          "All IPnite modules.",
+          "One Full Draft entitlement per managed project.",
+          "FTO: coming soon, not available.",
+          "10 collaborators per project.",
           "DOCX, JSON and ZIP export.",
           "Team management and permissions.",
           "Invention disclosure management.",
@@ -175,10 +175,10 @@ const copy = lang === "es"
         ],
         cta: "Talk to Sales",
       },
-      additionalUsers: "Additional users",
+      additionalUsers: "Additional users (coming soon)",
       showAll: "View all benefits",
       trialTitle: "Try IPnite free",
-      trialBody: "7 days, no credit card and no automatic charges.",
+      trialBody: "7 days without a card: one project, one claims generation and one drawing, without free regeneration. Search plan preparation only; execution and results excluded. Full Draft requires payment.",
       draftAddon: "Full draft for Inventor",
       ftoAddon: "FTO for Startup, per jurisdiction",
     };
@@ -187,8 +187,8 @@ const singleDraftCopy = lang === "es"
       tag: "El Redactor",
       heading: "Tu borrador de patente, listo para revisión",
       unit: "por borrador",
-      payment: "Pago único. Sin suscripción.",
-      includes: ["Reivindicaciones independientes y dependientes", "Descripción técnica y resumen", "Dibujos de referencia", "Revisión de calidad", "Exportación en DOCX"],
+      payment: "Pago único. Sin suscripción. No incluye búsquedas ni Gestión.",
+      includes: ["Reivindicaciones independientes y dependientes", "Descripción técnica y resumen", "10 operaciones de imagen en total: generación y edición", "Finalize explícito con una auditoría final", "DOCX guardado; Draft en modo lectura después de Finalize"],
       cta: "Crear mi borrador",
       trialLead: "¿Vas a proteger varias ideas?",
       trialLink: "Prueba la plataforma 7 días gratis, sin tarjeta",
@@ -199,8 +199,8 @@ const singleDraftCopy = lang === "es"
       tag: "The Drafter",
       heading: "Sua minuta de patente, pronta para revisão",
       unit: "por minuta",
-      payment: "Pagamento único. Sem assinatura.",
-      includes: ["Reivindicações independentes e dependentes", "Relatório descritivo e resumo", "Desenhos de referência", "Revisão de qualidade (QA)", "Exportação em DOCX"],
+      payment: "Pagamento único. Sem assinatura. Não inclui buscas nem Gestão.",
+      includes: ["Reivindicações independentes e dependentes", "Relatório descritivo e resumo", "10 operações de imagem no total: geração e edição", "Finalize explícito com uma auditoria final", "DOCX salvo; Draft somente para leitura após Finalize"],
       cta: "Criar minha minuta",
       trialLead: "Vai proteger várias ideias?",
       trialLink: "Experimente a plataforma grátis por 7 dias, sem cartão",
@@ -210,8 +210,8 @@ const singleDraftCopy = lang === "es"
       tag: "The Drafter",
       heading: "Your patent draft, ready for review",
       unit: "per draft",
-      payment: "One-time payment. No subscription.",
-      includes: ["Independent and dependent claims", "Technical specification and abstract", "Reference drawings", "Quality review (QA)", "DOCX export"],
+      payment: "One-time payment. No subscription. Search and Management are not included.",
+      includes: ["Independent and dependent claims", "Technical specification and abstract", "10 total image operations: generation and editing", "Explicit Finalize with one final Audit/QA", "Saved DOCX; Draft read-only after Finalize"],
       cta: "Create my draft",
       trialLead: "Protecting several ideas?",
       trialLink: "Try the platform free for 7 days, no credit card",
@@ -237,6 +237,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
         <p class="plan-card__price"><span data-single-draft-price>{formatPrice(defaultPricing.singleDraft, defaultPricing.currency, lang)}</span><span class="plan-card__price-unit">{singleDraftCopy.unit}</span></p>
         <p class="plan-card__lede">{singleDraftCopy.heading}</p>
         <p class="plan-card__copy">{singleDraftCopy.payment}</p>
+        <p class="plan-card__copy">{lang === "es" ? "Búsqueda de antecedentes independiente" : lang === "pt" ? "Busca de anterioridade avulsa" : "Standalone Prior-Art Search"}: <span data-search-price>{formatPrice(defaultPricing.priorArtSearch, defaultPricing.currency, lang)}</span>. {lang === "es" ? "Una ejecución y sus resultados; no incluye Draft ni Gestión." : lang === "pt" ? "Uma execução e seus resultados; não inclui Draft nem Gestão." : "One execution and its results; Draft and Management are not included."}</p>
         <ul class="plan-card__features">
           {singleDraftCopy.includes.map((item) => <li><span aria-hidden="true">{check}</span>{item}</li>)}
         </ul>
@@ -268,7 +269,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
               {content.features.slice(4).map((feature) => <li><span>{check}</span>{feature}</li>)}
             </ul>
             {code === "inventor" && <p class="plan-card__additional">{copy.draftAddon}: <span data-draft-addon>{formatPrice(defaultPricing.draftAddon, defaultPricing.currency, lang)}</span></p>}
-            {code === "startup" && <p class="plan-card__additional">{copy.ftoAddon}: <span data-fto-addon>{formatPrice(defaultPricing.ftoAddon, defaultPricing.currency, lang)}</span></p>}
+
             {code === "institutional" && (
               <p class="plan-card__additional" data-additional-user>{copy.additionalUsers}: {formatPrice(defaultPricing.additionalUser.monthly, defaultPricing.currency, lang)}{unit} · {formatPrice(defaultPricing.additionalUser.annual, defaultPricing.currency, lang)}/{lang === "es" ? "año" : lang === "pt" ? "ano" : "yr"}</p>
             )}
@@ -293,7 +294,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
   (() => {
     const locale = lang === "es" ? "es-MX" : lang === "pt" ? "pt-BR" : "en-US";
     const defaultMarket = lang === "es" ? "LATAM" : lang === "pt" ? "BR" : "US";
-    const format = (amount, currency) => new Intl.NumberFormat(locale, { style: "currency", currency, currencyDisplay: currency === "MXN" ? "code" : "symbol", maximumFractionDigits: 0 }).format(amount);
+    const format = (amount, currency) => new Intl.NumberFormat(locale, { style: "currency", currency, currencyDisplay: currency === "MXN" ? "code" : "symbol", maximumFractionDigits: Number.isInteger(amount) ? 0 : 2 }).format(amount);
     // A market only applies on pages in its own language (US → en, MX/AR/LATAM → es, BR → pt).
     const marketFor = (market) => priceData[market] && priceData[market].locale === lang ? market : defaultMarket;
     function update(market) {
@@ -310,7 +311,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
       document.querySelectorAll("[data-additional-user]").forEach((node) => {
         const monthly = format(config.additionalUser.monthly, config.currency);
         const annual = format(config.additionalUser.annual, config.currency);
-        const label = lang === "es" ? "Usuarios adicionales" : lang === "pt" ? "Usuários adicionais" : "Additional users";
+        const label = lang === "es" ? "Usuarios adicionales (próximamente)" : lang === "pt" ? "Usuários adicionais (em breve)" : "Additional users (coming soon)";
         const year = lang === "es" ? "año" : lang === "pt" ? "ano" : "yr";
         node.textContent = `${label}: ${monthly}${unit} · ${annual}/${year}`;
       });
@@ -318,7 +319,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
         node.textContent = format(config.singleDraft, config.currency);
       });
       document.querySelectorAll("[data-draft-addon]").forEach((node) => { node.textContent = format(config.draftAddon, config.currency); });
-      document.querySelectorAll("[data-fto-addon]").forEach((node) => { node.textContent = format(config.ftoAddon, config.currency); });
+      document.querySelectorAll("[data-search-price]").forEach((node) => { node.textContent = format(config.priorArtSearch, config.currency); });
       document.documentElement.classList.remove("pricing-pending");
     }
     let market = defaultMarket;
@@ -603,7 +604,7 @@ const contactPath = lang === "es" ? "/es/?plan=institutional#contact" : lang ===
 
 
   :global(html.pricing-pending) [data-draft-addon],
-  :global(html.pricing-pending) [data-fto-addon],
+  :global(html.pricing-pending) [data-search-price],
   :global(html.pricing-pending) [data-single-draft-price],
   :global(html.pricing-pending) [data-price-plan],
   :global(html.pricing-pending) [data-annual-plan],

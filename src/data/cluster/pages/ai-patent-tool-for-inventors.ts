@@ -40,8 +40,8 @@ export const aiPatentToolForInventors: ClusterPage = {
             { title: "Check what already exists", body: "Run a prior-art search by technical concept. Save the closest references to the project so they inform the draft." },
             { title: "Generate claims and the description", body: "The Drafter prepares independent and dependent claims plus a detailed description, background, summary, and abstract from the same disclosure." },
             { title: "Create reference drawings", body: "Generate figures whose reference numerals match the text, then refine them." },
-            { title: "Review, export, and decide how to file", body: "Run the QA checks, export the application as DOCX, and either file it yourself or send it to a patent attorney or agent for review. In some offices, such as INPI Argentina, you can submit the application directly from IPnite." },
-            { title: "Follow the office from IPnite", body: "IPnite gives you a dedicated email address to register with the patent office, so its notifications reach your project and you can answer the examiner from IPnite." },
+            { title: "Review, export, and decide how to file", body: "Run the QA checks, export the application as DOCX, and either file it yourself or send it to a patent attorney or agent for review. Direct filing from IPnite is not currently available; you or your representative submit the application to the patent office." },
+            { title: "Follow the office from IPnite", body: "Use Management to track filings and deadlines. Receiving office notices and sending examiner responses directly from IPnite are not currently available." },
           ],
         },
         {
@@ -93,7 +93,7 @@ export const aiPatentToolForInventors: ClusterPage = {
           type: "prose",
           heading: "What it costs",
           paragraphs: [
-            `The Inventor plan costs ${inventorPrice.en} per month in the United States, with regional prices for Mexico, Argentina, Brazil, and the rest of Latin America. It includes one active project, two prior-art searches per month, one external collaborator such as your attorney, and DOCX export of purchased drafts. Full patent drafts are discounted add-ons. Every paid plan includes a patentability search.`,
+            `The Inventor plan costs ${inventorPrice.en} per month in the United States, with regional prices for Mexico, Argentina, Brazil, and the rest of Latin America. It includes nine managed projects and one selected drafting project, two prior-art searches per month, one external collaborator such as your attorney, and DOCX export of purchased drafts. Full patent drafts are discounted add-ons. Patentability Search is a separate future product, not currently available.`,
             "Explore a Search Strategy Preview or Draft Preview with your own invention. The 7-day free trial does not include a complete search or a final refined, exportable application. No credit card and no automatic charges. Patent office fees are separate and paid to the office.",
           ],
         },
@@ -130,8 +130,8 @@ export const aiPatentToolForInventors: ClusterPage = {
             { title: "Revisa lo que ya existe", body: "Haz una búsqueda de antecedentes por concepto técnico. Guarda las referencias más cercanas en el proyecto para que orienten el borrador." },
             { title: "Genera reivindicaciones y descripción", body: "El Redactor prepara reivindicaciones independientes y dependientes, además de la descripción detallada, los antecedentes, el resumen y el resumen técnico, a partir de la misma divulgación." },
             { title: "Crea dibujos de referencia", body: "Genera figuras cuyos números de referencia coinciden con el texto y ajústalas." },
-            { title: "Revisa, exporta y decide cómo presentar", body: "Pasa los controles de calidad, exporta la solicitud en DOCX y preséntala tú mismo o envíala a un abogado o agente de patentes para revisión. En algunas oficinas, como el INPI de Argentina, puedes presentar la solicitud directamente desde IPnite." },
-            { title: "Da seguimiento a la oficina desde IPnite", body: "IPnite te da un correo dedicado que puedes registrar ante la oficina de patentes para recibir sus notificaciones en tu proyecto y responder al examinador desde IPnite." },
+            { title: "Revisa, exporta y decide cómo presentar", body: "Pasa los controles de calidad, exporta la solicitud en DOCX y preséntala tú mismo o envíala a un abogado o agente de patentes para revisión. La presentación directa desde IPnite aún no está disponible; tú o tu representante presentan la solicitud ante la oficina." },
+            { title: "Da seguimiento a la oficina desde IPnite", body: "Utiliza Gestión para dar seguimiento a presentaciones y plazos. Recibir notificaciones de la oficina y enviar respuestas al examinador directamente desde IPnite aún no está disponible." },
           ],
         },
         {
@@ -183,7 +183,7 @@ export const aiPatentToolForInventors: ClusterPage = {
           type: "prose",
           heading: "Cuánto cuesta",
           paragraphs: [
-            `Precio del plan: ${ipniteRegionalPricing("es").inventorSummary}. Incluye un proyecto activo, dos búsquedas de antecedentes al mes, un colaborador externo (por ejemplo, tu abogado) y exportación en DOCX de drafts adquiridos. Los drafts completos son complementos con descuento. Todos los planes de pago incluyen una búsqueda de patentabilidad.`,
+            `Precio del plan: ${ipniteRegionalPricing("es").inventorSummary}. Incluye nueve proyectos gestionados y uno seleccionado para redacción, dos búsquedas de antecedentes al mes, un colaborador externo (por ejemplo, tu abogado) y exportación en DOCX de drafts adquiridos. Los drafts completos son complementos con descuento. La búsqueda de patentabilidad es un producto futuro distinto, aún no disponible.`,
             "Explora una vista previa de estrategia de búsqueda o del flujo de redacción con tu propia invención. La prueba gratis de 7 días no incluye una búsqueda completa ni una solicitud final refinada o exportable. Sin tarjeta y sin cobros automáticos. Las tarifas de la oficina de patentes son aparte y se pagan a la oficina.",
           ],
         },
@@ -220,8 +220,8 @@ export const aiPatentToolForInventors: ClusterPage = {
             { title: "Veja o que já existe", body: "Faça uma busca de anterioridade por conceito técnico. Salve as referências mais próximas no projeto para orientar o rascunho." },
             { title: "Gere reivindicações e relatório", body: "O The Drafter prepara reivindicações independentes e dependentes, além do relatório descritivo, do estado da técnica, do sumário e do resumo, a partir da mesma divulgação." },
             { title: "Crie desenhos de referência", body: "Gere figuras cujos sinais de referência coincidem com o texto e ajuste-as." },
-            { title: "Revise, exporte e decida como depositar", body: "Passe pelos controles de qualidade, exporte o pedido em DOCX e deposite você mesmo ou envie a um advogado ou agente da propriedade industrial para revisão. Em alguns escritórios, como o INPI da Argentina, você pode depositar o pedido diretamente pela IPnite." },
-            { title: "Acompanhe o escritório pela IPnite", body: "A IPnite oferece um e-mail dedicado para cadastrar no escritório de patentes, assim as notificações chegam ao seu projeto e você responde ao examinador pela IPnite." },
+            { title: "Revise, exporte e decida como depositar", body: "Passe pelos controles de qualidade, exporte o pedido em DOCX e deposite você mesmo ou envie a um advogado ou agente da propriedade industrial para revisão. O depósito direto pela IPnite ainda não está disponível; você ou seu procurador deposita o pedido no escritório." },
+            { title: "Acompanhe o escritório pela IPnite", body: "Use Gestão para acompanhar depósitos e prazos. Receber notificações do escritório e enviar respostas ao examinador diretamente pela IPnite ainda não está disponível." },
           ],
         },
         {
@@ -273,7 +273,7 @@ export const aiPatentToolForInventors: ClusterPage = {
           type: "prose",
           heading: "Quanto custa",
           paragraphs: [
-            `No Brasil, o plano Inventor custa ${inventorPrice.pt} por mês; também há preços locais para México, Argentina, Estados Unidos e o restante da América Latina. Ele inclui um projeto ativo, duas buscas de anterioridade por mês, um colaborador externo (por exemplo, seu advogado) e exportação em DOCX de minutas adquiridas. Minutas completas são adicionais com desconto. Todos os planos pagos incluem uma busca de patenteabilidade.`,
+            `No Brasil, o plano Inventor custa ${inventorPrice.pt} por mês; também há preços locais para México, Argentina, Estados Unidos e o restante da América Latina. Ele inclui nove projetos gerenciados e um selecionado para redação, duas buscas de anterioridade por mês, um colaborador externo (por exemplo, seu advogado) e exportação em DOCX de minutas adquiridas. Minutas completas são adicionais com desconto. A busca de patenteabilidade é um produto futuro distinto, ainda indisponível.`,
             "Explore uma prévia da estratégia de busca ou do fluxo de redação com sua própria invenção. O teste grátis de 7 dias não inclui uma busca completa nem um pedido final refinado ou exportável. Sem cartão e sem cobranças automáticas. As taxas do escritório de patentes são à parte e pagas ao escritório.",
           ],
         },

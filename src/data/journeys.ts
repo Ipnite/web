@@ -505,7 +505,7 @@ export const filedPage = {
     office: {
       thought: "Pages of legal language, citations to other patents, and a deadline at the end.",
       h2: "The office wrote back. What does it even say?",
-      answer: "Before I talk to my attorney, I want to understand what the office is asking for and how long I have to respond. With IPnite I can have the office's notices reach my project and answer the examiner from there.",
+      answer: "Before I talk to my attorney, I want to understand what the office is asking for and how long I have to respond. With Management I can track filings and deadlines; receiving notices and sending examiner responses directly from IPnite are not currently available.",
       period: "How long I have depends on the office and on what it's asking for, and it's stated in the notice itself. I take that date from the notice, not from memory.",
     },
     missed: {
@@ -534,7 +534,7 @@ export const filedPage = {
       thought: "It says “patent pending.” Does that mean I'm safe?",
       h2: "Can I start selling my product now?",
       answer: "A pending application doesn't tell me whether my product uses something someone else has already patented. Before I launch, I want an initial look at that risk.",
-      fto: "IPnite offers freedom-to-operate (FTO) analyses: as a per-jurisdiction add-on on Startup and included on Institutional.",
+      fto: "FTO and Patentability Search are distinct from Prior-Art Search and are not currently available in IPnite.",
       pendingLink: "What “patent pending” actually means",
     },
     attorney: {
@@ -600,7 +600,7 @@ export const filedPage = {
     office: {
       thought: "Páginas de lenguaje legal, citas a otras patentes y un plazo al final.",
       h2: "La oficina me respondió. ¿Qué dice?",
-      answer: "Antes de hablar con mi abogado, quiero entender qué me pide la oficina y cuánto tiempo tengo para responder. Con IPnite puedo recibir las notificaciones de la oficina en mi proyecto y responder al examinador desde ahí.",
+      answer: "Antes de hablar con mi abogado, quiero entender qué me pide la oficina y cuánto tiempo tengo para responder. Con Gestión puedo dar seguimiento a presentaciones y plazos; recibir notificaciones y enviar respuestas al examinador directamente desde IPnite aún no está disponible.",
       period: "El tiempo que tengo depende de la oficina y de lo que me pide, y viene indicado en la propia notificación. Tomo esa fecha de la notificación, no de memoria.",
     },
     missed: {
@@ -629,7 +629,7 @@ export const filedPage = {
       thought: "Dice “patente en trámite”. ¿Eso significa que ya estoy protegido?",
       h2: "¿Ya puedo empezar a vender mi producto?",
       answer: "Una solicitud en trámite no me dice si mi producto usa algo que otra persona ya patentó. Antes de lanzarlo, quiero una primera revisión de ese riesgo.",
-      fto: "IPnite ofrece análisis de libertad de operación (FTO): como complemento por jurisdicción en Startup e incluido en Institucional.",
+      fto: "FTO y la búsqueda de patentabilidad son distintos de la búsqueda de antecedentes y aún no están disponibles en IPnite.",
       pendingLink: "Qué significa de verdad “patente en trámite”",
     },
     attorney: {
@@ -695,7 +695,7 @@ export const filedPage = {
     office: {
       thought: "Páginas de linguagem jurídica, citações de outras patentes e um prazo no final.",
       h2: "O escritório respondeu. O que isso quer dizer?",
-      answer: "Antes de falar com meu advogado, quero entender o que o escritório está pedindo e quanto tempo tenho para responder. Com a IPnite, as notificações do escritório chegam ao meu projeto e posso responder ao examinador por lá.",
+      answer: "Antes de falar com meu advogado, quero entender o que o escritório está pedindo e quanto tempo tenho para responder. Com Gestão posso acompanhar depósitos e prazos; receber notificações e enviar respostas ao examinador diretamente pela IPnite ainda não está disponível.",
       period: "O tempo que tenho depende do escritório e do que ele pede, e vem indicado na própria notificação. Pego essa data da notificação, não da memória.",
     },
     missed: {
@@ -724,7 +724,7 @@ export const filedPage = {
       thought: "Diz “patente pendente”. Isso quer dizer que estou protegido?",
       h2: "Já posso começar a vender meu produto?",
       answer: "Um pedido pendente não me diz se meu produto usa algo que outra pessoa já patenteou. Antes de lançar, quero uma primeira análise desse risco.",
-      fto: "A IPnite oferece análises de liberdade de operação (FTO): como adicional por jurisdição no Startup e incluídas no Institucional.",
+      fto: "FTO e busca de patenteabilidade são distintos da busca de anterioridade e ainda não estão disponíveis na IPnite.",
       pendingLink: "O que “patente pendente” significa de verdade",
     },
     attorney: {

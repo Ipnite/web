@@ -179,7 +179,7 @@ const attorneys: SeoPage = {
         {
           heading: "Built for teams",
           paragraphs: [
-            "The Institutional plan includes three users, unlimited active projects under a reasonable-use policy, 50 prior-art searches per month, the FTO module, team permissions, and invention disclosure management. Additional users are billed at the regional price.",
+            "The Institutional plan includes three users, unlimited active projects under a reasonable-use policy, 50 prior-art searches per month, one Full Draft entitlement per managed project, team permissions, and invention disclosure management. Additional seat billing is not currently available. Patentability Search and FTO are coming soon.",
           ],
         },
         {
@@ -222,7 +222,7 @@ const attorneys: SeoPage = {
         {
           heading: "Pensado para equipos",
           paragraphs: [
-            "El plan Institucional incluye tres usuarios, proyectos activos ilimitados sujetos a uso razonable, 50 búsquedas de antecedentes al mes, el módulo FTO, permisos de equipo y gestión de divulgaciones de invención. Los usuarios adicionales se cobran al precio regional.",
+            "El plan Institucional incluye tres usuarios, proyectos activos ilimitados sujetos a uso razonable, 50 búsquedas de antecedentes al mes, un derecho a Draft completo por proyecto gestionado, permisos de equipo y gestión de divulgaciones de invención. La facturación de usuarios adicionales aún no está disponible. Patentabilidad y FTO están previstos para el futuro.",
           ],
         },
         {
@@ -265,7 +265,7 @@ const attorneys: SeoPage = {
         {
           heading: "Pensado para equipes",
           paragraphs: [
-            "O plano Institucional inclui três usuários, projetos ativos ilimitados sujeitos a uso razoável, 50 buscas de anterioridade por mês, o módulo FTO, permissões de equipe e gestão de divulgações de invenção. Usuários adicionais são cobrados pelo preço regional.",
+            "O plano Institucional inclui três usuários, projetos ativos ilimitados sujeitos a uso razoável, 50 buscas de anterioridade por mês, um direito a Draft completo por projeto gerenciado, permissões de equipe e gestão de divulgações de invenção. A cobrança de usuários adicionais ainda não está disponível. Patenteabilidade e FTO estão previstos para o futuro.",
           ],
         },
         {

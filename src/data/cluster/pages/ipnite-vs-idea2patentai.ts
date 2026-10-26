@@ -22,7 +22,7 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
       h1: "IPnite vs Idea2PatentAI",
       eyebrow: "SIDE-BY-SIDE COMPARISON",
       shortName: "IPnite vs Idea2PatentAI",
-      lead: "Both tools help inventors turn an idea into a patent draft. Idea2PatentAI sells guided US provisional applications one at a time. IPnite covers the whole workflow—prior-art search, the draft, drawings, examiner responses, and portfolio—for the USPTO and for Latin American patent offices, and in Latin America a complete Single Draft costs less than one Idea2PatentAI provisional.",
+      lead: "Both tools help inventors turn an idea into a patent draft. Idea2PatentAI sells guided US provisional applications one at a time. IPnite covers the whole workflow—Prior-Art Search, Draft, drawings, and Management under separate product rights—for the USPTO and for Latin American patent offices, and in Latin America a complete Single Draft costs less than one Idea2PatentAI provisional.",
       blocks: [
         {
           type: "table",
@@ -32,7 +32,7 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
           rows: [
             ["Focus", "Built Latin America first: Spanish and Portuguese, IMPI, INPI Argentina, and INPI Brazil, local-currency prices", "US provisional applications; no stated Latin America focus"],
             ["Cost of one draft", `One-time Single Draft with The Drafter: ${r.en.singleDraft}`, "US$79 per provisional, one-time, plus sales tax"],
-            ["What that payment includes", "A complete prior-art search, a complete draft with claims, drawings, quality review, and export", "A guided provisional draft with claims; Word and PDF export"],
+            ["What that payment includes", "A complete Draft with claims, drawings, one final Audit/QA and saved DOCX; Search and Management are separate", "A guided provisional draft with claims; Word and PDF export"],
             ["Additional drafts", `On the Inventor plan: ${r.en.draftAddon} per draft`, "US$299 for three provisionals"],
             ["Billing currency", r.en.currency, r.en.usdOnly],
             ["Pricing model", `${r.en.path}. ${r.en.upgrade}.`, "One-time: US$79 per provisional or US$299 for three, plus sales tax"],
@@ -47,15 +47,15 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
         },
         {
           type: "cards",
-          heading: "Also included in IPnite",
-          intro: "Beyond the draft itself, every IPnite project brings the rest of the patent workflow together.",
+          heading: "Other IPnite products and availability",
+          intro: "Draft and Prior-Art Search are separate purchases. Management requires a subscription; future modules are not available.",
           items: [
             { title: "Prior-art search", body: "Search by technical concept and save the closest references to the project before you draft." },
             { title: "Patent drawings", body: "Figures generated from the same project, with reference numerals that match the text." },
-            { title: "Examiner responses by email", body: "IPnite gives you a dedicated email address to register with the patent office, so its notifications reach your project and you can answer the examiner from IPnite." },
-            { title: "Filing from the app", body: "In some offices, such as INPI Argentina, you can submit the application directly from IPnite." },
+            { title: "Examiner responses by email", body: "Use Management to track filings and deadlines. Receiving office notices and sending examiner responses directly from IPnite are not currently available." },
+            { title: "Filing from the app", body: "Direct filing from IPnite is not currently available; you or your representative submit the application to the patent office." },
             { title: "Portfolio and deadlines", body: "Applications, documents, and key dates in one place after filing." },
-            { title: "Patentability and FTO", body: "A patentability search on every paid plan and an optional freedom-to-operate module." },
+            { title: "Patentability and FTO", body: "Patentability Search and FTO are distinct future products, not currently available." },
             { title: "Spanish and Portuguese", body: "Work and draft in Spanish, Portuguese, or English for Latin American and US filings." },
           ],
         },
@@ -72,10 +72,10 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
           right: {
             title: "IPnite fits better if",
             items: [
-              "You want the provisional for less, with prior-art search and drawings included",
+              "You want the provisional for less, with drawings included and Search purchased separately",
               "You file in Mexico, Argentina, Brazil, or through the PCT",
               "You work in Spanish or Portuguese",
-              "You will need a complete application, examiner responses, or portfolio tracking later",
+              "You will need a complete application or subscription portfolio tracking later",
             ],
           },
         },
@@ -87,8 +87,8 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
         },
       ],
       faqs: [
-        { q: "Is IPnite cheaper than Idea2PatentAI for a provisional?", a: `In Latin America, yes. A complete Single Draft costs ${r.en.singleDraftLatam}, compared with Idea2PatentAI's US$79 one-time fee, and it also includes a complete prior-art search, drawings, quality review, and export. In the US the Single Draft costs more, but if you draft several patents, each additional draft on the Inventor plan costs ${r.en.draftAddon}; patent office fees are separate in both cases.` },
-        { q: "Can either tool file the application for me?", a: "Idea2PatentAI prepares the draft for you to file. With IPnite, in some offices such as INPI Argentina you can submit the application directly from the app; elsewhere you or your representative file it. Official fees are paid to the patent office in both cases." },
+        { q: "Is IPnite cheaper than Idea2PatentAI for a provisional?", a: `In Latin America, yes. A complete Single Draft costs ${r.en.singleDraftLatam}, compared with Idea2PatentAI's US$79 one-time fee, and includes drawings, one final Audit/QA, and a saved DOCX. Search and Management are separate purchases. In the US the Single Draft costs more, but if you draft several patents, each additional draft on the Inventor plan costs ${r.en.draftAddon}; patent office fees are separate in both cases.` },
+        { q: "Can either tool file the application for me?", a: "Idea2PatentAI prepares the draft for you to file. IPnite direct filing is not currently available; you or your representative file the application. Official fees are paid to the patent office in both cases." },
         { q: "Which one supports Latin American patent offices?", a: "IPnite supports preparation for IMPI (Mexico), INPI Argentina, and INPI Brazil, as well as the USPTO and PCT. Idea2PatentAI focuses on US provisional applications." },
         { q: "Do they train AI on my invention?", a: "Both state that invention content is not used to train AI models. Read each vendor's privacy terms before uploading anything." },
       ],
@@ -101,7 +101,7 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
       h1: "IPnite vs Idea2PatentAI",
       eyebrow: "COMPARACIÓN LADO A LADO",
       shortName: "IPnite vs Idea2PatentAI",
-      lead: "Ambas herramientas ayudan a los inventores a convertir una idea en un borrador de patente. Idea2PatentAI vende solicitudes provisionales de EE. UU. guiadas, una por una. IPnite cubre todo el flujo (búsqueda de antecedentes, borrador, dibujos, respuestas al examinador y portafolio) para la USPTO y para las oficinas de patentes de Latinoamérica, y en Latinoamérica un borrador completo con el Redactor cuesta menos que una sola provisional de Idea2PatentAI.",
+      lead: "Ambas herramientas ayudan a los inventores a convertir una idea en un borrador de patente. Idea2PatentAI vende solicitudes provisionales de EE. UU. guiadas, una por una. IPnite cubre todo el flujo (búsqueda de antecedentes, Draft, dibujos y Gestión con derechos separados) para la USPTO y para las oficinas de patentes de Latinoamérica, y en Latinoamérica un borrador completo con el Redactor cuesta menos que una sola provisional de Idea2PatentAI.",
       blocks: [
         {
           type: "table",
@@ -111,7 +111,7 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
           rows: [
             ["Enfoque", "Hecha primero para Latinoamérica: español y portugués, IMPI, INPI Argentina e INPI Brasil, precios en moneda local", "Provisionales de EE. UU.; sin enfoque declarado en Latinoamérica"],
             ["Costo de un borrador", `Pago único con el Redactor: ${r.es.singleDraft}`, "US$79 por provisional, pago único, más impuestos"],
-            ["Qué incluye ese pago", "Búsqueda de antecedentes completa, borrador completo con reivindicaciones, dibujos, revisión de calidad y exportación", "Borrador guiado de provisional con reivindicaciones; exportación en Word y PDF"],
+            ["Qué incluye ese pago", "Draft completo con reivindicaciones, dibujos, una auditoría final y DOCX guardado; búsqueda y Gestión por separado", "Borrador guiado de provisional con reivindicaciones; exportación en Word y PDF"],
             ["Borradores adicionales", `Con el plan Inventor: ${r.es.draftAddon} por borrador`, "US$299 por tres provisionales"],
             ["Moneda de cobro", r.es.currency, r.es.usdOnly],
             ["Modelo de precio", `${r.es.path}. ${r.es.upgrade}.`, "Pago único: US$79 por provisional o US$299 por tres, más impuestos"],
@@ -126,15 +126,15 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
         },
         {
           type: "cards",
-          heading: "También incluido en IPnite",
-          intro: "Además del borrador, cada proyecto de IPnite reúne el resto del proceso de patente.",
+          heading: "Otros productos de IPnite y su disponibilidad",
+          intro: "Draft y búsqueda de antecedentes se compran por separado. Gestión requiere suscripción; los módulos futuros no están disponibles.",
           items: [
             { title: "Búsqueda de antecedentes", body: "Busca por concepto técnico y guarda las referencias más cercanas en el proyecto antes de redactar." },
             { title: "Dibujos de patente", body: "Figuras generadas en el mismo proyecto, con números de referencia que coinciden con el texto." },
-            { title: "Respuestas al examinador por correo", body: "IPnite te da un correo dedicado que puedes registrar ante la oficina de patentes para recibir sus notificaciones en tu proyecto y responder al examinador desde IPnite." },
-            { title: "Presentación desde la app", body: "En algunas oficinas, como el INPI de Argentina, puedes presentar la solicitud directamente desde IPnite." },
+            { title: "Respuestas al examinador por correo", body: "Utiliza Gestión para dar seguimiento a presentaciones y plazos. Recibir notificaciones de la oficina y enviar respuestas al examinador directamente desde IPnite aún no está disponible." },
+            { title: "Presentación desde la app", body: "La presentación directa desde IPnite aún no está disponible; tú o tu representante presentan la solicitud ante la oficina." },
             { title: "Portafolio y plazos", body: "Solicitudes, documentos y fechas clave en un solo lugar después de presentar." },
-            { title: "Patentabilidad y FTO", body: "Una búsqueda de patentabilidad en todos los planes de pago y un módulo opcional de libertad de operación." },
+            { title: "Patentabilidad y FTO", body: "La búsqueda de patentabilidad y FTO son productos futuros distintos, aún no disponibles." },
             { title: "Español y portugués", body: "Trabaja y redacta en español, portugués o inglés para presentaciones en Latinoamérica y EE. UU." },
           ],
         },
@@ -151,10 +151,10 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
           right: {
             title: "IPnite te conviene más si",
             items: [
-              "Quieres la provisional por menos, con búsqueda de antecedentes y dibujos incluidos",
+              "Quieres la provisional por menos, con dibujos incluidos y búsqueda comprada por separado",
               "Presentas en México, Argentina, Brasil o por la vía PCT",
               "Trabajas en español o portugués",
-              "Más adelante necesitarás la solicitud completa, respuestas al examinador o seguimiento de portafolio",
+              "Más adelante necesitarás la solicitud completa o seguimiento de portafolio con suscripción",
             ],
           },
         },
@@ -166,8 +166,8 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
         },
       ],
       faqs: [
-        { q: "¿IPnite es más barata que Idea2PatentAI para una provisional?", a: `En Latinoamérica, sí. Un borrador completo con el Redactor cuesta ${r.es.singleDraftLatam}, frente al pago único de US$79 de Idea2PatentAI, e incluye además una búsqueda de antecedentes completa, dibujos, revisión de calidad y exportación. Y si redactas varias patentes, con el plan Inventor cada borrador adicional cuesta ${r.es.draftAddon}, todo en tu moneda local; las tarifas de la oficina de patentes son aparte en ambos casos.` },
-        { q: "¿Alguna de las dos presenta la solicitud por mí?", a: "Idea2PatentAI prepara el borrador para que tú lo presentes. Con IPnite, en algunas oficinas como el INPI de Argentina puedes presentar la solicitud directamente desde la app; en las demás la presentas tú o tu representante. Las tarifas oficiales se pagan a la oficina en ambos casos." },
+        { q: "¿IPnite es más barata que Idea2PatentAI para una provisional?", a: `En Latinoamérica, sí. Un borrador completo con el Redactor cuesta ${r.es.singleDraftLatam}, frente al pago único de US$79 de Idea2PatentAI, e incluye dibujos, una auditoría final y un DOCX guardado. La búsqueda y Gestión se adquieren por separado. Y si redactas varias patentes, con el plan Inventor cada borrador adicional cuesta ${r.es.draftAddon}, todo en tu moneda local; las tarifas de la oficina de patentes son aparte en ambos casos.` },
+        { q: "¿Alguna de las dos presenta la solicitud por mí?", a: "Idea2PatentAI prepara el borrador para que tú lo presentes. La presentación directa desde IPnite aún no está disponible; tú o tu representante presentan la solicitud. Las tarifas oficiales se pagan a la oficina en ambos casos." },
         { q: "¿Cuál admite oficinas de patentes de Latinoamérica?", a: "IPnite admite la preparación para el IMPI (México), el INPI de Argentina y el INPI de Brasil, además de la USPTO y el PCT. Idea2PatentAI se enfoca en solicitudes provisionales de EE. UU." },
         { q: "¿Entrenan su IA con mi invención?", a: "Ambas declaran que el contenido de la invención no se usa para entrenar modelos de IA. Lee las condiciones de privacidad de cada proveedor antes de subir cualquier cosa." },
       ],
@@ -180,7 +180,7 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
       h1: "IPnite vs Idea2PatentAI",
       eyebrow: "COMPARAÇÃO LADO A LADO",
       shortName: "IPnite vs Idea2PatentAI",
-      lead: "As duas ferramentas ajudam inventores a transformar uma ideia em um rascunho de patente. A Idea2PatentAI vende pedidos provisórios dos EUA guiados, um de cada vez. A IPnite cobre todo o fluxo (busca de anterioridade, rascunho, desenhos, respostas ao examinador e portfólio) para o USPTO e para os escritórios de patentes da América Latina, e na América Latina uma minuta avulsa completa custa menos que um único provisório da Idea2PatentAI.",
+      lead: "As duas ferramentas ajudam inventores a transformar uma ideia em um rascunho de patente. A Idea2PatentAI vende pedidos provisórios dos EUA guiados, um de cada vez. A IPnite cobre todo o fluxo (busca de anterioridade, Draft, desenhos e Gestão com direitos separados) para o USPTO e para os escritórios de patentes da América Latina, e na América Latina uma minuta avulsa completa custa menos que um único provisório da Idea2PatentAI.",
       blocks: [
         {
           type: "table",
@@ -190,7 +190,7 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
           rows: [
             ["Foco", "Feita primeiro para a América Latina: português e espanhol, INPI Brasil, IMPI e INPI Argentina, preços em moeda local", "Pedidos provisórios dos EUA; sem foco declarado na América Latina"],
             ["Custo de uma minuta", `Minuta avulsa com pagamento único: ${r.pt.singleDraft}`, "US$ 79 por provisório, pagamento único, mais impostos"],
-            ["O que esse pagamento inclui", "Busca de anterioridade completa, minuta completa com reivindicações, desenhos, revisão de qualidade e exportação", "Rascunho guiado de provisório com reivindicações; exportação em Word e PDF"],
+            ["O que esse pagamento inclui", "Draft completo com reivindicações, desenhos, uma auditoria final e DOCX salvo; busca e Gestão separados", "Rascunho guiado de provisório com reivindicações; exportação em Word e PDF"],
             ["Minutas adicionais", `No plano Inventor: ${r.pt.draftAddon} por minuta`, "US$ 299 por três provisórios"],
             ["Moeda de cobrança", r.pt.currency, r.pt.usdOnly],
             ["Modelo de preço", `${r.pt.path}. ${r.pt.upgrade}.`, "Pagamento único: US$ 79 por provisório ou US$ 299 por três, mais impostos"],
@@ -205,15 +205,15 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
         },
         {
           type: "cards",
-          heading: "Também incluído na IPnite",
-          intro: "Além do rascunho, cada projeto da IPnite reúne o restante do processo de patente.",
+          heading: "Outros produtos da IPnite e sua disponibilidade",
+          intro: "Draft e busca de anterioridade são compras separadas. Gestão exige assinatura; módulos futuros não estão disponíveis.",
           items: [
             { title: "Busca de anterioridade", body: "Busque por conceito técnico e salve as referências mais próximas no projeto antes de redigir." },
             { title: "Desenhos de patente", body: "Figuras geradas no mesmo projeto, com sinais de referência que coincidem com o texto." },
-            { title: "Respostas ao examinador por e-mail", body: "A IPnite oferece um e-mail dedicado para cadastrar no escritório de patentes, assim as notificações chegam ao seu projeto e você responde ao examinador pela IPnite." },
-            { title: "Depósito pelo app", body: "Em alguns escritórios, como o INPI da Argentina, você pode depositar o pedido diretamente pela IPnite." },
+            { title: "Respostas ao examinador por e-mail", body: "Use Gestão para acompanhar depósitos e prazos. Receber notificações do escritório e enviar respostas ao examinador diretamente pela IPnite ainda não está disponível." },
+            { title: "Depósito pelo app", body: "O depósito direto pela IPnite ainda não está disponível; você ou seu procurador deposita o pedido no escritório." },
             { title: "Portfólio e prazos", body: "Pedidos, documentos e datas importantes em um só lugar depois do depósito." },
-            { title: "Patenteabilidade e FTO", body: "Uma busca de patenteabilidade em todos os planos pagos e um módulo opcional de liberdade de operação." },
+            { title: "Patenteabilidade e FTO", body: "Busca de patenteabilidade e FTO são produtos futuros distintos, ainda indisponíveis." },
             { title: "Português e espanhol", body: "Trabalhe e redija em português, espanhol ou inglês para depósitos na América Latina e nos EUA." },
           ],
         },
@@ -230,10 +230,10 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
           right: {
             title: "A IPnite serve melhor se",
             items: [
-              "Você quer o provisório por menos, com busca de anterioridade e desenhos incluídos",
+              "Você quer o provisório por menos, com desenhos incluídos e busca comprada separadamente",
               "Você deposita no Brasil, no México, na Argentina ou pela via PCT",
               "Você trabalha em português ou espanhol",
-              "Depois você vai precisar do pedido completo, de respostas ao examinador ou de acompanhar o portfólio",
+              "Depois você vai precisar do pedido completo ou de acompanhar o portfólio com assinatura",
             ],
           },
         },
@@ -245,8 +245,8 @@ export const ipniteVsIdea2PatentAi: ClusterPage = {
         },
       ],
       faqs: [
-        { q: "A IPnite é mais barata que a Idea2PatentAI para um provisório?", a: `Na América Latina, sim. Uma minuta avulsa completa custa ${r.pt.singleDraftLatam}, contra o pagamento único de US$ 79 da Idea2PatentAI, e inclui também uma busca de anterioridade completa, desenhos, revisão de qualidade e exportação. E se você redige várias patentes, no plano Inventor cada minuta adicional custa ${r.pt.draftAddon}, tudo em moeda local; as taxas do escritório de patentes são à parte nos dois casos.` },
-        { q: "Alguma das duas deposita o pedido por mim?", a: "A Idea2PatentAI prepara o rascunho para você depositar. Com a IPnite, em alguns escritórios como o INPI da Argentina você pode depositar o pedido diretamente pelo app; nos demais, o depósito é feito por você ou pelo seu procurador. As taxas oficiais são pagas ao escritório nos dois casos." },
+        { q: "A IPnite é mais barata que a Idea2PatentAI para um provisório?", a: `Na América Latina, sim. Uma minuta avulsa completa custa ${r.pt.singleDraftLatam}, contra o pagamento único de US$ 79 da Idea2PatentAI, e inclui desenhos, uma auditoria final e um DOCX salvo. Busca e Gestão são adquiridos separadamente. E se você redige várias patentes, no plano Inventor cada minuta adicional custa ${r.pt.draftAddon}, tudo em moeda local; as taxas do escritório de patentes são à parte nos dois casos.` },
+        { q: "Alguma das duas deposita o pedido por mim?", a: "A Idea2PatentAI prepara o rascunho para você depositar. O depósito direto pela IPnite ainda não está disponível; você ou seu procurador deposita o pedido. As taxas oficiais são pagas ao escritório nos dois casos." },
         { q: "Qual delas suporta escritórios de patentes da América Latina?", a: "A IPnite suporta a preparação para o INPI do Brasil, o IMPI do México e o INPI da Argentina, além do USPTO e do PCT. A Idea2PatentAI foca em pedidos provisórios dos EUA." },
         { q: "Elas treinam IA com a minha invenção?", a: "As duas declaram que o conteúdo da invenção não é usado para treinar modelos de IA. Leia os termos de privacidade de cada fornecedor antes de enviar qualquer coisa." },
       ],
